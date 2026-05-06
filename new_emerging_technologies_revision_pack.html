@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New & Emerging Technologies — GCSE D&T Revision Pack</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --amber: #f5a623;
+    --amber-light: #ffd07a;
+    --teal: #0fb8ad;
+    --teal-light: #e0f7f5;
+    --coral: #e8533f;
+    --coral-light: #fdecea;
+    --green: #2e9b6e;
+    --green-light: #e5f6ee;
+    --purple: #7c4dff;
+    --purple-light: #ede7ff;
+    --warm-white: #fafaf7;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-muted: #5a6070;
+    --border: #e8e8e0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.10);
+    --shadow-hover: 0 8px 36px rgba(13,27,42,0.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    color: white;
+    padding: 56px 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(245,166,35,0.06) 40px,
+      rgba(245,166,35,0.06) 41px
+    );
+  }
+  .hero-inner { position: relative; max-width: 1100px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--amber);
+    color: var(--navy);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 58px);
+    font-weight: 900;
+    line-height: 1.08;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 span { color: var(--amber); }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    max-width: 540px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .hero-tag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  /* ── NAVIGATION TABS ── */
+  .nav-bar {
+    background: white;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 20px;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 16px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: -2px;
+  }
+  .tab-btn:hover { color: var(--navy); }
+  .tab-btn.active {
+    color: var(--navy);
+    border-bottom-color: var(--amber);
+    font-weight: 600;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 40px 20px 80px; }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ── SECTION HEADERS ── */
+  .section-header { margin-bottom: 32px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .section-header p { color: var(--text-muted); font-size: 15px; line-height: 1.6; max-width: 680px; }
+  .esltip {
+    background: linear-gradient(135deg, #fffbf0, #fff8e1);
+    border-left: 4px solid var(--amber);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 13.5px;
+    color: #5a4a00;
+  }
+  .esltip strong { color: #3d3000; }
+
+  /* ── SPEC CHECKLIST ── */
+  .spec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-bottom: 40px; }
+  .spec-card {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .spec-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .spec-card-head {
+    padding: 16px 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+  }
+  .spec-card-head.industry { background: var(--navy); }
+  .spec-card-head.enterprise { background: #b5451b; }
+  .spec-card-head.sustainability { background: var(--green); }
+  .spec-card-head.people { background: var(--teal); color: var(--navy); }
+  .spec-card-head.society { background: var(--purple); }
+  .spec-card-head.evaluation { background: #1a3a5c; }
+  .spec-card-head.production { background: #5a3e00; }
+  .spec-card-body { padding: 16px 20px; }
+  .spec-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid #f0f0ea;
+    font-size: 13.5px;
+    color: var(--text);
+  }
+  .spec-item:last-child { border-bottom: none; }
+  .spec-item input[type="checkbox"] { margin-top: 2px; accent-color: var(--amber); flex-shrink: 0; width: 15px; height: 15px; }
+
+  /* ── VOCABULARY SECTION ── */
+  .vocab-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+    align-items: center;
+  }
+  .filter-btn {
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: white;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-muted);
+  }
+  .filter-btn:hover, .filter-btn.active { background: var(--navy); color: white; border-color: var(--navy); }
+  .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+  .vocab-card {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .vocab-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+  .vocab-card-top {
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .vocab-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .vocab-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 9px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .tag-industry { background: #e8ecf3; color: var(--navy); }
+  .tag-enterprise { background: #fde8e0; color: #b5451b; }
+  .tag-sustainability { background: var(--green-light); color: var(--green); }
+  .tag-people { background: var(--teal-light); color: #0a7a74; }
+  .tag-society { background: var(--purple-light); color: var(--purple); }
+  .tag-evaluation { background: #e3ecf5; color: #1a3a5c; }
+  .tag-production { background: #fef9e7; color: #7a5400; }
+  .vocab-card-body { padding: 16px 20px; }
+  .def-label {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+  }
+  .vocab-def {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .vocab-example {
+    background: #f5f5f0;
+    border-left: 3px solid var(--amber);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: #444;
+    font-style: italic;
+    margin-bottom: 12px;
+    line-height: 1.55;
+  }
+  .vocab-example em { font-style: normal; background: var(--amber-light); padding: 1px 3px; border-radius: 2px; }
+  .vocab-remember {
+    background: #f0fef9;
+    border: 1px solid #c3f0e0;
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: #1a5c40;
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    line-height: 1.5;
+  }
+
+  /* ── TOPIC CARDS SECTION ── */
+  .topic-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+  .topic-btn {
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+    opacity: 0.55;
+  }
+  .topic-btn.active { opacity: 1; transform: scale(1.04); }
+  .topic-btn.t-industry { background: var(--navy); color: white; }
+  .topic-btn.t-enterprise { background: #b5451b; color: white; }
+  .topic-btn.t-sustainability { background: var(--green); color: white; }
+  .topic-btn.t-people { background: var(--teal); color: var(--navy); }
+  .topic-btn.t-society { background: var(--purple); color: white; }
+  .topic-btn.t-eval { background: #1a3a5c; color: white; }
+  .topic-btn.t-production { background: #5a3e00; color: white; }
+
+  .topic-panel { display: none; }
+  .topic-panel.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .topic-panel-header {
+    border-radius: 14px 14px 0 0;
+    padding: 28px 32px;
+    color: white;
+    margin-bottom: 0;
+  }
+  .tp-industry { background: var(--navy); }
+  .tp-enterprise { background: linear-gradient(135deg, #b5451b, #c96040); }
+  .tp-sustainability { background: linear-gradient(135deg, var(--green), #3dba88); }
+  .tp-people { background: linear-gradient(135deg, #09a99e, #0fb8ad); color: var(--navy) !important; }
+  .tp-society { background: linear-gradient(135deg, var(--purple), #9c6fff); }
+  .tp-eval { background: linear-gradient(135deg, #1a3a5c, #245080); }
+  .tp-production { background: linear-gradient(135deg, #5a3e00, #8a6200); }
+
+  .topic-panel-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .topic-panel-header p { font-size: 14px; opacity: 0.85; }
+  .topic-panel-body {
+    background: white;
+    border-radius: 0 0 14px 14px;
+    border: 1.5px solid var(--border);
+    border-top: none;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+  }
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .concept-box {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    transition: border-color 0.2s;
+  }
+  .concept-box:hover { border-color: var(--amber); }
+  .concept-icon { font-size: 24px; margin-bottom: 10px; }
+  .concept-title { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 6px; }
+  .concept-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+  .adv-dis-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 13.5px;
+  }
+  .adv-dis-table th {
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .adv-dis-table th.adv-h { background: var(--green-light); color: var(--green); border-radius: 8px 0 0 0; }
+  .adv-dis-table th.dis-h { background: var(--coral-light); color: var(--coral); border-radius: 0 8px 0 0; }
+  .adv-dis-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+  .adv-dis-table td.adv { background: #fafff8; }
+  .adv-dis-table td.dis { background: #fff9f8; }
+  .adv-dis-table tr:last-child td { border-bottom: none; }
+  .adv-dis-table td::before { margin-right: 8px; }
+  .adv-dis-table td.adv::before { content: '✓'; color: var(--green); font-weight: 700; }
+  .adv-dis-table td.dis::before { content: '✗'; color: var(--coral); font-weight: 700; }
+  .production-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 20px; }
+  .production-table th { background: var(--navy); color: white; padding: 10px 14px; text-align: left; font-size: 12px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.07em; }
+  .production-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+  .production-table tr:nth-child(even) td { background: #f9f9f5; }
+  .production-table .pt-name { font-weight: 700; color: var(--navy); }
+
+  /* ── ACTIVITIES ── */
+  .activity-block {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+  }
+  .activity-header {
+    background: var(--navy);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .activity-header h3 { color: white; font-family: 'Playfair Display', serif; font-size: 18px; }
+  .activity-header .act-badge {
+    background: var(--amber);
+    color: var(--navy);
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .activity-body { padding: 24px; }
+  .activity-instructions {
+    background: #f5f5f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.55;
+  }
+
+  /* Gap fill */
+  .gap-sentence {
+    font-size: 15px;
+    line-height: 2.2;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .gap-sentence input[type="text"] {
+    border: none;
+    border-bottom: 2.5px solid var(--amber);
+    background: var(--amber-light);
+    width: 160px;
+    padding: 3px 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    border-radius: 4px 4px 0 0;
+    outline: none;
+    transition: background 0.2s;
+  }
+  .gap-sentence input[type="text"]:focus { background: #ffe9a0; }
+  .gap-sentence input.correct { background: #d4f5e0; border-bottom-color: var(--green); }
+  .gap-sentence input.incorrect { background: #fde8e0; border-bottom-color: var(--coral); }
+  .word-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px;
+    background: #f5f5f0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .word-chip {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .word-chip:hover { border-color: var(--amber); background: var(--amber-light); }
+  .word-chip.used { opacity: 0.35; text-decoration: line-through; pointer-events: none; }
+  .check-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 14px;
+    transition: background 0.2s;
+  }
+  .check-btn:hover { background: #1a3355; }
+  .score-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    display: none;
+  }
+  .score-display.show { display: inline-flex; }
+  .score-display.good { background: var(--green-light); color: var(--green); }
+  .score-display.ok { background: var(--amber-light); color: #7a5400; }
+  .score-display.low { background: var(--coral-light); color: var(--coral); }
+  .reset-btn {
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 14px;
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .reset-btn:hover { border-color: var(--navy); color: var(--navy); }
+
+  /* Matching */
+  .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .match-col { display: flex; flex-direction: column; gap: 10px; }
+  .match-col-label { font-size: 11px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 4px; }
+  .match-item {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1.45;
+  }
+  .match-item.word { font-weight: 700; color: var(--navy); }
+  .match-item:hover { border-color: var(--amber); background: #fffdf5; }
+  .match-item.selected { border-color: var(--amber); background: var(--amber-light); }
+  .match-item.matched { border-color: var(--green); background: var(--green-light); color: var(--green); pointer-events: none; }
+  .match-item.wrong { border-color: var(--coral); background: var(--coral-light); animation: shake 0.3s; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+
+  /* ── EXAM LANGUAGE ── */
+  .command-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-bottom: 36px; }
+  .command-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+  }
+  .command-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .command-means { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5; }
+  .command-marks {
+    display: inline-block;
+    background: var(--amber-light);
+    color: #7a5400;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .frames-section { margin-bottom: 36px; }
+  .frames-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .frame-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .frame-type {
+    background: #f0f0ea;
+    padding: 8px 18px;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .frame-body { padding: 14px 18px; }
+  .frame-template {
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .frame-template .blank {
+    background: var(--amber-light);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-style: italic;
+    color: #7a5400;
+    font-size: 13px;
+  }
+  .frame-example {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    border-left: 3px solid var(--teal);
+    padding-left: 12px;
+    margin-top: 8px;
+    line-height: 1.55;
+  }
+  .exam-q-block {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .exam-q-head {
+    background: #f5f5f0;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .exam-q-head span { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text-muted); text-transform: uppercase; }
+  .exam-q-marks { background: var(--navy); color: white; font-size: 11px; font-family: 'DM Mono', monospace; padding: 3px 10px; border-radius: 4px; }
+  .exam-q-body { padding: 16px 20px; }
+  .exam-q-text { font-size: 15px; color: var(--navy); margin-bottom: 14px; font-weight: 500; line-height: 1.5; }
+  .exam-hint { background: var(--teal-light); padding: 10px 14px; border-radius: 8px; font-size: 12.5px; color: #0a6a64; line-height: 1.5; }
+  .exam-hint strong { color: #084d49; }
+  .show-answer-btn {
+    background: none;
+    border: 1.5px solid var(--teal);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    color: var(--teal);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 12px;
+    transition: all 0.2s;
+  }
+  .show-answer-btn:hover { background: var(--teal); color: white; }
+  .model-answer { display: none; background: #f0fef9; border: 1px solid #a8e6d4; border-radius: 8px; padding: 14px; margin-top: 12px; font-size: 13.5px; line-height: 1.65; color: #1a4a3a; }
+  .model-answer.show { display: block; }
+  .model-answer strong { color: #0a3020; }
+  .model-answer .mark-point { display: flex; gap: 10px; margin-bottom: 6px; }
+  .mark-point-num { background: var(--green); color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+
+  /* ── ESL TOOLKIT ── */
+  .toolkit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .toolkit-card {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .toolkit-card-head {
+    padding: 16px 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .tk-blue { background: var(--navy); color: white; }
+  .tk-amber { background: var(--amber); color: var(--navy); }
+  .tk-teal { background: var(--teal); color: var(--navy); }
+  .tk-green { background: var(--green); color: white; }
+  .toolkit-card-body { padding: 16px 20px; }
+  .prefix-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .prefix-table th { background: #f5f5f0; padding: 8px 12px; text-align: left; font-size: 11px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+  .prefix-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  .prefix-table tr:last-child td { border-bottom: none; }
+  .prefix { font-weight: 700; color: var(--navy); }
+  .synonym-pair { display: flex; gap: 8px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+  .synonym-pair:last-child { border-bottom: none; }
+  .syn-complex { font-weight: 600; color: var(--navy); min-width: 120px; }
+  .syn-arrow { color: var(--amber); font-size: 16px; }
+  .syn-simple { color: var(--text-muted); font-style: italic; }
+  .connector-list { list-style: none; }
+  .connector-list li { padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; display: flex; gap: 10px; align-items: flex-start; }
+  .connector-list li:last-child { border-bottom: none; }
+  .con-chip { background: var(--amber-light); color: #7a5400; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 13px; white-space: nowrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    margin-top: 60px;
+  }
+  footer strong { color: var(--amber); }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero { padding: 36px 20px 32px; }
+    .main { padding: 24px 16px 60px; }
+    .match-grid { grid-template-columns: 1fr; }
+    .topic-panel-body { padding: 18px; }
+  }
+
+  /* ── VOCAB CARD FIX: force all text horizontal, robust layout ── */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    align-items: start;
+  }
+  .vocab-card {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    box-shadow: var(--shadow);
+    display: block;
+    height: auto;
+    overflow: visible;
+    transition: transform 0.2s, box-shadow 0.2s;
+    writing-mode: horizontal-tb;
+  }
+  .vocab-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+  .vocab-card-top {
+    padding: 16px 18px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    writing-mode: horizontal-tb;
+  }
+  .vocab-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.35;
+    writing-mode: horizontal-tb;
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  .vocab-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    writing-mode: horizontal-tb;
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+  .vocab-card-body {
+    padding: 14px 18px;
+    display: block;
+    writing-mode: horizontal-tb;
+  }
+  .def-lbl { display: none; }
+  .vocab-def {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 12px;
+    writing-mode: horizontal-tb;
+    display: block;
+    word-break: break-word;
+  }
+  .vocab-example {
+    background: #f5f5f0;
+    border-left: 3px solid var(--amber);
+    padding: 10px 13px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: #444;
+    font-style: italic;
+    line-height: 1.55;
+    margin-bottom: 11px;
+    writing-mode: horizontal-tb;
+    display: block;
+    word-break: break-word;
+  }
+  .vocab-example em { font-style: normal; background: var(--amber-light); padding: 1px 3px; border-radius: 2px; }
+  .vocab-remember {
+    background: #f0fef9;
+    border: 1px solid #c3f0e0;
+    padding: 9px 13px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: #1a5c40;
+    line-height: 1.6;
+    writing-mode: horizontal-tb;
+    display: block;
+    word-break: break-word;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Edexcel GCSE D&T · Topic 1 · Revision Pack</div>
+    <h1>New &amp; <span>Emerging</span><br>Technologies</h1>
+    <p class="hero-sub">A complete revision guide with vocabulary support, topic summaries, activities and exam language — designed for ESL learners.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">📋 Specification Checklist</span>
+      <span class="hero-tag">📖 30+ Key Words</span>
+      <span class="hero-tag">✏️ Gap-Fill Activities</span>
+      <span class="hero-tag">🧩 Matching Games</span>
+      <span class="hero-tag">📝 Exam Sentence Frames</span>
+      <span class="hero-tag">💬 ESL Language Toolkit</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="showTab('spec')">📋 Spec Checklist</button>
+    <button class="tab-btn" onclick="showTab('vocab')">📖 Key Vocabulary</button>
+    <button class="tab-btn" onclick="showTab('topics')">🗂️ Topic Summaries</button>
+    <button class="tab-btn" onclick="showTab('activities')">✏️ Activities</button>
+    <button class="tab-btn" onclick="showTab('exam')">📝 Exam Language</button>
+    <button class="tab-btn" onclick="showTab('toolkit')">💬 ESL Toolkit</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ═══════════════════════════════ SECTION 1: SPEC CHECKLIST ═══════════════ -->
+<div id="sec-spec" class="section active">
+  <div class="section-header">
+    <h2>Specification Checklist</h2>
+    <p>These are all the topics you must know for your GCSE exam. Tick each box when you feel confident about it. All topics come from Edexcel Specification sections 1.1 and 1.2.</p>
+  </div>
+  <div class="esltip">
+    <strong>📌 ESL Tip:</strong> Before you start revising, read through this checklist. Put a ✓ next to topics you know, a ? next to topics you are not sure about, and a ✗ next to topics you have not studied yet. This helps you plan your revision.
+  </div>
+  <div class="spec-grid">
+    <div class="spec-card">
+      <div class="spec-card-head industry">🏭 1.1.1 Industry</div>
+      <div class="spec-card-body">
+        <div class="spec-item"><input type="checkbox"> Unemployment — how technology affects jobs</div>
+        <div class="spec-item"><input type="checkbox"> Workforce skill set — skills workers need</div>
+        <div class="spec-item"><input type="checkbox"> Demographic movement — migration of people</div>
+        <div class="spec-item"><input type="checkbox"> Science &amp; technology parks</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-head enterprise">💼 1.1.2 Enterprise</div>
+      <div class="spec-card-body">
+        <div class="spec-item"><input type="checkbox"> Privately-owned businesses</div>
+        <div class="spec-item"><input type="checkbox"> Crowd funding</div>
+        <div class="spec-item"><input type="checkbox"> Government funding for start-ups</div>
+        <div class="spec-item"><input type="checkbox"> Not-for-profit organisations</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-head sustainability">🌱 1.1.3 Sustainability</div>
+      <div class="spec-card-body">
+        <div class="spec-item"><input type="checkbox"> Transportation costs</div>
+        <div class="spec-item"><input type="checkbox"> Pollution</div>
+        <div class="spec-item"><input type="checkbox"> Demand on natural resources</div>
+        <div class="spec-item"><input type="checkbox"> Waste generated (4 Rs)</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-head people">👥 1.1.4 People</div>
+      <div class="spec-card-body">
+        <div class="spec-item"><input type="checkbox"> Workforce &amp; consumers</div>
+        <div class="spec-item"><input type="checkbox"> Children &amp; education</div>
+        <div class="spec-item"><input type="checkbox"> People with disabilities</div>
+        <div class="spec-item"><input type="checkbox"> Wage levels &amp; automation</div>
+        <div class="spec-item"><input type="checkbox"> Highly-skilled workforce</div>
+        <div class="spec-item"><input type="checkbox"> Apprenticeships</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-head society">🌐 1.1 Society &amp; Culture</div>
+      <div class="spec-card-body">
+        <div class="spec-item"><input type="checkbox"> Culture and demographic movement</div>
+        <div class="spec-item"><input type="checkbox"> Internet of Things (IoT)</div>
+        <div class="spec-item"><input type="checkbox"> Remote working</div>
+        <div class="spec-item"><input type="checkbox"> Video conferencing</div>
+        <div class="spec-item"><input type="checkbox"> Social segregation</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-head evaluation">🔍 1.2.1 Critical Evaluation</div>
+      <div class="spec-card-body">
+        <div class="spec-item"><input type="checkbox"> Budget constraints</div>
+        <div class="spec-item"><input type="checkbox"> Timescale</div>
+        <div class="spec-item"><input type="checkbox"> Who the product is for</div>
+        <div class="spec-item"><input type="checkbox"> Materials used</div>
+        <div class="spec-item"><input type="checkbox"> Manufacturing capabilities</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-head evaluation">🌍 1.2.2–1.2.4 Scenarios &amp; Perspectives</div>
+      <div class="spec-card-body">
+        <div class="spec-item"><input type="checkbox"> Natural disasters &amp; climate</div>
+        <div class="spec-item"><input type="checkbox"> Medical advances</div>
+        <div class="spec-item"><input type="checkbox"> Global warming</div>
+        <div class="spec-item"><input type="checkbox"> Ethics &amp; Fairtrade</div>
+        <div class="spec-item"><input type="checkbox"> Carbon footprint</div>
+        <div class="spec-item"><input type="checkbox"> Life-cycle analysis (LCA)</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-head production">⚙️ Production Techniques</div>
+      <div class="spec-card-body">
+        <div class="spec-item"><input type="checkbox"> Standardised design &amp; components</div>
+        <div class="spec-item"><input type="checkbox"> Just-in-time (JIT)</div>
+        <div class="spec-item"><input type="checkbox"> Lean manufacturing</div>
+        <div class="spec-item"><input type="checkbox"> Batch / Continuous / One-off / Mass production</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ SECTION 2: VOCABULARY ═══════════════════ -->
+<div id="sec-vocab" class="section">
+  <div class="section-header">
+    <h2>Key Vocabulary</h2>
+    <p>Learn the meaning of each word, read the example sentence, and use the memory tip to help you remember it. Filter by topic area using the buttons below.</p>
+  </div>
+  <div class="esltip">
+    <strong>📌 ESL Tip:</strong> For each word, practise saying it out loud, then cover the definition and test yourself. Try to use the word in your own sentence. The orange highlighted words in examples are the key vocabulary in context.
+  </div>
+  <div class="vocab-controls">
+    <span style="font-size:13px;color:var(--text-muted);font-weight:500;">Filter:</span>
+    <button class="filter-btn active" onclick="filterVocab('all', this)">All Topics</button>
+    <button class="filter-btn" onclick="filterVocab('industry', this)">🏭 Industry</button>
+    <button class="filter-btn" onclick="filterVocab('enterprise', this)">💼 Enterprise</button>
+    <button class="filter-btn" onclick="filterVocab('sustainability', this)">🌱 Sustainability</button>
+    <button class="filter-btn" onclick="filterVocab('people', this)">👥 People</button>
+    <button class="filter-btn" onclick="filterVocab('society', this)">🌐 Society</button>
+    <button class="filter-btn" onclick="filterVocab('evaluation', this)">🔍 Evaluation</button>
+    <button class="filter-btn" onclick="filterVocab('production', this)">⚙️ Production</button>
+  </div>
+  <div class="vocab-grid" id="vocabGrid">
+
+    <!-- INDUSTRY -->
+    <div class="vocab-card" data-topic="industry">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Unemployment</div>
+        <div class="vocab-tag tag-industry">Industry</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">When people do not have a job. In technology, this happens when machines replace workers.</div>
+        <div class="vocab-example">"New <em>robotic</em> machines increased <em>unemployment</em> in the car factory because robots replaced 200 workers."</div>
+        <div class="vocab-remember">💡 <em>un-</em> = not. <em>Unemployed</em> = not employed (not working).</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="industry">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Workforce Skill Set</div>
+        <div class="vocab-tag tag-industry">Industry</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">All the skills and abilities that workers need to do their job well. Technology creates a need for new skills like coding and data analysis.</div>
+        <div class="vocab-example">"Companies invest in training to improve their employees' <em>workforce skill set</em>, so workers can use the latest technology."</div>
+        <div class="vocab-remember">💡 A <em>skill</em> is something you can do well. A <em>set</em> is a group. So a <em>skill set</em> = a group of skills.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="industry">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Demographic Movement</div>
+        <div class="vocab-tag tag-industry">Industry</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">When groups of people move from one place to another, often because technology creates jobs in certain areas. This changes the population.</div>
+        <div class="vocab-example">"Technology companies in Silicon Valley caused <em>demographic movement</em> as thousands of workers moved there to find jobs."</div>
+        <div class="vocab-remember">💡 <em>Demo-</em> = people (like "democracy"). <em>Demographic</em> = about population/people groups.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="industry">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Science &amp; Technology Parks</div>
+        <div class="vocab-tag tag-industry">Industry</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Special areas where technology companies and universities work together to develop new ideas. They help the local economy grow.</div>
+        <div class="vocab-example">"Stanford University's <em>science and technology park</em> helped turn Silicon Valley into a global centre for innovation."</div>
+        <div class="vocab-remember">💡 Like a shopping park (many shops together), a science park = many technology companies together in one place.</div>
+      </div>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="vocab-card" data-topic="enterprise">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Enterprise</div>
+        <div class="vocab-tag tag-enterprise">Enterprise</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">A business, especially one that a person starts by taking a risk with their own money or ideas. It requires initiative — taking action without being told.</div>
+        <div class="vocab-example">"Starting a new <em>enterprise</em> using 3D printing technology was a big risk, but it became very successful."</div>
+        <div class="vocab-remember">💡 <em>Entrepreneurship</em> = the skill of running an enterprise. An entrepreneur = a person who starts a business.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="enterprise">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Crowd Funding</div>
+        <div class="vocab-tag tag-enterprise">Enterprise</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">A way to raise money for a new product or business by asking many people (a "crowd") to each give a small amount of money online.</div>
+        <div class="vocab-example">"The designer used <em>crowd funding</em> on Kickstarter to raise £50,000 for her new smart watch design."</div>
+        <div class="vocab-remember">💡 <em>Crowd</em> = a large group of people. <em>Funding</em> = money. Crowd + funding = money from many people.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="enterprise">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Not-for-Profit Organisation</div>
+        <div class="vocab-tag tag-enterprise">Enterprise</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">An organisation that uses all its money to support a cause (like health or education), not to make profit for the owners. Also called a charity or NGO.</div>
+        <div class="vocab-example">"Charity: Water is a <em>not-for-profit organisation</em> that uses remote sensors to manage water projects globally."</div>
+        <div class="vocab-remember">💡 <em>Profit</em> = money a company keeps after paying costs. <em>Not-for-profit</em> = money goes back into the cause, not the owners' pockets.</div>
+      </div>
+    </div>
+
+    <!-- SUSTAINABILITY -->
+    <div class="vocab-card" data-topic="sustainability">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Sustainability</div>
+        <div class="vocab-tag tag-sustainability">Sustainability</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Using resources carefully today so that future generations can also use them. A sustainable design does not damage the environment or use up all natural resources.</div>
+        <div class="vocab-example">"The company's <em>sustainable</em> packaging uses recycled cardboard so it does not harm the environment."</div>
+        <div class="vocab-remember">💡 <em>Sustain</em> = to keep going. <em>Sustainable</em> = able to keep going into the future without running out.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="sustainability">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Pollution</div>
+        <div class="vocab-tag tag-sustainability">Sustainability</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Harmful substances that are released into the environment (air, water, land) during manufacturing, transport, or using a product. It damages nature and health.</div>
+        <div class="vocab-example">"The factory was fined because its <em>pollution</em> — toxic chemicals in the river — killed fish and endangered wildlife."</div>
+        <div class="vocab-remember">💡 <em>Pollute</em> = the verb (to dirty the environment). <em>Pollution</em> = the noun (the dirty substance).</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="sustainability">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Natural Resources</div>
+        <div class="vocab-tag tag-sustainability">Sustainability</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Materials found in nature that humans use, such as wood, oil, coal, copper, and iron ore. Many are <strong>finite</strong> — they will run out one day.</div>
+        <div class="vocab-example">"Coal and oil are finite <em>natural resources</em> — once we use them all, they cannot be replaced."</div>
+        <div class="vocab-remember">💡 <em>Natural</em> = from nature (not made by humans). <em>Resources</em> = things we can use. Key word: <em>finite</em> = limited / will run out.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="sustainability">
+      <div class="vocab-card-top">
+        <div class="vocab-word">The 4 Rs of Waste</div>
+        <div class="vocab-tag tag-sustainability">Sustainability</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def"><strong>Reduce</strong> — make less waste. <strong>Reuse</strong> — use the same material again. <strong>Recycle</strong> — turn waste into new products. <strong>Recover</strong> — get energy from waste (e.g. heat from burning).</div>
+        <div class="vocab-example">"The factory used the <em>4 Rs</em>: it <em>reduced</em> off-cuts, <em>reused</em> packaging, <em>recycled</em> metals, and <em>recovered</em> heat energy."</div>
+        <div class="vocab-remember">💡 The order matters! Reduce is best (make less waste). Recover is last (least sustainable).</div>
+      </div>
+    </div>
+
+    <!-- PEOPLE -->
+    <div class="vocab-card" data-topic="people">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Automation</div>
+        <div class="vocab-tag tag-people">People</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Using machines, computers, or robots to do tasks that humans used to do — automatically, without human effort. This can increase efficiency but reduces jobs.</div>
+        <div class="vocab-example">"<em>Automation</em> in car manufacturing means robots now weld car bodies, a task that once required hundreds of workers."</div>
+        <div class="vocab-remember">💡 <em>Auto</em> = self/automatic (like automatic). <em>Automation</em> = systems that work by themselves.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="people">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Apprenticeship</div>
+        <div class="vocab-tag tag-people">People</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">A way of learning a job by working in a company AND studying, usually at the same time. You earn money while training and gain an official qualification.</div>
+        <div class="vocab-example">"She completed an <em>apprenticeship</em> at an engineering firm, gaining both work experience and a nationally recognised qualification."</div>
+        <div class="vocab-remember">💡 An <em>apprentice</em> = a person learning on the job. Compare with: intern (usually unpaid), student (studying only).</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="people">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Assistive Technology</div>
+        <div class="vocab-tag tag-people">People</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Technology designed to help people with disabilities — from small tools like pencil grips to complex devices like prosthetic limbs or voice recognition software.</div>
+        <div class="vocab-example">"<em>Assistive technology</em> such as screen readers and eye-tracking devices helps people with visual impairments use computers."</div>
+        <div class="vocab-remember">💡 <em>Assist</em> = to help. <em>Assistive</em> = helpful. This technology <em>assists</em> people who need extra support.</div>
+      </div>
+    </div>
+
+    <!-- SOCIETY -->
+    <div class="vocab-card" data-topic="society">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Internet of Things (IoT)</div>
+        <div class="vocab-tag tag-society">Society</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Everyday objects (fridges, alarms, cars) that are connected to the internet and can communicate with each other or be controlled remotely using a phone or computer.</div>
+        <div class="vocab-example">"Thanks to the <em>Internet of Things</em>, her smart fridge automatically orders milk when it detects the supply is low."</div>
+        <div class="vocab-remember">💡 Not just computers — <em>things</em> (objects like fridges and cars) are connected to the internet. The key idea is: objects + internet = IoT.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="society">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Remote Working</div>
+        <div class="vocab-tag tag-society">Society</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Working from a location other than the main office — for example, from home, a café, or another country. Technology makes this possible.</div>
+        <div class="vocab-example">"During the pandemic, millions of people switched to <em>remote working</em>, using video calls and cloud software to stay connected."</div>
+        <div class="vocab-remember">💡 <em>Remote</em> = far away (from the office). <em>Remote working</em> = working from far away. Synonym: <em>working from home (WFH)</em>.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="society">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Culture</div>
+        <div class="vocab-tag tag-society">Society</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">The way of life of a group of people — including their behaviour, traditions, language, food, religion, and art. Technology can change or support culture.</div>
+        <div class="vocab-example">"New technology like social media has changed <em>culture</em> by making it easier for people in different countries to share ideas and connect."</div>
+        <div class="vocab-remember">💡 Culture is <em>not</em> just art or music. It includes <em>everything</em> about how a group of people live together.</div>
+      </div>
+    </div>
+
+    <!-- EVALUATION -->
+    <div class="vocab-card" data-topic="evaluation">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Critical Evaluation</div>
+        <div class="vocab-tag tag-evaluation">Evaluation</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Carefully examining something to identify both the <strong>positives</strong> (advantages) AND the <strong>negatives</strong> (disadvantages) — not just saying "it is good" or "it is bad".</div>
+        <div class="vocab-example">"A <em>critical evaluation</em> of 3D printing technology considers both its ability to reduce waste AND its high initial cost."</div>
+        <div class="vocab-remember">💡 <em>Critical</em> here does NOT mean "negative". It means "careful and balanced". You must look at BOTH sides.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="evaluation">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Ethics</div>
+        <div class="vocab-tag tag-evaluation">Evaluation</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Deciding what is morally right and fair. In design and technology, this includes asking: Who made it? Were workers treated fairly? Who benefits?</div>
+        <div class="vocab-example">"<em>Ethical</em> companies do not hire child labour or underpay workers in developing countries to reduce costs."</div>
+        <div class="vocab-remember">💡 <em>Ethics</em> = moral rules. <em>Ethical</em> = following moral rules (the adjective). Ask: <em>Is this fair? Is this right?</em></div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="evaluation">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Carbon Footprint</div>
+        <div class="vocab-tag tag-evaluation">Evaluation</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">The total amount of carbon dioxide (CO₂) produced — directly or indirectly — by a person, product, or company. A larger footprint = more damage to the environment.</div>
+        <div class="vocab-example">"Shipping products by air increases a company's <em>carbon footprint</em> because aeroplanes burn large amounts of fossil fuels."</div>
+        <div class="vocab-remember">💡 Like a physical footprint shows where you walked, a <em>carbon footprint</em> shows the environmental "mark" you leave behind.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="evaluation">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Life-Cycle Analysis (LCA)</div>
+        <div class="vocab-tag tag-evaluation">Evaluation</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">A detailed study of the environmental impact of a product at <strong>every stage</strong> of its life: from raw material extraction → manufacturing → transport → use → disposal.</div>
+        <div class="vocab-example">"An <em>LCA</em> of a plastic bottle shows that most environmental damage happens during oil extraction, not when you throw it away."</div>
+        <div class="vocab-remember">💡 LCA = Life-Cycle Analysis. Think of a product's full "life story" from birth (raw materials) to death (disposal).</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="evaluation">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Global Warming</div>
+        <div class="vocab-tag tag-evaluation">Evaluation</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">The gradual increase in Earth's average temperature, mainly caused by greenhouse gases (like CO₂) that trap heat in the atmosphere. Technology can cause OR reduce global warming.</div>
+        <div class="vocab-example">"Electric vehicles help reduce <em>global warming</em> because they produce less CO₂ than petrol cars during use."</div>
+        <div class="vocab-remember">💡 <em>Global</em> = worldwide. <em>Warming</em> = getting hotter. Caused by burning fossil fuels → CO₂ → greenhouse effect → temperature rises.</div>
+      </div>
+    </div>
+
+    <!-- PRODUCTION -->
+    <div class="vocab-card" data-topic="production">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Just-in-Time (JIT)</div>
+        <div class="vocab-tag tag-production">Production</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">A production method where materials are ordered and delivered <strong>only when they are needed</strong> — not stored beforehand. This reduces storage costs and waste.</div>
+        <div class="vocab-example">"Toyota uses <em>just-in-time</em> production: car parts arrive at the factory the same day they are needed on the assembly line."</div>
+        <div class="vocab-remember">💡 "Just in time" = arriving exactly when needed, not too early and not too late. The opposite is bulk-buying and storing materials.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="production">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Lean Manufacturing</div>
+        <div class="vocab-tag tag-production">Production</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">A production system that tries to <strong>eliminate waste</strong> at every stage — wasted time, wasted materials, and unnecessary steps in the process.</div>
+        <div class="vocab-example">"By adopting <em>lean manufacturing</em>, the company reduced material waste by 30% and made production faster."</div>
+        <div class="vocab-remember">💡 <em>Lean</em> = thin (not fat = no waste). A lean body has no extra fat; lean manufacturing has no extra waste or unnecessary steps.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="production">
+      <div class="vocab-card-top">
+        <div class="vocab-word">Mass Production</div>
+        <div class="vocab-tag tag-production">Production</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Making very large numbers of identical products using automated machines and assembly lines. This makes each product cheap to produce but allows little variety.</div>
+        <div class="vocab-example">"Toy manufacturers use <em>mass production</em> to make millions of identical action figures at a very low cost per unit."</div>
+        <div class="vocab-remember">💡 <em>Mass</em> = a very large amount. <em>Mass production</em> = making a very large amount of identical products. Think: fast, cheap, identical.</div>
+      </div>
+    </div>
+
+    <div class="vocab-card" data-topic="production">
+      <div class="vocab-card-top">
+        <div class="vocab-word">One-Off Production</div>
+        <div class="vocab-tag tag-production">Production</div>
+      </div>
+      <div class="vocab-card-body">
+        <div class="def-label">Simple Definition</div>
+        <div class="vocab-def">Making a single, unique product that is custom-made for one specific customer. It requires skilled workers and is expensive, but produces high-quality results.</div>
+        <div class="vocab-example">"A handmade wedding dress is an example of <em>one-off production</em> — it is made only once, to fit one specific person."</div>
+        <div class="vocab-remember">💡 "One-off" is a common English phrase meaning: done only once, not repeated. One-off production = made once, for one person.</div>
+      </div>
+    </div>
+
+  </div><!-- end vocab-grid -->
+</div>
+
+<!-- ═══════════════════════════════ SECTION 3: TOPIC SUMMARIES ═══════════════ -->
+<div id="sec-topics" class="section">
+  <div class="section-header">
+    <h2>Topic Summaries</h2>
+    <p>Click each topic button to see a full summary with key concepts, advantages, and disadvantages — all the information you need for your exam.</p>
+  </div>
+  <div class="esltip">
+    <strong>📌 ESL Tip:</strong> As you read each section, underline words you do not know. Check the Key Vocabulary section for definitions. Try to explain each topic in your own words after reading — this is a very effective revision technique.
+  </div>
+  <div class="topic-nav">
+    <button class="topic-btn t-industry active" onclick="showTopic('industry', this)">🏭 Industry</button>
+    <button class="topic-btn t-enterprise" onclick="showTopic('enterprise', this)">💼 Enterprise</button>
+    <button class="topic-btn t-sustainability" onclick="showTopic('sustainability', this)">🌱 Sustainability</button>
+    <button class="topic-btn t-people" onclick="showTopic('people', this)">👥 People</button>
+    <button class="topic-btn t-society" onclick="showTopic('society', this)">🌐 Society</button>
+    <button class="topic-btn t-eval" onclick="showTopic('eval', this)">🔍 Evaluation</button>
+    <button class="topic-btn t-production" onclick="showTopic('production', this)">⚙️ Production</button>
+  </div>
+
+  <!-- INDUSTRY -->
+  <div class="topic-panel active" id="tp-industry">
+    <div class="topic-panel-header tp-industry">
+      <h3>🏭 Industry — How technology changes work</h3>
+      <p>Spec reference: 1.1.1 | Key question: <em>How does new technology affect industry and employment?</em></p>
+    </div>
+    <div class="topic-panel-body">
+      <div class="concept-grid">
+        <div class="concept-box"><div class="concept-icon">📉</div><div class="concept-title">Unemployment</div><div class="concept-desc">Robots and computers replace workers in factories and offices, especially in low-skilled, repetitive jobs. This causes job losses in some areas.</div></div>
+        <div class="concept-box"><div class="concept-icon">🎓</div><div class="concept-title">Workforce Skill Set</div><div class="concept-desc">Workers need new digital skills to use modern technology. Companies must invest in training. Workers must keep learning throughout their careers.</div></div>
+        <div class="concept-box"><div class="concept-icon">✈️</div><div class="concept-title">Demographic Movement</div><div class="concept-desc">Technology hubs attract workers, creating "brain drain" — younger, skilled people leave their home region/country to find better-paid tech jobs elsewhere.</div></div>
+        <div class="concept-box"><div class="concept-icon">🏢</div><div class="concept-title">Science & Tech Parks</div><div class="concept-desc">Areas where businesses and universities collaborate. They boost local economies and transfer knowledge. E.g. Silicon Valley (USA), Cambridge Science Park (UK).</div></div>
+      </div>
+      <table class="adv-dis-table">
+        <tr><th class="adv-h">✓ Advantages of new technology in industry</th><th class="dis-h">✗ Disadvantages of new technology in industry</th></tr>
+        <tr><td class="adv">Cuts manufacturing costs → cheaper products for consumers</td><td class="dis">Creates unemployment in low-skilled jobs</td></tr>
+        <tr><td class="adv">Products reach the market faster</td><td class="dis">Workers need expensive retraining programmes</td></tr>
+        <tr><td class="adv">Reduces human error → higher quality products</td><td class="dis">Wealth becomes concentrated in tech areas → inequality</td></tr>
+        <tr><td class="adv">Robots can work in dangerous environments safely</td><td class="dis">Demographic movement causes social problems in communities that lose workers</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ENTERPRISE -->
+  <div class="topic-panel" id="tp-enterprise">
+    <div class="topic-panel-header tp-enterprise">
+      <h3>💼 Enterprise — Starting &amp; funding businesses</h3>
+      <p>Spec reference: 1.1.2 | Key question: <em>How can new technology businesses be funded?</em></p>
+    </div>
+    <div class="topic-panel-body">
+      <div class="concept-grid">
+        <div class="concept-box"><div class="concept-icon">👤</div><div class="concept-title">Privately-Owned Business</div><div class="concept-desc">Owned by an individual or small group. Flexible and quick to adopt new technology, but may lack funds for expensive equipment.</div></div>
+        <div class="concept-box"><div class="concept-icon">💻</div><div class="concept-title">Crowd Funding</div><div class="concept-desc">Raise money from thousands of small donors online (e.g. Kickstarter). Good for creative or tech products. Success depends on capturing public interest.</div></div>
+        <div class="concept-box"><div class="concept-icon">🏛️</div><div class="concept-title">Government Funding</div><div class="concept-desc">Loans or grants from the government to help start-ups that will benefit the economy. Over 40,000 UK businesses have used start-up loans since 2012.</div></div>
+        <div class="concept-box"><div class="concept-icon">❤️</div><div class="concept-title">Not-for-Profit</div><div class="concept-desc">Charities and NGOs that use technology for social good. All income is reinvested into their cause. E.g. Charity: Water uses sensor technology to manage water projects.</div></div>
+      </div>
+      <table class="adv-dis-table">
+        <tr><th class="adv-h">✓ Advantages of crowd funding</th><th class="dis-h">✗ Disadvantages of crowd funding</th></tr>
+        <tr><td class="adv">No need to repay a bank loan</td><td class="dis">Product idea becomes public — competitors may copy it</td></tr>
+        <tr><td class="adv">Builds a community of early supporters/customers</td><td class="dis">No guarantee you will reach your funding target</td></tr>
+        <tr><td class="adv">Proves that there is market demand for the product</td><td class="dis">Requires significant marketing effort to attract donors</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SUSTAINABILITY -->
+  <div class="topic-panel" id="tp-sustainability">
+    <div class="topic-panel-header tp-sustainability">
+      <h3>🌱 Sustainability — Protecting the environment</h3>
+      <p>Spec reference: 1.1.3 | Key question: <em>How can companies reduce their environmental impact?</em></p>
+    </div>
+    <div class="topic-panel-body">
+      <div class="concept-grid">
+        <div class="concept-box"><div class="concept-icon">🚚</div><div class="concept-title">Transportation Costs</div><div class="concept-desc">Moving products burns fossil fuels → CO₂ emissions. Solutions: local production, electric vehicles, lighter/compact packaging, efficient routes.</div></div>
+        <div class="concept-box"><div class="concept-icon">☁️</div><div class="concept-title">Pollution</div><div class="concept-desc">Manufacturing releases harmful gases, chemicals, and waste. Companies use clean technology, carbon taxes, and renewable energy to reduce pollution.</div></div>
+        <div class="concept-box"><div class="concept-icon">⛏️</div><div class="concept-title">Natural Resources</div><div class="concept-desc">Coal, oil, copper, and iron ore are finite — they will run out. Companies develop sustainable alternatives like biodegradable plastics.</div></div>
+        <div class="concept-box"><div class="concept-icon">♻️</div><div class="concept-title">The 4 Rs</div><div class="concept-desc"><strong>Reduce</strong> waste produced → <strong>Reuse</strong> materials → <strong>Recycle</strong> into new products → <strong>Recover</strong> energy from waste. In that order of preference.</div></div>
+      </div>
+      <p style="font-weight:600;color:var(--navy);margin-top:8px;margin-bottom:8px;">🔑 Key sustainability strategies companies use:</p>
+      <div class="concept-grid">
+        <div class="concept-box"><div class="concept-title">Reduce packaging</div><div class="concept-desc">Design smaller, lighter packaging so more products fit per delivery vehicle → fewer journeys → less CO₂.</div></div>
+        <div class="concept-box"><div class="concept-title">Use renewable energy</div><div class="concept-desc">Switch from coal/gas (finite, polluting) to solar, wind, or hydroelectric power (renewable, clean).</div></div>
+        <div class="concept-box"><div class="concept-title">Materials separation</div><div class="concept-desc">Automated machines sort materials (metals, plastics, paper) so they can be recycled rather than sent to landfill.</div></div>
+        <div class="concept-box"><div class="concept-title">Local production</div><div class="concept-desc">Making products close to where they are sold reduces transport distances and transportation costs.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEOPLE -->
+  <div class="topic-panel" id="tp-people">
+    <div class="topic-panel-header tp-people">
+      <h3>👥 People — How technology affects society</h3>
+      <p>Spec reference: 1.1.4 | Key question: <em>Who is affected by new technology, and how?</em></p>
+    </div>
+    <div class="topic-panel-body">
+      <div class="concept-grid">
+        <div class="concept-box"><div class="concept-icon">👔</div><div class="concept-title">Workforce</div><div class="concept-desc">Technology means workers need to regularly update their skills throughout their careers. This creates demand for online learning and professional development.</div></div>
+        <div class="concept-box"><div class="concept-icon">🛒</div><div class="concept-title">Consumers</div><div class="concept-desc">People are more aware of new technologies, increasing demand. Some technologies (3D printing) even allow consumers to design their own products.</div></div>
+        <div class="concept-box"><div class="concept-icon">👧</div><div class="concept-title">Children</div><div class="concept-desc">Technology creates rich learning opportunities (e.g. educational apps, Minecraft) but raises concerns about screen time, social skills, and physical activity.</div></div>
+        <div class="concept-box"><div class="concept-icon">♿</div><div class="concept-title">People with Disabilities</div><div class="concept-desc">Assistive technology (screen readers, voice recognition, prosthetic limbs using electronics) significantly improves independence and quality of life.</div></div>
+        <div class="concept-box"><div class="concept-icon">💰</div><div class="concept-title">Wage Levels</div><div class="concept-desc">High-skilled tech workers earn more. However, automation reduces the number of low-skilled jobs → wage inequality may increase.</div></div>
+        <div class="concept-box"><div class="concept-icon">🤖</div><div class="concept-title">Automation</div><div class="concept-desc">Repetitive, routine tasks are increasingly done by machines. This is efficient but displaces workers who do not have advanced technical skills.</div></div>
+      </div>
+      <table class="adv-dis-table">
+        <tr><th class="adv-h">✓ Benefits of technology for people</th><th class="dis-h">✗ Problems caused by technology for people</th></tr>
+        <tr><td class="adv">Assists people with disabilities — increases independence</td><td class="dis">Automation reduces low-skilled jobs → unemployment</td></tr>
+        <tr><td class="adv">Creates new high-skilled, well-paid jobs</td><td class="dis">Workers must constantly retrain — this is expensive and stressful</td></tr>
+        <tr><td class="adv">Children gain access to interactive, creative learning tools</td><td class="dis">Children may spend too much time on screens → health concerns</td></tr>
+        <tr><td class="adv">Consumers can customise products (e.g. via 3D printing)</td><td class="dis">Digital divide — those without access to technology are left behind</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SOCIETY -->
+  <div class="topic-panel" id="tp-society">
+    <div class="topic-panel-header tp-society">
+      <h3>🌐 Society — Technology &amp; how we live</h3>
+      <p>Spec reference: 1.1 (Society &amp; Culture) | Key question: <em>How has technology changed the way society functions?</em></p>
+    </div>
+    <div class="topic-panel-body">
+      <div class="concept-grid">
+        <div class="concept-box"><div class="concept-icon">📱</div><div class="concept-title">Internet of Things (IoT)</div><div class="concept-desc">Smart devices (fridges, thermostats, cars) connected to the internet. Benefits: automation, efficiency, remote control. Risks: security breaches, over-reliance on technology.</div></div>
+        <div class="concept-box"><div class="concept-icon">🏠</div><div class="concept-title">Remote Working</div><div class="concept-desc">Technology allows employees to work from home. Reduces commuting time and costs, but can blur work-life balance and reduce face-to-face collaboration.</div></div>
+        <div class="concept-box"><div class="concept-icon">📹</div><div class="concept-title">Video Conferencing</div><div class="concept-desc">Tools like Zoom allow meetings across the world for free. Reduces travel costs but lacks the benefits of physical meetings (body language, networking).</div></div>
+        <div class="concept-box"><div class="concept-icon">🏘️</div><div class="concept-title">Social Segregation</div><div class="concept-desc">Technology can divide communities. Those without digital access or skills are excluded from opportunities in education, jobs, and services.</div></div>
+      </div>
+      <table class="adv-dis-table">
+        <tr><th class="adv-h">✓ Advantages of remote working</th><th class="dis-h">✗ Disadvantages of remote working</th></tr>
+        <tr><td class="adv">Flexible work schedule — better work-life balance</td><td class="dis">Less workplace social interaction</td></tr>
+        <tr><td class="adv">Less time and money spent commuting</td><td class="dis">Blurs the boundary between work and home life</td></tr>
+        <tr><td class="adv">Wider talent pool — hire workers from anywhere</td><td class="dis">Potential security breaches when working on public networks</td></tr>
+        <tr><td class="adv">Technological advances make more work possible remotely</td><td class="dis">Less IT support available → can reduce productivity</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- EVALUATION -->
+  <div class="topic-panel" id="tp-eval">
+    <div class="topic-panel-header tp-eval">
+      <h3>🔍 Evaluating New &amp; Emerging Technologies</h3>
+      <p>Spec reference: 1.2 | Key question: <em>How do we critically evaluate whether to use a new technology?</em></p>
+    </div>
+    <div class="topic-panel-body">
+      <p style="font-weight:600;color:var(--navy);margin-bottom:14px;">When evaluating a new technology, always consider these 5 areas (BTMWM):</p>
+      <div class="concept-grid">
+        <div class="concept-box"><div class="concept-icon">💷</div><div class="concept-title">Budget Constraints</div><div class="concept-desc">How much does the new technology cost? Can the company afford it? Will it save money in the long term?</div></div>
+        <div class="concept-box"><div class="concept-icon">⏰</div><div class="concept-title">Timescale</div><div class="concept-desc">How long will it take to develop or implement? Will it speed up or slow down production?</div></div>
+        <div class="concept-box"><div class="concept-icon">👤</div><div class="concept-title">Who the Product is For</div><div class="concept-desc">Does the technology meet the needs of the target user? Has the target market been researched?</div></div>
+        <div class="concept-box"><div class="concept-icon">🧱</div><div class="concept-title">Materials Used</div><div class="concept-desc">Are the materials sustainable? Have they been tested? Will the improvements justify the extra cost?</div></div>
+        <div class="concept-box"><div class="concept-icon">🏗️</div><div class="concept-title">Manufacturing Capabilities</div><div class="concept-desc">Can current machines/equipment be used? Will automated assembly lines produce better quality products?</div></div>
+      </div>
+      <p style="font-weight:600;color:var(--navy);margin-top:20px;margin-bottom:14px;">Environmental perspectives (LCA &amp; Carbon Footprint):</p>
+      <div class="concept-grid">
+        <div class="concept-box"><div class="concept-icon">👣</div><div class="concept-title">Carbon Footprint</div><div class="concept-desc">Reduce CO₂ by: using renewable energy, recycling materials, reducing transportation, designing energy-efficient products.</div></div>
+        <div class="concept-box"><div class="concept-icon">🔄</div><div class="concept-title">Life-Cycle Analysis</div><div class="concept-desc">Examine environmental impact at every stage: extraction → manufacture → transport → use → disposal. Required by governments in many industries.</div></div>
+        <div class="concept-box"><div class="concept-icon">🤝</div><div class="concept-title">Ethical Perspectives</div><div class="concept-desc">Where was it made? Were workers paid fairly? Is it Fairtrade? Does it exploit workers or damage communities?</div></div>
+        <div class="concept-box"><div class="concept-icon">🌡️</div><div class="concept-title">Global Warming</div><div class="concept-desc">Technology can cause more emissions OR provide solutions (solar power, electric vehicles, smart energy management).</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTION -->
+  <div class="topic-panel" id="tp-production">
+    <div class="topic-panel-header tp-production">
+      <h3>⚙️ Production Techniques &amp; Systems</h3>
+      <p>Spec reference: 1.1 (Production) | Key question: <em>What are the different ways products can be manufactured?</em></p>
+    </div>
+    <div class="topic-panel-body">
+      <table class="production-table">
+        <tr><th>Technique</th><th>What it means</th><th>Example</th><th>Key advantage</th><th>Key disadvantage</th></tr>
+        <tr>
+          <td class="pt-name">Standardised Design</td>
+          <td>The same components are used across many different products</td>
+          <td>Standard screws, resistors, USB ports</td>
+          <td>Consistent quality; easy to replace parts</td>
+          <td>Difficult to customise; products look similar</td>
+        </tr>
+        <tr>
+          <td class="pt-name">Just-in-Time (JIT)</td>
+          <td>Materials are delivered exactly when needed — no storage</td>
+          <td>Car manufacturing assembly lines</td>
+          <td>Reduces storage costs and waste</td>
+          <td>Any delay in delivery stops the whole production line</td>
+        </tr>
+        <tr>
+          <td class="pt-name">Lean Manufacturing</td>
+          <td>Eliminate all forms of waste (time, materials, movement)</td>
+          <td>Eliminating overproduction, reducing defects</td>
+          <td>Multi-skilled teams improve efficiency</td>
+          <td>Requires time-consuming data analysis to implement</td>
+        </tr>
+        <tr>
+          <td class="pt-name">Batch Production</td>
+          <td>A set number of identical products are made at one time</td>
+          <td>Olympic medals; limited edition books</td>
+          <td>Reduces inventory and storage space</td>
+          <td>Downtime needed to reconfigure machines between batches</td>
+        </tr>
+        <tr>
+          <td class="pt-name">Continuous Production</td>
+          <td>Manufacturing runs 24 hours a day, without stopping</td>
+          <td>Sheet glass; nuts and bolts</td>
+          <td>Very low cost per unit; maximises output</td>
+          <td>High setup cost; very inflexible; a fault stops everything</td>
+        </tr>
+        <tr>
+          <td class="pt-name">One-Off Production</td>
+          <td>A single, unique product made by skilled workers</td>
+          <td>A custom yacht; bespoke furniture</td>
+          <td>Very high quality; perfectly customised</td>
+          <td>Very expensive; slow production time</td>
+        </tr>
+        <tr>
+          <td class="pt-name">Mass Production</td>
+          <td>Large quantities of identical products on automated assembly lines</td>
+          <td>Toy manufacture; smartphones</td>
+          <td>Very cheap per unit in large quantities</td>
+          <td>High initial setup cost; repetitive work; inflexible</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════ SECTION 4: ACTIVITIES ═══════════════════ -->
+<div id="sec-activities" class="section">
+  <div class="section-header">
+    <h2>Revision Activities</h2>
+    <p>Complete these activities to test your vocabulary and understanding. Use the word bank to help you.</p>
+  </div>
+  <div class="esltip">
+    <strong>📌 ESL Tip:</strong> Do not look at your notes while completing activities. If you are unsure, make a guess first, then check. Learning from mistakes is more effective than not trying.
+  </div>
+
+  <!-- ACTIVITY 1: GAP FILL -->
+  <div class="activity-block">
+    <div class="activity-header">
+      <h3>Activity 1 — Gap Fill: Industry &amp; Sustainability</h3>
+      <div class="act-badge">Fill in the blanks</div>
+    </div>
+    <div class="activity-body">
+      <div class="activity-instructions">📝 <strong>Instructions:</strong> Click a word from the word bank below, then click the blank where you want to put it. Complete all 8 sentences. Press <strong>Check Answers</strong> when you are finished. You can also type directly into the boxes.</div>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px;"><strong>Word Bank:</strong> Click a word to select it, then click a blank to place it there.</p>
+      <div class="word-bank" id="wb1">
+        <span class="word-chip" data-word="recycling">recycling</span>
+        <span class="word-chip" data-word="demographic movement">demographic movement</span>
+        <span class="word-chip" data-word="unemployment">unemployment</span>
+        <span class="word-chip" data-word="carbon footprint">carbon footprint</span>
+        <span class="word-chip" data-word="pollution">pollution</span>
+        <span class="word-chip" data-word="workforce skill set">workforce skill set</span>
+        <span class="word-chip" data-word="sustainability">sustainability</span>
+        <span class="word-chip" data-word="automation">automation</span>
+        <span class="word-chip" data-word="lean manufacturing">lean manufacturing</span>
+        <span class="word-chip" data-word="just-in-time">just-in-time</span>
+      </div>
+      <div id="gapFill1">
+        <div class="gap-sentence">1. When robots replace workers in factories, this can lead to <input type="text" class="gf-input" data-answer="unemployment"> in low-skilled jobs.</div>
+        <div class="gap-sentence">2. New technologies require workers to develop a new <input type="text" class="gf-input" data-answer="workforce skill set">, including digital and technical skills.</div>
+        <div class="gap-sentence">3. When young people move from rural areas to technology hubs to find work, this is called <input type="text" class="gf-input" data-answer="demographic movement">.</div>
+        <div class="gap-sentence">4. Using control systems to operate equipment automatically without human input is called <input type="text" class="gf-input" data-answer="automation">.</div>
+        <div class="gap-sentence">5. The ability to meet the needs of the present without compromising the ability of future generations is called <input type="text" class="gf-input" data-answer="sustainability">.</div>
+        <div class="gap-sentence">6. When factories release toxic gases into the air or water, this is a form of <input type="text" class="gf-input" data-answer="pollution">.</div>
+        <div class="gap-sentence">7. In <input type="text" class="gf-input" data-answer="just-in-time"> production, materials are delivered only when they are needed, reducing storage costs.</div>
+        <div class="gap-sentence">8. A company can reduce its <input type="text" class="gf-input" data-answer="carbon footprint"> by using renewable energy and switching to electric delivery vehicles.</div>
+      </div>
+      <div>
+        <button class="check-btn" onclick="checkGapFill('gapFill1', 'score1')">✓ Check Answers</button>
+        <button class="reset-btn" onclick="resetGapFill('gapFill1', 'score1', 'wb1')">↺ Reset</button>
+        <div class="score-display" id="score1"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 2: MATCHING -->
+  <div class="activity-block">
+    <div class="activity-header">
+      <h3>Activity 2 — Matching: Words &amp; Definitions</h3>
+      <div class="act-badge">Click to match</div>
+    </div>
+    <div class="activity-body">
+      <div class="activity-instructions">📝 <strong>Instructions:</strong> Click a word on the LEFT, then click its matching definition on the RIGHT. If you are correct, both will turn green. If wrong, both will flash red — try again!</div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-label">📖 Key Words</div>
+          <div class="match-item word" data-id="1" onclick="selectMatch(this, 'word')">Crowd Funding</div>
+          <div class="match-item word" data-id="2" onclick="selectMatch(this, 'word')">Life-Cycle Analysis</div>
+          <div class="match-item word" data-id="3" onclick="selectMatch(this, 'word')">Lean Manufacturing</div>
+          <div class="match-item word" data-id="4" onclick="selectMatch(this, 'word')">Not-for-Profit</div>
+          <div class="match-item word" data-id="5" onclick="selectMatch(this, 'word')">Internet of Things</div>
+          <div class="match-item word" data-id="6" onclick="selectMatch(this, 'word')">Apprenticeship</div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-label">📝 Definitions</div>
+          <div class="match-item def" data-id="5" onclick="selectMatch(this, 'def')">Everyday objects connected to the internet that can communicate and be controlled remotely</div>
+          <div class="match-item def" data-id="1" onclick="selectMatch(this, 'def')">Raising money for a business from many people online, each giving a small amount</div>
+          <div class="match-item def" data-id="4" onclick="selectMatch(this, 'def')">An organisation that reinvests all its money into its cause rather than keeping profit</div>
+          <div class="match-item def" data-id="6" onclick="selectMatch(this, 'def')">A job with training that allows a person to earn while learning and gain a qualification</div>
+          <div class="match-item def" data-id="3" onclick="selectMatch(this, 'def')">A production system focused on reducing and eliminating all forms of waste</div>
+          <div class="match-item def" data-id="2" onclick="selectMatch(this, 'def')">A study of a product's environmental impact at every stage from raw material to disposal</div>
+        </div>
+      </div>
+      <button class="reset-btn" style="margin-top:16px;" onclick="resetMatching()">↺ Reset Matching</button>
+      <div id="matchScore" style="margin-top:14px;font-size:14px;font-weight:600;color:var(--green);display:none;"></div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 3: GAP FILL 2 -->
+  <div class="activity-block">
+    <div class="activity-header">
+      <h3>Activity 3 — Gap Fill: Evaluation &amp; Production</h3>
+      <div class="act-badge">Fill in the blanks</div>
+    </div>
+    <div class="activity-body">
+      <div class="activity-instructions">📝 <strong>Instructions:</strong> Complete the sentences using the correct words from the word bank. Focus on evaluation and production vocabulary.</div>
+      <div class="word-bank" id="wb2">
+        <span class="word-chip" data-word="fairtrade">fairtrade</span>
+        <span class="word-chip" data-word="ethics">ethics</span>
+        <span class="word-chip" data-word="global warming">global warming</span>
+        <span class="word-chip" data-word="critical evaluation">critical evaluation</span>
+        <span class="word-chip" data-word="life-cycle analysis">life-cycle analysis</span>
+        <span class="word-chip" data-word="mass production">mass production</span>
+        <span class="word-chip" data-word="batch production">batch production</span>
+        <span class="word-chip" data-word="one-off production">one-off production</span>
+      </div>
+      <div id="gapFill2">
+        <div class="gap-sentence">1. A <input type="text" class="gf-input" data-answer="critical evaluation"> identifies both the positives AND the negatives of a technology — it is a balanced judgement.</div>
+        <div class="gap-sentence">2. <input type="text" class="gf-input" data-answer="ethics"> involves asking whether a company's actions are morally right and fair — for example, whether they use child labour.</div>
+        <div class="gap-sentence">3. Burning fossil fuels releases greenhouse gases that contribute to <input type="text" class="gf-input" data-answer="global warming">, which is a major environmental challenge.</div>
+        <div class="gap-sentence">4. A handmade luxury chair is an example of <input type="text" class="gf-input" data-answer="one-off production"> — it is made once, by a skilled craftsperson, for one specific customer.</div>
+        <div class="gap-sentence">5. Toy factories use <input type="text" class="gf-input" data-answer="mass production"> to make millions of identical products cheaply using automated machines.</div>
+        <div class="gap-sentence">6. Olympic medals are made using <input type="text" class="gf-input" data-answer="batch production"> — a fixed number are made for each Games, and the process is then stopped.</div>
+        <div class="gap-sentence">7. A <input type="text" class="gf-input" data-answer="life-cycle analysis"> examines the environmental impact of a product from raw material extraction right through to disposal.</div>
+        <div class="gap-sentence">8. <input type="text" class="gf-input" data-answer="fairtrade"> is a system that ensures workers in developing countries receive a fair wage for the goods they produce.</div>
+      </div>
+      <div>
+        <button class="check-btn" onclick="checkGapFill('gapFill2', 'score2')">✓ Check Answers</button>
+        <button class="reset-btn" onclick="resetGapFill('gapFill2', 'score2', 'wb2')">↺ Reset</button>
+        <div class="score-display" id="score2"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════ SECTION 5: EXAM LANGUAGE ════════════════ -->
+<div id="sec-exam" class="section">
+  <div class="section-header">
+    <h2>Exam Language &amp; Practice</h2>
+    <p>This section helps you understand what exam questions are asking you to do, and gives you sentence frames to structure your answers correctly.</p>
+  </div>
+  <div class="esltip">
+    <strong>📌 ESL Tip:</strong> In exams, the <strong>command word</strong> (e.g. "Explain", "Evaluate", "Describe") tells you WHAT to do. Always read it carefully. A common mistake is to "describe" when the question asks you to "explain" — these are very different!</div>
+
+  <!-- COMMAND WORDS -->
+  <div class="section-header" style="margin-top:28px;">
+    <h2 style="font-size:22px;">Command Words — What do they mean?</h2>
+  </div>
+  <div class="command-grid">
+    <div class="command-card">
+      <div class="command-word">Describe</div>
+      <div class="command-means">Say what something is or what it looks like. Give features and characteristics. <em>No explanation needed.</em></div>
+      <span class="command-marks">Usually 1–2 marks</span>
+    </div>
+    <div class="command-card">
+      <div class="command-word">Explain</div>
+      <div class="command-means">Say what something is AND why it happens or how it works. You must give a reason using: <em>because, therefore, this means that...</em></div>
+      <span class="command-marks">Usually 2–4 marks</span>
+    </div>
+    <div class="command-card">
+      <div class="command-word">Evaluate</div>
+      <div class="command-means">Discuss the advantages AND disadvantages, then make a judgement. You must consider both sides.</div>
+      <span class="command-marks">Usually 6–9 marks</span>
+    </div>
+    <div class="command-card">
+      <div class="command-word">Analyse</div>
+      <div class="command-means">Break something down into parts and examine each part carefully. Look at causes, effects, and connections.</div>
+      <span class="command-marks">Usually 4–6 marks</span>
+    </div>
+    <div class="command-card">
+      <div class="command-word">Discuss</div>
+      <div class="command-means">Write about a topic from different points of view. Give arguments for AND against.</div>
+      <span class="command-marks">Usually 4–6 marks</span>
+    </div>
+    <div class="command-card">
+      <div class="command-word">State / Give</div>
+      <div class="command-means">Write a short, direct answer. One or two words or a sentence may be enough.</div>
+      <span class="command-marks">Usually 1 mark</span>
+    </div>
+  </div>
+
+  <!-- SENTENCE FRAMES -->
+  <div class="frames-section">
+    <h3>✍️ Sentence Frames for Exam Answers</h3>
+    <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:20px;">Use these structures to write well-organised answers. The <span style="background:var(--amber-light);padding:1px 5px;border-radius:3px;font-style:italic;color:#7a5400;">orange boxes</span> show where you add your own content.</p>
+
+    <div class="frame-card">
+      <div class="frame-type">For EXPLAIN questions (2 marks)</div>
+      <div class="frame-body">
+        <div class="frame-template">One <span class="blank">[advantage / disadvantage]</span> of <span class="blank">[topic]</span> is that <span class="blank">[main point]</span>. This means that <span class="blank">[consequence / explanation]</span>.</div>
+        <div class="frame-example">"One <strong>advantage</strong> of automation is that it <strong>reduces human error in manufacturing</strong>. This means that <strong>products are more consistent in quality, which reduces waste and customer returns</strong>."</div>
+      </div>
+    </div>
+
+    <div class="frame-card">
+      <div class="frame-type">For EXPLAIN questions — cause and effect (2 marks)</div>
+      <div class="frame-body">
+        <div class="frame-template">When <span class="blank">[cause]</span>, this leads to <span class="blank">[effect]</span>, because <span class="blank">[reason]</span>.</div>
+        <div class="frame-example">"When <strong>robots replace factory workers</strong>, this leads to <strong>unemployment</strong>, because <strong>the machines can do the same tasks faster and more cheaply without needing wages or breaks</strong>."</div>
+      </div>
+    </div>
+
+    <div class="frame-card">
+      <div class="frame-type">For EVALUATE questions — advantage + disadvantage (4–6 marks)</div>
+      <div class="frame-body">
+        <div class="frame-template">One benefit of <span class="blank">[technology/idea]</span> is <span class="blank">[advantage]</span>. However, a disadvantage is that <span class="blank">[disadvantage]</span>. Overall, <span class="blank">[judgement]</span>.</div>
+        <div class="frame-example">"One benefit of <strong>crowd funding</strong> is that it allows designers to raise money <strong>without taking out a bank loan</strong>. However, a disadvantage is that <strong>the product idea becomes public, which means competitors could copy it</strong>. Overall, <strong>crowd funding is most useful for creative or unique products that generate public interest</strong>."</div>
+      </div>
+    </div>
+
+    <div class="frame-card">
+      <div class="frame-type">For sustainability / environmental questions</div>
+      <div class="frame-body">
+        <div class="frame-template">One way <span class="blank">[company/product]</span> could reduce its environmental impact is by <span class="blank">[action]</span>. This would <span class="blank">[positive outcome]</span>.</div>
+        <div class="frame-example">"One way <strong>a shampoo manufacturer</strong> could reduce its environmental impact is by <strong>using smaller, lighter packaging made from recycled cardboard</strong>. This would <strong>reduce transportation costs and CO₂ emissions because more bottles could fit in each delivery vehicle</strong>."</div>
+      </div>
+    </div>
+
+    <div class="frame-card">
+      <div class="frame-type">Connective phrases to link your ideas</div>
+      <div class="frame-body">
+        <ul class="connector-list">
+          <li><span class="con-chip">Furthermore, ...</span> adds another point in the same direction</li>
+          <li><span class="con-chip">However, ...</span> introduces the opposite point / a disadvantage</li>
+          <li><span class="con-chip">Therefore, ...</span> gives the result or consequence</li>
+          <li><span class="con-chip">As a result, ...</span> gives the outcome of something</li>
+          <li><span class="con-chip">In contrast, ...</span> compares two different things</li>
+          <li><span class="con-chip">This means that ...</span> explains the significance of your point</li>
+          <li><span class="con-chip">For example, ...</span> gives a specific example to support your point</li>
+          <li><span class="con-chip">Overall, ...</span> gives your final judgement / conclusion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRACTICE EXAM QUESTIONS -->
+  <div class="section-header">
+    <h2 style="font-size:22px;">📝 Practice Exam Questions</h2>
+  </div>
+  <div class="esltip"><strong>📌 ESL Tip:</strong> Try to answer each question yourself FIRST before pressing "Show Model Answer". Use the sentence frames above to help structure your response.</div>
+
+  <div class="exam-q-block">
+    <div class="exam-q-head"><span>Question 1 · Unemployment</span><span class="exam-q-marks">2 marks</span></div>
+    <div class="exam-q-body">
+      <div class="exam-q-text">Explain <strong>one</strong> reason why unemployment in the UK may rise as new and emerging technologies develop.</div>
+      <div class="exam-hint"><strong>💡 Language hint:</strong> This question says "Explain" — you need to give ONE reason AND explain WHY it causes unemployment. Use: <em>"...this is because..." / "...which means that..."</em></div>
+      <button class="show-answer-btn" onclick="toggleAnswer(this)">👁 Show Model Answer</button>
+      <div class="model-answer">
+        <div class="mark-point"><div class="mark-point-num">1</div><div>New technologies such as robotics and automation allow factories to replace human workers with machines that can perform tasks continuously without breaks or wages.</div></div>
+        <div class="mark-point"><div class="mark-point-num">2</div><div>This leads to unemployment because workers in low-skilled, repetitive jobs are no longer needed, and they may not have the new skills required to operate the technology that replaced them.</div></div>
+        <strong>✏️ Key words to include:</strong> automation, low-skilled, repetitive, replaced, workforce skill set
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q-block">
+    <div class="exam-q-head"><span>Question 2 · Crowd Funding</span><span class="exam-q-marks">2 marks</span></div>
+    <div class="exam-q-body">
+      <div class="exam-q-text">Explain <strong>one</strong> benefit of crowd funding that can help to promote new and emerging technologies.</div>
+      <div class="exam-hint"><strong>💡 Language hint:</strong> State the benefit clearly, then explain the consequence: <em>"One benefit is... This means that..."</em></div>
+      <button class="show-answer-btn" onclick="toggleAnswer(this)">👁 Show Model Answer</button>
+      <div class="model-answer">
+        <div class="mark-point"><div class="mark-point-num">1</div><div>One benefit of crowd funding is that it allows designers and entrepreneurs to raise money from a large number of people online without needing to borrow from a bank.</div></div>
+        <div class="mark-point"><div class="mark-point-num">2</div><div>This means that new technology companies can access startup funding even if they do not have the financial history needed to secure a traditional bank loan, making it easier for innovative ideas to reach the market.</div></div>
+        <strong>✏️ Key words to include:</strong> crowd funding, raise money, startup, innovative, online platforms
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q-block">
+    <div class="exam-q-head"><span>Question 3 · Transportation &amp; Packaging</span><span class="exam-q-marks">4 marks</span></div>
+    <div class="exam-q-body">
+      <div class="exam-q-text">Explain <strong>two</strong> ways in which a shampoo manufacturer could change its packaging to reduce transportation costs.</div>
+      <div class="exam-hint"><strong>💡 Language hint:</strong> Give TWO separate and different ways. Use the structure: <em>"One way... Another way..."</em> Remember: each way needs an explanation — how does it reduce transportation costs?</div>
+      <button class="show-answer-btn" onclick="toggleAnswer(this)">👁 Show Model Answer</button>
+      <div class="model-answer">
+        <div class="mark-point"><div class="mark-point-num">1</div><div><strong>Way 1:</strong> Use lighter packaging materials such as thin recyclable plastic instead of heavy glass. This reduces the total weight per shipment, which means vehicles use less fuel, cutting both financial and environmental transportation costs.</div></div>
+        <div class="mark-point"><div class="mark-point-num">2</div><div><strong>Way 2:</strong> Redesign bottles to have a more compact, stackable shape. This means more bottles can fit inside each delivery vehicle per journey, reducing the number of trips required and therefore lowering costs and CO₂ emissions.</div></div>
+        <strong>✏️ Key words:</strong> lightweight, compact packaging, CO₂ emissions, fewer journeys, transportation costs
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-q-block">
+    <div class="exam-q-head"><span>Question 4 · LCA Steps</span><span class="exam-q-marks">4 marks</span></div>
+    <div class="exam-q-body">
+      <div class="exam-q-text">Explain the steps involved in carrying out a Life-Cycle Analysis (LCA).</div>
+      <div class="exam-hint"><strong>💡 Language hint:</strong> LCA has 5 stages. Present them in order using: <em>"First... Then... Next... After that... Finally..."</em></div>
+      <button class="show-answer-btn" onclick="toggleAnswer(this)">👁 Show Model Answer</button>
+      <div class="model-answer">
+        <div class="mark-point"><div class="mark-point-num">1</div><div><strong>Stage 1 — Raw material extraction:</strong> Examine the environmental impact of extracting the raw materials needed (e.g. mining metals, cutting timber).</div></div>
+        <div class="mark-point"><div class="mark-point-num">2</div><div><strong>Stage 2 — Manufacturing:</strong> Consider the energy, water, and emissions used during the manufacture and assembly of the product.</div></div>
+        <div class="mark-point"><div class="mark-point-num">3</div><div><strong>Stage 3 — Transportation:</strong> Analyse the CO₂ produced by transporting the product from factory to retailer to consumer.</div></div>
+        <div class="mark-point"><div class="mark-point-num">4</div><div><strong>Stage 4 — Consumer use:</strong> Consider energy and resources used by the consumer while using the product.</div></div>
+        <div style="margin-top:6px;"><strong>Stage 5 — End of life / Disposal:</strong> Examine whether the product can be recycled, reused, or if it goes to landfill.</div>
+        <div style="margin-top:8px;color:#555;font-size:13px;">💡 An LCA identifies where most environmental damage occurs so companies can make targeted improvements.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════ SECTION 6: ESL TOOLKIT ══════════════════ -->
+<div id="sec-toolkit" class="section">
+  <div class="section-header">
+    <h2>ESL Language Toolkit</h2>
+    <p>This section gives you extra language support — word roots, simpler synonyms, and useful academic phrases to use in your exam answers.</p>
+  </div>
+  <div class="esltip">
+    <strong>📌 ESL Tip:</strong> Learning word roots (prefixes and suffixes) helps you understand hundreds of new words. For example, knowing that <em>"re-"</em> means "again" helps you understand recycle, reuse, reduce, recover, redesign, and many more.
+  </div>
+  <div class="toolkit-grid">
+
+    <div class="toolkit-card">
+      <div class="toolkit-card-head tk-blue">🔤 Useful Word Roots (Prefixes)</div>
+      <div class="toolkit-card-body">
+        <table class="prefix-table">
+          <tr><th>Prefix</th><th>Meaning</th><th>D&T Examples</th></tr>
+          <tr><td class="prefix">re-</td><td>again</td><td>recycle, reuse, reduce, recover</td></tr>
+          <tr><td class="prefix">un-</td><td>not</td><td>unemployment, unsustainable</td></tr>
+          <tr><td class="prefix">auto-</td><td>self/alone</td><td>automation, automatic</td></tr>
+          <tr><td class="prefix">bio-</td><td>life/living</td><td>biodegradable, biotechnology</td></tr>
+          <tr><td class="prefix">eco-</td><td>environment</td><td>eco-friendly, ecology</td></tr>
+          <tr><td class="prefix">multi-</td><td>many</td><td>multi-skilled, multi-national</td></tr>
+          <tr><td class="prefix">demo-</td><td>people</td><td>demographic, democracy</td></tr>
+          <tr><td class="prefix">tech-</td><td>skill/craft</td><td>technology, technical</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="toolkit-card">
+      <div class="toolkit-card-head tk-amber">🔄 Complex Word → Simple Word</div>
+      <div class="toolkit-card-body">
+        <div class="synonym-pair"><span class="syn-complex">Demographic movement</span><span class="syn-arrow">→</span><span class="syn-simple">People moving to new places</span></div>
+        <div class="synonym-pair"><span class="syn-complex">Sustainability</span><span class="syn-arrow">→</span><span class="syn-simple">Not destroying the future</span></div>
+        <div class="synonym-pair"><span class="syn-complex">Automation</span><span class="syn-arrow">→</span><span class="syn-simple">Machines doing human work</span></div>
+        <div class="synonym-pair"><span class="syn-complex">Carbon footprint</span><span class="syn-arrow">→</span><span class="syn-simple">CO₂ you produce</span></div>
+        <div class="synonym-pair"><span class="syn-complex">Life-cycle analysis</span><span class="syn-arrow">→</span><span class="syn-simple">Birth-to-death study of a product</span></div>
+        <div class="synonym-pair"><span class="syn-complex">Critical evaluation</span><span class="syn-arrow">→</span><span class="syn-simple">Balanced judgement (pros AND cons)</span></div>
+        <div class="synonym-pair"><span class="syn-complex">Finite resource</span><span class="syn-arrow">→</span><span class="syn-simple">Something that will run out</span></div>
+        <div class="synonym-pair"><span class="syn-complex">Crowd funding</span><span class="syn-arrow">→</span><span class="syn-simple">Money from many people online</span></div>
+      </div>
+    </div>
+
+    <div class="toolkit-card">
+      <div class="toolkit-card-head tk-teal">🔗 Connectives for Exam Answers</div>
+      <div class="toolkit-card-body">
+        <ul class="connector-list">
+          <li><span class="con-chip">This means that...</span> Use to explain the consequence of your point</li>
+          <li><span class="con-chip">As a result,...</span> Shows the effect / outcome</li>
+          <li><span class="con-chip">However,...</span> Introduces the opposite view</li>
+          <li><span class="con-chip">Furthermore,...</span> Adds another supporting point</li>
+          <li><span class="con-chip">In contrast,...</span> Compares two different things</li>
+          <li><span class="con-chip">For example,...</span> Gives a specific example</li>
+          <li><span class="con-chip">Although...</span> Acknowledges a counter-argument</li>
+          <li><span class="con-chip">Therefore,...</span> Gives your conclusion / judgement</li>
+          <li><span class="con-chip">On the other hand,...</span> Shows a balanced evaluation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="toolkit-card">
+      <div class="toolkit-card-head tk-green">💬 Describing Advantages &amp; Disadvantages</div>
+      <div class="toolkit-card-body">
+        <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:12px;"><strong>Avoid always writing "good" and "bad"</strong>. Use these more academic alternatives:</p>
+        <div class="synonym-pair"><span class="syn-complex" style="color:var(--green);">✓ Advantages</span><span class="syn-arrow"></span><span class="syn-simple"></span></div>
+        <div class="synonym-pair" style="padding:5px 0;font-size:13px;color:var(--text);">One benefit of... / A key advantage is... / This results in...</div>
+        <div class="synonym-pair" style="padding:5px 0;font-size:13px;color:var(--text);">This improves... / This enables... / This allows...</div>
+        <div class="synonym-pair" style="padding:5px 0;font-size:13px;color:var(--text);">This is effective because... / This is beneficial as...</div>
+        <div class="synonym-pair"><span class="syn-complex" style="color:var(--coral);">✗ Disadvantages</span><span class="syn-arrow"></span><span class="syn-simple"></span></div>
+        <div class="synonym-pair" style="padding:5px 0;font-size:13px;color:var(--text);">A drawback of... / One limitation is... / However,...  </div>
+        <div class="synonym-pair" style="padding:5px 0;font-size:13px;color:var(--text);">This can lead to... / This may cause... / This results in...</div>
+        <div class="synonym-pair" style="padding:5px 0;font-size:13px;color:var(--text);">This is problematic because... / This is a concern as...</div>
+      </div>
+    </div>
+
+    <div class="toolkit-card" style="grid-column: 1 / -1;">
+      <div class="toolkit-card-head tk-blue">🚨 Common ESL Mistakes — and how to fix them</div>
+      <div class="toolkit-card-body">
+        <table class="prefix-table">
+          <tr><th>❌ Avoid this</th><th>✅ Write this instead</th><th>Why?</th></tr>
+          <tr><td>"Technology is very good"</td><td>"New technology <strong>increases efficiency</strong> and <strong>reduces manufacturing costs</strong>"</td><td>Be specific — give D&T reasons</td></tr>
+          <tr><td>"It is bad for the environment"</td><td>"It <strong>increases CO₂ emissions</strong>, which <strong>contributes to global warming</strong>"</td><td>Explain the cause AND effect</td></tr>
+          <tr><td>"Unemployment means no job"</td><td>"Automation leads to <strong>unemployment</strong> as machines <strong>replace</strong> workers in <strong>low-skilled roles</strong>"</td><td>Use subject-specific language</td></tr>
+          <tr><td>"The company should use recycle"</td><td>"The company should <strong>recycle</strong> its waste materials"</td><td><em>Recycle</em> is a verb — use it correctly</td></tr>
+          <tr><td>"It has many advantages and disadvantages"</td><td>Name the specific advantages and disadvantages!</td><td>Avoid vague, empty sentences</td></tr>
+          <tr><td>"Critical evaluation means criticising"</td><td>"Critical evaluation means <strong>examining both advantages and disadvantages</strong> to make a <strong>balanced judgement</strong>"</td><td><em>Critical ≠ negative</em> in academic English</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<footer>
+  <strong>Edexcel GCSE Design &amp; Technology</strong> · Topic 1.1 &amp; 1.2 · New &amp; Emerging Technologies<br>
+  Cross-referenced with Pearson Edexcel Specification (Issue 4, Nov 2022) and course textbook · For educational use only
+</footer>
+
+<script>
+// ── TAB SWITCHING ──
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── VOCAB FILTER ──
+function filterVocab(topic, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.vocab-card').forEach(card => {
+    if(topic === 'all' || card.dataset.topic === topic) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// ── TOPIC PANEL SWITCHING ──
+function showTopic(id, btn) {
+  document.querySelectorAll('.topic-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tp-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── GAP FILL LOGIC ──
+let selectedWord = null;
+
+document.querySelectorAll('.word-chip').forEach(chip => {
+  chip.addEventListener('click', function() {
+    document.querySelectorAll('.word-chip').forEach(c => c.style.outline = 'none');
+    selectedWord = this.dataset.word;
+    this.style.outline = '2px solid #f5a623';
+  });
+});
+
+document.querySelectorAll('.gf-input').forEach(input => {
+  input.addEventListener('click', function() {
+    if(selectedWord) {
+      this.value = selectedWord;
+      selectedWord = null;
+      document.querySelectorAll('.word-chip').forEach(c => c.style.outline = 'none');
+    }
+  });
+  input.addEventListener('input', function() {
+    this.classList.remove('correct','incorrect');
+  });
+});
+
+function checkGapFill(containerId, scoreId) {
+  const container = document.getElementById(containerId);
+  const inputs = container.querySelectorAll('.gf-input');
+  let correct = 0;
+  inputs.forEach(input => {
+    const answer = input.dataset.answer.toLowerCase().trim();
+    const given = input.value.toLowerCase().trim();
+    if(given === answer) { input.classList.add('correct'); input.classList.remove('incorrect'); correct++; }
+    else { input.classList.add('incorrect'); input.classList.remove('correct'); }
+  });
+  const scoreEl = document.getElementById(scoreId);
+  scoreEl.classList.add('show');
+  const pct = correct / inputs.length;
+  scoreEl.className = 'score-display show ' + (pct >= 0.85 ? 'good' : pct >= 0.5 ? 'ok' : 'low');
+  scoreEl.innerHTML = (pct >= 0.85 ? '🎉' : pct >= 0.5 ? '👍' : '📚') + ` Score: ${correct} / ${inputs.length}` + (pct >= 0.85 ? ' — Excellent!' : pct >= 0.5 ? ' — Good effort, keep practising!' : ' — Keep revising the vocabulary!');
+}
+
+function resetGapFill(containerId, scoreId, wbId) {
+  const container = document.getElementById(containerId);
+  container.querySelectorAll('.gf-input').forEach(input => { input.value = ''; input.classList.remove('correct','incorrect'); });
+  const s = document.getElementById(scoreId);
+  s.classList.remove('show');
+  if(wbId) document.getElementById(wbId).querySelectorAll('.word-chip').forEach(c => c.classList.remove('used'));
+}
+
+// ── MATCHING LOGIC ──
+let matchSelected = { word: null, def: null };
+let matchScoreCount = 0;
+
+function selectMatch(el, type) {
+  if(el.classList.contains('matched')) return;
+  if(matchSelected[type]) matchSelected[type].classList.remove('selected');
+  matchSelected[type] = el;
+  el.classList.add('selected');
+  if(matchSelected.word && matchSelected.def) {
+    if(matchSelected.word.dataset.id === matchSelected.def.dataset.id) {
+      matchSelected.word.classList.add('matched'); matchSelected.word.classList.remove('selected');
+      matchSelected.def.classList.add('matched'); matchSelected.def.classList.remove('selected');
+      matchScoreCount++;
+      if(matchScoreCount === 6) {
+        const ms = document.getElementById('matchScore');
+        ms.style.display = 'block';
+        ms.textContent = '🎉 All matched! Perfect score! Great vocabulary knowledge!';
+      }
+    } else {
+      matchSelected.word.classList.add('wrong'); matchSelected.def.classList.add('wrong');
+      setTimeout(() => { matchSelected.word.classList.remove('wrong','selected'); matchSelected.def.classList.remove('wrong','selected'); matchSelected.word=null; matchSelected.def=null; }, 600);
+      return;
+    }
+    matchSelected.word = null; matchSelected.def = null;
+  }
+}
+
+function resetMatching() {
+  document.querySelectorAll('.match-item').forEach(el => el.classList.remove('matched','selected','wrong'));
+  matchSelected = { word: null, def: null };
+  matchScoreCount = 0;
+  document.getElementById('matchScore').style.display = 'none';
+}
+
+// ── SHOW/HIDE MODEL ANSWER ──
+function toggleAnswer(btn) {
+  const answer = btn.nextElementSibling;
+  if(answer.classList.contains('show')) { answer.classList.remove('show'); btn.textContent = '👁 Show Model Answer'; }
+  else { answer.classList.add('show'); btn.textContent = '🙈 Hide Model Answer'; }
+}
+</script>
+</body>
+</html>
