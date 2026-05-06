@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G10 D&T — Mock Exam Revision Pack | 3-Lesson Sprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0d1b2a; --accent:#1d4ed8; --accent-light:#dbeafe;
+  --amber:#d97706; --amber-light:#fef3c7;
+  --green:#166534; --green-light:#dcfce7;
+  --red:#c0392b; --red-light:#fee2e2;
+  --teal:#0e7490; --purple:#5b21b6;
+  --bg:#f0f4f8; --card:#ffffff; --text:#1e293b;
+  --muted:#64748b; --border:#e2e8f0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,var(--navy) 70%,#1e3a8a);color:#fff;padding:24px 32px;}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.7rem;}
+.hdr p{color:#94a3b8;font-size:0.88rem;margin-top:4px;}
+.hdr .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.hdr .badge{background:rgba(255,255,255,0.12);color:#dbeafe;font-family:'DM Mono',monospace;font-size:0.75rem;padding:4px 10px;border-radius:12px;}
+
+/* TABS */
+.tab-nav{display:flex;background:var(--navy);border-bottom:3px solid var(--accent);overflow-x:auto;gap:0;}
+.tab-btn{background:none;border:none;color:#94a3b8;padding:13px 18px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.88rem;white-space:nowrap;transition:color .2s;border-bottom:3px solid transparent;margin-bottom:-3px;}
+.tab-btn.active{color:#fff;border-bottom-color:var(--accent);}
+.tab-btn:hover{color:#e2e8f0;}
+
+/* CONTENT */
+.tab-pane{display:none;padding:28px 32px;max-width:1100px;margin:0 auto;}
+.tab-pane.active{display:block;}
+
+/* CARDS */
+.card{background:var(--card);border-radius:12px;padding:22px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,0.07);}
+.card-h{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+h2{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--navy);margin-bottom:14px;}
+h3{font-size:0.95rem;font-weight:600;color:var(--navy);margin:14px 0 8px;}
+p{line-height:1.65;margin-bottom:8px;}
+ul,ol{padding-left:20px;line-height:1.8;}
+
+/* ESL TIP */
+.esl-tip{background:#fffbeb;border-left:4px solid var(--amber);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;font-size:0.88rem;line-height:1.6;}
+.esl-tip strong{color:#92400e;}
+
+/* LESSON PLAN */
+.lp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-top:14px;}
+.lp-card{background:var(--card);border-radius:12px;padding:20px;border-top:5px solid var(--accent);box-shadow:0 1px 4px rgba(0,0,0,0.07);}
+.lp-num{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent);background:var(--accent-light);padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:8px;}
+.lp-card h3{font-family:'Playfair Display',serif;color:var(--navy);font-size:1rem;margin:0 0 6px;}
+.timing-row{display:flex;justify-content:space-between;align-items:center;background:#f8fafc;border-radius:8px;padding:8px 12px;margin:10px 0;font-size:0.82rem;}
+.timing-row span:first-child{font-family:'DM Mono',monospace;color:var(--accent);}
+.activity-list{list-style:none;padding:0;margin-top:8px;}
+.activity-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:0.87rem;display:flex;gap:6px;}
+.activity-list li:last-child{border:none;}
+.a-icon{font-size:0.9rem;}
+
+/* CONFIDENCE */
+.checklist-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:8px;margin:6px 0;background:#f8fafc;gap:12px;}
+.checklist-item .ci-text{flex:1;font-size:0.88rem;}
+.conf-btns{display:flex;gap:6px;flex-shrink:0;}
+.conf-btn{padding:5px 10px;border:2px solid;border-radius:6px;cursor:pointer;font-size:0.75rem;background:none;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.conf-btn.g{border-color:var(--green);color:var(--green);}
+.conf-btn.a{border-color:var(--amber);color:var(--amber);}
+.conf-btn.r{border-color:var(--red);color:var(--red);}
+.conf-btn.g.sel{background:var(--green-light);}
+.conf-btn.a.sel{background:var(--amber-light);}
+.conf-btn.r.sel{background:var(--red-light);}
+
+/* PROPERTY CARDS */
+.prop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:12px 0;}
+.prop-card{background:var(--accent-light);border-radius:8px;padding:13px;border-left:4px solid var(--accent);}
+.prop-card .pt{font-weight:600;color:var(--navy);font-size:0.92rem;}
+.prop-card .pd{color:var(--muted);font-size:0.82rem;margin-top:3px;line-height:1.4;}
+
+/* SENTENCE FRAMES */
+.frame{background:#f8fafc;border:2px dashed var(--accent);border-radius:10px;padding:16px;margin:12px 0;}
+.frame .template{font-size:0.95rem;line-height:1.8;}
+.blank-slot{background:var(--accent-light);color:var(--accent);padding:1px 8px;border-radius:4px;font-family:'DM Mono',monospace;font-size:0.82rem;display:inline-block;}
+.frame .example{background:var(--green-light);border-radius:6px;padding:10px;margin-top:10px;font-size:0.87rem;color:var(--green);}
+.frame .example strong{color:#14532d;}
+
+/* MATERIALS TABLE */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.87rem;}
+th{background:var(--navy);color:#fff;padding:10px 13px;text-align:left;}
+td{padding:9px 13px;border-bottom:1px solid var(--border);}
+tr:nth-child(even) td{background:#f8fafc;}
+.cat-row td{background:var(--accent);color:#fff;font-weight:600;}
+
+/* FORMULA */
+.formula{background:var(--navy);color:#60a5fa;font-family:'DM Mono',monospace;padding:12px 18px;border-radius:8px;font-size:0.97rem;margin:10px 0;}
+.step-box{display:flex;gap:14px;align-items:flex-start;margin:10px 0;}
+.step-n{flex-shrink:0;width:30px;height:30px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-family:'DM Mono',monospace;font-size:0.85rem;}
+.step-t{flex:1;padding-top:4px;font-size:0.9rem;}
+
+/* WORKED EXAMPLE */
+.worked{background:#f8fafc;border-radius:10px;padding:18px;border-left:4px solid var(--teal);margin:14px 0;}
+.worked h4{color:var(--teal);font-size:0.88rem;font-family:'DM Mono',monospace;margin-bottom:10px;}
+.calc-row{font-family:'DM Mono',monospace;font-size:0.92rem;padding:4px 0;}
+.calc-row .label{color:var(--muted);font-size:0.78rem;display:block;}
+.answer-box{background:var(--teal);color:#fff;font-family:'DM Mono',monospace;padding:8px 14px;border-radius:6px;font-size:0.95rem;margin-top:10px;display:inline-block;}
+
+/* GAP FILL */
+.gf-sentence{line-height:2.2;font-size:0.95rem;margin:8px 0;}
+.gap{border-bottom:2.5px solid var(--accent);display:inline-block;min-width:90px;text-align:center;cursor:pointer;color:var(--accent);font-family:'DM Mono',monospace;padding:0 4px;transition:all .2s;font-size:0.85rem;}
+.gap.correct{border-color:var(--green);color:var(--green);background:var(--green-light);border-radius:4px;}
+.gap.wrong{border-color:var(--red);color:var(--red);background:var(--red-light);border-radius:4px;}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+.wchip{background:var(--accent);color:#fff;padding:5px 13px;border-radius:18px;font-size:0.82rem;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.wchip:hover{background:#1e40af;}
+.wchip.used{background:#94a3b8;cursor:default;}
+.check-btn{background:var(--accent);color:#fff;border:none;padding:9px 20px;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.88rem;margin-top:10px;}
+.score-box{background:var(--accent-light);color:var(--accent);padding:8px 14px;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.9rem;margin-top:10px;display:none;}
+
+/* MATCHING */
+.match-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;}
+.match-item{padding:11px;border:2px solid var(--border);border-radius:8px;cursor:pointer;text-align:center;font-size:0.87rem;transition:all .2s;background:var(--card);}
+.match-item:hover{border-color:var(--accent);background:var(--accent-light);}
+.match-item.sel{border-color:var(--accent);background:var(--accent-light);font-weight:600;}
+.match-item.matched{border-color:var(--green);background:var(--green-light);cursor:default;color:var(--green);}
+.match-item.no-match{border-color:var(--red);background:var(--red-light);animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+/* TRUE/FALSE */
+.tf-q{padding:14px;background:#f8fafc;border-radius:8px;margin:10px 0;border:1px solid var(--border);}
+.tf-q .stmt{font-size:0.92rem;margin-bottom:10px;}
+.tf-btns{display:flex;gap:8px;}
+.tf-btn{padding:7px 18px;border:2px solid var(--border);border-radius:6px;cursor:pointer;background:none;font-family:'DM Sans',sans-serif;font-size:0.85rem;transition:all .2s;}
+.tf-btn:hover{border-color:var(--accent);background:var(--accent-light);}
+.tf-fb{display:none;margin-top:8px;padding:8px 12px;border-radius:6px;font-size:0.84rem;}
+.tf-fb.ok{background:var(--green-light);color:var(--green);display:block;}
+.tf-fb.no{background:var(--red-light);color:var(--red);display:block;}
+
+/* MS BUTTON */
+.ms-btn{background:none;border:2px solid var(--accent);color:var(--accent);padding:7px 15px;border-radius:8px;cursor:pointer;font-size:0.83rem;margin-top:10px;font-family:'DM Sans',sans-serif;}
+.ms-btn:hover{background:var(--accent-light);}
+.ms-content{display:none;background:#f0f9ff;border-radius:8px;padding:14px;margin-top:10px;font-size:0.87rem;border:1px solid #bae6fd;}
+.ms-content.show{display:block;}
+.mp{display:flex;gap:8px;margin:5px 0;align-items:flex-start;font-size:0.87rem;}
+.mpb{flex-shrink:0;background:var(--green);color:#fff;font-size:0.72rem;padding:2px 6px;border-radius:4px;font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* COMMAND WORDS */
+.cmd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:12px 0;}
+.cmd-card{background:var(--navy);color:#fff;border-radius:8px;padding:15px;}
+.cmd-w{font-family:'Playfair Display',serif;font-size:1.05rem;color:#60a5fa;}
+.cmd-mk{font-size:0.72rem;color:#94a3b8;font-family:'DM Mono',monospace;margin:3px 0;}
+.cmd-d{font-size:0.82rem;color:#cbd5e1;margin-top:5px;line-height:1.4;}
+
+/* ESL TOOLKIT */
+.synonym-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:0.88rem;}
+.syn-tech{font-weight:600;min-width:160px;font-family:'DM Mono',monospace;font-size:0.82rem;}
+.syn-arr{color:var(--muted);}
+.syn-simple{color:var(--muted);}
+.mistake-tbl td:first-child{color:var(--red);font-family:'DM Mono',monospace;font-size:0.82rem;}
+.mistake-tbl td:nth-child(2){color:var(--green);font-family:'DM Mono',monospace;font-size:0.82rem;}
+.mistake-tbl td:nth-child(3){color:var(--muted);font-size:0.82rem;}
+
+.tag{display:inline-block;font-size:0.72rem;padding:2px 7px;border-radius:4px;font-family:'DM Mono',monospace;}
+.t-t{background:#fef3c7;color:#92400e;}
+.t-m{background:#dbeafe;color:#1e3a8a;}
+.t-p{background:#fce7f3;color:#831843;}
+.t-pb{background:#d1fae5;color:#065f46;}
+.t-c{background:#f3e8ff;color:#5b21b6;}
+
+/* Hint box */
+.hint{background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:10px 14px;font-size:0.85rem;margin-top:8px;color:#0369a1;}
+
+/* Practice Q */
+.pq{background:#fff;border-radius:10px;padding:18px;margin:14px 0;border-left:5px solid var(--accent);box-shadow:0 1px 3px rgba(0,0,0,0.06);}
+.pq .marks{font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--accent);background:var(--accent-light);padding:2px 8px;border-radius:4px;margin-bottom:10px;display:inline-block;}
+.pq .question{font-size:0.92rem;line-height:1.6;margin-bottom:6px;}
+.answer-lines{margin-top:10px;}
+.ans-line{border-bottom:1px dotted var(--border);height:28px;margin:4px 0;}
+
+/* Progress bar */
+.prog-bar{height:8px;background:#e2e8f0;border-radius:4px;margin:8px 0;}
+.prog-fill{height:100%;background:var(--accent);border-radius:4px;transition:width .4s;}
+
+@media(max-width:600px){
+  .hdr{padding:16px;} .tab-pane{padding:14px 16px;}
+  .match-cols{grid-template-columns:1fr;}
+  .lp-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>📐 G10 Design &amp; Technology — Mock Exam Revision Sprint</h1>
+  <p>Edexcel GCSE (9–1) · Component 1: Timbers · 3 × 45-minute guided lessons</p>
+  <div class="badges">
+    <span class="badge">🧱 Lesson 1: Material Properties</span>
+    <span class="badge">🔢 Lesson 2: D&amp;T Maths</span>
+    <span class="badge">🌲 Lesson 3: Timber Focus + Writing</span>
+    <span class="badge">ESL Scaffolded</span>
+  </div>
+</div>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('plan')">📋 Lesson Plan</button>
+  <button class="tab-btn" onclick="showTab('mat')">🧱 Material Properties</button>
+  <button class="tab-btn" onclick="showTab('maths')">🔢 D&amp;T Maths</button>
+  <button class="tab-btn" onclick="showTab('timber')">🌲 Timber Topics</button>
+  <button class="tab-btn" onclick="showTab('writing')">✍️ Extended Writing</button>
+  <button class="tab-btn" onclick="showTab('esl')">💬 ESL Toolkit</button>
+</nav>
+
+<!-- ======================== TAB 1: LESSON PLAN ======================== -->
+<div class="tab-pane active" id="tab-plan">
+  <h2>3-Lesson Revision Sprint Overview</h2>
+  <p>This pack gives you <strong>everything you need</strong> for three focused 45-minute lessons before the mock exam. Each lesson targets the skills that appear most often in the paper — use this plan as a guide, or follow the tabs for interactive practice.</p>
+
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Traffic Light Self-Assessment:</strong> At the start of each lesson, read the learning objectives below and rate yourself: 🟢 I know this well · 🟡 I'm not sure · 🔴 I don't know this. This tells you where to focus your energy. Update your rating at the end of the lesson.
+  </div>
+
+  <div class="lp-grid">
+    <div class="lp-card">
+      <span class="lp-num">LESSON 1</span>
+      <h3>🧱 Material Properties</h3>
+      <div class="timing-row"><span>⏱ 0–10 min</span><span>Starter: Property sorting</span></div>
+      <div class="timing-row"><span>⏱ 10–30 min</span><span>Property + justify practice</span></div>
+      <div class="timing-row"><span>⏱ 30–45 min</span><span>Gap fill activity + peer check</span></div>
+      <ul class="activity-list">
+        <li><span class="a-icon">🎯</span> Know key properties for ALL material categories</li>
+        <li><span class="a-icon">🎯</span> Use the "property + justify" sentence frame for 2-mark answers</li>
+        <li><span class="a-icon">🎯</span> Avoid the most common ESL mistakes in material answers</li>
+      </ul>
+    </div>
+    <div class="lp-card" style="border-top-color:var(--teal);">
+      <span class="lp-num" style="background:#ccfbf1;color:#0f766e;">LESSON 2</span>
+      <h3>🔢 D&amp;T Maths Skills</h3>
+      <div class="timing-row"><span>⏱ 0–10 min</span><span>Starter: Formula recall</span></div>
+      <div class="timing-row"><span>⏱ 10–25 min</span><span>Worked examples (3 types)</span></div>
+      <div class="timing-row"><span>⏱ 25–45 min</span><span>Timed practice questions</span></div>
+      <ul class="activity-list">
+        <li><span class="a-icon">🎯</span> Calculate cost per unit area</li>
+        <li><span class="a-icon">🎯</span> Calculate percentage waste (3-step method)</li>
+        <li><span class="a-icon">🎯</span> Calculate total material cost from a parts table</li>
+      </ul>
+    </div>
+    <div class="lp-card" style="border-top-color:#166534;">
+      <span class="lp-num" style="background:var(--green-light);color:var(--green);">LESSON 3</span>
+      <h3>🌲 Timber Focus + Extended Writing</h3>
+      <div class="timing-row"><span>⏱ 0–10 min</span><span>Starter: Timber true/false quiz</span></div>
+      <div class="timing-row"><span>⏱ 10–25 min</span><span>Timber topics deep-dive</span></div>
+      <div class="timing-row"><span>⏱ 25–45 min</span><span>6-mark and 9-mark writing practice</span></div>
+      <ul class="activity-list">
+        <li><span class="a-icon">🎯</span> Know hardwoods, softwoods, and manufactured boards</li>
+        <li><span class="a-icon">🎯</span> Explain assembly methods, finishes, ecological footprint</li>
+        <li><span class="a-icon">🎯</span> Structure extended answers using a clear framework</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:8px;">
+    <div class="card-h">📋 Self-Assessment Checklist — Tick what you know</div>
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:12px;">Click a colour for each topic to rate your confidence. 🟢 = confident · 🟡 = need to review · 🔴 = don't know yet</p>
+
+    <h3>Section A — Core</h3>
+    <div id="checklist-a"></div>
+    <h3 style="margin-top:16px;">Section B — Timbers</h3>
+    <div id="checklist-b"></div>
+  </div>
+</div>
+
+<!-- ======================== TAB 2: MATERIAL PROPERTIES ======================== -->
+<div class="tab-pane" id="tab-mat">
+  <h2>🧱 Lesson 1: Material Properties</h2>
+
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Vocabulary Notebook:</strong> As you read the property words below, write each one in your notebook with: (1) the English word, (2) the Chinese translation, (3) one example product. E.g. <em>Tough</em> → 坚韧 → oak floorboards.
+  </div>
+
+  <!-- SENTENCE FRAMES -->
+  <div class="card">
+    <div class="card-h">📝 The Property + Justify Sentence Frame</div>
+    <p>Most material property questions are worth <strong>1 mark</strong> (name a property) or <strong>2 marks</strong> (name it AND justify it). Learn both frames.</p>
+
+    <h3>1-mark answer — just name the property</h3>
+    <div class="frame">
+      <div class="template">
+        <span class="blank-slot">Property name</span>
+      </div>
+      <div class="example">✅ Example: <strong>Tough</strong> &nbsp;|&nbsp; <strong>Flexible</strong> &nbsp;|&nbsp; <strong>Corrosion resistant</strong></div>
+    </div>
+
+    <h3>2-mark answer — property + justification (why does it help?)</h3>
+    <div class="frame">
+      <div class="template">
+        <span class="blank-slot">material</span> is <span class="blank-slot">property</span>, therefore it <span class="blank-slot">what this means for the product</span>.
+      </div>
+      <div class="example">✅ Example: <strong>Oak is tough, therefore it can withstand the impact of furniture being placed and moved on top of it without becoming damaged.</strong></div>
+    </div>
+
+    <div class="hint">💡 <strong>Exam tip:</strong> The word <strong>"therefore"</strong> is your best friend. It forces you to link the property to a real function. If your answer does not say "therefore" (or "which means that" / "so that"), you may only get 1 mark even for a 2-mark question.</div>
+  </div>
+
+  <!-- PROPERTIES VOCABULARY -->
+  <div class="card">
+    <div class="card-h">📖 Key Property Vocabulary</div>
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:10px;">Learn these words. Group them by meaning to help you remember.</p>
+
+    <h3>Mechanical Properties (how a material behaves under force)</h3>
+    <div class="prop-grid">
+      <div class="prop-card"><div class="pt">Tough</div><div class="pd">Can absorb impact/shock without breaking. Resists sudden forces.</div></div>
+      <div class="prop-card"><div class="pt">Hard</div><div class="pd">Resists scratching, denting, and abrasion on the surface.</div></div>
+      <div class="prop-card"><div class="pt">Strong</div><div class="pd">Resists breaking when a force is applied (tension, compression, torsion).</div></div>
+      <div class="prop-card"><div class="pt">Flexible / Malleable</div><div class="pd">Can bend or be shaped without breaking. Springs back (elastic) or stays bent (plastic/malleable).</div></div>
+      <div class="prop-card"><div class="pt">Stiff / Rigid</div><div class="pd">Resists bending or deforming. Does NOT flex.</div></div>
+      <div class="prop-card"><div class="pt">Durable / Hardwearing</div><div class="pd">Lasts a long time under normal use. Resists wear.</div></div>
+    </div>
+
+    <h3 style="margin-top:16px;">Thermal, Electrical &amp; Chemical Properties</h3>
+    <div class="prop-grid">
+      <div class="prop-card" style="border-color:var(--red);background:#fff5f5;"><div class="pt">Thermal insulator</div><div class="pd">Does NOT conduct heat. Keeps things warm. ⚠️ Must say <em>of heat</em> — "insulator" alone is not accepted.</div></div>
+      <div class="prop-card" style="border-color:var(--red);background:#fff5f5;"><div class="pt">Electrical insulator</div><div class="pd">Does NOT conduct electricity. Prevents electric shocks.</div></div>
+      <div class="prop-card"><div class="pt">Corrosion resistant</div><div class="pd">Will not rust or oxidise. Stays strong in wet/humid conditions.</div></div>
+      <div class="prop-card"><div class="pt">Waterproof / Water resistant</div><div class="pd">Does not absorb water. Cannot be soaked through.</div></div>
+      <div class="prop-card"><div class="pt">Non-toxic / Food safe</div><div class="pd">Safe for contact with food. Does not leach harmful chemicals.</div></div>
+      <div class="prop-card"><div class="pt">Good fluidity / Casts well</div><div class="pd">Melts and flows easily into a mould when liquid.</div></div>
+    </div>
+
+    <h3 style="margin-top:16px;">Aesthetic &amp; Other Properties</h3>
+    <div class="prop-grid">
+      <div class="prop-card" style="border-color:var(--purple);background:#f5f3ff;"><div class="pt">Foldable / Easily creased</div><div class="pd">Can be folded and holds its fold shape. Used for papers/boards.</div></div>
+      <div class="prop-card" style="border-color:var(--purple);background:#f5f3ff;"><div class="pt">Biodegradable</div><div class="pd">Will break down naturally. Better for the environment at end of life.</div></div>
+      <div class="prop-card" style="border-color:var(--purple);background:#f5f3ff;"><div class="pt">Lightweight / Low density</div><div class="pd">Does not weigh much. Easy to carry/move. ⚠️ Say "lightweight" not just "light".</div></div>
+      <div class="prop-card" style="border-color:var(--purple);background:#f5f3ff;"><div class="pt">Impact resistant</div><div class="pd">Can absorb sudden blows without cracking or shattering.</div></div>
+    </div>
+  </div>
+
+  <!-- MATERIALS TABLE -->
+  <div class="card">
+    <div class="card-h">📊 Material Categories Quick Reference</div>
+    <table>
+      <thead><tr><th>Material</th><th>Type</th><th>Key properties</th><th>Common exam products</th></tr></thead>
+      <tbody>
+        <tr class="cat-row"><td colspan="4">🌲 Timbers</td></tr>
+        <tr><td>Oak</td><td><span class="tag t-t">Hardwood</span></td><td>Tough, hard, durable, attractive grain</td><td>Flooring, furniture, veneers</td></tr>
+        <tr><td>Ash</td><td><span class="tag t-t">Hardwood</span></td><td>Tough, flexible, creamy-white with open grain</td><td>Jewellery boxes, sports equipment</td></tr>
+        <tr><td>Mahogany</td><td><span class="tag t-t">Hardwood</span></td><td>Rich red-brown colour, durable, fine grain</td><td>High-end furniture, decorative features</td></tr>
+        <tr><td>Beech</td><td><span class="tag t-t">Hardwood</span></td><td>Close/fine grain, pink-cream colour, strong</td><td>Veneers, food-contact items, school furniture</td></tr>
+        <tr><td>Pine</td><td><span class="tag t-t">Softwood</span></td><td>Readily available, light, easy to work, cheap</td><td>Construction, frames, shelving</td></tr>
+        <tr class="cat-row"><td colspan="4">🟫 Manufactured Boards</td></tr>
+        <tr><td>MDF</td><td><span class="tag t-t">MFB</span></td><td>No grain, smooth surface, no warping, easily machined, cheap</td><td>Desk tidies, shelves, flat-pack furniture</td></tr>
+        <tr><td>Plywood</td><td><span class="tag t-t">MFB</span></td><td>Strong for weight, available in large sheets, layers resist warping</td><td>Flat discs/shapes, structural panels</td></tr>
+        <tr class="cat-row"><td colspan="4">🔩 Metals</td></tr>
+        <tr><td>Stainless steel</td><td><span class="tag t-m">Metal</span></td><td>Corrosion resistant, hard, tough, food safe, good torsional resistance</td><td>Kitchen equipment, grinders, shafts</td></tr>
+        <tr><td>Brass</td><td><span class="tag t-m">Metal</span></td><td>Malleable, good fluidity (casts well), corrosion resistant, attractive gold colour</td><td>Door knobs, fittings, jewellery</td></tr>
+        <tr class="cat-row"><td colspan="4">🧪 Polymers</td></tr>
+        <tr><td>HIPS</td><td><span class="tag t-p">Thermoplastic</span></td><td>Lightweight, impact resistant, easily moulded/formed, waterproof</td><td>Toy cases, product casings</td></tr>
+        <tr><td>Acrylic</td><td><span class="tag t-p">Thermoplastic</span></td><td>Transparent/clear, good scratch resistance, can be thermoformed</td><td>Displays, windows, body panels</td></tr>
+        <tr><td>Urea formaldehyde (UF)</td><td><span class="tag t-p">Thermoset</span></td><td>Rigid, heat resistant, food safe, can be moulded, lightweight</td><td>Electrical fittings, picnic plates, plugs</td></tr>
+        <tr class="cat-row"><td colspan="4">📄 Papers &amp; Boards</td></tr>
+        <tr><td>Copier / printer paper</td><td><span class="tag t-pb">Paper</span></td><td>Flexible, easily folded/creased, holds crease, biodegradable, printable</td><td>Origami, packaging, printing</td></tr>
+        <tr><td>Corrugated board</td><td><span class="tag t-pb">Board</span></td><td>Good impact resistance, thermal insulator, printable, lightweight</td><td>Takeaway boxes, shipping boxes</td></tr>
+        <tr class="cat-row"><td colspan="4">🐑 Natural Fibres</td></tr>
+        <tr><td>Wool</td><td><span class="tag t-c">Natural fibre</span></td><td>Soft, thermal insulator of heat, flexible, biodegradable, warm</td><td>Gloves, jumpers, blankets</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ACTIVITY: GAP FILL -->
+  <div class="card">
+    <div class="card-h">✏️ Activity 1 — Gap Fill (Lesson 1)</div>
+    <p style="font-size:0.87rem;color:var(--muted);margin-bottom:10px;">Click a word chip below, then click a gap to fill it. When finished, click <strong>Check Answers</strong>.</p>
+
+    <div class="wbank" id="wbank-gf">
+      <!-- chips injected by JS -->
+    </div>
+
+    <div style="margin-top:14px;">
+      <div class="gf-sentence">1. HIPS is <span class="gap" id="g0" onclick="fillGap(this)">_____</span>, therefore it will not shatter if a child drops the product.</div>
+      <div class="gf-sentence">2. Stainless steel is <span class="gap" id="g1" onclick="fillGap(this)">_____</span>, meaning it will not rust even when it comes into contact with water or salt.</div>
+      <div class="gf-sentence">3. Wool is a good thermal <span class="gap" id="g2" onclick="fillGap(this)">_____</span> of heat, so it keeps the wearer warm.</div>
+      <div class="gf-sentence">4. MDF has no <span class="gap" id="g3" onclick="fillGap(this)">_____</span>, which means it does not split or give splinters.</div>
+      <div class="gf-sentence">5. Urea formaldehyde is <span class="gap" id="g4" onclick="fillGap(this)">_____</span>, so food can safely come into contact with it.</div>
+      <div class="gf-sentence">6. Beech has a <span class="gap" id="g5" onclick="fillGap(this)">_____</span> grain, which means it does not easily split or splinter when cut.</div>
+      <div class="gf-sentence">7. Corrugated board is a good <span class="gap" id="g6" onclick="fillGap(this)">_____</span> of heat, therefore food inside a box stays warm for longer.</div>
+      <div class="gf-sentence">8. Copier paper is easily <span class="gap" id="g7" onclick="fillGap(this)">_____</span>, which means it can be folded and will hold its shape.</div>
+    </div>
+    <button class="check-btn" onclick="checkGF()">✅ Check Answers</button>
+    <div class="score-box" id="gf-score"></div>
+  </div>
+
+  <!-- ACTIVITY: MATCHING -->
+  <div class="card">
+    <div class="card-h">🔗 Activity 2 — Match the Property to the Material</div>
+    <p style="font-size:0.87rem;color:var(--muted);margin-bottom:10px;">Click one item from the left column, then one from the right. Correct matches turn green.</p>
+    <div class="match-cols" id="match-left-right">
+      <!-- injected by JS -->
+    </div>
+    <div id="match-result" style="margin-top:10px;font-size:0.88rem;color:var(--green);font-weight:600;"></div>
+  </div>
+</div>
+
+<!-- ======================== TAB 3: MATHS SKILLS ======================== -->
+<div class="tab-pane" id="tab-maths">
+  <h2>🔢 Lesson 2: D&amp;T Maths Skills</h2>
+
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Read, Cover, Write, Check:</strong> For each worked example, read it slowly. Then cover it with paper and try to write the steps from memory. Uncover and check. Do this three times for each calculation type.
+  </div>
+
+  <!-- TYPE 1 -->
+  <div class="card">
+    <div class="card-h">📐 Calculation Type 1 — Cost per Unit Area</div>
+    <p>These questions give you a total price and a total area, and ask you to find the cost per m² (or cost per cm²).</p>
+
+    <div class="formula">Cost per m² = Total Cost (£) ÷ Total Area (m²)</div>
+
+    <div class="step-box"><div class="step-n">1</div><div class="step-t"><strong>Identify</strong> the total cost (£) and total area (m² or cm²). Write them down.</div></div>
+    <div class="step-box"><div class="step-n">2</div><div class="step-t"><strong>Divide</strong>: Total Cost ÷ Total Area</div></div>
+    <div class="step-box"><div class="step-n">3</div><div class="step-t"><strong>Write your answer</strong> with the correct unit (£ per m²) and show your working.</div></div>
+
+    <div class="worked">
+      <h4>WORKED EXAMPLE</h4>
+      <p style="font-size:0.88rem;margin-bottom:8px;"><em>A pack of pine floorboards costs £43.20 and covers an area of 1.20 m². Calculate the cost per m².</em></p>
+      <div class="calc-row"><span class="label">Step 1 — Write the formula:</span>Cost per m² = Total Cost ÷ Total Area</div>
+      <div class="calc-row"><span class="label">Step 2 — Substitute values:</span>= £43.20 ÷ 1.20</div>
+      <div class="calc-row"><span class="label">Step 3 — Calculate:</span>= £36.00</div>
+      <div class="answer-box">Answer: £36.00 per m²</div>
+    </div>
+
+    <h3>Practice Questions — try these yourself</h3>
+    <div class="pq">
+      <span class="marks">(2 marks)</span>
+      <div class="question">A sheet of beech veneer costs £27.00 and covers 0.9 m². Calculate the cost per m².</div>
+      <div class="answer-lines"><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div></div>
+      <button class="ms-btn" onclick="toggleMS(this)">Show Answer</button>
+      <div class="ms-content"><div class="mp"><div class="mpb">1✓</div><div>Working: £27.00 ÷ 0.9 = 30</div></div><div class="mp"><div class="mpb">1✓</div><div><strong>Answer: £30.00 per m²</strong></div></div></div>
+    </div>
+    <div class="pq">
+      <span class="marks">(2 marks)</span>
+      <div class="question">A sheet of MDF costs £18.00 and has an area of 2.4 m². Calculate the cost per m².</div>
+      <div class="answer-lines"><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div></div>
+      <button class="ms-btn" onclick="toggleMS(this)">Show Answer</button>
+      <div class="ms-content"><div class="mp"><div class="mpb">1✓</div><div>Working: £18.00 ÷ 2.4 = 7.5</div></div><div class="mp"><div class="mpb">1✓</div><div><strong>Answer: £7.50 per m²</strong></div></div></div>
+    </div>
+  </div>
+
+  <!-- TYPE 2 -->
+  <div class="card">
+    <div class="card-h">♻️ Calculation Type 2 — Percentage Waste</div>
+    <p>These questions give you a starting material size and a used size. You must calculate the percentage that is wasted.</p>
+
+    <div class="formula">% Waste = (Waste Area ÷ Total Area) × 100</div>
+
+    <div class="step-box"><div class="step-n">1</div><div class="step-t"><strong>Calculate the total area</strong> of the starting material (length × width).</div></div>
+    <div class="step-box"><div class="step-n">2</div><div class="step-t"><strong>Calculate the useful area</strong> (the part you actually use).</div></div>
+    <div class="step-box"><div class="step-n">3</div><div class="step-t"><strong>Calculate the waste area</strong>: Total Area − Useful Area</div></div>
+    <div class="step-box"><div class="step-n">4</div><div class="step-t"><strong>Divide and multiply</strong>: (Waste ÷ Total) × 100. Round as instructed.</div></div>
+
+    <div class="worked">
+      <h4>WORKED EXAMPLE</h4>
+      <p style="font-size:0.88rem;margin-bottom:8px;"><em>A rectangle of cardboard measures 30 cm × 20 cm. A circle with a diameter of 20 cm is cut from it. Calculate the percentage of waste cardboard. Give your answer to the nearest whole number.</em></p>
+      <div class="calc-row"><span class="label">Step 1 — Total area of rectangle:</span>30 × 20 = 600 cm²</div>
+      <div class="calc-row"><span class="label">Step 2 — Area of circle (useful):</span>π × 10² = 314.16 cm²</div>
+      <div class="calc-row"><span class="label">Step 3 — Waste area:</span>600 − 314.16 = 285.84 cm²</div>
+      <div class="calc-row"><span class="label">Step 4 — Percentage:</span>(285.84 ÷ 600) × 100 = 47.64%</div>
+      <div class="answer-box">Answer: 48% (rounded to nearest whole number)</div>
+    </div>
+
+    <div class="hint">💡 <strong>Common mistake:</strong> Students sometimes divide the useful area by the total, and call that the "waste." Always subtract first to find the actual waste, then divide by the total.</div>
+
+    <h3>Practice Questions</h3>
+    <div class="pq">
+      <span class="marks">(4 marks)</span>
+      <div class="question">A sheet of A3 paper measures 42.0 cm × 29.7 cm. A square of 29.7 cm × 29.7 cm is cut from it for a design project. Calculate the percentage of waste paper. Give your answer to the nearest whole number.</div>
+      <div class="answer-lines"><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div></div>
+      <button class="ms-btn" onclick="toggleMS(this)">Show Answer</button>
+      <div class="ms-content">
+        <div class="mp"><div class="mpb">1✓</div><div>Total area: 42.0 × 29.7 = 1247.4 cm²</div></div>
+        <div class="mp"><div class="mpb">1✓</div><div>Useful area: 29.7 × 29.7 = 882.09 cm²</div></div>
+        <div class="mp"><div class="mpb">1✓</div><div>% waste: ((1247.4 − 882.09) ÷ 1247.4) × 100 = 29.29%</div></div>
+        <div class="mp"><div class="mpb">1✓</div><div><strong>Answer: 29% (rounded)</strong></div></div>
+      </div>
+    </div>
+    <div class="pq">
+      <span class="marks">(4 marks)</span>
+      <div class="question">A sheet of plywood measures 60 cm × 40 cm. Circles of diameter 10 cm each are cut from it. If 12 circles are cut (arranged in a 4×3 grid with no gaps), calculate the percentage of waste.</div>
+      <div class="answer-lines"><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div></div>
+      <button class="ms-btn" onclick="toggleMS(this)">Show Answer</button>
+      <div class="ms-content">
+        <div class="mp"><div class="mpb">1✓</div><div>Total area: 60 × 40 = 2400 cm²</div></div>
+        <div class="mp"><div class="mpb">1✓</div><div>Area of 12 circles: 12 × π × 5² = 12 × 78.54 = 942.48 cm²</div></div>
+        <div class="mp"><div class="mpb">1✓</div><div>% waste: ((2400 − 942.48) ÷ 2400) × 100 = 60.73%</div></div>
+        <div class="mp"><div class="mpb">1✓</div><div><strong>Answer: 61% (rounded)</strong></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPE 3 -->
+  <div class="card">
+    <div class="card-h">📋 Calculation Type 3 — Material Costing from a Parts Table</div>
+    <p>These questions give you a table of parts (with dimensions in mm), and a price per metre. You must calculate the total cost of all the material needed.</p>
+
+    <div class="step-box"><div class="step-n">1</div><div class="step-t"><strong>Convert mm to metres</strong>: divide length by 1000. This is the most common place for errors!</div></div>
+    <div class="step-box"><div class="step-n">2</div><div class="step-t"><strong>Multiply</strong> each part's length (in m) by the number required to get total length of that section.</div></div>
+    <div class="step-box"><div class="step-n">3</div><div class="step-t"><strong>Multiply</strong> total length by price per metre.</div></div>
+    <div class="step-box"><div class="step-n">4</div><div class="step-t"><strong>Repeat for each material type</strong>, then add all costs together.</div></div>
+
+    <div class="formula">Cost = (Length in mm ÷ 1000) × Number required × £ per metre</div>
+
+    <div class="worked">
+      <h4>WORKED EXAMPLE</h4>
+      <p style="font-size:0.88rem;margin-bottom:8px;"><em>Pine (50×30) costs £3.50/m. Pine (80×15) costs £2.20/m.</em></p>
+      <table>
+        <thead><tr><th>Part</th><th>Qty</th><th>Length (mm)</th><th>Section</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>2</td><td>150</td><td>50×30</td></tr>
+          <tr><td>B</td><td>1</td><td>300</td><td>50×30</td></tr>
+          <tr><td>C</td><td>2</td><td>200</td><td>80×15</td></tr>
+        </tbody>
+      </table>
+      <div class="calc-row"><span class="label">Parts A+B (50×30): total length in metres</span>(2×150 + 1×300) ÷ 1000 = 600 ÷ 1000 = 0.6 m</div>
+      <div class="calc-row"><span class="label">Cost of Parts A+B:</span>0.6 × £3.50 = £2.10</div>
+      <div class="calc-row"><span class="label">Part C (80×15): total length in metres</span>(2×200) ÷ 1000 = 400 ÷ 1000 = 0.4 m</div>
+      <div class="calc-row"><span class="label">Cost of Part C:</span>0.4 × £2.20 = £0.88</div>
+      <div class="calc-row"><span class="label">Total cost:</span>£2.10 + £0.88 = £2.98</div>
+      <div class="answer-box">Answer: £2.98</div>
+    </div>
+
+    <div class="hint">⚠️ <strong>Unit conversion warning:</strong> Dimensions in parts tables are ALWAYS in mm. You MUST divide by 1000 to get metres before multiplying by the £/metre price. Forgetting this gives an answer 1000× too large.</div>
+
+    <h3>Practice Question</h3>
+    <div class="pq">
+      <span class="marks">(5 marks)</span>
+      <div class="question">The table below shows parts for a small pine wall bracket. Pine (25×22 mm) costs £2.80/m. Pine (100×18 mm) costs £3.30/m. Calculate the total material cost.</div>
+      <table style="font-size:0.85rem;margin:10px 0;">
+        <thead><tr><th>Part</th><th>Qty</th><th>Length (mm)</th><th>Width (mm)</th><th>Thickness (mm)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>1</td><td>100</td><td>25</td><td>22</td></tr>
+          <tr><td>2</td><td>1</td><td>100</td><td>25</td><td>22</td></tr>
+          <tr><td>3</td><td>1</td><td>75</td><td>25</td><td>22</td></tr>
+          <tr><td>4</td><td>3</td><td>100</td><td>100</td><td>18</td></tr>
+        </tbody>
+      </table>
+      <div class="answer-lines"><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div></div>
+      <button class="ms-btn" onclick="toggleMS(this)">Show Answer</button>
+      <div class="ms-content">
+        <div class="mp"><div class="mpb">1✓</div><div>Convert units (mm → m shown in working)</div></div>
+        <div class="mp"><div class="mpb">1✓</div><div>Parts 1+2 (25×22): 2 × 100mm = 200mm = 0.2m → 0.2 × £2.80 = £0.56</div></div>
+        <div class="mp"><div class="mpb">1✓</div><div>Part 3 (25×22): 75mm = 0.075m → 0.075 × £2.80 = £0.21</div></div>
+        <div class="mp"><div class="mpb">1✓</div><div>Part 4 (100×18): 3 × 100mm = 300mm = 0.3m → 0.3 × £3.30 = £0.99</div></div>
+        <div class="mp"><div class="mpb">1✓</div><div><strong>Total: £0.56 + £0.21 + £0.99 = £1.76</strong></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== TAB 4: TIMBER TOPICS ======================== -->
+<div class="tab-pane" id="tab-timber">
+  <h2>🌲 Lesson 3: Timber Topics</h2>
+
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Chunking:</strong> Timber content is large. Focus on ONE category per 10 minutes: (1) wood types, (2) assembly methods, (3) surface finishes, (4) sustainability. Don't try to learn everything at once.
+  </div>
+
+  <!-- WOOD TYPES -->
+  <div class="card">
+    <div class="card-h">🌳 Hardwoods vs Softwoods vs Manufactured Boards (MFBs)</div>
+    <div class="hint">💡 "Hardwood/softwood" does NOT mean hard/soft material — it refers to the type of tree. Some softwoods are physically harder than some hardwoods!</div>
+    <table>
+      <thead><tr><th></th><th>Hardwoods</th><th>Softwoods</th><th>Manufactured Boards (MFBs)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Source</strong></td><td>Deciduous (broad-leaf) trees. Shed leaves in winter.</td><td>Coniferous (needle-leaf) trees. Mostly evergreen.</td><td>Made in factories from wood chips, fibres, or veneers + adhesive.</td></tr>
+        <tr><td><strong>Growth rate</strong></td><td>Slow growing → expensive</td><td>Fast growing → cheaper</td><td>Manufactured from recycled/waste wood → cost-effective</td></tr>
+        <tr><td><strong>Key examples</strong></td><td>Oak, ash, mahogany, beech, teak</td><td>Pine, spruce, cedar, larch</td><td>MDF, plywood, chipboard, OSB</td></tr>
+        <tr><td><strong>Typical uses</strong></td><td>Quality furniture, veneers, flooring</td><td>Construction, framing, shelving</td><td>Flat-pack furniture, shelves, panels</td></tr>
+        <tr><td><strong>Advantages</strong></td><td>Durable, attractive, fine grain</td><td>Cheap, widely available, easy to work</td><td>No grain direction, no warping, large sheets, uniform</td></tr>
+        <tr><td><strong>Disadvantages</strong></td><td>Expensive, slow to replenish, deforestation risk</td><td>Less durable, prone to knots</td><td>Cannot be used outdoors (MDF swells), contains glue/formaldehyde</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ASSEMBLY METHODS -->
+  <div class="card">
+    <div class="card-h">🔩 Methods of Assembly (Timber Products)</div>
+    <p>The exam often asks for <strong>semi-permanent</strong> methods specifically. Learn the difference between all three categories.</p>
+
+    <table>
+      <thead><tr><th>Category</th><th>What it means</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Permanent</strong></td><td>Cannot be separated without damage</td><td>PVA glue, nails, welding</td></tr>
+        <tr><td><strong>Semi-permanent</strong></td><td>Can be taken apart, but requires a tool / deliberate action</td><td>Screws, dowels, KD fittings (knock-down), cam locks, barrel nuts &amp; bolts</td></tr>
+        <tr><td><strong>Temporary</strong></td><td>Can be easily attached and detached without tools</td><td>Hinges (with pin), magnetic catches, velcro</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:14px;">Key Semi-Permanent Methods — 2-mark answers</h3>
+    <div class="prop-grid" style="grid-template-columns:repeat(auto-fill,minmax(250px,1fr));">
+      <div class="prop-card" style="border-color:var(--teal);background:#f0fdfa;"><div class="pt">Screws</div><div class="pd">Inserted through one piece into another using a drill. Can be removed and re-inserted. Provides a very strong joint that can be dismantled.</div></div>
+      <div class="prop-card" style="border-color:var(--teal);background:#f0fdfa;"><div class="pt">Wooden Dowels</div><div class="pd">Round wooden pegs glued into drilled holes in both parts. Aligns pieces accurately. Common in flat-pack furniture.</div></div>
+      <div class="prop-card" style="border-color:var(--teal);background:#f0fdfa;"><div class="pt">KD (Knock-Down) Fittings</div><div class="pd">Plastic/metal blocks screwed into each piece. Bolts join the blocks. Fast to assemble/disassemble. Used in flat-pack.</div></div>
+      <div class="prop-card" style="border-color:var(--teal);background:#f0fdfa;"><div class="pt">Cam Lock (Barrel &amp; Bolt)</div><div class="pd">A bolt screws into a cylindrical barrel. Rotating the cam lock pulls the pieces together. Quick and easy. Common in IKEA furniture.</div></div>
+    </div>
+
+    <div class="esl-tip" style="margin-top:14px;">
+      <strong>📌 Sentence frame for assembly method answers:</strong><br>
+      "<span style="color:var(--amber);font-weight:600;">[Method name]</span> — The [part A] and [part B] can be <strong>taken apart</strong> when the [screw is undone / cam is rotated / bolt is removed], because [explain the mechanism]. This means the product can be [reason why this is useful — e.g. flat-packed for transport / repaired if broken / disassembled at end of life for recycling]."
+    </div>
+  </div>
+
+  <!-- SURFACE FINISHES -->
+  <div class="card">
+    <div class="card-h">✨ Surface Finishes for Timber</div>
+    <table>
+      <thead><tr><th>Finish</th><th>What it does</th><th>Best for</th><th>Exam keyword</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Varnish</strong></td><td>Clear, tough, waterproof coating. Seals the grain. Glossy or matt.</td><td>Furniture, outdoor items, flooring</td><td>Waterproof, protects grain, enhances appearance, tough surface</td></tr>
+        <tr><td><strong>Paint</strong></td><td>Opaque coating. Available in any colour. Seals grain completely.</td><td>Indoor/outdoor furniture, children's products</td><td>Decorative, hides grain, colourful, weather resistant (outdoor paint)</td></tr>
+        <tr><td><strong>Danish / Linseed Oil</strong></td><td>Soaks into the grain. Enhances natural colour. NOT waterproof on its own.</td><td>Salad bowls, chopping boards (food safe)</td><td>Enhances natural grain, food safe, non-toxic</td></tr>
+        <tr><td><strong>Wax / Polish</strong></td><td>Buffed into the surface. Creates a soft sheen. Not highly water resistant.</td><td>Interior furniture, antiques</td><td>Enhances grain, soft sheen, easy to apply</td></tr>
+        <tr><td><strong>Stain</strong></td><td>Changes the colour of the wood while keeping grain visible.</td><td>Furniture that needs a specific colour</td><td>Colour, grain visible, decorative</td></tr>
+      </tbody>
+    </table>
+
+    <div class="hint">💡 <strong>Varnish 2-mark exam frame:</strong> "Varnish provides a <strong>waterproof</strong> / <strong>tough</strong> surface finish (1) which means [product-specific reason — e.g. the pine frame will be protected from rain / the surface will not be scratched by plant pots being placed on it] (1)."</div>
+  </div>
+
+  <!-- SUSTAINABILITY -->
+  <div class="card">
+    <div class="card-h">🌍 Ecological Footprint &amp; Sustainability</div>
+    <p>These questions ask about the environmental impact of using timber, especially tropical hardwoods like mahogany.</p>
+
+    <h3>Why is mahogany problematic? (3-mark answer structure)</h3>
+    <div class="frame">
+      <div class="template">
+        The demand for mahogany results in <span class="blank-slot">problem 1</span> (1), which results in <span class="blank-slot">consequence 1</span> (1), therefore leading to <span class="blank-slot">final impact</span> (1).
+      </div>
+      <div class="example">✅ Example: "The demand for mahogany results in <strong>large-scale deforestation in tropical rainforests</strong>, which results in <strong>loss of natural habitat for many animal species</strong>, therefore leading to <strong>a decline in biodiversity and potential extinction of species</strong>."</div>
+    </div>
+
+    <table>
+      <thead><tr><th>Issue</th><th>Cause</th><th>Consequence</th></tr></thead>
+      <tbody>
+        <tr><td>Deforestation</td><td>Trees cut down faster than they can grow back</td><td>Loss of habitat, soil erosion, flooding, loss of biodiversity</td></tr>
+        <tr><td>Carbon release</td><td>Trees store CO₂; cutting releases it</td><td>Increased greenhouse gases → climate change</td></tr>
+        <tr><td>Transport footprint</td><td>Tropical hardwood shipped thousands of km to UK</td><td>Large CO₂ emissions from shipping / fuel burning</td></tr>
+        <tr><td>Indigenous communities</td><td>Forests are home to local people</td><td>Displacement, loss of livelihood</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Sustainable alternatives — exam credit points</h3>
+    <ul>
+      <li>FSC-certified timber (Forest Stewardship Council) — guarantees replanting</li>
+      <li>Using manufactured boards (MDF, plywood) — made from recycled wood waste</li>
+      <li>Using local hardwoods (e.g. European ash or oak) — shorter transport distance</li>
+      <li>Recycled / reclaimed timber — no new trees felled</li>
+    </ul>
+  </div>
+
+  <!-- VENEERING -->
+  <div class="card">
+    <div class="card-h">🪵 The Veneering Process (notes + sketches question)</div>
+    <p>This is often a 4-mark "notes and sketches" question. You must include BOTH notes AND a sketch — max 3 marks for notes only or sketches only.</p>
+
+    <div class="step-box"><div class="step-n">1</div><div class="step-t"><strong>Prepare the surface:</strong> Sand/rub down the MDF. Remove all dust.</div></div>
+    <div class="step-box"><div class="step-n">2</div><div class="step-t"><strong>Apply adhesive:</strong> Brush PVA glue onto the MDF surface OR peel self-adhesive backing from veneer.</div></div>
+    <div class="step-box"><div class="step-n">3</div><div class="step-t"><strong>Position the veneer:</strong> Lay the veneer flat onto the surface. Align carefully.</div></div>
+    <div class="step-box"><div class="step-n">4</div><div class="step-t"><strong>Apply pressure:</strong> Use a bag press, bench press, or clamps (and iron if heat-activated). Apply even pressure across the whole surface.</div></div>
+    <div class="step-box"><div class="step-n">5</div><div class="step-t"><strong>Leave to dry:</strong> Leave clamped until the adhesive is fully cured/dry.</div></div>
+    <div class="step-box"><div class="step-n">6</div><div class="step-t"><strong>Trim edges:</strong> Once dry, trim the overhanging veneer with a craft knife or plane.</div></div>
+  </div>
+
+  <!-- ACTIVITY: T/F -->
+  <div class="card">
+    <div class="card-h">✏️ Activity — Timber True or False Quiz</div>
+    <div id="tf-container"></div>
+    <div id="tf-score" style="margin-top:12px;font-weight:600;font-size:0.9rem;color:var(--accent);"></div>
+  </div>
+
+  <!-- MATCHING: ASSEMBLY -->
+  <div class="card">
+    <div class="card-h">🔗 Activity — Match the Assembly Method</div>
+    <p style="font-size:0.87rem;color:var(--muted);margin-bottom:10px;">Match each method to its description. Click left, then right.</p>
+    <div class="match-cols" id="match-asm"></div>
+    <div id="match-asm-result" style="margin-top:10px;font-size:0.88rem;color:var(--green);font-weight:600;"></div>
+  </div>
+</div>
+
+<!-- ======================== TAB 5: EXTENDED WRITING ======================== -->
+<div class="tab-pane" id="tab-writing">
+  <h2>✍️ Extended Writing Skills</h2>
+
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Model Then Modify:</strong> Read the model answer carefully. Then close it and write your own version about a DIFFERENT product. Do not copy — use the structure only. This practises the thinking, not just the writing.
+  </div>
+
+  <!-- COMMAND WORDS -->
+  <div class="card">
+    <div class="card-h">📋 Command Words — What the Examiner Wants</div>
+    <div class="cmd-grid">
+      <div class="cmd-card">
+        <div class="cmd-w">State / Give / Name</div>
+        <div class="cmd-marks">1 mark · no explanation needed</div>
+        <div class="cmd-d">Just write the answer. One word or short phrase. Do NOT waste time explaining.</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-w">Describe</div>
+        <div class="cmd-marks">1–2 marks · say what it looks like / how it works</div>
+        <div class="cmd-d">Explain what something IS or what it DOES. No need to evaluate.</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-w">Explain</div>
+        <div class="cmd-marks">2 marks · property + why/therefore</div>
+        <div class="cmd-d">Name a point AND give a reason. Use "therefore" / "which means that" / "because".</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-w">Discuss</div>
+        <div class="cmd-marks">4–6 marks · make points + link reasoning</div>
+        <div class="cmd-d">Give multiple linked points with reasons. Show both sides or different angles. Use connectives.</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-w">Evaluate / Analyse</div>
+        <div class="cmd-marks">6–9 marks · reasons + judgement + conclusion</div>
+        <div class="cmd-d">Make detailed points AND weigh them up (what are the trade-offs?). Give a supported conclusion.</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-w">Calculate</div>
+        <div class="cmd-marks">2–5 marks · SHOW all working</div>
+        <div class="cmd-d">Always write the formula first. Show each step. Write units in the answer. Use ECF — never leave blank.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SENTENCE FRAMES BY MARK TYPE -->
+  <div class="card">
+    <div class="card-h">📝 Answer Sentence Frames by Mark Level</div>
+
+    <h3>2-mark "Explain one..." answer</h3>
+    <div class="frame">
+      <div class="template">
+        <span class="blank-slot">Material/feature</span> is <span class="blank-slot">property/characteristic</span> (✓1), therefore <span class="blank-slot">specific benefit for this product/context</span> (✓2).
+      </div>
+      <div class="example">✅ "MDF has no grain (✓1), therefore it does not split or give rise to splinters when the shelf slots are machined with a router (✓2)."</div>
+    </div>
+
+    <h3>4-mark "Explain two..." answer</h3>
+    <div class="frame">
+      <div class="template">
+        <span class="blank-slot">Reason 1</span> is <span class="blank-slot">point</span> (✓1), therefore <span class="blank-slot">justification</span> (✓2).<br>
+        Additionally, <span class="blank-slot">Reason 2</span> is <span class="blank-slot">point</span> (✓3), which means that <span class="blank-slot">justification</span> (✓4).
+      </div>
+      <div class="example">✅ "Pine stock materials are readily available (✓1), therefore the manufacturer does not need to hold large volumes of different-sized materials in stock, reducing storage costs (✓2). Additionally, using standard stock sizes means that machines do not need to be reset each time (✓3), which speeds up the manufacturing process and reduces the chance of errors (✓4)."</div>
+    </div>
+
+    <h3>6-mark "Discuss why..." answer — use PEEL × 3</h3>
+    <div class="frame">
+      <div class="template">
+        <strong>P</strong>oint: <span class="blank-slot">make a clear point</span>.<br>
+        <strong>E</strong>vidence: <span class="blank-slot">what happens / what this allows</span>.<br>
+        <strong>E</strong>xplain: <span class="blank-slot">why this is important or useful</span>.<br>
+        <strong>L</strong>ink: <span class="blank-slot">connect back to the question</span>.
+      </div>
+      <div class="example">✅ "When a designer takes a product apart (P), they can see each individual component in isolation (E), which allows them to measure parts, understand how they fit together, and identify potential improvements to the design (E). This is useful because it means the designer does not have to start from nothing — they can build on the work of others (L)." — write 3 PEELs for full marks.</div>
+    </div>
+
+    <h3>9-mark "Analyse and evaluate..." answer — structure guide</h3>
+    <div class="frame">
+      <div class="template">
+        <strong>Introduction:</strong> <span class="blank-slot">briefly introduce the product and the factors you will discuss</span>.<br><br>
+        <strong>Body paragraph 1:</strong> <span class="blank-slot">discuss first factor with linked reasoning</span>.<br>
+        <strong>Body paragraph 2:</strong> <span class="blank-slot">discuss second factor — can be a contrasting/related point</span>.<br>
+        <strong>Body paragraph 3:</strong> <span class="blank-slot">discuss third factor — try to be specific about costs, trade-offs, or context</span>.<br><br>
+        <strong>Conclusion:</strong> <span class="blank-slot">weigh up the factors — what is the overall judgement? What matters most?</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTIVES CARD -->
+  <div class="card">
+    <div class="card-h">🔗 Academic Connectives for Extended Writing</div>
+    <div class="wbank">
+      <span class="wchip" style="cursor:default;">This means that...</span>
+      <span class="wchip" style="cursor:default;">Therefore...</span>
+      <span class="wchip" style="cursor:default;">As a result...</span>
+      <span class="wchip" style="cursor:default;">However...</span>
+      <span class="wchip" style="cursor:default;">Furthermore...</span>
+      <span class="wchip" style="cursor:default;">In addition...</span>
+      <span class="wchip" style="cursor:default;">In contrast...</span>
+      <span class="wchip" style="cursor:default;">For example...</span>
+      <span class="wchip" style="cursor:default;">Overall...</span>
+      <span class="wchip" style="cursor:default;">This would mean that...</span>
+      <span class="wchip" style="cursor:default;">Which means that...</span>
+      <span class="wchip" style="cursor:default;">On the other hand...</span>
+    </div>
+  </div>
+
+  <!-- PRACTICE QUESTIONS -->
+  <div class="card">
+    <div class="card-h">🎯 Practice Extended Writing Questions</div>
+    <p style="font-size:0.87rem;color:var(--muted);">These use different scenarios from your exam. Write full answers under timed conditions, then check the mark scheme guidance.</p>
+
+    <div class="pq">
+      <span class="marks">(6 marks)</span>
+      <div class="question"><strong>Q1.</strong> Discuss why designers carry out research into existing products when starting a new design project. Use an example of a timber product to support your answer.</div>
+      <div class="hint">💡 ESL hint: Aim to make 3 separate points. Each point needs a reason. Use "therefore," "which means," or "as a result" to connect each point. Write at least 4–6 sentences.</div>
+      <div class="answer-lines"><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div></div>
+      <button class="ms-btn" onclick="toggleMS(this)">Show Mark Scheme Guidance</button>
+      <div class="ms-content">
+        <p style="margin-bottom:8px;"><strong>Level 3 (5–6 marks):</strong> Provides sustained, well-linked reasoning. Balanced and thorough. Multiple points connected logically.</p>
+        <p style="margin-bottom:8px;"><strong>Indicative content — any well-developed points from:</strong></p>
+        <div class="mp"><div class="mpb">✓</div><div>Designers can understand how an existing product works by examining its parts</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>They can identify individual components and consider how to improve or simplify them</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>They can take measurements that inform the scale/dimensions of their new design</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>They can analyse which materials were used and whether better alternatives exist</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>They can identify flaws or failures in existing designs and avoid repeating them</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>They can see how parts are assembled, and consider more efficient or sustainable methods</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>They gain inspiration that can be refined into original solutions</div></div>
+      </div>
+    </div>
+
+    <div class="pq">
+      <span class="marks">(9 marks)</span>
+      <div class="question"><strong>Q2.</strong> A small batch production workshop makes decorative oak jewellery boxes in the UK. The oak comes from managed European forests. Analyse the cost factors involved in producing these boxes, including: quality of material · manufacturing processes · surface treatments.</div>
+      <div class="hint">💡 ESL hint: This is worth 9 marks — write at least 3 long paragraphs. Introduce the product, then discuss each cost factor in detail. Try to say WHY each factor increases or reduces cost. End with a conclusion.</div>
+      <div class="answer-lines"><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div><div class="ans-line"></div></div>
+      <button class="ms-btn" onclick="toggleMS(this)">Show Mark Scheme Guidance</button>
+      <div class="ms-content">
+        <p style="margin-bottom:8px;"><strong>Level 3 (7–9 marks):</strong> Sustained, detailed, logically linked. Clear conclusion supported by evidence. Covers multiple cost factors with relevant detail.</p>
+        <div class="mp"><div class="mpb">✓</div><div>Oak is a high-quality hardwood with an attractive grain — this increases material cost vs softwoods or MFBs</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>European sourcing reduces transport costs compared to tropical hardwoods like mahogany</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>Batch production means machines are set up once for a set number of items — efficient but still involves significant setup time and skilled labour costs</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>Small, detailed parts require careful machining — high skill labour = high cost</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>Parts must be manufactured to tight tolerance so drawers fit and move smoothly — increases time and therefore cost</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>Surface finish (e.g. varnish or wax) adds to both material cost and labour time</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>Wax/oil preferred for jewellery boxes — must not taint the jewellery — adds a constraint that limits cheaper options</div></div>
+        <div class="mp"><div class="mpb">✓</div><div>Final sanding to a fine finish before any treatment is required — adds time and cost</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== TAB 6: ESL TOOLKIT ======================== -->
+<div class="tab-pane" id="tab-esl">
+  <h2>💬 ESL Toolkit</h2>
+
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Word Families:</strong> Learning one word helps you learn a whole family. Example: <em>insulate → insulation → insulator → insulating</em>. For each root word below, try to think of the noun, verb, and adjective form.
+  </div>
+
+  <!-- COMPLEX → SIMPLE -->
+  <div class="card">
+    <div class="card-h">🔄 Technical Term → Plain English (D&T)</div>
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:10px;">If you cannot remember the technical word in the exam, use the plain English equivalent — but learning both is better.</p>
+    <div class="synonym-row"><span class="syn-tech">Corrosion resistant</span><span class="syn-arr">→</span><span class="syn-simple">Does not rust / Will not rust when wet</span></div>
+    <div class="synonym-row"><span class="syn-tech">Thermal insulator</span><span class="syn-arr">→</span><span class="syn-simple">Does not let heat pass through it</span></div>
+    <div class="synonym-row"><span class="syn-tech">Impact resistant</span><span class="syn-arr">→</span><span class="syn-simple">Does not break when you drop it / hit it</span></div>
+    <div class="synonym-row"><span class="syn-tech">Malleable</span><span class="syn-arr">→</span><span class="syn-simple">Can be bent or shaped without breaking</span></div>
+    <div class="synonym-row"><span class="syn-tech">Durable / Hardwearing</span><span class="syn-arr">→</span><span class="syn-simple">Lasts a long time, does not wear out quickly</span></div>
+    <div class="synonym-row"><span class="syn-tech">Biodegradable</span><span class="syn-arr">→</span><span class="syn-simple">Will break down naturally in the environment</span></div>
+    <div class="synonym-row"><span class="syn-tech">Ecological footprint</span><span class="syn-arr">→</span><span class="syn-simple">The total environmental damage caused by making/using a product</span></div>
+    <div class="synonym-row"><span class="syn-tech">Semi-permanent</span><span class="syn-arr">→</span><span class="syn-simple">Can be taken apart, but needs a tool or deliberate action</span></div>
+    <div class="synonym-row"><span class="syn-tech">Torsional resistance</span><span class="syn-arr">→</span><span class="syn-simple">Does not twist or distort when a turning force is applied</span></div>
+    <div class="synonym-row"><span class="syn-tech">Non-toxic / Food safe</span><span class="syn-arr">→</span><span class="syn-simple">Safe to touch or eat from — does not release harmful chemicals</span></div>
+    <div class="synonym-row"><span class="syn-tech">Deforestation</span><span class="syn-arr">→</span><span class="syn-simple">Cutting down large numbers of trees, reducing the amount of forest</span></div>
+  </div>
+
+  <!-- WORD ROOTS -->
+  <div class="card">
+    <div class="card-h">🔤 Useful Word Roots in D&T</div>
+    <table>
+      <thead><tr><th>Root</th><th>Meaning</th><th>D&T examples</th></tr></thead>
+      <tbody>
+        <tr><td><strong>bio-</strong></td><td>life / living things</td><td>biodegradable, bio-based, bioplastic</td></tr>
+        <tr><td><strong>-able / -ible</strong></td><td>can be done</td><td>recyclable, bendable, foldable, biodegradable</td></tr>
+        <tr><td><strong>thermo-</strong></td><td>heat</td><td>thermoplastic, thermoset, thermoforming</td></tr>
+        <tr><td><strong>eco-</strong></td><td>environment / home</td><td>ecological footprint, eco-friendly</td></tr>
+        <tr><td><strong>re-</strong></td><td>again / back</td><td>recycled, reused, reformed, replaced</td></tr>
+        <tr><td><strong>-resistant</strong></td><td>can withstand</td><td>corrosion resistant, impact resistant, heat resistant</td></tr>
+        <tr><td><strong>de-</strong></td><td>removal / reversal</td><td>deforestation, decompose, disassemble</td></tr>
+        <tr><td><strong>semi-</strong></td><td>half / partial</td><td>semi-permanent, semiconductor</td></tr>
+        <tr><td><strong>-proof</strong></td><td>protected against</td><td>waterproof, rustproof, foolproof</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div class="card">
+    <div class="card-h">⚠️ Common ESL Mistakes in D&T Exams</div>
+    <table class="mistake-tbl">
+      <thead><tr><th>❌ What students often write</th><th>✅ What you should write</th><th>Why this matters</th></tr></thead>
+      <tbody>
+        <tr><td>"It is an insulator."</td><td>"It is a good thermal insulator of heat." / "It is an electrical insulator."</td><td>Examiner needs to know WHAT type of insulation. "Insulator" alone = 0 marks.</td></tr>
+        <tr><td>"It is durable."</td><td>"It is durable / hardwearing, therefore it will last for many years under normal use."</td><td>"Durable" alone is often not accepted unless linked to a benefit.</td></tr>
+        <tr><td>"It is light."</td><td>"It is lightweight / has a low density."</td><td>"Light" is ambiguous (could mean light in colour). Be specific.</td></tr>
+        <tr><td>"Wood is good for the environment because it is natural."</td><td>"Certified timber (FSC) is sustainable because it comes from managed forests where trees are replanted after felling."</td><td>Vague answers like "it's natural" score 0. Be specific about WHY.</td></tr>
+        <tr><td>"The varnish makes it look better."</td><td>"The varnish provides a tough, waterproof surface finish, which means the timber is protected from moisture absorption and the natural grain is enhanced."</td><td>2-mark questions need a point AND a reason. Beauty alone is incomplete.</td></tr>
+        <tr><td>Not showing working in maths questions</td><td>Always write formula → substitute → calculate, even if you use a calculator</td><td>You can get method marks (ECF) even if your final answer is wrong, but ONLY if working is shown.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PHRASES FOR EXTENDED WRITING -->
+  <div class="card">
+    <div class="card-h">🗣️ Useful Phrases for Timber Extended Writing</div>
+    <div class="wbank">
+      <span class="wchip" style="cursor:default;">...is a hardwood that originates from...</span>
+      <span class="wchip" style="cursor:default;">...has a distinctive grain pattern which...</span>
+      <span class="wchip" style="cursor:default;">...will resist corrosion because...</span>
+      <span class="wchip" style="cursor:default;">...can be disassembled and recycled at end of life...</span>
+      <span class="wchip" style="cursor:default;">...the ecological footprint is increased by...</span>
+      <span class="wchip" style="cursor:default;">...batch production allows the manufacturer to...</span>
+      <span class="wchip" style="cursor:default;">...stock materials are available in standard sizes, which means...</span>
+      <span class="wchip" style="cursor:default;">...tolerance is required so that...</span>
+      <span class="wchip" style="cursor:default;">...the surface finish protects the timber from...</span>
+      <span class="wchip" style="cursor:default;">...can be taken apart without damaging...</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== TABS =====
+function showTab(id){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ===== CHECKLIST =====
+const checklistA=[
+  'Name properties for metals, polymers, papers/boards and natural fibres',
+  'Write a 2-mark "property + justify" answer using "therefore"',
+  'Calculate cost per m² (Cost ÷ Area)',
+  'Calculate percentage waste (3-step method)',
+  'Calculate total material cost from a parts table (mm → m conversion)',
+  'Name and explain scales of production (one-off, batch, mass)',
+  'Name types of electronic components (resistor, capacitor, LED, etc.)',
+  'Explain advantages of batch production for a manufacturer',
+  'Explain the advantages / disadvantages of different energy sources (batteries vs mains)',
+];
+const checklistB=[
+  'Distinguish hardwoods, softwoods and manufactured boards with examples',
+  'Know key properties of: oak, ash, mahogany, beech, pine, MDF, plywood',
+  'Explain 2 semi-permanent methods of assembly with reasons',
+  'Describe the veneering process using notes + sketches',
+  'Explain why beech is suitable for use as a veneer',
+  'Name a type of hand saw used in timber work (tenon/dovetail saw)',
+  'Explain 2 benefits of using stock materials for a manufacturer',
+  'Explain 2 benefits of varnish as a surface finish (with linked reasons)',
+  'Explain the ecological footprint issue with mahogany',
+  'Explain 2 reasons for manufacturing parts to a tolerance',
+  'Structure a 6-mark "discuss" answer using PEEL',
+  'Structure a 9-mark "evaluate/analyse" answer with a conclusion',
+];
+function buildChecklist(items,containerId){
+  const c=document.getElementById(containerId);
+  items.forEach((txt,i)=>{
+    const d=document.createElement('div');
+    d.className='checklist-item';
+    d.innerHTML=`<span class="ci-text">${i+1}. ${txt}</span>
+    <div class="conf-btns">
+      <button class="conf-btn g" onclick="confRate(this,'g')">🟢</button>
+      <button class="conf-btn a" onclick="confRate(this,'a')">🟡</button>
+      <button class="conf-btn r" onclick="confRate(this,'r')">🔴</button>
+    </div>`;
+    c.appendChild(d);
+  });
+}
+function confRate(btn,col){
+  const btns=btn.parentElement.querySelectorAll('.conf-btn');
+  btns.forEach(b=>{b.classList.remove('sel');});
+  btn.classList.add('sel');
+}
+buildChecklist(checklistA,'checklist-a');
+buildChecklist(checklistB,'checklist-b');
+
+// ===== GAP FILL =====
+const gfAnswers=['impact resistant','corrosion resistant','insulator','grain','food safe','close / fine','insulator','creased'];
+const gfWords=['impact resistant','insulator','food safe','creased','close / fine','corrosion resistant','grain','waterproof'];
+// Shuffled words (not in answer order)
+const shuffled=['insulator','creased','food safe','grain','impact resistant','close / fine','waterproof','corrosion resistant'];
+let currentGap=null;
+const wb=document.getElementById('wbank-gf');
+shuffled.forEach((w,i)=>{
+  const b=document.createElement('button');
+  b.className='wchip'; b.textContent=w; b.dataset.word=w;
+  b.onclick=()=>selectChip(b);
+  wb.appendChild(b);
+});
+function selectChip(btn){
+  if(btn.classList.contains('used')) return;
+  document.querySelectorAll('.wchip').forEach(c=>c.style.outline='none');
+  btn.style.outline='2px solid #fff';
+  if(currentGap){
+    currentGap.textContent=btn.dataset.word;
+    currentGap.dataset.answer=btn.dataset.word;
+    btn.classList.add('used');
+    currentGap=null;
+    document.querySelectorAll('.wchip').forEach(c=>c.style.outline='none');
+  } else {
+    currentGap=null;
+    btn.style.outline='2px solid white';
+    // store selected chip
+    document.querySelectorAll('.gap').forEach(g=>{
+      g.onclick=()=>{
+        if(g.textContent==='_____' || g.textContent===''){
+          g.textContent=btn.dataset.word;
+          g.dataset.answer=btn.dataset.word;
+          btn.classList.add('used');
+          btn.style.outline='none';
+        }
+      };
+    });
+  }
+}
+function fillGap(gap){
+  const selected=document.querySelector('.wchip[style*="outline: 2px solid white"], .wchip[style*="outline: 2px solid rgb(255"]');
+  if(selected && !selected.classList.contains('used')){
+    gap.textContent=selected.dataset.word;
+    gap.dataset.answer=selected.dataset.word;
+    selected.classList.add('used');
+    selected.style.outline='none';
+  }
+}
+function checkGF(){
+  let score=0;
+  gfAnswers.forEach((ans,i)=>{
+    const gap=document.getElementById('g'+i);
+    const val=(gap.dataset.answer||'').toLowerCase().trim();
+    const correct=ans.toLowerCase().trim();
+    if(val===correct || val.includes(correct) || correct.includes(val)){
+      gap.classList.add('correct'); gap.classList.remove('wrong'); score++;
+    } else {
+      gap.classList.add('wrong'); gap.classList.remove('correct');
+      gap.textContent=gap.dataset.answer||'???';
+    }
+  });
+  const sb=document.getElementById('gf-score');
+  sb.style.display='block';
+  sb.textContent=`Score: ${score}/${gfAnswers.length} — ${score===gfAnswers.length?'✅ Perfect!':score>=6?'🟡 Good — review the wrong ones':'🔴 Keep practising — reread the property cards'}`;
+}
+
+// ===== MATCHING: MATERIAL PROPERTIES =====
+const matchLeft=['Oak','MDF','Wool','HIPS','Stainless steel','Corrugated board'];
+const matchRight=['Tough — resists heavy wear on floors','No grain — slots can be machined cleanly','Thermal insulator — keeps hands warm','Lightweight — easy for a child to carry','Corrosion resistant — safe with salt or food','Thermal insulator — keeps takeaway food warm'];
+const matchAnswers={0:1,1:3,2:0,3:2,4:4,5:5}; // left index → right index
+// Note: left[0]=Oak→right[1]? Let me fix mapping
+const matchData=[
+  {L:'Oak',R:'Tough — resists heavy wear on floors'},
+  {L:'MDF',R:'No grain — can be machined into slots cleanly'},
+  {L:'Wool',R:'Thermal insulator of heat — keeps hands warm'},
+  {L:'HIPS',R:'Lightweight — easy for a child to carry'},
+  {L:'Stainless steel',R:'Corrosion resistant — does not rust with salt'},
+  {L:'Corrugated board',R:'Thermal insulator of heat — keeps takeaway food warm'},
+];
+// Shuffle right side
+const rightItems=['Thermal insulator of heat — keeps takeaway food warm','Tough — resists heavy wear on floors','No grain — can be machined into slots cleanly','Corrosion resistant — does not rust with salt','Thermal insulator of heat — keeps hands warm','Lightweight — easy for a child to carry'];
+buildMatch('match-left-right','match-result',matchData.map(d=>d.L),rightItems,
+  {'Oak':'Tough — resists heavy wear on floors','MDF':'No grain — can be machined into slots cleanly','Wool':'Thermal insulator of heat — keeps hands warm','HIPS':'Lightweight — easy for a child to carry','Stainless steel':'Corrosion resistant — does not rust with salt','Corrugated board':'Thermal insulator of heat — keeps takeaway food warm'});
+
+// ===== MATCHING: ASSEMBLY =====
+const asmLeft=['Screws','Wooden Dowels','KD (Knock-Down) Fitting','Cam Lock'];
+const asmRight=['Rotated to pull two parts tightly together — common in flat-pack','Plastic block screwed into each piece, joined by a bolt — quick disassembly','Inserted through a hole in one piece, tightened with a driver — strong and removable','Cylindrical peg glued into drilled holes to align and join two pieces'];
+buildMatch('match-asm','match-asm-result',asmLeft,asmRight,
+  {'Screws':'Inserted through a hole in one piece, tightened with a driver — strong and removable','Wooden Dowels':'Cylindrical peg glued into drilled holes to align and join two pieces','KD (Knock-Down) Fitting':'Plastic block screwed into each piece, joined by a bolt — quick disassembly','Cam Lock':'Rotated to pull two parts tightly together — common in flat-pack'});
+
+let matchSelected={};
+function buildMatch(containerId,resultId,lefts,rights,correctMap){
+  const c=document.getElementById(containerId);
+  if(!c) return;
+  c.innerHTML='';
+  // Left column header + items
+  const lCol=document.createElement('div'); lCol.style.display='flex'; lCol.style.flexDirection='column'; lCol.style.gap='10px';
+  const rCol=document.createElement('div'); rCol.style.display='flex'; rCol.style.flexDirection='column'; rCol.style.gap='10px';
+  const lHead=document.createElement('div'); lHead.style.cssText='font-size:0.78rem;color:var(--muted);font-family:var(--DM Mono);text-align:center;padding:4px;';lHead.textContent='Material / Method';lCol.appendChild(lHead);
+  const rHead=document.createElement('div'); rHead.style.cssText='font-size:0.78rem;color:var(--muted);font-family:var(--DM Mono);text-align:center;padding:4px;';rHead.textContent='Description';rCol.appendChild(rHead);
+
+  let selL=null,selR=null;
+  let matchedCount=0;
+  const state={selL:null,selR:null};
+
+  lefts.forEach((txt,i)=>{
+    const d=document.createElement('div'); d.className='match-item'; d.textContent=txt; d.dataset.side='L'; d.dataset.val=txt;
+    d.onclick=()=>{
+      if(d.classList.contains('matched')) return;
+      c.querySelectorAll('.match-item[data-side="L"]').forEach(x=>x.classList.remove('sel'));
+      d.classList.add('sel'); state.selL=d;
+      tryMatch(containerId,resultId,correctMap,lefts.length,state);
+    };
+    lCol.appendChild(d);
+  });
+  rights.forEach((txt,i)=>{
+    const d=document.createElement('div'); d.className='match-item'; d.textContent=txt; d.dataset.side='R'; d.dataset.val=txt;
+    d.onclick=()=>{
+      if(d.classList.contains('matched')) return;
+      c.querySelectorAll('.match-item[data-side="R"]').forEach(x=>x.classList.remove('sel'));
+      d.classList.add('sel'); state.selR=d;
+      tryMatch(containerId,resultId,correctMap,lefts.length,state);
+    };
+    rCol.appendChild(d);
+  });
+  c.style.display='grid'; c.style.gridTemplateColumns='1fr 1fr'; c.style.gap='10px';
+  c.appendChild(lCol); c.appendChild(rCol);
+}
+
+function tryMatch(cid,rid,map,total,state){
+  if(!state.selL || !state.selR) return;
+  const lv=state.selL.dataset.val; const rv=state.selR.dataset.val;
+  if(map[lv]===rv){
+    state.selL.classList.add('matched'); state.selL.classList.remove('sel');
+    state.selR.classList.add('matched'); state.selR.classList.remove('sel');
+    const c=document.getElementById(cid);
+    const matched=c.querySelectorAll('.matched').length/2;
+    if(matched===total) document.getElementById(rid).textContent='✅ All matched correctly! Well done.';
+  } else {
+    state.selL.classList.add('no-match'); state.selR.classList.add('no-match');
+    setTimeout(()=>{
+      state.selL.classList.remove('no-match','sel'); state.selR.classList.remove('no-match','sel');
+    },600);
+  }
+  state.selL=null; state.selR=null;
+}
+
+// ===== TRUE/FALSE =====
+const tfData=[
+  {s:'MDF is a hardwood that comes from broad-leaf trees.',ans:false,fb:'MDF (Medium Density Fibreboard) is a manufactured board, NOT a hardwood. It is made from wood fibres compressed with adhesive in a factory.'},
+  {s:'Varnish makes timber waterproof AND enhances the appearance of the natural grain.',ans:true,fb:'Correct! Varnish seals the timber surface (waterproof) while remaining clear, allowing the grain to show through. This is why it is popular for furniture.'},
+  {s:'You can write "insulator" on its own to describe a material\'s thermal property.',ans:false,fb:'Incorrect — you MUST specify the type. Write "thermal insulator of heat" or "electrical insulator." "Insulator" alone is not accepted in the mark scheme.'},
+  {s:'Mahogany is often described as a sustainable choice because it grows quickly.',ans:false,fb:'Mahogany is a tropical hardwood that grows very slowly in rainforests. It is often NOT considered sustainable due to deforestation concerns. Fast-growing softwoods like pine are more sustainable.'},
+  {s:'A cam lock is a semi-permanent method of assembly — it can be disassembled with a screwdriver.',ans:true,fb:'Correct! A cam lock is rotated using a screwdriver, which pulls the pin and releases the joint. It is semi-permanent because it can be taken apart and reassembled.'},
+  {s:'When calculating percentage waste, you divide the useful area by the total area and multiply by 100.',ans:false,fb:'Incorrect! This calculates the USEFUL percentage, not the WASTE. You must: (1) find waste area = total − useful, then (2) divide WASTE by TOTAL, then × 100.'},
+  {s:'Beech is a suitable veneer material because it has a fine, close grain that does not split easily.',ans:true,fb:'Correct! Beech\'s close grain is one of its key physical characteristics. It is also a pale pink-cream colour that is aesthetically pleasing and complements many design styles.'},
+  {s:'In a D&T maths question, you should always show your working even if you use a calculator.',ans:true,fb:'Correct! Even if your final answer is wrong, you can still receive method marks (ECF) for showing the correct formula and steps. If you only write the answer with no working, you may score 0 for a 4 or 5 mark question.'},
+];
+const tfC=document.getElementById('tf-container');
+let tfScore=0; let tfAnswered=0;
+tfData.forEach((q,i)=>{
+  const d=document.createElement('div'); d.className='tf-q';
+  d.innerHTML=`<div class="stmt">${i+1}. ${q.s}</div>
+  <div class="tf-btns">
+    <button class="tf-btn" onclick="tfAnswer(this,true,${q.ans},'tf-fb-${i}')">TRUE</button>
+    <button class="tf-btn" onclick="tfAnswer(this,false,${q.ans},'tf-fb-${i}')">FALSE</button>
+  </div>
+  <div class="tf-fb" id="tf-fb-${i}">${q.ans?'✅ CORRECT':'❌ INCORRECT'} — ${q.fb}</div>`;
+  tfC.appendChild(d);
+});
+function tfAnswer(btn,given,correct,fbId){
+  const btns=btn.parentElement.querySelectorAll('.tf-btn');
+  btns.forEach(b=>b.disabled=true);
+  const fb=document.getElementById(fbId);
+  if(given===correct){ fb.className='tf-fb ok'; tfScore++; }
+  else { fb.className='tf-fb no'; fb.innerHTML='❌ INCORRECT — '+tfData.find(q=>q.fb.substring(0,20)===fb.textContent.substring(15,35)?.substring(0,20))?.fb||fb.innerHTML.replace(/^.*— /,'— '); }
+  tfAnswered++;
+  if(tfAnswered===tfData.length) document.getElementById('tf-score').textContent=`Score: ${tfScore}/${tfData.length} — ${tfScore>=7?'✅ Excellent!':tfScore>=5?'🟡 Good — review the incorrect ones':'🔴 Revise the timber topics tab'}`;
+  fb.style.display='block';
+}
+
+// Fix tf feedback display
+document.querySelectorAll('.tf-fb').forEach(el=>{
+  const orig=el.innerHTML;
+  el.innerHTML=orig.replace(/^(✅ CORRECT|❌ INCORRECT) — /,'$1 — ');
+});
+// Rewrite tfAnswer cleaner
+function tfAnswer(btn,given,correct,fbId){
+  const btns=btn.parentElement.querySelectorAll('.tf-btn');
+  btns.forEach(b=>b.disabled=true);
+  const fb=document.getElementById(fbId);
+  fb.style.display='block';
+  if(given===correct){ fb.className='tf-fb ok'; }
+  else { fb.className='tf-fb no'; }
+  tfAnswered++;
+  if(tfAnswered===tfData.length){
+    let sc=0;
+    tfData.forEach((_,i)=>{
+      const el=document.getElementById('tf-fb-'+i);
+      if(el && el.classList.contains('ok')) sc++;
+    });
+    document.getElementById('tf-score').textContent=`Score: ${sc}/${tfData.length} — ${sc>=7?'✅ Excellent!':sc>=5?'🟡 Good — review the incorrect ones':'🔴 Revise the timber topics tab'}`;
+  }
+}
+
+// ===== MS TOGGLE =====
+function toggleMS(btn){
+  const ms=btn.nextElementSibling;
+  ms.classList.toggle('show');
+  btn.textContent=ms.classList.contains('show')?'Hide Mark Scheme':'Show Mark Scheme';
+}
+</script>
+</body>
+</html>

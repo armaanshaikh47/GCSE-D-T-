@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 1.3 — Energy Generation, Storage & Sources · GCSE D&T Revision</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f7f2;
+    --navy: #0d1b2a;
+    --gold: #e8a020;
+    --gold-light: #fef3dc;
+    --green: #2a7a50;
+    --green-light: #e6f5ee;
+    --red: #c0392b;
+    --red-light: #fdecea;
+    --blue: #1a5276;
+    --blue-light: #e8f1f8;
+    --orange: #d35400;
+    --orange-light: #fdf0e8;
+    --teal: #0e8a85;
+    --teal-light: #e0f5f4;
+    --slate: #2c3e50;
+    --warm-white: #fafaf5;
+    --card: #ffffff;
+    --border: #e2e8e0;
+    --muted: #5a6570;
+    --shadow: 0 4px 20px rgba(13,27,42,0.09);
+    --shadow-hover: 0 8px 32px rgba(13,27,42,0.16);
+    --text: #1a2030;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0d2a1a 0%, #0d1b2a 60%, #12293a 100%);
+    color: white;
+    padding: 56px 40px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 50%, rgba(232,160,32,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(42,122,80,0.10) 0%, transparent 50%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -55deg, transparent, transparent 50px,
+      rgba(255,255,255,0.025) 50px, rgba(255,255,255,0.025) 51px
+    );
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 56px);
+    font-weight: 900;
+    line-height: 1.08;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 .accent { color: var(--gold); }
+  .hero-spec {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.72); max-width: 560px; line-height: 1.65; margin-bottom: 28px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+  .hero-tag {
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.88);
+    font-size: 12px; padding: 5px 13px; border-radius: 20px;
+  }
+
+  /* ── NAV ── */
+  .nav-bar {
+    background: white;
+    border-bottom: 2px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 20px;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0; padding: 16px 22px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+    color: var(--muted); background: none; border: none;
+    border-bottom: 3px solid transparent; cursor: pointer;
+    transition: all 0.2s; white-space: nowrap;
+    display: flex; align-items: center; gap: 7px; margin-bottom: -2px;
+  }
+  .tab-btn:hover { color: var(--navy); }
+  .tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); font-weight: 600; }
+
+  /* ── LAYOUT ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 40px 20px 80px; }
+  .section { display: none; }
+  .section.active { display: block; animation: fadeUp 0.3s ease; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+  /* ── COMMON ── */
+  .sec-head { margin-bottom: 30px; }
+  .sec-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px; font-weight: 700; color: var(--navy);
+    margin-bottom: 8px; letter-spacing: -0.02em;
+  }
+  .sec-head p { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 700px; }
+  .esl-tip {
+    background: linear-gradient(135deg, #fffbee, #fff8dc);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 13px 18px; margin-bottom: 28px;
+    font-size: 13.5px; color: #5a4200; line-height: 1.6;
+  }
+  .esl-tip strong { color: #3d2c00; }
+  .divider { border: none; border-top: 2px solid var(--border); margin: 32px 0; }
+
+  /* ── SPEC CHECKLIST ── */
+  .spec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px; }
+  .spec-card { background: white; border-radius: 14px; border: 1.5px solid var(--border); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
+  .spec-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .spec-head {
+    padding: 15px 20px; font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700; color: white;
+    display: flex; align-items: center; gap: 9px;
+  }
+  .sh-fossil { background: linear-gradient(135deg, #3d2b1f, #5a3e28); }
+  .sh-renew  { background: linear-gradient(135deg, #1a5c35, #2a7a50); }
+  .sh-power  { background: linear-gradient(135deg, #1a3a5c, #1a5276); }
+  .sh-choose { background: linear-gradient(135deg, #7a4000, #a05a00); }
+  .spec-body { padding: 14px 20px; }
+  .spec-item { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f0f0ea; font-size: 13.5px; }
+  .spec-item:last-child { border-bottom: none; }
+  .spec-item input[type="checkbox"] { margin-top: 2px; accent-color: var(--gold); flex-shrink: 0; width: 15px; height: 15px; }
+
+  /* ── VOCAB ── */
+  .filter-row { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 26px; align-items: center; }
+  .filter-btn {
+    padding: 7px 16px; border-radius: 20px; border: 1.5px solid var(--border);
+    background: white; font-size: 12.5px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s; color: var(--muted);
+  }
+  .filter-btn:hover, .filter-btn.active { background: var(--navy); color: white; border-color: var(--navy); }
+  .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 20px; }
+  .vc {
+    background: white; border-radius: 14px; border: 1.5px solid var(--border);
+    overflow: hidden; box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .vc:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+  .vc-top {
+    padding: 16px 20px 13px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  }
+  .vc-word { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+  .vc-tag {
+    font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.08em; padding: 3px 9px; border-radius: 4px; flex-shrink: 0; margin-top: 3px;
+  }
+  .t-fossil { background: #f0ece8; color: #5a3e28; }
+  .t-renew  { background: var(--green-light); color: var(--green); }
+  .t-power  { background: var(--blue-light); color: var(--blue); }
+  .t-choose { background: var(--orange-light); color: var(--orange); }
+  .vc-body { padding: 15px 20px; }
+  .def-lbl { font-size: 10px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 5px; }
+  .vc-def { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 13px; }
+  .vc-ex {
+    background: #f6f6f0; border-left: 3px solid var(--gold);
+    padding: 10px 13px; border-radius: 0 8px 8px 0;
+    font-size: 13px; color: #444; font-style: italic; margin-bottom: 11px; line-height: 1.55;
+  }
+  .vc-ex em { font-style: normal; background: var(--gold-light); padding: 1px 3px; border-radius: 2px; }
+  .vc-mem {
+    background: var(--green-light); border: 1px solid #b8deca;
+    padding: 9px 13px; border-radius: 8px;
+    font-size: 12.5px; color: #1a4a30;
+    display: flex; align-items: flex-start; gap: 7px; line-height: 1.5;
+  }
+
+  /* ── TOPIC PANELS ── */
+  .topic-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .tp-btn {
+    padding: 9px 18px; border-radius: 8px; border: none;
+    cursor: pointer; font-size: 13px; font-weight: 600;
+    transition: all 0.2s; opacity: 0.55;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .tp-btn.active { opacity: 1; transform: scale(1.04); box-shadow: var(--shadow); }
+  .tp-fossil   { background: #5a3e28; color: white; }
+  .tp-renew    { background: var(--green); color: white; }
+  .tp-power    { background: var(--blue); color: white; }
+  .tp-choose   { background: var(--orange); color: white; }
+
+  .topic-panel { display: none; }
+  .topic-panel.active { display: block; animation: fadeUp 0.3s ease; }
+  .tp-header { border-radius: 14px 14px 0 0; padding: 26px 30px; color: white; }
+  .tph-fossil  { background: linear-gradient(135deg, #3d2b1f, #5a3e28); }
+  .tph-renew   { background: linear-gradient(135deg, #1a5c35, #2a7a50); }
+  .tph-power   { background: linear-gradient(135deg, #1a3a5c, #1a5276); }
+  .tph-choose  { background: linear-gradient(135deg, #7a4000, #c06000); }
+  .tp-header h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin-bottom: 5px; letter-spacing: -0.01em; }
+  .tp-header p { font-size: 13.5px; opacity: 0.82; }
+  .tp-body {
+    background: white; border-radius: 0 0 14px 14px;
+    border: 1.5px solid var(--border); border-top: none;
+    padding: 28px 30px; margin-bottom: 24px; box-shadow: var(--shadow);
+  }
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 15px; margin-bottom: 22px; }
+  .cbox {
+    border: 1.5px solid var(--border); border-radius: 10px; padding: 15px;
+    transition: border-color 0.2s;
+  }
+  .cbox:hover { border-color: var(--gold); }
+  .cbox-icon { font-size: 22px; margin-bottom: 8px; }
+  .cbox-title { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 5px; }
+  .cbox-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .big-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 18px; }
+  .big-table th { padding: 10px 14px; text-align: left; font-size: 11px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.07em; }
+  .big-table th.h-src  { background: var(--navy); color: white; width: 110px; border-radius: 8px 0 0 0; }
+  .big-table th.h-how  { background: #2c3e50; color: white; }
+  .big-table th.h-adv  { background: var(--green); color: white; }
+  .big-table th.h-dis  { background: var(--red); color: white; border-radius: 0 8px 0 0; }
+  .big-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+  .big-table tr:last-child td { border-bottom: none; }
+  .big-table tr:nth-child(even) td { background: #f9f9f5; }
+  .big-table .src-name { font-weight: 700; color: var(--navy); }
+  .big-table td.adv-c { color: #1a4a30; }
+  .big-table td.dis-c { color: #5a1a10; }
+  .big-table td ul { padding-left: 14px; }
+  .big-table td ul li { margin-bottom: 3px; }
+
+  /* Power systems grid */
+  .power-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; }
+  .power-card { border-radius: 12px; overflow: hidden; border: 1.5px solid var(--border); box-shadow: var(--shadow); }
+  .pc-head { padding: 14px 18px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 9px; }
+  .pc-battery { background: linear-gradient(135deg, #1a3a5c, #1a5276); color: white; }
+  .pc-solar   { background: linear-gradient(135deg, #7a6000, #c09a00); color: white; }
+  .pc-mains   { background: linear-gradient(135deg, #5a1a10, #8a2a1a); color: white; }
+  .pc-wind    { background: linear-gradient(135deg, #1a5c35, #2a7a50); color: white; }
+  .pc-body { background: white; padding: 14px 18px; }
+  .pc-body p { font-size: 13px; color: var(--text); line-height: 1.55; margin-bottom: 10px; }
+  .pc-pros, .pc-cons { font-size: 12.5px; padding: 8px 12px; border-radius: 7px; margin-bottom: 7px; }
+  .pc-pros { background: var(--green-light); color: var(--green); }
+  .pc-cons { background: var(--red-light); color: var(--red); }
+  .pc-pros strong, .pc-cons strong { display: block; font-size: 10px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .pc-example { font-size: 12px; background: #f5f5f0; padding: 8px 12px; border-radius: 7px; color: var(--muted); }
+
+  /* Choosing factors */
+  .factor-list { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+  .factor-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: white; border: 1.5px solid var(--border);
+    border-radius: 12px; padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .factor-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+    background: var(--gold-light);
+  }
+  .factor-content .factor-title { font-weight: 700; font-size: 15px; color: var(--navy); margin-bottom: 4px; }
+  .factor-content .factor-desc { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin-bottom: 6px; }
+  .factor-content .factor-ex { font-size: 12.5px; background: var(--gold-light); color: #7a5000; padding: 5px 10px; border-radius: 6px; display: inline-block; }
+
+  /* ── ACTIVITIES ── */
+  .act-block { background: white; border-radius: 14px; border: 1.5px solid var(--border); overflow: hidden; margin-bottom: 28px; box-shadow: var(--shadow); }
+  .act-head { background: var(--navy); padding: 18px 24px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .act-head h3 { color: white; font-family: 'Playfair Display', serif; font-size: 18px; }
+  .act-badge { background: var(--gold); color: var(--navy); font-size: 10px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 9px; border-radius: 4px; font-weight: 500; }
+  .act-body { padding: 24px; }
+  .act-instr { background: #f5f5f0; border-radius: 8px; padding: 12px 16px; font-size: 13.5px; color: var(--muted); margin-bottom: 20px; line-height: 1.55; }
+
+  /* Sort / categorise activity */
+  .sort-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .sort-pool { background: #f5f5f0; border-radius: 10px; padding: 16px; }
+  .sort-pool h4 { font-size: 12px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); margin-bottom: 12px; }
+  .sort-zones { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sort-zone {
+    min-height: 110px; border: 2px dashed var(--border); border-radius: 10px;
+    padding: 12px; display: flex; flex-direction: column; gap: 7px;
+  }
+  .sort-zone h4 { font-size: 11px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 4px; }
+  .sz-fossil h4 { color: #5a3e28; }
+  .sz-renew h4  { color: var(--green); }
+  .sort-zone.correct-zone { border-color: var(--green); background: var(--green-light); }
+  .sort-zone.wrong-zone { border-color: var(--red); background: var(--red-light); }
+  .sort-chip {
+    background: white; border: 1.5px solid var(--border);
+    border-radius: 7px; padding: 6px 12px; font-size: 13px;
+    font-weight: 500; color: var(--navy); cursor: pointer;
+    transition: all 0.15s; user-select: none; text-align: center;
+  }
+  .sort-chip:hover { border-color: var(--gold); background: var(--gold-light); }
+  .sort-chip.placed { border-color: var(--green); background: var(--green-light); color: var(--green); cursor: default; }
+  .sort-chip.wrong { border-color: var(--red); background: var(--red-light); color: var(--red); animation: shake 0.3s; }
+
+  /* Gap fill */
+  .gap-sent { font-size: 15px; line-height: 2.3; margin-bottom: 6px; color: var(--text); }
+  .gf { border: none; border-bottom: 2.5px solid var(--gold); background: var(--gold-light); width: 170px; padding: 3px 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--navy); border-radius: 4px 4px 0 0; outline: none; transition: background 0.2s; }
+  .gf:focus { background: #fde89a; }
+  .gf.correct { background: #d4f5e0; border-bottom-color: var(--green); }
+  .gf.incorrect { background: var(--red-light); border-bottom-color: var(--red); }
+  .word-bank { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px; background: #f5f5f0; border-radius: 10px; margin-bottom: 18px; }
+  .wchip { background: white; border: 1.5px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 13px; font-weight: 500; color: var(--navy); cursor: pointer; transition: all 0.15s; user-select: none; }
+  .wchip:hover { border-color: var(--gold); background: var(--gold-light); }
+  .wchip.used { opacity: 0.32; text-decoration: line-through; pointer-events: none; }
+  .wchip.selected-chip { outline: 2px solid var(--gold); background: var(--gold-light); }
+  .check-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: white; border: none; padding: 10px 22px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 14px; transition: background 0.2s; }
+  .check-btn:hover { background: #1a3355; }
+  .reset-btn { background: none; border: 1.5px solid var(--border); border-radius: 8px; padding: 9px 18px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; cursor: pointer; margin-left: 10px; margin-top: 14px; color: var(--muted); transition: all 0.2s; }
+  .reset-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .score-box { display: none; align-items: center; gap: 10px; margin-top: 14px; padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+  .score-box.show { display: inline-flex; }
+  .score-box.good { background: var(--green-light); color: var(--green); }
+  .score-box.ok { background: var(--gold-light); color: #7a5000; }
+  .score-box.low { background: var(--red-light); color: var(--red); }
+
+  /* Matching */
+  .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .match-col { display: flex; flex-direction: column; gap: 9px; }
+  .match-col-lbl { font-size: 11px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); margin-bottom: 3px; }
+  .mitem { background: white; border: 2px solid var(--border); border-radius: 8px; padding: 11px 15px; font-size: 13.5px; cursor: pointer; transition: all 0.2s; line-height: 1.4; }
+  .mitem.mword { font-weight: 700; color: var(--navy); }
+  .mitem:hover { border-color: var(--gold); background: var(--gold-light); }
+  .mitem.selected { border-color: var(--gold); background: var(--gold-light); }
+  .mitem.matched { border-color: var(--green); background: var(--green-light); color: var(--green); pointer-events: none; font-weight: 600; }
+  .mitem.wrong { border-color: var(--red); background: var(--red-light); animation: shake 0.3s; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+
+  /* True/False */
+  .tf-item { background: white; border: 1.5px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
+  .tf-statement { font-size: 14.5px; color: var(--text); margin-bottom: 12px; line-height: 1.5; font-weight: 500; }
+  .tf-btns { display: flex; gap: 10px; }
+  .tf-btn { padding: 7px 20px; border-radius: 7px; border: 1.5px solid var(--border); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .tf-btn.true-btn:hover { background: var(--green-light); border-color: var(--green); color: var(--green); }
+  .tf-btn.false-btn:hover { background: var(--red-light); border-color: var(--red); color: var(--red); }
+  .tf-btn.correct-ans { background: var(--green-light); border-color: var(--green); color: var(--green); pointer-events: none; }
+  .tf-btn.wrong-ans { background: var(--red-light); border-color: var(--red); color: var(--red); animation: shake 0.3s; }
+  .tf-feedback { font-size: 13px; margin-top: 10px; padding: 8px 12px; border-radius: 7px; display: none; line-height: 1.5; }
+  .tf-feedback.show { display: block; }
+  .tf-feedback.fb-correct { background: var(--green-light); color: var(--green); }
+  .tf-feedback.fb-wrong { background: var(--red-light); color: var(--red); }
+
+  /* ── EXAM LANGUAGE ── */
+  .cmd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 15px; margin-bottom: 32px; }
+  .cmd-card { background: white; border: 1.5px solid var(--border); border-radius: 12px; padding: 18px; box-shadow: var(--shadow); }
+  .cmd-word { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .cmd-means { font-size: 13px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+  .cmd-marks { display: inline-block; background: var(--gold-light); color: #7a5000; font-size: 11px; font-family: 'DM Mono', monospace; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .frames-sec h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 14px; padding-bottom: 9px; border-bottom: 2px solid var(--border); }
+  .frame-card { background: white; border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 13px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .frame-type { background: #f0f0ea; padding: 8px 18px; font-size: 11px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); font-weight: 500; }
+  .frame-body { padding: 14px 18px; }
+  .frame-tpl { font-size: 14.5px; color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+  .blank { background: var(--gold-light); padding: 2px 8px; border-radius: 4px; font-style: italic; color: #7a5000; font-size: 13px; }
+  .frame-ex { font-size: 13px; color: var(--muted); font-style: italic; border-left: 3px solid var(--teal); padding-left: 12px; margin-top: 8px; line-height: 1.55; }
+  .eq-block { background: white; border: 1.5px solid var(--border); border-radius: 12px; margin-bottom: 18px; overflow: hidden; box-shadow: var(--shadow); }
+  .eq-head { background: #f5f5f0; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .eq-head span { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--muted); text-transform: uppercase; }
+  .eq-marks { background: var(--navy); color: white; font-size: 11px; font-family: 'DM Mono', monospace; padding: 3px 10px; border-radius: 4px; }
+  .eq-body { padding: 16px 20px; }
+  .eq-text { font-size: 15px; color: var(--navy); margin-bottom: 12px; font-weight: 500; line-height: 1.5; }
+  .eq-hint { background: var(--teal-light); padding: 10px 14px; border-radius: 8px; font-size: 12.5px; color: #0a5a55; line-height: 1.5; }
+  .show-ans-btn { background: none; border: 1.5px solid var(--teal); border-radius: 6px; padding: 6px 14px; font-size: 12.5px; color: var(--teal); cursor: pointer; font-family: 'DM Sans', sans-serif; margin-top: 12px; transition: all 0.2s; }
+  .show-ans-btn:hover { background: var(--teal); color: white; }
+  .model-ans { display: none; background: #f0fef9; border: 1px solid #a8e6d4; border-radius: 8px; padding: 14px; margin-top: 12px; font-size: 13.5px; line-height: 1.65; color: #1a4a3a; }
+  .model-ans.show { display: block; }
+  .mp { display: flex; gap: 10px; margin-bottom: 7px; }
+  .mpn { background: var(--green); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── ESL TOOLKIT ── */
+  .tk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .tk-card { background: white; border-radius: 14px; border: 1.5px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+  .tk-head { padding: 15px 20px; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  .tkh-navy  { background: var(--navy); color: white; }
+  .tkh-gold  { background: var(--gold); color: var(--navy); }
+  .tkh-green { background: var(--green); color: white; }
+  .tkh-teal  { background: var(--teal); color: white; }
+  .tk-body { padding: 15px 20px; }
+  .pre-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .pre-tbl th { background: #f5f5f0; padding: 8px 12px; text-align: left; font-size: 11px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .pre-tbl td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  .pre-tbl tr:last-child td { border-bottom: none; }
+  .pre { font-weight: 700; color: var(--navy); }
+  .syn-pair { display: flex; gap: 8px; align-items: flex-start; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+  .syn-pair:last-child { border-bottom: none; }
+  .syn-c { font-weight: 600; color: var(--navy); min-width: 130px; }
+  .syn-a { color: var(--gold); font-size: 16px; }
+  .syn-s { color: var(--muted); font-style: italic; font-size: 13px; }
+  .con-list { list-style: none; }
+  .con-list li { padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; display: flex; gap: 10px; align-items: flex-start; }
+  .con-list li:last-child { border-bottom: none; }
+  .con-chip { background: var(--gold-light); color: #7a5000; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 13px; white-space: nowrap; }
+  .energy-compare { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .energy-compare th { background: #f0f0ea; padding: 9px 13px; text-align: left; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .energy-compare td { padding: 9px 13px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .energy-compare tr:last-child td { border-bottom: none; }
+  .badge-r { display: inline-block; background: var(--green-light); color: var(--green); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .badge-nr { display: inline-block; background: var(--red-light); color: var(--red); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 12px; margin-top: 60px; }
+  footer strong { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 36px 18px 30px; }
+    .main { padding: 22px 14px 60px; }
+    .match-grid, .sort-container { grid-template-columns: 1fr; }
+    .tp-body { padding: 18px; }
+    .sort-zones { grid-template-columns: 1fr; }
+  }
+
+  /* ── VOCAB CARD FIX: force all text horizontal, robust layout ── */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    align-items: start;
+  }
+  .vocab-card {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    box-shadow: var(--shadow);
+    display: block;
+    height: auto;
+    overflow: visible;
+    transition: transform 0.2s, box-shadow 0.2s;
+    writing-mode: horizontal-tb;
+  }
+  .vocab-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+  .vocab-card-top {
+    padding: 16px 18px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    writing-mode: horizontal-tb;
+  }
+  .vocab-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.35;
+    writing-mode: horizontal-tb;
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  .vocab-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    writing-mode: horizontal-tb;
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+  .vocab-card-body {
+    padding: 14px 18px;
+    display: block;
+    writing-mode: horizontal-tb;
+  }
+  .def-lbl { display: none; }
+  .vocab-def {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 12px;
+    writing-mode: horizontal-tb;
+    display: block;
+    word-break: break-word;
+  }
+  .vocab-example {
+    background: #f5f5f0;
+    border-left: 3px solid var(--amber);
+    padding: 10px 13px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: #444;
+    font-style: italic;
+    line-height: 1.55;
+    margin-bottom: 11px;
+    writing-mode: horizontal-tb;
+    display: block;
+    word-break: break-word;
+  }
+  .vocab-example em { font-style: normal; background: var(--amber-light); padding: 1px 3px; border-radius: 2px; }
+  .vocab-remember {
+    background: #f0fef9;
+    border: 1px solid #c3f0e0;
+    padding: 9px 13px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: #1a5c40;
+    line-height: 1.6;
+    writing-mode: horizontal-tb;
+    display: block;
+    word-break: break-word;
+  }
+
+
+  /* ── VOCAB CARD FIX for F2: .vc classes — force horizontal text ── */
+  .vc {
+    background: var(--warm-white, white);
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    box-shadow: var(--shadow);
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+    writing-mode: horizontal-tb !important;
+  }
+  .vc:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover, 0 6px 28px rgba(13,27,42,.16)); }
+  .vc-top {
+    padding: 15px 18px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between;
+    gap: 10px;
+    writing-mode: horizontal-tb !important;
+  }
+  .vc-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.35;
+    writing-mode: horizontal-tb !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  .vc-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    writing-mode: horizontal-tb !important;
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+  .vc-body {
+    padding: 14px 18px;
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    writing-mode: horizontal-tb !important;
+  }
+  .vc-def {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 12px;
+    writing-mode: horizontal-tb !important;
+    display: block !important;
+    word-break: break-word;
+  }
+  .vc-ex {
+    background: #f6f6f0;
+    border-left: 3px solid var(--gold, #e8a020);
+    padding: 9px 12px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: #444;
+    font-style: italic;
+    line-height: 1.55;
+    margin-bottom: 11px;
+    writing-mode: horizontal-tb !important;
+    display: block !important;
+    word-break: break-word;
+  }
+  .vc-mem {
+    background: var(--green-light, #e6f5ee);
+    border: 1px solid #b8deca;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: #1a4a30;
+    line-height: 1.6;
+    writing-mode: horizontal-tb !important;
+    display: block !important;
+    word-break: break-word;
+    gap: unset !important;
+    align-items: unset !important;
+  }
+  .vocab-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    align-items: start !important;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Edexcel GCSE D&T · Topic 1.3 · Revision Pack</div>
+    <h1>Energy <span class="accent">Generation,</span><br>Storage &amp; Sources</h1>
+    <div class="hero-spec">Spec Ref: 1.3.1 · 1.3.2 · 1.3.3 &nbsp;|&nbsp; Textbook pp. 15–18</div>
+    <p class="hero-sub">A complete ESL-focused revision guide covering fossil fuels, renewable energy, power systems, and how to choose the right energy source — with vocabulary support, activities, and exam practice.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">📋 Spec Checklist</span>
+      <span class="hero-tag">📖 25+ Key Words</span>
+      <span class="hero-tag">⚡ Source Comparison Tables</span>
+      <span class="hero-tag">✏️ 3 Interactive Activities</span>
+      <span class="hero-tag">📝 Exam Sentence Frames</span>
+      <span class="hero-tag">💬 ESL Language Toolkit</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="showTab('spec')">📋 Spec Checklist</button>
+    <button class="tab-btn" onclick="showTab('vocab')">📖 Key Vocabulary</button>
+    <button class="tab-btn" onclick="showTab('topics')">🗂️ Topic Summaries</button>
+    <button class="tab-btn" onclick="showTab('activities')">✏️ Activities</button>
+    <button class="tab-btn" onclick="showTab('exam')">📝 Exam Language</button>
+    <button class="tab-btn" onclick="showTab('toolkit')">💬 ESL Toolkit</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ════════════════════════ 1. SPEC CHECKLIST ════════════════════════ -->
+<div id="sec-spec" class="section active">
+  <div class="sec-head">
+    <h2>Specification Checklist</h2>
+    <p>These are all the sub-topics you must know for 1.3. Tick each box when you feel confident. Work through the topics section by section — use the other tabs to study each area in detail.</p>
+  </div>
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Traffic Light Self-Assessment:</strong> Go through this list and use three colours. <strong>Green</strong> = I know this confidently. <strong>Amber</strong> = I partly understand this. <strong>Red</strong> = I have not studied this yet or I am confused. Focus your revision on amber and red topics first.
+  </div>
+  <div class="spec-grid">
+    <div class="spec-card">
+      <div class="spec-head sh-fossil">🪨 1.3.1a — Fossil Fuels</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Coal — how it generates energy, advantages &amp; disadvantages</div>
+        <div class="spec-item"><input type="checkbox"> Oil — how it is processed and used, advantages &amp; disadvantages</div>
+        <div class="spec-item"><input type="checkbox"> Gas — how it powers turbines, advantages &amp; disadvantages</div>
+        <div class="spec-item"><input type="checkbox"> Know that fossil fuels are <strong>non-renewable</strong> — they will run out</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-head sh-renew">🌿 1.3.1b–f — Renewable Sources</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Biofuels — biomass and biodiesel (how made, advantages &amp; disadvantages)</div>
+        <div class="spec-item"><input type="checkbox"> Tidal — how barrages work, advantages &amp; disadvantages</div>
+        <div class="spec-item"><input type="checkbox"> Wind — turbines and generators, advantages &amp; disadvantages</div>
+        <div class="spec-item"><input type="checkbox"> Solar — photovoltaic cells and solar thermal, advantages &amp; disadvantages</div>
+        <div class="spec-item"><input type="checkbox"> Hydroelectric — dams and turbines, advantages &amp; disadvantages</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-head sh-power">⚡ 1.3.2 — Powering Systems</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Batteries and cells — cylindrical and prismatic types, uses and examples</div>
+        <div class="spec-item"><input type="checkbox"> Solar cells — photovoltaics, how they work, pros &amp; cons</div>
+        <div class="spec-item"><input type="checkbox"> Mains electricity — National Grid, AC current, 230 volts</div>
+        <div class="spec-item"><input type="checkbox"> Wind power — small and large-scale, how turbines work</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-head sh-choose">🎯 1.3.3 — Choosing Energy Sources</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Portability — whether the power source can be used without mains connection</div>
+        <div class="spec-item"><input type="checkbox"> Environmental impact — active and passive impacts of all sources</div>
+        <div class="spec-item"><input type="checkbox"> Power output — consistency and reliability of different sources</div>
+        <div class="spec-item"><input type="checkbox"> Circuit / system connections — plugs, connectors, terminals</div>
+        <div class="spec-item"><input type="checkbox"> Cost — initial setup cost vs. running cost for different sources</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ 2. KEY VOCABULARY ════════════════════════ -->
+<div id="sec-vocab" class="section">
+  <div class="sec-head">
+    <h2>Key Vocabulary</h2>
+    <p>Learn each word carefully. Read the definition, study the example sentence (the highlighted word shows the vocabulary in context), and use the memory tip to help it stick.</p>
+  </div>
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Vocabulary Notebook:</strong> For each word, write: (1) the word, (2) its meaning in your first language, (3) a sentence you write yourself using the word. Writing your own sentence is the most powerful way to remember new vocabulary.
+  </div>
+  <div class="filter-row">
+    <span style="font-size:13px;color:var(--muted);font-weight:500;">Filter:</span>
+    <button class="filter-btn active" onclick="filterVocab('all',this)">All</button>
+    <button class="filter-btn" onclick="filterVocab('fossil',this)">🪨 Fossil Fuels</button>
+    <button class="filter-btn" onclick="filterVocab('renew',this)">🌿 Renewables</button>
+    <button class="filter-btn" onclick="filterVocab('power',this)">⚡ Power Systems</button>
+    <button class="filter-btn" onclick="filterVocab('choose',this)">🎯 Choosing Sources</button>
+  </div>
+  <div class="vocab-grid" id="vocabGrid">
+
+    <!-- FOSSIL FUELS -->
+    <div class="vc" data-topic="fossil">
+      <div class="vc-top"><div class="vc-word">Non-Renewable Energy</div><div class="vc-tag t-fossil">Fossil Fuels</div></div>
+      <div class="vc-body">
+<div class="vc-def">An energy source that <strong>cannot be replaced</strong> once it has been used. Fossil fuels (coal, oil, gas) formed over millions of years and will eventually run out. The opposite is <em>renewable</em>.</div>
+        <div class="vc-ex">"Coal is a <em>non-renewable</em> energy source — once all the coal in the ground is burned, it cannot be replaced or replenished."</div>
+        <div class="vc-mem">💡 <em>Re-new</em> = make new again. <em>Non-renewable</em> = cannot be made new again. Think: finite, running out, cannot be replaced.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="fossil">
+      <div class="vc-top"><div class="vc-word">Fossil Fuels</div><div class="vc-tag t-fossil">Fossil Fuels</div></div>
+      <div class="vc-body">
+<div class="vc-def">Coal, oil, and natural gas — formed from the remains of plants and animals that lived millions of years ago, compressed underground over time into energy-rich fuels.</div>
+        <div class="vc-ex">"Burning <em>fossil fuels</em> such as coal and oil releases CO₂ into the atmosphere, contributing to global warming and climate change."</div>
+        <div class="vc-mem">💡 A <em>fossil</em> is the remains of an ancient plant or animal. <em>Fossil fuels</em> = fuels made from ancient fossils. They took millions of years to form.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="fossil">
+      <div class="vc-top"><div class="vc-word">Turbine</div><div class="vc-tag t-fossil">Fossil Fuels</div></div>
+      <div class="vc-body">
+<div class="vc-def">A machine with rotating blades that converts the movement of a fluid (water, steam, or wind) into mechanical energy, which then drives a generator to produce electricity.</div>
+        <div class="vc-ex">"When coal is burned, the heat converts water into steam, and the steam spins a <em>turbine</em> at high speed to generate electricity."</div>
+        <div class="vc-mem">💡 Think of a <em>fan</em> — a turbine looks like a giant fan that spins to make electricity. Used in coal, wind, tidal, and hydroelectric power.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="fossil">
+      <div class="vc-top"><div class="vc-word">Combustion</div><div class="vc-tag t-fossil">Fossil Fuels</div></div>
+      <div class="vc-body">
+<div class="vc-def">The process of burning a fuel in the presence of oxygen to release energy in the form of heat and light. Most fossil fuels generate energy through combustion.</div>
+        <div class="vc-ex">"The <em>combustion</em> of natural gas in a power station releases heat energy, which is used to boil water and drive a steam turbine."</div>
+        <div class="vc-mem">💡 <em>Combust</em> = to catch fire and burn. <em>Combustion</em> = the burning process. Related word: <em>internal combustion engine</em> (used in petrol cars).</div>
+      </div>
+    </div>
+
+    <!-- RENEWABLES -->
+    <div class="vc" data-topic="renew">
+      <div class="vc-top"><div class="vc-word">Renewable Energy</div><div class="vc-tag t-renew">Renewables</div></div>
+      <div class="vc-body">
+<div class="vc-def">Energy from natural sources that are <strong>replenished naturally</strong> and will not run out — including sunlight, wind, water flow, and plant matter. They produce little or no greenhouse gas emissions.</div>
+        <div class="vc-ex">"Solar and wind are <em>renewable energy</em> sources because the sun will continue to shine and the wind will continue to blow indefinitely."</div>
+        <div class="vc-mem">💡 <em>Renew</em> = to restore or replace. Renewable energy = energy that nature <em>renews</em> automatically and continuously. It never runs out.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="renew">
+      <div class="vc-top"><div class="vc-word">Photovoltaic (PV)</div><div class="vc-tag t-renew">Renewables</div></div>
+      <div class="vc-body">
+<div class="vc-def">Technology that converts sunlight <strong>directly into electricity</strong> using solar cells made of silicon. When light hits the cell, it causes electrons to flow — creating an electric current.</div>
+        <div class="vc-ex">"<em>Photovoltaic</em> panels on the school roof generate free electricity during daylight hours, reducing energy bills significantly."</div>
+        <div class="vc-mem">💡 <em>Photo</em> = light (like photography). <em>Voltaic</em> = related to electricity (from Alessandro Volta, inventor of the battery). Photo + voltaic = light → electricity.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="renew">
+      <div class="vc-top"><div class="vc-word">Biomass</div><div class="vc-tag t-renew">Renewables</div></div>
+      <div class="vc-body">
+<div class="vc-def">Organic material derived from living or recently living organisms — such as wood, crops, agricultural waste, and landfill gas — that is burned or converted to produce heat or electricity.</div>
+        <div class="vc-ex">"The power station burns <em>biomass</em> — wood pellets and agricultural waste — to generate electricity, releasing far less CO₂ than coal."</div>
+        <div class="vc-mem">💡 <em>Bio</em> = living/life. <em>Mass</em> = matter/material. Biomass = living or once-living material used as fuel. Examples: wood, crops, animal waste, landfill gas.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="renew">
+      <div class="vc-top"><div class="vc-word">Biodiesel</div><div class="vc-tag t-renew">Renewables</div></div>
+      <div class="vc-body">
+<div class="vc-def">A fuel made from natural plants, vegetables, and fermented waste cooking oil. It can be used in diesel engines <strong>without modifying the engine</strong> and produces fewer harmful emissions than regular diesel.</div>
+        <div class="vc-ex">"Some buses now run on <em>biodiesel</em> made from recycled cooking oil from restaurants — a sustainable and low-emission alternative to regular diesel."</div>
+        <div class="vc-mem">💡 <em>Bio</em> = biological/living. <em>Diesel</em> = a type of fuel. Biodiesel = biologically-made diesel. Key advantage: no harmful chemicals; can use existing engines.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="renew">
+      <div class="vc-top"><div class="vc-word">Tidal Barrage</div><div class="vc-tag t-renew">Renewables</div></div>
+      <div class="vc-body">
+<div class="vc-def">A large dam-like structure built across a tidal river, bay, or estuary. As the tide rises and falls, water is trapped and released through turbines to generate electricity. Tides are predictable and reliable.</div>
+        <div class="vc-ex">"A <em>tidal barrage</em> built across a river estuary can generate electricity twice a day as the tide flows in and out through turbines in the structure."</div>
+        <div class="vc-mem">💡 A <em>barrage</em> = a barrier/dam. A tidal barrage = a barrier that uses tidal water to spin turbines. Key fact: tides are predictable — unlike wind and solar.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="renew">
+      <div class="vc-top"><div class="vc-word">Hydroelectric Power</div><div class="vc-tag t-renew">Renewables</div></div>
+      <div class="vc-body">
+<div class="vc-def">Electricity generated by the movement of water. A dam is built to store water at height; when released, the water flows through tunnels and spins turbines to produce large quantities of cheap electricity.</div>
+        <div class="vc-ex">"Norway generates over 90% of its electricity from <em>hydroelectric power</em> using the country's many rivers and reservoirs."</div>
+        <div class="vc-mem">💡 <em>Hydro</em> = water (like hydrate). <em>Electric</em> = electricity. Hydroelectric = water → electricity. Key fact: large amount of low-cost power. Disadvantage: expensive to build.</div>
+      </div>
+    </div>
+
+    <!-- POWER SYSTEMS -->
+    <div class="vc" data-topic="power">
+      <div class="vc-top"><div class="vc-word">Battery / Cell</div><div class="vc-tag t-power">Power Systems</div></div>
+      <div class="vc-body">
+<div class="vc-def">A portable device that stores chemical energy and converts it into electrical energy. A <strong>cell</strong> is a single unit; a <strong>battery</strong> is two or more cells connected together. Types include cylindrical (AA, AAA) and prismatic (flat, used in phones).</div>
+        <div class="vc-ex">"A hearing aid uses a small <em>battery cell</em> because it needs a compact, portable power source that does not require a mains electricity connection."</div>
+        <div class="vc-mem">💡 <em>Cylindrical</em> cells = round, like a AA battery. <em>Prismatic</em> cells = flat, like in a smartphone. Key: batteries are portable but can pollute if disposed of incorrectly.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="power">
+      <div class="vc-top"><div class="vc-word">Mains Electricity</div><div class="vc-tag t-power">Power Systems</div></div>
+      <div class="vc-body">
+<div class="vc-def">Electricity supplied by the National Grid to homes, schools, and businesses through cables and sockets. It provides <strong>alternating current (AC)</strong> at 230 volts in the UK. Devices must be plugged in to use it.</div>
+        <div class="vc-ex">"A refrigerator uses <em>mains electricity</em> because it needs a constant, reliable power supply 24 hours a day — something a battery cannot provide."</div>
+        <div class="vc-mem">💡 <em>Mains</em> = the main supply (the power network). Mains electricity = supplied from the National Grid. Key facts: 230V in the UK; alternating current (AC); not portable.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="power">
+      <div class="vc-top"><div class="vc-word">Alternating Current (AC)</div><div class="vc-tag t-power">Power Systems</div></div>
+      <div class="vc-body">
+<div class="vc-def">A type of electrical current where the flow of electrons <strong>reverses direction repeatedly</strong> — in the UK, this happens 50 times per second. Used in mains electricity because it can travel efficiently over long distances.</div>
+        <div class="vc-ex">"Mains electricity uses <em>alternating current</em> which flows in one direction then the other 50 times per second, making it suitable for the National Grid."</div>
+        <div class="vc-mem">💡 <em>Alternate</em> = to switch between two things. AC = current that alternates (switches direction). The opposite is DC (direct current) — used in batteries, which always flows one way.</div>
+      </div>
+    </div>
+
+    <!-- CHOOSING -->
+    <div class="vc" data-topic="choose">
+      <div class="vc-top"><div class="vc-word">Portability</div><div class="vc-tag t-choose">Choosing Sources</div></div>
+      <div class="vc-body">
+<div class="vc-def">Whether a power source can be easily carried and used <strong>away from a mains electricity supply</strong>. Portable devices (like phones) need portable power sources such as batteries or small solar cells.</div>
+        <div class="vc-ex">"When designing a portable medical device, <em>portability</em> of the power source is critical — it must work in locations without access to mains electricity."</div>
+        <div class="vc-mem">💡 <em>Port</em> = carry (like a seaport = place ships carry goods). <em>Portable</em> = can be carried. Portability = the quality of being easy to carry. Key question: Does the product need to move?</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="choose">
+      <div class="vc-top"><div class="vc-word">Power Output</div><div class="vc-tag t-choose">Choosing Sources</div></div>
+      <div class="vc-body">
+<div class="vc-def">The amount of electrical energy a source can reliably deliver. Some sources (like solar and wind) have <strong>variable</strong> output — they produce more or less electricity depending on weather conditions.</div>
+        <div class="vc-ex">"Solar panels have inconsistent <em>power output</em> because they produce more electricity on sunny days than on cloudy days, which makes them unreliable as a sole power source."</div>
+        <div class="vc-mem">💡 <em>Output</em> = what comes out. <em>Power output</em> = how much electricity comes out. Key concept: <em>variable</em> (changes) vs. <em>consistent/reliable</em> (always the same).</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="choose">
+      <div class="vc-top"><div class="vc-word">Environmental Impact</div><div class="vc-tag t-choose">Choosing Sources</div></div>
+      <div class="vc-body">
+<div class="vc-def">The effect a power source has on the natural environment — including air pollution, land use, habitat destruction, and CO₂ emissions. All energy sources have some environmental impact, even renewables.</div>
+        <div class="vc-ex">"Although wind turbines have no emissions when operating, their <em>environmental impact</em> includes visual pollution and potential disruption to wildlife habitats."</div>
+        <div class="vc-mem">💡 <em>Impact</em> = effect or consequence. Environmental impact = the consequences for nature. Key exam point: <strong>no</strong> energy source has zero environmental impact — always consider active AND passive impacts.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="choose">
+      <div class="vc-top"><div class="vc-word">National Grid</div><div class="vc-tag t-choose">Choosing Sources</div></div>
+      <div class="vc-body">
+<div class="vc-def">The network of power stations, cables, and transformers that generates and distributes electricity across the country to homes and businesses. It must constantly balance supply with demand.</div>
+        <div class="vc-ex">"Electricity generated at a wind farm is fed into the <em>National Grid</em>, which then distributes it to homes and businesses across the country."</div>
+        <div class="vc-mem">💡 A <em>grid</em> = a network of lines (like a grid on a map). The National Grid = the national network of electrical cables that carries electricity everywhere in the country.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════ 3. TOPIC SUMMARIES ════════════════════════ -->
+<div id="sec-topics" class="section">
+  <div class="sec-head">
+    <h2>Topic Summaries</h2>
+    <p>Click each topic button to open a detailed summary. All tables are cross-referenced with your textbook (pp. 15–18) and the Edexcel specification.</p>
+  </div>
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Read, Cover, Write, Check:</strong> Read one row of the table. Cover it with your hand or a piece of paper. Write what you remember. Then check. This works much better than just reading the table repeatedly.
+  </div>
+
+  <div class="topic-nav">
+    <button class="tp-btn tp-fossil active" onclick="showTopic('fossil',this)">🪨 Fossil Fuels</button>
+    <button class="tp-btn tp-renew"  onclick="showTopic('renew',this)">🌿 Renewable Energy</button>
+    <button class="tp-btn tp-power"  onclick="showTopic('power',this)">⚡ Power Systems</button>
+    <button class="tp-btn tp-choose" onclick="showTopic('choose',this)">🎯 Choosing Energy Sources</button>
+  </div>
+
+  <!-- FOSSIL FUELS -->
+  <div class="topic-panel active" id="tp-fossil">
+    <div class="tp-header tph-fossil">
+      <h3>🪨 Fossil Fuels — Non-Renewable Energy Sources</h3>
+      <p>Spec ref: 1.3.1a | Key question: <em>How do coal, oil and gas generate energy, and what are their advantages and disadvantages?</em></p>
+    </div>
+    <div class="tp-body">
+      <div class="concept-grid">
+        <div class="cbox"><div class="cbox-icon">📖</div><div class="cbox-title">What is a fossil fuel?</div><div class="cbox-desc">Formed from the remains of plants and animals that died millions of years ago. They were compressed underground and slowly converted into energy-rich fuels. They are <strong>finite</strong> — once used they cannot be replaced.</div></div>
+        <div class="cbox"><div class="cbox-icon">🔥</div><div class="cbox-title">How do they make electricity?</div><div class="cbox-desc">Most fossil fuels work by <strong>combustion</strong> (burning). The heat boils water → steam spins a turbine → turbine drives a generator → electricity is produced. This is called a thermal power station.</div></div>
+        <div class="cbox"><div class="cbox-icon">☁️</div><div class="cbox-title">Environmental problem</div><div class="cbox-desc">Burning fossil fuels releases CO₂ and other greenhouse gases (sulfur dioxide, nitrogen oxides). These cause <strong>global warming, acid rain, and air pollution</strong>. Extraction also damages landscapes and risks environmental disasters.</div></div>
+        <div class="cbox"><div class="cbox-icon">🏭</div><div class="cbox-title">Why do we still use them?</div><div class="cbox-desc">Despite their disadvantages, fossil fuels provide <strong>stable, large-scale, high-power electricity</strong> that renewable sources currently cannot always match. They are also relatively cheap to extract and convert.</div></div>
+      </div>
+      <table class="big-table">
+        <tr><th class="h-src">Source</th><th class="h-how">How it generates electricity</th><th class="h-adv">✓ Advantages</th><th class="h-dis">✗ Disadvantages</th></tr>
+        <tr>
+          <td class="src-name">⚫ Coal</td>
+          <td>Heat energy and hot gases convert water into steam → steam spins a turbine → turbine drives a generator</td>
+          <td class="adv-c"><ul><li>Stable, large-scale electricity</li><li>Relatively cheap to extract</li><li>Reliable supply</li></ul></td>
+          <td class="dis-c"><ul><li>Emits CO₂, sulfur, mercury, arsenic</li><li>Mining damages the landscape</li><li>Expensive clean-up technologies</li></ul></td>
+        </tr>
+        <tr>
+          <td class="src-name">🛢 Oil</td>
+          <td>Processed into petroleum products (petrol, diesel). In power plants, oil is burned → heats water → steam drives turbine blades</td>
+          <td class="adv-c"><ul><li>Stable, large-scale electricity</li><li>Versatile (petrol, diesel, plastics)</li></ul></td>
+          <td class="dis-c"><ul><li>Highly polluting power plants</li><li>Oil extraction risks disasters (spills)</li><li>Exploration damages landscapes</li></ul></td>
+        </tr>
+        <tr>
+          <td class="src-name">🔵 Gas</td>
+          <td>Burning gas powers turbines; waste heat powers a steam turbine (combined cycle). Also used directly in homes for heating</td>
+          <td class="adv-c"><ul><li>Cleaner than coal/oil — half the CO₂</li><li>Ready-made fuel (easy to extract)</li><li>Can power homes directly</li></ul></td>
+          <td class="dis-c"><ul><li>Still a greenhouse gas emitter</li><li>Non-renewable — will run out</li></ul></td>
+        </tr>
+      </table>
+      <div style="margin-top:18px;background:var(--gold-light);border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 8px 8px 0;font-size:13.5px;color:#5a4000;">
+        💡 <strong>Exam insight:</strong> A common exam question asks you to <em>justify</em> why fossil fuels are still used despite their disadvantages. Key answer: they provide <strong>consistent, high-output electricity</strong> that renewables cannot always reliably match, especially at large scale.
+      </div>
+    </div>
+  </div>
+
+  <!-- RENEWABLE ENERGY -->
+  <div class="topic-panel" id="tp-renew">
+    <div class="tp-header tph-renew">
+      <h3>🌿 Renewable Energy Sources</h3>
+      <p>Spec ref: 1.3.1b–f | Key question: <em>How do renewable sources work, and what are their advantages and disadvantages?</em></p>
+    </div>
+    <div class="tp-body">
+      <div class="concept-grid">
+        <div class="cbox"><div class="cbox-icon">🔄</div><div class="cbox-title">What makes it renewable?</div><div class="cbox-desc">A renewable energy source is replenished naturally by the environment. The sun keeps shining, the wind keeps blowing, and rivers keep flowing. They are not "used up" in the way fossil fuels are.</div></div>
+        <div class="cbox"><div class="cbox-icon">🌍</div><div class="cbox-title">Environmental benefit</div><div class="cbox-desc">Most renewable sources produce <strong>zero or very low emissions</strong> during operation. This makes them crucial for tackling climate change and reducing our carbon footprint.</div></div>
+        <div class="cbox"><div class="cbox-icon">⚠️</div><div class="cbox-title">Important limitation</div><div class="cbox-desc">Renewables are not without problems — they often have <strong>variable power output</strong> (dependent on weather), high initial setup costs, and can impact ecosystems or landscapes.</div></div>
+        <div class="cbox"><div class="cbox-icon">📊</div><div class="cbox-title">UK context</div><div class="cbox-desc">Renewable energy sources now produce around 20% of the UK's electricity. The government has targets to increase this significantly to meet net-zero carbon emissions goals.</div></div>
+      </div>
+      <table class="big-table">
+        <tr><th class="h-src">Source</th><th class="h-how">What it is / How it works</th><th class="h-adv">✓ Advantages</th><th class="h-dis">✗ Disadvantages</th></tr>
+        <tr>
+          <td class="src-name">🌱 Biomass</td>
+          <td>Organic matter (wood, crops, landfill gas) burned directly or converted to electricity via combustion</td>
+          <td class="adv-c"><ul><li>Agricultural and plant waste can be used</li><li>Carbon-neutral if managed sustainably</li></ul></td>
+          <td class="dis-c"><ul><li>Large land areas needed to grow crops</li><li>Burning emits fumes that add to global warming</li></ul></td>
+        </tr>
+        <tr>
+          <td class="src-name">🚗 Biodiesel</td>
+          <td>Made from plants, vegetables, and fermented waste cooking oil; used in diesel engines without modification</td>
+          <td class="adv-c"><ul><li>Uses existing diesel engine infrastructure</li><li>Does not release harmful chemicals</li></ul></td>
+          <td class="dis-c"><ul><li>Requires large areas of land to cultivate fuel crops</li></ul></td>
+        </tr>
+        <tr>
+          <td class="src-name">🌊 Tidal</td>
+          <td>Artificial barrages across estuaries trap tidal water; water released through turbines as tide changes</td>
+          <td class="adv-c"><ul><li>No emissions during operation</li><li>Tides are predictable and reliable</li><li>Barrages can double as bridges</li></ul></td>
+          <td class="dis-c"><ul><li>Lower energy output than fossil fuels</li><li>Expensive to build</li><li>Ecological impact on tidal habitats</li><li>Only possible in coastal areas</li></ul></td>
+        </tr>
+        <tr>
+          <td class="src-name">💨 Wind</td>
+          <td>Wind turbines use propeller blades that spin a shaft connected to a generator to create electricity</td>
+          <td class="adv-c"><ul><li>Freely available; no fuel costs</li><li>Can be used in remote areas</li><li>No emissions during operation</li></ul></td>
+          <td class="dis-c"><ul><li>Wind is unpredictable — variable output</li><li>Visually unsightly to many people</li><li>Offshore turbines can restrict shipping</li><li>Expensive to set up</li></ul></td>
+        </tr>
+        <tr>
+          <td class="src-name">☀️ Solar</td>
+          <td>Photovoltaic (PV) cells convert sunlight directly into electricity; solar thermal uses the sun's heat to produce steam</td>
+          <td class="adv-c"><ul><li>Reliable in warmer, sunnier climates</li><li>Homes can generate their own electricity</li><li>Free energy once installed</li></ul></td>
+          <td class="dis-c"><ul><li>Output depends on geographic location and weather</li><li>Expensive initial setup</li><li>Solar farms change local ecology</li></ul></td>
+        </tr>
+        <tr>
+          <td class="src-name">💧 Hydroelectric</td>
+          <td>A dam traps water at height; water flows through tunnels → spins turbines → generates large amounts of electricity</td>
+          <td class="adv-c"><ul><li>Large amount of low-cost power</li><li>Dams can serve as water reservoirs</li><li>Reliable and consistent output</li></ul></td>
+          <td class="dis-c"><ul><li>Very expensive to construct</li><li>Dam construction can damage the environment and displace communities</li></ul></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- POWER SYSTEMS -->
+  <div class="topic-panel" id="tp-power">
+    <div class="tp-header tph-power">
+      <h3>⚡ Power Systems — Powering Products &amp; Devices</h3>
+      <p>Spec ref: 1.3.2 | Key question: <em>What are the different ways to power a product or system, and when should each be used?</em></p>
+    </div>
+    <div class="tp-body">
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px;">A <strong>power system</strong> is a network of components that supply, transfer, and use electrical energy. Designers must choose the most appropriate system for each product. Here are the four main options:</p>
+      <div class="power-grid">
+        <div class="power-card">
+          <div class="pc-head pc-battery">🔋 Batteries &amp; Cells</div>
+          <div class="pc-body">
+            <p>Use chemical energy to make electricity. Two types: <strong>cylindrical</strong> (D, C, AA, AAA — round, common, cheap, long life) and <strong>prismatic</strong> (flat, flexible, used in phones and laptops — shorter life but rechargeable).</p>
+            <div class="pc-pros"><strong>✓ Advantages</strong>Portable; no mains connection needed; widely available; inexpensive cylindrical types</div>
+            <div class="pc-cons"><strong>✗ Disadvantages</strong>Can leak chemicals into soil; expensive to dispose of properly; prismatic types have shorter lifespan</div>
+            <div class="pc-example">📱 Examples: AA batteries in remote controls, prismatic cells in smartphones and hearing aids, medical implants</div>
+          </div>
+        </div>
+        <div class="power-card">
+          <div class="pc-head pc-solar">☀️ Solar Cells</div>
+          <div class="pc-body">
+            <p>Electronic devices containing two silicon layers that allow electrons to flow when sunlight hits them. Free energy once the panels are installed. Can provide local electricity for homes, schools, or small devices.</p>
+            <div class="pc-pros"><strong>✓ Advantages</strong>Free energy once installed; non-polluting; suitable for off-grid locations; low-voltage versions good for small products</div>
+            <div class="pc-cons"><strong>✗ Disadvantages</strong>Output depends on sunlight availability; solar farms can look unsightly; high initial cost</div>
+            <div class="pc-example">🏠 Examples: Solar panels on rooftops, small solar cells in garden lights, solar-powered calculators and model cars</div>
+          </div>
+        </div>
+        <div class="power-card">
+          <div class="pc-head pc-mains">🔌 Mains Electricity</div>
+          <div class="pc-body">
+            <p>Supplied through the National Grid using alternating current (AC) at 230 volts. The most powerful and consistent supply available. Products must be plugged into a socket — so they are <strong>not portable</strong>.</p>
+            <div class="pc-pros"><strong>✓ Advantages</strong>Consistent, high-power supply; no running out; powers demanding appliances; already connected to most buildings</div>
+            <div class="pc-cons"><strong>✗ Disadvantages</strong>Not portable; can be produced using dirty energy (fossil fuels); requires safe wiring and connectors</div>
+            <div class="pc-example">🍳 Examples: Refrigerators, washing machines, kettles, televisions, power tools</div>
+          </div>
+        </div>
+        <div class="power-card">
+          <div class="pc-head pc-wind">💨 Wind Power</div>
+          <div class="pc-body">
+            <p>Converts wind movement into electricity via a bladed rotor driving a rotating shaft in a generator. Can range from large offshore wind farms to small home turbines. Output depends on wind strength.</p>
+            <div class="pc-pros"><strong>✓ Advantages</strong>No emissions in operation; can be built at home (small versions); offshore farms produce significant electricity</div>
+            <div class="pc-cons"><strong>✗ Disadvantages</strong>Dependent on wind — unpredictable output; less useful on a small scale; visually controversial</div>
+            <div class="pc-example">🏠 Examples: Offshore wind farms feeding the National Grid; small domestic turbines on rural homes</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px;background:var(--blue-light);border-left:4px solid var(--blue);padding:12px 16px;border-radius:0 8px 8px 0;font-size:13.5px;color:#0d2a45;">
+        💡 <strong>Key exam insight:</strong> When an exam question asks you to <em>choose a power source for a specific product</em>, always link your choice to the product's context. Ask yourself: Does it need to be portable? Does it need high power? Where will it be used? What does the environment look like?
+      </div>
+    </div>
+  </div>
+
+  <!-- CHOOSING ENERGY SOURCES -->
+  <div class="topic-panel" id="tp-choose">
+    <div class="tp-header tph-choose">
+      <h3>🎯 Choosing Appropriate Energy Sources</h3>
+      <p>Spec ref: 1.3.3 | Key question: <em>What five factors must a designer consider when selecting an energy source for a product?</em></p>
+    </div>
+    <div class="tp-body">
+      <p style="font-weight:600;color:var(--navy);margin-bottom:16px;font-size:14.5px;">A useful acronym: <span style="background:var(--gold-light);padding:3px 10px;border-radius:6px;color:#7a5000;font-family:'DM Mono',monospace;letter-spacing:0.05em;">P – E – P – C – C</span> &nbsp;(Portability, Environmental impact, Power output, Circuit connections, Cost)</p>
+      <div class="factor-list">
+        <div class="factor-item">
+          <div class="factor-icon">🎒</div>
+          <div class="factor-content">
+            <div class="factor-title">1. Portability of the Power Source</div>
+            <div class="factor-desc">Can the product be used away from a mains electricity supply? Remote working, outdoor use, and medical devices often require portable, battery-powered or solar-powered solutions that do not need to be plugged in.</div>
+            <div class="factor-ex">🔍 Example: A portable glucose monitor needs a battery — it cannot rely on mains electricity as it is used on the move.</div>
+          </div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon">🌿</div>
+          <div class="factor-content">
+            <div class="factor-title">2. Environmental Impact</div>
+            <div class="factor-desc">No energy source is completely "clean." Designers must consider <strong>active impacts</strong> (emissions during use, e.g. CO₂ from burning coal) and <strong>passive impacts</strong> (visual impact of wind farms, habitat loss from dams). Transport and disposal of equipment also have environmental costs.</div>
+            <div class="factor-ex">🔍 Example: Solar panels have no emissions during operation, but their manufacture uses energy and rare materials.</div>
+          </div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon">⚡</div>
+          <div class="factor-content">
+            <div class="factor-title">3. Power Output</div>
+            <div class="factor-desc">Different products need different amounts of power. Renewables like solar and wind have <strong>variable output</strong> — they produce less energy at night or on calm days. This makes them unreliable as the sole power source for high-demand applications without battery storage backup.</div>
+            <div class="factor-ex">🔍 Example: A hospital needs a consistent, high-power supply — it cannot rely solely on wind power due to its unpredictable output.</div>
+          </div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon">🔌</div>
+          <div class="factor-content">
+            <div class="factor-title">4. Circuit / System Connections</div>
+            <div class="factor-desc">Designers must consider how the power source will connect to the product — including the type of plugs, connectors, and terminals needed. Different power sources require different connection methods (e.g. battery terminals vs mains plug vs solar cell connectors).</div>
+            <div class="factor-ex">🔍 Example: Switching from batteries to mains power in a product requires redesigning the circuit connection to handle 230V AC safely.</div>
+          </div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon">💷</div>
+          <div class="factor-content">
+            <div class="factor-title">5. Cost</div>
+            <div class="factor-desc">The designer must consider both the <strong>initial setup cost</strong> (how much the power system costs to install or build into the product) and the <strong>running cost</strong> (how much it costs to keep it powered over time). Batteries have low setup costs but ongoing replacement costs; solar has high setup but near-zero running costs.</div>
+            <div class="factor-ex">🔍 Example: A solar-powered street light has a high initial cost but zero running costs, making it cost-effective over many years.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════ 4. ACTIVITIES ════════════════════════ -->
+<div id="sec-activities" class="section">
+  <div class="sec-head">
+    <h2>Revision Activities</h2>
+    <p>Three different activities to test your vocabulary, understanding, and ability to classify energy sources. Try each activity without looking at your notes first.</p>
+  </div>
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Productive Struggle:</strong> It is normal and good to find activities difficult. If you cannot remember an answer, do not look it up immediately — think for 30 seconds first. The effort of trying to remember makes your memory stronger, even if you get the answer wrong.
+  </div>
+
+  <!-- ACTIVITY 1: SORTING -->
+  <div class="act-block">
+    <div class="act-head">
+      <h3>Activity 1 — Sort the Energy Sources</h3>
+      <div class="act-badge">Classify &amp; categorise</div>
+    </div>
+    <div class="act-body">
+      <div class="act-instr">📝 <strong>Instructions:</strong> Click an energy source from the pool, then click either the <strong>Renewable</strong> or <strong>Non-Renewable</strong> box to place it there. Get all 9 sources sorted correctly to complete the activity!</div>
+      <div class="sort-container">
+        <div class="sort-pool">
+          <h4>Energy Sources — Click to select, then click a category</h4>
+          <div id="sortPool" style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="sort-chip" data-answer="non-renewable" onclick="selectSortChip(this)">Coal</span>
+            <span class="sort-chip" data-answer="renewable"     onclick="selectSortChip(this)">Solar</span>
+            <span class="sort-chip" data-answer="non-renewable" onclick="selectSortChip(this)">Oil</span>
+            <span class="sort-chip" data-answer="renewable"     onclick="selectSortChip(this)">Wind</span>
+            <span class="sort-chip" data-answer="non-renewable" onclick="selectSortChip(this)">Gas</span>
+            <span class="sort-chip" data-answer="renewable"     onclick="selectSortChip(this)">Tidal</span>
+            <span class="sort-chip" data-answer="renewable"     onclick="selectSortChip(this)">Biomass</span>
+            <span class="sort-chip" data-answer="renewable"     onclick="selectSortChip(this)">Hydroelectric</span>
+            <span class="sort-chip" data-answer="renewable"     onclick="selectSortChip(this)">Biodiesel</span>
+          </div>
+        </div>
+        <div>
+          <div class="sort-zones">
+            <div class="sort-zone sz-fossil" id="zone-non-renewable" onclick="dropSortChip('non-renewable')">
+              <h4>🪨 Non-Renewable (Fossil Fuels)</h4>
+            </div>
+            <div class="sort-zone sz-renew" id="zone-renewable" onclick="dropSortChip('renewable')">
+              <h4>🌿 Renewable</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sortResult" style="display:none;margin-top:14px;font-size:14px;font-weight:600;color:var(--green);background:var(--green-light);padding:10px 16px;border-radius:8px;">🎉 All sorted correctly! Well done — you know your renewable vs non-renewable sources!</div>
+      <button class="reset-btn" style="margin-top:12px;" onclick="resetSort()">↺ Reset Activity</button>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 2: GAP FILL -->
+  <div class="act-block">
+    <div class="act-head">
+      <h3>Activity 2 — Gap Fill: Energy Vocabulary in Context</h3>
+      <div class="act-badge">Fill in the blanks</div>
+    </div>
+    <div class="act-body">
+      <div class="act-instr">📝 <strong>Instructions:</strong> Click a word from the Word Bank to select it (it will be highlighted), then click the gap where it belongs. You can also type directly into the boxes. Press <strong>Check Answers</strong> when you are finished.</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px;"><strong>Word Bank:</strong></p>
+      <div class="word-bank" id="wb1">
+        <span class="wchip" data-word="hydroelectric">hydroelectric</span>
+        <span class="wchip" data-word="non-renewable">non-renewable</span>
+        <span class="wchip" data-word="combustion">combustion</span>
+        <span class="wchip" data-word="tidal barrage">tidal barrage</span>
+        <span class="wchip" data-word="photovoltaic">photovoltaic</span>
+        <span class="wchip" data-word="turbine">turbine</span>
+        <span class="wchip" data-word="portability">portability</span>
+        <span class="wchip" data-word="power output">power output</span>
+        <span class="wchip" data-word="alternating current">alternating current</span>
+        <span class="wchip" data-word="biomass">biomass</span>
+      </div>
+      <div id="gf1">
+        <div class="gap-sent">1. Coal, oil, and gas are called fossil fuels. They are <input type="text" class="gf" data-answer="non-renewable"> energy sources because they cannot be replenished once used.</div>
+        <div class="gap-sent">2. When coal is burned in a power station, the heat creates steam which spins a <input type="text" class="gf" data-answer="turbine"> to generate electricity.</div>
+        <div class="gap-sent">3. The process of burning a fuel in the presence of oxygen to release heat energy is called <input type="text" class="gf" data-answer="combustion">.</div>
+        <div class="gap-sent">4. Solar panels use <input type="text" class="gf" data-answer="photovoltaic"> cells to convert sunlight directly into electricity without any moving parts.</div>
+        <div class="gap-sent">5. <input type="text" class="gf" data-answer="biomass"> is organic material — such as wood, crops, and landfill gas — that can be burned to produce heat or electricity.</div>
+        <div class="gap-sent">6. A <input type="text" class="gf" data-answer="tidal barrage"> is a large structure built across an estuary that traps tidal water and releases it through turbines to generate electricity.</div>
+        <div class="gap-sent">7. A dam built across a river to generate electricity using the flow of water is an example of <input type="text" class="gf" data-answer="hydroelectric"> power.</div>
+        <div class="gap-sent">8. Mains electricity in the UK uses <input type="text" class="gf" data-answer="alternating current"> at 230 volts, which flows in one direction then the other 50 times per second.</div>
+        <div class="gap-sent">9. When choosing a power source for a portable medical device, the designer must consider its <input type="text" class="gf" data-answer="portability"> — it must work without a mains electricity supply.</div>
+        <div class="gap-sent">10. Solar panels have variable <input type="text" class="gf" data-answer="power output"> because they generate more electricity on sunny days than on cloudy days.</div>
+      </div>
+      <div>
+        <button class="check-btn" onclick="checkGF('gf1','sc1')">✓ Check Answers</button>
+        <button class="reset-btn" onclick="resetGF('gf1','sc1','wb1')">↺ Reset</button>
+        <div class="score-box" id="sc1"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 3: TRUE/FALSE -->
+  <div class="act-block">
+    <div class="act-head">
+      <h3>Activity 3 — True or False?</h3>
+      <div class="act-badge">Test understanding</div>
+    </div>
+    <div class="act-body">
+      <div class="act-instr">📝 <strong>Instructions:</strong> Read each statement carefully. Press <strong>True</strong> or <strong>False</strong>. You will get immediate feedback explaining why the answer is correct. This tests understanding, not just memory.</div>
+
+      <div class="tf-item">
+        <div class="tf-statement">1. Solar panels have no environmental impact because they produce zero emissions during operation.</div>
+        <div class="tf-btns">
+          <button class="tf-btn true-btn" onclick="checkTF(this, false, 1)">True</button>
+          <button class="tf-btn false-btn" onclick="checkTF(this, false, 1)">False</button>
+        </div>
+        <div class="tf-feedback" id="tf-fb-1">❌ <strong>False.</strong> Solar panels have zero emissions during operation, but they do have an environmental impact — manufacturing them uses energy and rare materials, and large solar farms can change local ecosystems and ecology.</div>
+      </div>
+
+      <div class="tf-item">
+        <div class="tf-statement">2. Gas produces fewer CO₂ emissions per unit of energy than coal, making it the least polluting of the fossil fuels.</div>
+        <div class="tf-btns">
+          <button class="tf-btn true-btn" onclick="checkTF(this, true, 2)">True</button>
+          <button class="tf-btn false-btn" onclick="checkTF(this, true, 2)">False</button>
+        </div>
+        <div class="tf-feedback" id="tf-fb-2">✅ <strong>True.</strong> According to the textbook, gas combustion emits carbon dioxide at about half the rate of coal. This is why gas is considered the "cleanest" fossil fuel, though it is still a significant greenhouse gas emitter.</div>
+      </div>
+
+      <div class="tf-item">
+        <div class="tf-statement">3. Tidal power is an unpredictable energy source because we cannot know when the tides will come in or go out.</div>
+        <div class="tf-btns">
+          <button class="tf-btn true-btn" onclick="checkTF(this, false, 3)">True</button>
+          <button class="tf-btn false-btn" onclick="checkTF(this, false, 3)">False</button>
+        </div>
+        <div class="tf-feedback" id="tf-fb-3">❌ <strong>False.</strong> This is a common mistake! Tides are actually <strong>predictable and stable</strong> — we can calculate exactly when high and low tides will occur years in advance. This makes tidal power more reliable than wind or solar, which depend on unpredictable weather.</div>
+      </div>
+
+      <div class="tf-item">
+        <div class="tf-statement">4. Prismatic battery cells are found in devices like smartphones and laptops because they are flat and flexible, fitting compactly inside slim products.</div>
+        <div class="tf-btns">
+          <button class="tf-btn true-btn" onclick="checkTF(this, true, 4)">True</button>
+          <button class="tf-btn false-btn" onclick="checkTF(this, true, 4)">False</button>
+        </div>
+        <div class="tf-feedback" id="tf-fb-4">✅ <strong>True.</strong> Prismatic cells are flat and flexible, making them ideal for the thin profile of modern smartphones and laptops. They can be more expensive to manufacture and have a shorter lifespan than cylindrical cells, but their compact shape makes them essential for portable electronics.</div>
+      </div>
+
+      <div class="tf-item">
+        <div class="tf-statement">5. Hydroelectric power is a non-renewable energy source because it uses water, which can run out in times of drought.</div>
+        <div class="tf-btns">
+          <button class="tf-btn true-btn" onclick="checkTF(this, false, 5)">True</button>
+          <button class="tf-btn false-btn" onclick="checkTF(this, false, 5)">False</button>
+        </div>
+        <div class="tf-feedback" id="tf-fb-5">❌ <strong>False.</strong> Hydroelectric power is classified as a <strong>renewable</strong> energy source because water is replenished naturally through the water cycle (rain refills rivers and reservoirs). It is true that drought can reduce output, but the water source itself is renewable — unlike coal or oil, which cannot be replaced.</div>
+      </div>
+
+      <div class="tf-item">
+        <div class="tf-statement">6. When choosing an energy source, a designer must consider both the initial setup cost AND the long-term running cost.</div>
+        <div class="tf-btns">
+          <button class="tf-btn true-btn" onclick="checkTF(this, true, 6)">True</button>
+          <button class="tf-btn false-btn" onclick="checkTF(this, true, 6)">False</button>
+        </div>
+        <div class="tf-feedback" id="tf-fb-6">✅ <strong>True.</strong> For example, a solar panel has a high initial setup cost but near-zero running costs. A battery-powered device has a low initial cost but ongoing battery replacement costs. Designers must evaluate the <strong>total cost of ownership</strong>, not just the upfront price, to make the best decision.</div>
+      </div>
+
+      <!-- MATCHING -->
+      <hr class="divider" style="margin-top:28px;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:16px;">Bonus: Matching — Power Source to Best Product</h3>
+      <div class="act-instr">📝 Click a <strong>product</strong> on the left, then click the <strong>most appropriate power source</strong> on the right. Think about portability, power needs, and location of use.</div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-lbl">📦 Products</div>
+          <div class="mitem mword" data-id="A" onclick="selMatch(this,'w')">Refrigerator</div>
+          <div class="mitem mword" data-id="B" onclick="selMatch(this,'w')">Hearing aid</div>
+          <div class="mitem mword" data-id="C" onclick="selMatch(this,'w')">Solar-powered garden light</div>
+          <div class="mitem mword" data-id="D" onclick="selMatch(this,'w')">Wristwatch</div>
+          <div class="mitem mword" data-id="E" onclick="selMatch(this,'w')">Remote countryside home</div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-lbl">⚡ Best Power Source</div>
+          <div class="mitem mdef" data-id="D" onclick="selMatch(this,'d')">Small cylindrical cell — compact and long-lasting</div>
+          <div class="mitem mdef" data-id="B" onclick="selMatch(this,'d')">Tiny cylindrical battery — portable and discreet</div>
+          <div class="mitem mdef" data-id="A" onclick="selMatch(this,'d')">Mains electricity — constant high-power supply needed 24/7</div>
+          <div class="mitem mdef" data-id="E" onclick="selMatch(this,'d')">Small wind turbine — away from National Grid, reliable local generation</div>
+          <div class="mitem mdef" data-id="C" onclick="selMatch(this,'d')">Photovoltaic solar cell — free daytime charging, no wiring needed</div>
+        </div>
+      </div>
+      <button class="reset-btn" style="margin-top:14px;" onclick="resetMatch()">↺ Reset Matching</button>
+      <div id="matchDone" style="display:none;margin-top:12px;font-size:14px;font-weight:600;color:var(--green);background:var(--green-light);padding:10px 16px;border-radius:8px;">🎉 All matched! You can correctly identify the best power source for different products!</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════ 5. EXAM LANGUAGE ════════════════════════ -->
+<div id="sec-exam" class="section">
+  <div class="sec-head">
+    <h2>Exam Language &amp; Practice</h2>
+    <p>This section shows you the language structures you need for exam answers about energy, and gives you model answers to practise with.</p>
+  </div>
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Model Then Modify:</strong> Don't just read the model answers — use them as a template. After reading each one, close the answer and write your own version for a different energy source. For example, if the model answer is about solar, rewrite it about wind power.
+  </div>
+
+  <div class="cmd-grid">
+    <div class="cmd-card"><div class="cmd-word">State / Give</div><div class="cmd-means">Name something directly — one word or one short sentence is usually enough. No explanation needed.</div><span class="cmd-marks">1 mark each</span></div>
+    <div class="cmd-card"><div class="cmd-word">Describe</div><div class="cmd-means">Say what something is or how it looks/works. Give features. No need to explain why.</div><span class="cmd-marks">1–2 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Explain</div><div class="cmd-means">State what + give the reason WHY. Use: <em>"because…", "this means that…", "therefore…"</em> — a reason is essential for full marks.</div><span class="cmd-marks">2–4 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Evaluate</div><div class="cmd-means">Discuss advantages AND disadvantages, then reach a conclusion or judgement. Always consider both sides.</div><span class="cmd-marks">6–9 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Justify</div><div class="cmd-means">Give reasons to support a decision or choice. Explain WHY the choice is the best option for the specific context.</div><span class="cmd-marks">3–4 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Compare</div><div class="cmd-means">Identify similarities AND differences between two or more things. Use: <em>"whereas", "in contrast", "similarly", "on the other hand".</em></div><span class="cmd-marks">4–6 marks</span></div>
+  </div>
+
+  <div class="frames-sec">
+    <h3>✍️ Sentence Frames for Energy Questions</h3>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:18px;">The <span style="background:var(--gold-light);padding:1px 5px;border-radius:3px;font-style:italic;color:#7a5000;">orange sections</span> are where you add your own content. Study the examples, then practise replacing the content with a different energy source.</p>
+
+    <div class="frame-card">
+      <div class="frame-type">For EXPLAIN questions — advantage (2 marks)</div>
+      <div class="frame-body">
+        <div class="frame-tpl">One advantage of <span class="blank">[energy source]</span> is that <span class="blank">[advantage]</span>. This means that <span class="blank">[consequence / why this is beneficial]</span>.</div>
+        <div class="frame-ex">"One advantage of <strong>solar power</strong> is that it produces <strong>electricity with zero emissions during operation</strong>. This means that <strong>it does not contribute to air pollution or greenhouse gas emissions, making it a sustainable energy source for reducing a company's carbon footprint</strong>."</div>
+      </div>
+    </div>
+
+    <div class="frame-card">
+      <div class="frame-type">For EXPLAIN questions — disadvantage (2 marks)</div>
+      <div class="frame-body">
+        <div class="frame-tpl">One disadvantage of <span class="blank">[energy source]</span> is <span class="blank">[disadvantage]</span>. This is a problem because <span class="blank">[explain the negative consequence]</span>.</div>
+        <div class="frame-ex">"One disadvantage of <strong>wind power</strong> is that its <strong>power output is variable and unpredictable</strong>. This is a problem because <strong>on calm days the turbines produce little or no electricity, meaning that a backup energy source is needed, which adds to cost and complexity</strong>."</div>
+      </div>
+    </div>
+
+    <div class="frame-card">
+      <div class="frame-type">For EVALUATE questions — balanced argument (6–9 marks)</div>
+      <div class="frame-body">
+        <div class="frame-tpl">One benefit of <span class="blank">[energy source]</span> is <span class="blank">[advantage + explanation]</span>. However, a significant drawback is that <span class="blank">[disadvantage + explanation]</span>. Furthermore, <span class="blank">[second point]</span>. Overall, <span class="blank">[balanced conclusion]</span>.</div>
+        <div class="frame-ex">"One benefit of <strong>hydroelectric power</strong> is that it produces a <strong>large amount of low-cost electricity reliably, with no emissions during operation</strong>. However, a significant drawback is that <strong>constructing a dam is extremely expensive and can damage ecosystems, displacing wildlife and sometimes local communities</strong>. Furthermore, <strong>the reservoir created may affect the local water cycle</strong>. Overall, <strong>hydroelectric power is an excellent renewable option for countries with suitable geography, but the high initial environmental and financial cost must be carefully considered</strong>."</div>
+      </div>
+    </div>
+
+    <div class="frame-card">
+      <div class="frame-type">For JUSTIFY questions — choosing a power source (3–4 marks)</div>
+      <div class="frame-body">
+        <div class="frame-tpl">The most appropriate power source for <span class="blank">[product]</span> is <span class="blank">[power source]</span>. This is because <span class="blank">[reason 1 linked to product context]</span>. Furthermore, <span class="blank">[reason 2]</span>, which means <span class="blank">[benefit]</span>.</div>
+        <div class="frame-ex">"The most appropriate power source for <strong>a portable blood pressure monitor</strong> is <strong>batteries</strong>. This is because <strong>the device must be used in locations without access to mains electricity, such as in a patient's home or outdoors</strong>. Furthermore, <strong>batteries are compact and lightweight</strong>, which means <strong>they do not add significant size or weight to the device, maintaining its portability</strong>."</div>
+      </div>
+    </div>
+
+    <div class="frame-card">
+      <div class="frame-type">Useful comparison language (for Compare questions)</div>
+      <div class="frame-body">
+        <ul class="con-list">
+          <li><span class="con-chip">In contrast,...</span> introduces a difference between two sources</li>
+          <li><span class="con-chip">Similarly,...</span> shows a shared feature of two sources</li>
+          <li><span class="con-chip">Whereas [X]..., [Y]...</span> directly compares two things in one sentence</li>
+          <li><span class="con-chip">Unlike [X], [Y]...</span> highlights a key difference</li>
+          <li><span class="con-chip">Both [X] and [Y]...</span> shows similarity before a contrast</li>
+          <li><span class="con-chip">However, both sources...</span> returns to a shared feature after a contrast</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-head" style="margin-top:32px;"><h2 style="font-size:22px;">📝 Practice Exam Questions</h2></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Answer, Then Compare:</strong> Write your own answer on paper first. Then reveal the model answer and underline any key vocabulary or sentence structures in it that you did not use. Add these to your revision notes.</div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Question 1 · Fossil Fuels</span><span class="eq-marks">4 marks</span></div>
+    <div class="eq-body">
+      <div class="eq-text">Explain <strong>two</strong> reasons why coal is classed as a non-renewable energy source.</div>
+      <div class="eq-hint">💡 <strong>Language hint:</strong> You need TWO separate reasons, each explained. Use: <em>"One reason is... This is because... A second reason is... This means that..."</em> Each explained reason = 2 marks.</div>
+      <button class="show-ans-btn" onclick="toggleAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans">
+        <div class="mp"><div class="mpn">1</div><div><strong>Reason 1:</strong> Coal was formed from the remains of plants and animals that lived millions of years ago, compressed underground over vast periods of time.</div></div>
+        <div class="mp"><div class="mpn">2</div><div><strong>Explanation 1:</strong> This means that coal cannot be replenished or replaced at any meaningful timescale — once the coal reserves are depleted through burning, they are gone permanently.</div></div>
+        <div class="mp"><div class="mpn">3</div><div><strong>Reason 2:</strong> Coal is classified as non-renewable because the rate at which humans currently consume it is vastly greater than any natural rate of replacement.</div></div>
+        <div class="mp"><div class="mpn">4</div><div><strong>Explanation 2:</strong> As a result, global coal reserves are expected to run out within a few hundred years if current usage continues, making it a finite resource.</div></div>
+        <div style="margin-top:8px;font-size:13px;color:#555;">✏️ <strong>Key vocabulary to use:</strong> non-renewable, finite, replenished, depleted, fossil, reserves, current usage</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Question 2 · Power Systems</span><span class="eq-marks">2 marks</span></div>
+    <div class="eq-body">
+      <div class="eq-text">Explain <strong>one</strong> reason why solar cells are more environmentally friendly than rechargeable batteries as a power source.</div>
+      <div class="eq-hint">💡 <strong>Language hint:</strong> State ONE clear reason AND explain the environmental benefit. Use: <em>"Solar cells are more environmentally friendly because... This means that..."</em></div>
+      <button class="show-ans-btn" onclick="toggleAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans">
+        <div class="mp"><div class="mpn">1</div><div>Solar cells generate electricity using only sunlight and produce no harmful emissions or chemical waste during operation.</div></div>
+        <div class="mp"><div class="mpn">2</div><div>Rechargeable batteries, in contrast, contain chemicals such as lithium and heavy metals that can leach into the soil and water if not disposed of correctly, causing environmental damage. Solar cells do not carry this risk once installed.</div></div>
+        <div style="margin-top:8px;font-size:13px;color:#555;">✏️ <strong>Key vocabulary:</strong> emissions, chemical waste, photovoltaic, dispose, leach, contaminate, environmentally friendly</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Question 3 · Choosing Energy Sources</span><span class="eq-marks">4 marks</span></div>
+    <div class="eq-body">
+      <div class="eq-text">Explain <strong>two</strong> factors that determine the most appropriate energy source for powering a bedroom desk lamp.</div>
+      <div class="eq-hint">💡 <strong>Language hint:</strong> Think about the product — a desk lamp is used at a fixed location, indoors, and needs reliable, consistent light. Choose two factors from: portability, environmental impact, power output, circuit connections, cost. Explain HOW each factor affects the choice.</div>
+      <button class="show-ans-btn" onclick="toggleAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans">
+        <div class="mp"><div class="mpn">1</div><div><strong>Factor 1 — Portability:</strong> A desk lamp is used in a fixed location in the home and does not need to be moved, so portability is not required. This means that mains electricity is suitable — the lamp can simply be plugged into a wall socket, providing a reliable and consistent power supply.</div></div>
+        <div class="mp"><div class="mpn">2</div><div><strong>Factor 2 — Power output:</strong> A desk lamp needs a consistent, reliable power supply to produce a steady level of light. Mains electricity provides a consistent 230V supply, whereas batteries would drain over time and reduce light output, and solar cells would not provide power at night when the lamp is most needed.</div></div>
+        <div style="margin-top:8px;font-size:13px;color:#555;">✏️ <strong>Key vocabulary:</strong> fixed location, portable, mains electricity, consistent power supply, reliable, circuit connections, 230 volts</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Question 4 · Evaluate (Extended)</span><span class="eq-marks">9 marks</span></div>
+    <div class="eq-body">
+      <div class="eq-text">Evaluate the use of a wind system for generating electricity in a remote countryside location.</div>
+      <div class="eq-hint">💡 <strong>Language hint:</strong> For 9 marks, you must give multiple advantages AND disadvantages, with detailed explanations for each. Use the evaluation sentence frame. End with an overall conclusion. Aim for at least 4 developed points. Use connectives: <em>Furthermore, However, In contrast, Overall...</em></div>
+      <button class="show-ans-btn" onclick="toggleAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans">
+        <div class="mp"><div class="mpn">1</div><div><strong>Advantage 1:</strong> Wind power produces no emissions during operation, meaning it does not contribute to air pollution or greenhouse gas emissions. For a remote location trying to reduce its carbon footprint, this is a significant environmental benefit.</div></div>
+        <div class="mp"><div class="mpn">2</div><div><strong>Advantage 2:</strong> Wind turbines can be installed in remote countryside areas that are not connected to the National Grid. This makes them particularly valuable as an off-grid power source for rural homes or agricultural buildings, eliminating the high cost of extending mains electricity cables to the location.</div></div>
+        <div class="mp"><div class="mpn">3</div><div><strong>Advantage 3:</strong> Once installed, wind turbines have very low running costs as there is no fuel to purchase, and wind is freely available. Over time, this makes them cost-effective despite the high initial setup expense.</div></div>
+        <div class="mp"><div class="mpn">4</div><div><strong>Disadvantage 1:</strong> However, the power output of wind turbines is variable and unpredictable — on calm days, little or no electricity is generated. This means a backup power source or battery storage system would be required to ensure a consistent supply, adding to the overall cost and complexity.</div></div>
+        <div class="mp"><div class="mpn">5</div><div><strong>Disadvantage 2:</strong> Furthermore, wind turbines can be considered visually unsightly, and some rural communities object to their installation as they alter the character of the natural landscape. Planning permission may be difficult to obtain.</div></div>
+        <div style="margin-top:10px;padding:10px 14px;background:#f0fef9;border-radius:8px;font-size:13.5px;"><strong>Overall conclusion:</strong> Wind power is a well-suited energy source for a remote countryside location because it provides an off-grid, emissions-free supply that can significantly reduce long-term energy costs. However, the variable power output means that battery storage or a backup system must be incorporated into the design, and the visual impact must be carefully considered in planning.</div>
+        <div style="margin-top:8px;font-size:13px;color:#555;">✏️ <strong>Key vocabulary:</strong> emissions, off-grid, variable output, backup, running costs, visually unsightly, planning permission, landscape</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════ 6. ESL TOOLKIT ════════════════════════ -->
+<div id="sec-toolkit" class="section">
+  <div class="sec-head">
+    <h2>ESL Language Toolkit</h2>
+    <p>Extra language support — word roots, academic alternatives, common mistakes, and comparison language specific to the energy topic.</p>
+  </div>
+  <div class="esl-tip">
+    <strong>📌 ESL Strategy — Word Families:</strong> Learning one word from a family helps you learn related words. For example, learning <em>generate</em> helps you also understand: <em>generation, generator, generated, regenerate, regeneration</em>. Look for patterns across the subject.
+  </div>
+  <div class="tk-grid">
+
+    <div class="tk-card">
+      <div class="tk-head tkh-navy">🔤 Important Word Roots for Energy</div>
+      <div class="tk-body">
+        <table class="pre-tbl">
+          <tr><th>Root</th><th>Meaning</th><th>Energy Topic Examples</th></tr>
+          <tr><td class="pre">re-</td><td>again/back</td><td>renewable, replenish, recover</td></tr>
+          <tr><td class="pre">photo-</td><td>light</td><td>photovoltaic, photosynthesis</td></tr>
+          <tr><td class="pre">bio-</td><td>life/living</td><td>biomass, biodiesel, biofuel</td></tr>
+          <tr><td class="pre">hydro-</td><td>water</td><td>hydroelectric, hydrogen</td></tr>
+          <tr><td class="pre">geo-</td><td>earth</td><td>geothermal, geography</td></tr>
+          <tr><td class="pre">volt-</td><td>electricity</td><td>photovoltaic, voltage, volts</td></tr>
+          <tr><td class="pre">gen-</td><td>create/produce</td><td>generate, generator, generation</td></tr>
+          <tr><td class="pre">therm-</td><td>heat</td><td>thermal, thermometer, geothermal</td></tr>
+          <tr><td class="pre">non-</td><td>not</td><td>non-renewable, non-polluting</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tk-card">
+      <div class="tk-head tkh-gold">🔄 Complex Word → Simple Word</div>
+      <div class="tk-body">
+        <div class="syn-pair"><span class="syn-c">Non-renewable</span><span class="syn-a">→</span><span class="syn-s">Cannot be replaced; will run out</span></div>
+        <div class="syn-pair"><span class="syn-c">Photovoltaic</span><span class="syn-a">→</span><span class="syn-s">Sunlight converted to electricity</span></div>
+        <div class="syn-pair"><span class="syn-c">Combustion</span><span class="syn-a">→</span><span class="syn-s">The process of burning</span></div>
+        <div class="syn-pair"><span class="syn-c">Replenish</span><span class="syn-a">→</span><span class="syn-s">Refill / replace / restore</span></div>
+        <div class="syn-pair"><span class="syn-c">Turbine</span><span class="syn-a">→</span><span class="syn-s">Spinning machine that makes electricity</span></div>
+        <div class="syn-pair"><span class="syn-c">Variable output</span><span class="syn-a">→</span><span class="syn-s">Inconsistent / changes with weather</span></div>
+        <div class="syn-pair"><span class="syn-c">Tidal barrage</span><span class="syn-a">→</span><span class="syn-s">A dam that uses sea tides</span></div>
+        <div class="syn-pair"><span class="syn-c">Alternating current</span><span class="syn-a">→</span><span class="syn-s">Electricity that flows back and forth</span></div>
+        <div class="syn-pair"><span class="syn-c">Finite resource</span><span class="syn-a">→</span><span class="syn-s">Something that will run out</span></div>
+        <div class="syn-pair"><span class="syn-c">Environmental impact</span><span class="syn-a">→</span><span class="syn-s">Harm / effect on the natural world</span></div>
+      </div>
+    </div>
+
+    <div class="tk-card">
+      <div class="tk-head tkh-green">⚖️ Quick-Reference Energy Comparison</div>
+      <div class="tk-body">
+        <table class="energy-compare">
+          <tr><th>Source</th><th>Type</th><th>Key feature</th></tr>
+          <tr><td>Coal</td><td><span class="badge-nr">Non-renewable</span></td><td>Stable output; very polluting</td></tr>
+          <tr><td>Oil</td><td><span class="badge-nr">Non-renewable</span></td><td>Versatile; risk of spills</td></tr>
+          <tr><td>Gas</td><td><span class="badge-nr">Non-renewable</span></td><td>Cleanest fossil fuel; still polluting</td></tr>
+          <tr><td>Solar</td><td><span class="badge-r">Renewable</span></td><td>Zero emissions; variable output</td></tr>
+          <tr><td>Wind</td><td><span class="badge-r">Renewable</span></td><td>Free; unpredictable; visual impact</td></tr>
+          <tr><td>Tidal</td><td><span class="badge-r">Renewable</span></td><td>Predictable; coastal areas only</td></tr>
+          <tr><td>Hydroelectric</td><td><span class="badge-r">Renewable</span></td><td>High output; expensive to build</td></tr>
+          <tr><td>Biomass</td><td><span class="badge-r">Renewable</span></td><td>Uses waste; still emits some fumes</td></tr>
+          <tr><td>Biodiesel</td><td><span class="badge-r">Renewable</span></td><td>Used in existing diesel engines</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tk-card">
+      <div class="tk-head tkh-teal">🔗 Useful Language for Energy Questions</div>
+      <div class="tk-body">
+        <ul class="con-list">
+          <li><span class="con-chip">Unlike fossil fuels,...</span> useful for comparing renewable vs non-renewable</li>
+          <li><span class="con-chip">Although [X] is renewable,...</span> acknowledges a limitation of a green source</li>
+          <li><span class="con-chip">The output is variable because...</span> links unpredictability to its cause</li>
+          <li><span class="con-chip">This makes it unsuitable for...</span> links a disadvantage to a specific context</li>
+          <li><span class="con-chip">In contrast to [X], [Y]...</span> direct comparison of two sources</li>
+          <li><span class="con-chip">Once installed, ...</span> useful for discussing long-term running costs</li>
+          <li><span class="con-chip">No energy source is entirely clean because...</span> strong evaluation opener</li>
+          <li><span class="con-chip">The environmental impact includes both... and...</span> active + passive impacts</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tk-card" style="grid-column: 1 / -1;">
+      <div class="tk-head tkh-navy">🚨 Common ESL Mistakes in Energy Questions — and How to Fix Them</div>
+      <div class="tk-body">
+        <table class="pre-tbl">
+          <tr><th style="width:35%">❌ Avoid writing this</th><th style="width:40%">✅ Write this instead</th><th>Why?</th></tr>
+          <tr><td>"Solar energy is very good for the environment"</td><td>"Solar energy produces <strong>zero carbon emissions</strong> during operation, reducing its contribution to global warming"</td><td>Be specific — name the environmental benefit</td></tr>
+          <tr><td>"Wind power is bad because there is no wind sometimes"</td><td>"Wind power has <strong>variable power output</strong> because it depends on wind speed, which is <strong>unpredictable</strong>"</td><td>Use the correct technical vocabulary</td></tr>
+          <tr><td>"Renewable energy is better than fossil fuels"</td><td>"Renewable energy produces <strong>fewer greenhouse gas emissions</strong> during operation, however fossil fuels provide a more <strong>consistent and reliable power output</strong>"</td><td>Avoid simple value judgements — show nuance</td></tr>
+          <tr><td>"Coal makes electricity by burning"</td><td>"Coal is burned to produce heat, which converts water into steam. The steam spins a <strong>turbine</strong>, which drives a <strong>generator</strong> to produce electricity"</td><td>Explain the full process with correct terminology</td></tr>
+          <tr><td>"Tidal energy is unpredictable like wind"</td><td>"Unlike wind, tidal energy is <strong>predictable and consistent</strong> because tidal patterns follow a regular cycle that can be calculated years in advance"</td><td>Tides are predictable — a common misconception to correct!</td></tr>
+          <tr><td>"Batteries are good for portable things"</td><td>"Batteries are the most appropriate power source for portable devices because they provide a <strong>compact, self-contained power supply</strong> that does not require a mains electricity connection"</td><td>Always link the advantage to the specific context (portability)</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<footer>
+  <strong>Edexcel GCSE Design &amp; Technology</strong> · Topic 1.3 · Energy: Generation, Storage &amp; Choosing Appropriate Sources<br>
+  Cross-referenced with Pearson Edexcel Specification (Issue 4, Nov 2022) and course textbook (pp. 15–18) · For educational use only
+</footer>
+
+<script>
+// ── TAB SWITCHING ──
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── VOCAB FILTER ──
+function filterVocab(t, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.vc').forEach(c => {
+    c.style.display = (t==='all' || c.dataset.topic===t) ? 'block' : 'none';
+  });
+}
+
+// ── TOPIC PANELS ──
+function showTopic(id, btn) {
+  document.querySelectorAll('.topic-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tp-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tp-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── SORT ACTIVITY ──
+let selectedSortChip = null;
+let sortCorrect = 0;
+const totalSort = 9;
+
+function selectSortChip(el) {
+  if(el.classList.contains('placed')) return;
+  document.querySelectorAll('.sort-chip').forEach(c => c.style.outline='none');
+  selectedSortChip = el;
+  el.style.outline = '2.5px solid #e8a020';
+}
+
+function dropSortChip(zone) {
+  if(!selectedSortChip) return;
+  const correct = selectedSortChip.dataset.answer === zone;
+  if(correct) {
+    const zoneEl = document.getElementById('zone-'+zone);
+    const copy = document.createElement('span');
+    copy.className = 'sort-chip placed';
+    copy.textContent = selectedSortChip.textContent;
+    zoneEl.appendChild(copy);
+    selectedSortChip.style.display = 'none';
+    sortCorrect++;
+    if(sortCorrect === totalSort) document.getElementById('sortResult').style.display='block';
+  } else {
+    selectedSortChip.classList.add('wrong');
+    setTimeout(()=>selectedSortChip.classList.remove('wrong'), 600);
+  }
+  selectedSortChip.style.outline='none';
+  selectedSortChip = null;
+}
+
+function resetSort() {
+  document.querySelectorAll('.sort-chip').forEach(c=>{ c.style.display='inline-block'; c.classList.remove('placed','wrong'); c.style.outline='none'; });
+  document.querySelectorAll('.sort-zone .sort-chip').forEach(c=>c.remove());
+  document.getElementById('sortResult').style.display='none';
+  sortCorrect=0; selectedSortChip=null;
+}
+
+// ── GAP FILL ──
+let selChip = null;
+
+document.querySelectorAll('.wchip').forEach(chip => {
+  chip.addEventListener('click', function() {
+    document.querySelectorAll('.wchip').forEach(c=>c.classList.remove('selected-chip'));
+    selChip = this.dataset.word;
+    this.classList.add('selected-chip');
+  });
+});
+
+document.querySelectorAll('.gf').forEach(inp => {
+  inp.addEventListener('click', function() {
+    if(selChip) { this.value = selChip; selChip = null; document.querySelectorAll('.wchip').forEach(c=>c.classList.remove('selected-chip')); }
+  });
+  inp.addEventListener('input', function() { this.classList.remove('correct','incorrect'); });
+});
+
+function checkGF(cid, sid) {
+  const inputs = document.getElementById(cid).querySelectorAll('.gf');
+  let correct = 0;
+  inputs.forEach(i => {
+    const ok = i.value.toLowerCase().trim() === i.dataset.answer.toLowerCase().trim();
+    i.classList.toggle('correct', ok); i.classList.toggle('incorrect', !ok);
+    if(ok) correct++;
+  });
+  const s = document.getElementById(sid);
+  const pct = correct/inputs.length;
+  s.className = 'score-box show ' + (pct>=0.85?'good':pct>=0.5?'ok':'low');
+  s.innerHTML = (pct>=0.85?'🎉':pct>=0.5?'👍':'📚') + ` Score: ${correct}/${inputs.length}` + (pct>=0.85?' — Excellent!':(pct>=0.5?' — Good effort!':" — Keep revising!"));
+  s.style.display='inline-flex';
+}
+
+function resetGF(cid, sid, wid) {
+  document.getElementById(cid).querySelectorAll('.gf').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  const s=document.getElementById(sid); s.className='score-box'; s.style.display='none';
+  if(wid) document.getElementById(wid).querySelectorAll('.wchip').forEach(c=>c.classList.remove('used','selected-chip'));
+}
+
+// ── TRUE / FALSE ──
+function checkTF(btn, correctIsTrue, num) {
+  const userSaidTrue = btn.classList.contains('true-btn');
+  const isCorrect = (userSaidTrue === correctIsTrue);
+  const fb = document.getElementById('tf-fb-'+num);
+  const parent = btn.closest('.tf-item');
+  parent.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);
+  if(isCorrect) {
+    btn.classList.add('correct-ans');
+    fb.className = 'tf-feedback show fb-correct';
+  } else {
+    btn.classList.add('wrong-ans');
+    fb.className = 'tf-feedback show fb-wrong';
+    const correctBtn = correctIsTrue ? parent.querySelector('.true-btn') : parent.querySelector('.false-btn');
+    correctBtn.classList.add('correct-ans');
+  }
+}
+
+// ── MATCHING ──
+let mSel = {w:null, d:null};
+let mCount = 0;
+
+function selMatch(el, type) {
+  if(el.classList.contains('matched')) return;
+  if(mSel[type]) mSel[type].classList.remove('selected');
+  mSel[type] = el; el.classList.add('selected');
+  if(mSel.w && mSel.d) {
+    if(mSel.w.dataset.id === mSel.d.dataset.id) {
+      [mSel.w, mSel.d].forEach(e=>{e.classList.add('matched');e.classList.remove('selected');});
+      mCount++;
+      if(mCount===5) document.getElementById('matchDone').style.display='block';
+    } else {
+      [mSel.w, mSel.d].forEach(e=>{ e.classList.add('wrong'); setTimeout(()=>{e.classList.remove('wrong','selected');},600); });
+      setTimeout(()=>{mSel={w:null,d:null};},600); return;
+    }
+    mSel={w:null,d:null};
+  }
+}
+
+function resetMatch() {
+  document.querySelectorAll('.mitem').forEach(e=>e.classList.remove('matched','selected','wrong'));
+  mSel={w:null,d:null}; mCount=0;
+  document.getElementById('matchDone').style.display='none';
+}
+
+// ── SHOW/HIDE MODEL ANSWER ──
+function toggleAns(btn) {
+  const a = btn.nextElementSibling;
+  if(a.classList.contains('show')) { a.classList.remove('show'); btn.textContent='👁 Show Model Answer'; }
+  else { a.classList.add('show'); btn.textContent='🙈 Hide Model Answer'; }
+}
+</script>
+</body>
+</html>
