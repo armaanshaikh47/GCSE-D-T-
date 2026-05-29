@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 1.5 — Mechanical Devices · GCSE D&T Revision</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f0f4f8; --navy:#0d1b2a; --red:#c0392b; --red-l:#fee2e2;
+  --orange:#d97706; --orange-l:#fef3c7; --teal:#0e7490; --teal-l:#e0f5f9;
+  --green:#166534; --green-l:#dcfce7; --purple:#5b21b6; --purple-l:#ede9fe;
+  --blue:#1d4ed8; --blue-l:#dbeafe; --slate:#334155; --muted:#64748b;
+  --border:#e2e8ef; --card:#fff; --text:#1e293b;
+  --shadow:0 2px 16px rgba(13,27,42,.08); --shadow-h:0 6px 28px rgba(13,27,42,.16);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#0d1b2a 0%,#1a0d2e 55%,#0d2a1a 100%);color:#fff;padding:52px 40px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 40%,rgba(217,119,6,.13) 0%,transparent 55%),radial-gradient(ellipse at 15% 75%,rgba(14,116,144,.10) 0%,transparent 50%);}
+.hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 48px,rgba(255,255,255,.022) 48px,rgba(255,255,255,.022) 49px);}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.hero-badge{display:inline-block;background:var(--orange);color:var(--navy);font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,54px);font-weight:900;line-height:1.08;margin-bottom:8px;letter-spacing:-.02em;}
+.hero h1 .ac{color:var(--orange);}
+.hero-spec{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:14px;text-transform:uppercase;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.72);max-width:580px;line-height:1.65;margin-bottom:26px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.hero-tag{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);font-size:12px;padding:5px 13px;border-radius:20px;}
+
+/* ── NAV ── */
+.nav-bar{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 20px;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:15px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-2px;}
+.tab-btn:hover{color:var(--navy);}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--orange);font-weight:600;}
+
+/* ── LAYOUT ── */
+.main{max-width:1100px;margin:0 auto;padding:38px 20px 80px;}
+.section{display:none;}
+.section.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SHARED ── */
+.sec-head{margin-bottom:26px;}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--navy);margin-bottom:7px;letter-spacing:-.02em;}
+.sec-head p{color:var(--muted);font-size:15px;line-height:1.65;max-width:700px;}
+.esl-tip{background:linear-gradient(135deg,#fffbee,#fff8dc);border-left:4px solid var(--orange);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:26px;font-size:13.5px;color:#5a4200;line-height:1.6;}
+.esl-tip strong{color:#3d2c00;}
+.divider{border:none;border-top:2px solid var(--border);margin:28px 0;}
+
+/* ── GIF / MEDIA SLOTS ── */
+/*
+  HOW TO ADD GIFS OR IMAGES:
+  1. Find the <div class="media-slot"> element
+  2. Inside, there is an <img> or <video> tag with src=""
+  3. Change src="" to your file path e.g. src="gifs/cam_follower.gif"
+  4. The placeholder disappears automatically when a valid src is set
+  RECOMMENDED SOURCES: Giphy, Pinterest, YouTube (gif converter), or record your own
+*/
+.media-slot{border:2.5px dashed #94a3b8;border-radius:14px;background:#f8fafc;overflow:hidden;margin:16px 0;min-height:160px;display:flex;flex-direction:column;position:relative;}
+.media-slot img.slot-media{width:100%;max-height:260px;object-fit:contain;display:block;border-radius:11px;}
+.media-slot img.slot-media[src=""]{display:none;}
+.media-slot img.slot-media[src=""]~.slot-ph{display:flex;}
+.media-slot img.slot-media:not([src=""])~.slot-ph{display:none;}
+.slot-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 20px;gap:9px;text-align:center;flex:1;}
+.slot-icon{font-size:34px;}
+.slot-type-badge{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.09em;padding:3px 10px;border-radius:4px;font-weight:500;}
+.gif-badge{background:#fde68a;color:#92400e;}
+.img-badge{background:#dbeafe;color:#1d4ed8;}
+.slot-title{font-weight:700;font-size:13.5px;color:var(--slate);}
+.slot-desc{font-size:12.5px;color:var(--muted);max-width:330px;line-height:1.55;}
+.slot-search{font-size:11.5px;color:var(--teal);background:var(--teal-l);padding:4px 10px;border-radius:6px;margin-top:2px;}
+
+.media-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.media-row .media-slot{margin:0;}
+@media(max-width:600px){.media-row{grid-template-columns:1fr;}}
+
+/* ── BUILT-IN CSS ANIMATIONS ── */
+.anim-box{background:var(--card);border-radius:14px;border:1.5px solid var(--border);padding:20px;box-shadow:var(--shadow);margin-bottom:16px;overflow:hidden;}
+.anim-label{font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.anim-label .live-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:blink 1.2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.anim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.anim-card{background:#f8fafc;border-radius:10px;padding:14px;border:1.5px solid var(--border);}
+.anim-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.anim-card p{font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.5;}
+.anim-stage{height:90px;position:relative;overflow:hidden;background:#f0f4f8;border-radius:8px;display:flex;align-items:center;justify-content:center;}
+
+/* Linear motion — ONE direction only, snaps back instantly to show it always moves the same way */
+.linear-obj{
+  width:34px;height:20px;background:var(--blue);border-radius:4px;
+  position:absolute;top:50%;transform:translateY(-50%);
+  animation:linearMove 2.0s linear infinite;
+}
+@keyframes linearMove{
+  0%   { left: 10px;                    opacity:1; }
+  78%  { left: calc(100% - 44px);       opacity:1; }
+  79%  { left: calc(100% - 44px);       opacity:0; } /* instant invisible reset */
+  80%  { left: 10px;                    opacity:0; }
+  82%  { left: 10px;                    opacity:1; }
+  100% { left: 10px;                    opacity:1; }
+}
+/* Arrow showing direction */
+.linear-arrow{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  font-size:18px;color:var(--blue);opacity:0.5;pointer-events:none;
+}
+.linear-label{
+  position:absolute;bottom:5px;left:50%;transform:translateX(-50%);
+  font-size:10px;color:var(--blue);font-family:'DM Mono',monospace;
+  text-transform:uppercase;letter-spacing:0.07em;white-space:nowrap;
+}
+.linear-track{position:absolute;top:50%;left:8px;right:8px;height:2px;background:#cbd5e1;transform:translateY(-50%);}
+
+/* Rotary motion */
+.rotary-wheel{width:54px;height:54px;border:4px solid var(--orange);border-radius:50%;position:relative;animation:spin 2s linear infinite;}
+.rotary-spoke{position:absolute;top:50%;left:50%;width:22px;height:3px;background:var(--orange);transform-origin:left center;margin-top:-1.5px;}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* Oscillation */
+.osc-arm{width:5px;height:52px;background:var(--purple);border-radius:3px;transform-origin:bottom center;animation:oscillate 1.8s ease-in-out infinite;position:relative;margin-bottom:-4px;}
+.osc-pivot{width:12px;height:12px;background:#94a3b8;border-radius:50%;}
+.osc-bob{width:18px;height:18px;background:var(--purple);border-radius:50%;position:absolute;top:-9px;left:50%;transform:translateX(-50%);}
+@keyframes oscillate{0%,100%{transform:rotate(-35deg)}50%{transform:rotate(35deg)}}
+.osc-stage{flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8px;}
+
+/* Reciprocating — clearly goes BACK and FORTH with equal timing, arrows show both directions */
+.recip-obj{
+  width:34px;height:20px;background:var(--red);border-radius:4px;
+  position:absolute;top:50%;transform:translateY(-50%);
+  animation:recipMove 1.8s ease-in-out infinite;
+}
+@keyframes recipMove{
+  0%   { left: 10px; }
+  45%  { left: calc(100% - 46px); }
+  50%  { left: calc(100% - 46px); }
+  95%  { left: 10px; }
+  100% { left: 10px; }
+}
+/* Double-headed arrow strip above the track */
+.recip-arrow-strip{
+  position:absolute;top:10px;left:10px;right:10px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.recip-arrow-strip span{font-size:14px;color:var(--red);opacity:0.55;}
+.recip-arrow-strip .recip-line{flex:1;height:1px;background:var(--red);opacity:0.2;margin:0 4px;}
+.recip-label{
+  position:absolute;bottom:5px;left:50%;transform:translateX(-50%);
+  font-size:10px;color:var(--red);font-family:'DM Mono',monospace;
+  text-transform:uppercase;letter-spacing:0.07em;white-space:nowrap;
+}
+.recip-track{position:absolute;top:50%;left:8px;right:8px;height:2px;background:#cbd5e1;transform:translateY(-50%);}
+.recip-arrows{position:absolute;width:100%;display:flex;justify-content:space-between;padding:0 8px;}
+
+/* ── SPEC CHECKLIST ── */
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:18px;}
+.spec-card{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;}
+.spec-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h);}
+.spec-head{padding:14px 18px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;}
+.sh-move{background:linear-gradient(135deg,#1d4ed8,#2563eb);}
+.sh-lever{background:linear-gradient(135deg,#166534,#15803d);}
+.sh-cam{background:linear-gradient(135deg,#5b21b6,#7c3aed);}
+.sh-pulley{background:linear-gradient(135deg,#0e7490,#0891b2);}
+.sh-gear{background:linear-gradient(135deg,#c0392b,#dc2626);}
+.spec-body{padding:12px 18px;}
+.spec-item{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:1px solid #f0f0ea;font-size:13.5px;line-height:1.5;}
+.spec-item:last-child{border-bottom:none;}
+.spec-item input[type=checkbox]{margin-top:2px;accent-color:var(--orange);flex-shrink:0;width:15px;height:15px;}
+
+/* ── VOCAB — FIXED LAYOUT ── */
+.filter-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px;align-items:center;}
+.filter-btn{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--muted);}
+.filter-btn:hover,.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;align-items:start;}
+.vc{background:var(--card);border-radius:14px;border:1.5px solid var(--border);box-shadow:var(--shadow);display:block;height:auto;overflow:visible;transition:transform .2s,box-shadow .2s;writing-mode:horizontal-tb;}
+.vc:hover{transform:translateY(-2px);box-shadow:var(--shadow-h);}
+.vc-top{padding:15px 18px 12px;border-bottom:1px solid var(--border);display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:10px;writing-mode:horizontal-tb;}
+.vc-word{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--navy);line-height:1.35;writing-mode:horizontal-tb;flex:1;min-width:0;word-break:break-word;overflow-wrap:anywhere;}
+.vc-tag{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px;flex-shrink:0;writing-mode:horizontal-tb;white-space:nowrap;margin-top:3px;}
+.t-move{background:#dbeafe;color:#1d4ed8;}
+.t-lever{background:var(--green-l);color:var(--green);}
+.t-cam{background:var(--purple-l);color:var(--purple);}
+.t-pulley{background:var(--teal-l);color:var(--teal);}
+.t-gear{background:var(--red-l);color:var(--red);}
+.t-math{background:var(--orange-l);color:#92400e;}
+.vc-body{padding:14px 18px;display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;}
+.def-lbl{display:none;}
+.vc-def{font-size:14px;color:var(--text);line-height:1.65;margin-bottom:12px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex{background:#f6f6f0;border-left:3px solid var(--orange);padding:9px 12px;border-radius:0 8px 8px 0;font-size:13px;color:#444;font-style:italic;line-height:1.55;margin-bottom:11px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex em{font-style:normal;background:var(--orange-l);padding:1px 3px;border-radius:2px;}
+.vc-mem{background:var(--green-l);border:1px solid #bbf7d0;padding:9px 12px;border-radius:8px;font-size:12.5px;color:#14532d;line-height:1.6;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+
+/* ── TOPIC PANELS ── */
+.topic-nav{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px;}
+.tp-btn{padding:9px 18px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;opacity:.55;font-family:'DM Sans',sans-serif;}
+.tp-btn.active{opacity:1;transform:scale(1.04);box-shadow:var(--shadow);}
+.tp-move  {background:#1d4ed8;color:#fff;}
+.tp-lever {background:#166534;color:#fff;}
+.tp-link  {background:#0e7490;color:#fff;}
+.tp-cam   {background:#5b21b6;color:#fff;}
+.tp-pulley{background:#0e7490;color:#fff;}
+.tp-crank {background:#c0392b;color:#fff;}
+.tp-gear  {background:#c0392b;color:#fff;}
+.topic-panel{display:none;}
+.topic-panel.active{display:block;animation:fadeUp .3s ease;}
+.tp-header{border-radius:14px 14px 0 0;padding:24px 28px;color:#fff;}
+.tph-move  {background:linear-gradient(135deg,#1d4ed8,#2563eb);}
+.tph-lever {background:linear-gradient(135deg,#166534,#15803d);}
+.tph-link  {background:linear-gradient(135deg,#0e7490,#0891b2);}
+.tph-cam   {background:linear-gradient(135deg,#5b21b6,#7c3aed);}
+.tph-pulley{background:linear-gradient(135deg,#0e7490,#0891b2);}
+.tph-crank {background:linear-gradient(135deg,#7f1d1d,#c0392b);}
+.tph-gear  {background:linear-gradient(135deg,#7f1d1d,#c0392b);}
+.tp-header h3{font-family:'Playfair Display',serif;font-size:23px;font-weight:700;margin-bottom:5px;letter-spacing:-.01em;}
+.tp-header p{font-size:13.5px;opacity:.82;}
+.tp-body{background:var(--card);border-radius:0 0 14px 14px;border:1.5px solid var(--border);border-top:none;padding:26px 28px;margin-bottom:22px;box-shadow:var(--shadow);}
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:18px;}
+.cbox{border:1.5px solid var(--border);border-radius:10px;padding:14px;transition:border-color .2s;}
+.cbox:hover{border-color:var(--orange);}
+.cbox-icon{font-size:22px;margin-bottom:7px;}
+.cbox-title{font-weight:700;font-size:14px;color:var(--navy);margin-bottom:5px;}
+.cbox-desc{font-size:13px;color:var(--muted);line-height:1.55;}
+.big-tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px;}
+.big-tbl th{padding:9px 12px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;}
+.big-tbl th.h1{background:var(--navy);color:#fff;border-radius:8px 0 0 0;}
+.big-tbl th.h2{background:#2c3e50;color:#fff;}
+.big-tbl th.h3{background:var(--green);color:#fff;}
+.big-tbl th.h4{background:var(--red);color:#fff;border-radius:0 8px 0 0;}
+.big-tbl td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.big-tbl tr:last-child td{border-bottom:none;}
+.big-tbl tr:nth-child(even) td{background:#f9f9f6;}
+.big-tbl .mn{font-weight:700;color:var(--navy);}
+.big-tbl td ul{padding-left:14px;}
+.big-tbl td ul li{margin-bottom:3px;}
+.insight-box{margin-top:14px;border-left:4px solid var(--orange);background:var(--orange-l);padding:11px 15px;border-radius:0 8px 8px 0;font-size:13.5px;color:#5a3800;}
+
+/* Lever diagram */
+.lever-diagrams{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px;}
+.lever-diag{background:#f8fafc;border-radius:10px;padding:16px;border:1.5px solid var(--border);text-align:center;}
+.lever-diag h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.lever-svg{width:100%;height:90px;}
+.lever-examples{font-size:12px;color:var(--muted);margin-top:8px;font-style:italic;}
+@media(max-width:600px){.lever-diagrams{grid-template-columns:1fr;}}
+
+/* ── MATHS CORNER ── */
+.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-bottom:28px;}
+.formula-card{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.formula-head{padding:13px 18px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#fff;}
+.fh-ma    {background:linear-gradient(135deg,#166534,#15803d);}
+.fh-vr    {background:linear-gradient(135deg,#0e7490,#0891b2);}
+.fh-eff   {background:linear-gradient(135deg,#5b21b6,#7c3aed);}
+.fh-gear  {background:linear-gradient(135deg,#c0392b,#dc2626);}
+.fh-pulley{background:linear-gradient(135deg,#1d4ed8,#2563eb);}
+.fh-rack  {background:linear-gradient(135deg,#7f1d1d,#c0392b);}
+.formula-body{padding:16px 18px;}
+.formula-eq{font-family:'DM Mono',monospace;font-size:15px;background:#f0f4f8;padding:10px 14px;border-radius:8px;margin-bottom:12px;color:var(--navy);text-align:center;line-height:1.7;}
+.formula-eq .var{color:var(--orange);font-weight:700;}
+.formula-words{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:10px;}
+.worked-eg{background:#f8fafc;border-radius:8px;padding:12px;font-size:13px;}
+.worked-eg strong{color:var(--navy);display:block;margin-bottom:6px;font-size:13px;}
+.worked-step{display:flex;gap:8px;margin-bottom:4px;font-size:13px;align-items:baseline;}
+.step-num{background:var(--orange);color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+.step-text{color:var(--text);line-height:1.5;}
+.step-ans{font-family:'DM Mono',monospace;font-size:14px;font-weight:700;color:var(--green);background:var(--green-l);padding:4px 10px;border-radius:6px;margin-top:8px;display:inline-block;}
+
+/* ── ACTIVITIES ── */
+.act-block{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;margin-bottom:26px;box-shadow:var(--shadow);}
+.act-head{background:var(--navy);padding:16px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.act-head h3{color:#fff;font-family:'Playfair Display',serif;font-size:18px;}
+.act-badge{background:var(--orange);color:var(--navy);font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:4px;font-weight:500;}
+.act-body{padding:22px;}
+.act-instr{background:#f5f5f0;border-radius:8px;padding:11px 15px;font-size:13.5px;color:var(--muted);margin-bottom:18px;line-height:1.55;}
+.gap-sent{font-size:14.5px;line-height:2.5;margin-bottom:4px;color:var(--text);writing-mode:horizontal-tb;display:block;}
+.gf{border:none;border-bottom:2.5px solid var(--orange);background:var(--orange-l);width:180px;padding:3px 8px;font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--navy);border-radius:4px 4px 0 0;outline:none;transition:background .2s;writing-mode:horizontal-tb;}
+.gf:focus{background:#fde68a;}
+.gf.correct{background:#bbf7d0;border-bottom-color:var(--green);}
+.gf.incorrect{background:var(--red-l);border-bottom-color:var(--red);}
+.word-bank{display:flex;flex-wrap:wrap;gap:8px;padding:13px;background:#f5f5f0;border-radius:10px;margin-bottom:16px;}
+.wchip{background:var(--card);border:1.5px solid var(--border);border-radius:6px;padding:5px 11px;font-size:13px;font-weight:500;color:var(--navy);cursor:pointer;transition:all .15s;user-select:none;writing-mode:horizontal-tb;}
+.wchip:hover{border-color:var(--orange);background:var(--orange-l);}
+.wchip.sel{outline:2.5px solid var(--orange);background:var(--orange-l);}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;transition:background .2s;}
+.check-btn:hover{background:#1a3355;}
+.reset-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:9px 18px;font-family:'DM Sans',sans-serif;font-size:13.5px;cursor:pointer;margin-left:10px;margin-top:12px;color:var(--muted);transition:all .2s;}
+.reset-btn:hover{border-color:var(--navy);color:var(--navy);}
+.score-box{display:none;align-items:center;gap:10px;margin-top:12px;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:600;}
+.score-box.show{display:inline-flex;}
+.score-box.good{background:var(--green-l);color:var(--green);}
+.score-box.ok{background:var(--orange-l);color:#92400e;}
+.score-box.low{background:var(--red-l);color:var(--red);}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.match-col{display:flex;flex-direction:column;gap:8px;}
+.match-col-lbl{font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:3px;}
+.mi{background:var(--card);border:2px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.4;}
+.mi.mw{font-weight:700;color:var(--navy);}
+.mi:hover{border-color:var(--orange);background:var(--orange-l);}
+.mi.sel{border-color:var(--orange);background:var(--orange-l);}
+.mi.matched{border-color:var(--green);background:var(--green-l);color:var(--green);pointer-events:none;font-weight:600;}
+.mi.wrong{border-color:var(--red);background:var(--red-l);animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.tf-item{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:15px 18px;margin-bottom:11px;}
+.tf-stmt{font-size:14px;color:var(--text);margin-bottom:11px;line-height:1.55;font-weight:500;}
+.tf-btns{display:flex;gap:10px;}
+.tf-btn{padding:7px 20px;border-radius:7px;border:1.5px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;background:var(--card);}
+.tf-btn.tb:hover{background:var(--green-l);border-color:var(--green);color:var(--green);}
+.tf-btn.fb:hover{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-btn.ca{background:var(--green-l);border-color:var(--green);color:var(--green);pointer-events:none;}
+.tf-btn.wa{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-fb{font-size:13px;margin-top:9px;padding:8px 12px;border-radius:7px;display:none;line-height:1.5;}
+.tf-fb.show{display:block;}
+.tf-fb.ok{background:var(--green-l);color:var(--green);}
+.tf-fb.no{background:var(--red-l);color:var(--red);}
+
+/* ── EXAM ── */
+.cmd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:28px;}
+.cmd-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow);}
+.cmd-word{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.cmd-means{font-size:13px;color:var(--muted);margin-bottom:9px;line-height:1.5;}
+.cmd-marks{display:inline-block;background:var(--orange-l);color:#92400e;font-size:11px;font-family:'DM Mono',monospace;padding:2px 8px;border-radius:4px;font-weight:500;}
+.frame-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+.frame-type{background:#f0f0ea;padding:7px 16px;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:500;}
+.frame-body{padding:13px 16px;}
+.frame-tpl{font-size:14px;color:var(--text);line-height:1.8;margin-bottom:7px;}
+.blank{background:var(--orange-l);padding:2px 7px;border-radius:4px;font-style:italic;color:#92400e;font-size:13px;}
+.frame-ex{font-size:13px;color:var(--muted);font-style:italic;border-left:3px solid var(--teal);padding-left:11px;margin-top:7px;line-height:1.55;}
+.eq-block{background:var(--card);border:1.5px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow);}
+.eq-head{background:#f5f5f0;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;}
+.eq-head span{font-size:12px;font-family:'DM Mono',monospace;color:var(--muted);text-transform:uppercase;}
+.eq-marks{background:var(--navy);color:#fff;font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:4px;}
+.eq-body{padding:15px 18px;}
+.eq-text{font-size:15px;color:var(--navy);margin-bottom:11px;font-weight:500;line-height:1.5;}
+.eq-hint{background:var(--teal-l);padding:9px 13px;border-radius:8px;font-size:12.5px;color:#064e4a;line-height:1.5;}
+.show-ans-btn{background:none;border:1.5px solid var(--teal);border-radius:6px;padding:6px 13px;font-size:12.5px;color:var(--teal);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:11px;transition:all .2s;}
+.show-ans-btn:hover{background:var(--teal);color:#fff;}
+.model-ans{display:none;background:#f0fef9;border:1px solid #a7f3d0;border-radius:8px;padding:13px;margin-top:11px;font-size:13.5px;line-height:1.65;color:#134e2a;}
+.model-ans.show{display:block;}
+.mp{display:flex;gap:9px;margin-bottom:6px;}
+.mpn{background:var(--green);color:#fff;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* ── TOOLKIT ── */
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;}
+.tk-card{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.tk-head{padding:14px 18px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;}
+.tkh-navy{background:var(--navy);color:#fff;}
+.tkh-orange{background:var(--orange);color:var(--navy);}
+.tkh-green{background:#166534;color:#fff;}
+.tkh-teal{background:#0e7490;color:#fff;}
+.tk-body{padding:14px 18px;}
+.pre-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.pre-tbl th{background:#f5f5f0;padding:8px 11px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+.pre-tbl td{padding:7px 11px;border-bottom:1px solid var(--border);line-height:1.5;}
+.pre-tbl tr:last-child td{border-bottom:none;}
+.pfx{font-weight:700;color:var(--navy);}
+.syn-p{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:13.5px;}
+.syn-p:last-child{border-bottom:none;}
+.syn-c{font-weight:600;color:var(--navy);min-width:130px;line-height:1.45;}
+.syn-a{color:var(--orange);font-size:16px;flex-shrink:0;margin-top:2px;}
+.syn-s{color:var(--muted);font-style:italic;font-size:13px;line-height:1.45;}
+.con-list{list-style:none;}
+.con-list li{padding:6px 0;border-bottom:1px solid var(--border);font-size:13.5px;display:flex;gap:9px;align-items:flex-start;line-height:1.5;}
+.con-list li:last-child{border-bottom:none;}
+.con-chip{background:var(--orange-l);color:#92400e;padding:2px 8px;border-radius:4px;font-weight:600;font-size:12.5px;white-space:nowrap;flex-shrink:0;}
+
+/* ── MEDIA GUIDE ── */
+.mg-tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px;}
+.mg-tbl th{background:var(--navy);color:#fff;padding:9px 12px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;}
+.mg-tbl td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.mg-tbl tr:nth-child(even) td{background:#f9f9f6;}
+.mg-tbl tr:last-child td{border-bottom:none;}
+.slot-num-g{display:inline-block;background:var(--orange);color:var(--navy);font-family:'DM Mono',monospace;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap;}
+.slot-num-i{display:inline-block;background:var(--blue-l);color:var(--blue);font-family:'DM Mono',monospace;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap;}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:12px;margin-top:60px;}
+footer strong{color:var(--orange);}
+@media(max-width:600px){.hero{padding:34px 18px 30px}.main{padding:20px 14px 60px}.match-grid{grid-template-columns:1fr}.tp-body{padding:16px}.lever-diagrams{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Edexcel GCSE D&T · Topic 1.5 · Revision Pack</div>
+    <h1>Mechanical Devices<br><span class="ac">Used to Produce</span> Movement</h1>
+    <div class="hero-spec">Spec Ref: 1.5.1 · 1.5.2 · 1.5.3 &nbsp;|&nbsp; Textbook pp. 25–32</div>
+    <p class="hero-sub">A complete ESL-focused revision guide covering types of movement, levers, linkages, cams, pulleys, cranks and gears — with live animations, GIF slots, maths worked examples, and exam practice.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">📋 Spec Checklist</span>
+      <span class="hero-tag">📖 28 Key Words</span>
+      <span class="hero-tag">🎬 11 GIF Slots</span>
+      <span class="hero-tag">✨ 4 Live Animations</span>
+      <span class="hero-tag">🔢 Maths Corner</span>
+      <span class="hero-tag">✏️ 3 Activities</span>
+      <span class="hero-tag">📝 Exam Frames</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="showTab('spec')">📋 Spec Checklist</button>
+    <button class="tab-btn" onclick="showTab('vocab')">📖 Key Vocabulary</button>
+    <button class="tab-btn" onclick="showTab('topics')">🗂️ Topic Summaries</button>
+    <button class="tab-btn" onclick="showTab('maths')">🔢 Maths Corner</button>
+    <button class="tab-btn" onclick="showTab('activities')">✏️ Activities</button>
+    <button class="tab-btn" onclick="showTab('exam')">📝 Exam Language</button>
+    <button class="tab-btn" onclick="showTab('toolkit')">💬 ESL Toolkit</button>
+    <button class="tab-btn" onclick="showTab('mediaguide')">🎬 Media Guide</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ══════════════════ 1. SPEC CHECKLIST ══════════════════ -->
+<div id="sec-spec" class="section active">
+  <div class="sec-head"><h2>Specification Checklist</h2><p>Tick each item when you feel confident. Topic 1.5 covers how mechanical devices create and change movement — one of the most maths-heavy topics in the exam.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Tip — Sketch to Learn:</strong> For this topic, drawing labelled diagrams is more effective than writing notes. After reading each section, close your notes and draw the mechanism from memory. Label all parts. This topic is very visual — your brain remembers diagrams better than text.</div>
+  <div class="spec-grid">
+    <div class="spec-card">
+      <div class="spec-head sh-move">🔄 Types of Movement</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Linear motion — straight line in one direction</div>
+        <div class="spec-item"><input type="checkbox"> Rotary motion — around a central point</div>
+        <div class="spec-item"><input type="checkbox"> Oscillating motion — swings back and forth in an arc</div>
+        <div class="spec-item"><input type="checkbox"> Reciprocating motion — back and forth in a straight line</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-head sh-lever">⚖️ Levers &amp; Linkages</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Parts of a lever: effort, fulcrum, load</div>
+        <div class="spec-item"><input type="checkbox"> Class 1 lever — fulcrum in the middle (e.g. pliers, crowbar)</div>
+        <div class="spec-item"><input type="checkbox"> Class 2 lever — load in the middle (e.g. wheelbarrow, nutcracker)</div>
+        <div class="spec-item"><input type="checkbox"> Class 3 lever — effort in the middle (e.g. tweezers, spade)</div>
+        <div class="spec-item"><input type="checkbox"> Mechanical advantage (MA) = Load ÷ Effort</div>
+        <div class="spec-item"><input type="checkbox"> Velocity ratio (VR) = Distance moved by effort ÷ Distance moved by load</div>
+        <div class="spec-item"><input type="checkbox"> Efficiency = MA/VR × 100%</div>
+        <div class="spec-item"><input type="checkbox"> Bell crank linkage — transmits motion through 90°</div>
+        <div class="spec-item"><input type="checkbox"> Reverse motion linkage — reverses direction of input</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-head sh-cam">🔁 Cams &amp; Followers</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Cam — converts rotary → reciprocating/oscillating motion</div>
+        <div class="spec-item"><input type="checkbox"> Three stages: rise, dwell, fall</div>
+        <div class="spec-item"><input type="checkbox"> Pear-shaped cam — dwells for half cycle then rises and falls</div>
+        <div class="spec-item"><input type="checkbox"> Eccentric/circular cam — smooth, continuous movement</div>
+        <div class="spec-item"><input type="checkbox"> Drop (snail) cam — slow rise then sudden fall</div>
+        <div class="spec-item"><input type="checkbox"> Follower types: roller, knife edge, flat</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-head sh-pulley">🪝 Pulleys, Cranks &amp; Gears</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Pulley — transmits rotary motion via belt; VR = driven ÷ driver diameter</div>
+        <div class="spec-item"><input type="checkbox"> V-belt — shaped to increase grip and reduce slipping</div>
+        <div class="spec-item"><input type="checkbox"> Crank and slider — converts rotary → reciprocating</div>
+        <div class="spec-item"><input type="checkbox"> Simple gear train — meshed spur gears; reverses rotation direction</div>
+        <div class="spec-item"><input type="checkbox"> Compound gear train — multiple gears; higher velocity ratios</div>
+        <div class="spec-item"><input type="checkbox"> Idler gear — reverses direction; does not affect speed</div>
+        <div class="spec-item"><input type="checkbox"> Bevel gears — transmit rotary motion through 90°</div>
+        <div class="spec-item"><input type="checkbox"> Rack and pinion — rotary → linear motion</div>
+        <div class="spec-item"><input type="checkbox"> Gear VR = Driven teeth ÷ Driver teeth; Output rpm = Input ÷ VR</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 2. KEY VOCABULARY ══════════════════ -->
+<div id="sec-vocab" class="section">
+  <div class="sec-head"><h2>Key Vocabulary</h2><p>28 key terms for Topic 1.5. The memory tip uses a 💡 icon only — all text is horizontal. Filter by topic area to focus your revision.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Tip — Vocabulary Pairs:</strong> Many terms in this topic come in pairs: <em>driver/driven, effort/load, input/output, rise/fall</em>. Learn them together as opposites — understanding one helps you understand the other.</div>
+  <div class="filter-row">
+    <span style="font-size:13px;color:var(--muted);font-weight:500;">Filter:</span>
+    <button class="filter-btn active" onclick="fv('all',this)">All</button>
+    <button class="filter-btn" onclick="fv('move',this)">🔄 Movement</button>
+    <button class="filter-btn" onclick="fv('lever',this)">⚖️ Levers</button>
+    <button class="filter-btn" onclick="fv('cam',this)">🔁 Cams</button>
+    <button class="filter-btn" onclick="fv('pulley',this)">🪝 Pulleys</button>
+    <button class="filter-btn" onclick="fv('gear',this)">⚙️ Gears</button>
+    <button class="filter-btn" onclick="fv('math',this)">🔢 Maths</button>
+  </div>
+  <div class="vocab-grid" id="vg">
+
+    <!-- MOVEMENT -->
+    <div class="vc" data-topic="move">
+      <div class="vc-top"><div class="vc-word">Linear Motion</div><div class="vc-tag t-move">Movement</div></div>
+      <div class="vc-body">
+        <div class="vc-def">Movement in a <strong>straight line in one direction</strong>. The object does not curve or rotate — it travels along a fixed path from A to B.</div>
+        <div class="vc-ex">"A train <em>moving along a straight track</em> is an example of <em>linear motion</em> — it travels in one direction along a fixed line."</div>
+        <div class="vc-mem">💡 <em>Linear</em> = relating to a line. Straight line, one direction. Examples: train on track, bullet fired from gun, drawer opening.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="move">
+      <div class="vc-top"><div class="vc-word">Rotary Motion</div><div class="vc-tag t-move">Movement</div></div>
+      <div class="vc-body">
+        <div class="vc-def">Movement in a <strong>circle around a central point</strong>. The object spins or rotates continuously. This is the most common type of motion in machines.</div>
+        <div class="vc-ex">"A <em>fan blade</em> spinning around its central hub is rotary motion — it continuously revolves around a fixed central point."</div>
+        <div class="vc-mem">💡 <em>Rotate</em> = to spin around a point. Rotary = always circular. Examples: fan blades, bicycle wheel, electric motor, gear, pulley.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="move">
+      <div class="vc-top"><div class="vc-word">Oscillating Motion</div><div class="vc-tag t-move">Movement</div></div>
+      <div class="vc-body">
+        <div class="vc-def">Movement that <strong>swings backwards and forwards in an arc</strong> around a central point. Unlike reciprocating motion, it follows a curved path, not a straight line.</div>
+        <div class="vc-ex">"A child on a <em>swing</em> demonstrates <em>oscillating motion</em> — the swing arcs backward and forward around the pivot point at the top."</div>
+        <div class="vc-mem">💡 <em>Oscillate</em> = to swing regularly back and forth. Key: the path is an ARC (curved), not straight. Examples: pendulum, metronome, windscreen wiper arc.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="move">
+      <div class="vc-top"><div class="vc-word">Reciprocating Motion</div><div class="vc-tag t-move">Movement</div></div>
+      <div class="vc-body">
+        <div class="vc-def">Movement that goes <strong>backwards and forwards in a straight line</strong>. Unlike oscillating motion, the path is straight, not curved. Many machines convert rotary motion into reciprocating motion.</div>
+        <div class="vc-ex">"A <em>sewing machine needle</em> moves in reciprocating motion — it drives straight up and down repeatedly in a straight vertical line."</div>
+        <div class="vc-mem">💡 <em>Reciprocate</em> = to go back and forth. Key distinction from oscillating: <strong>reciprocating = straight line</strong>, oscillating = curved arc. Examples: piston in engine, sewing needle, saw blade.</div>
+      </div>
+    </div>
+
+    <!-- LEVERS -->
+    <div class="vc" data-topic="lever">
+      <div class="vc-top"><div class="vc-word">Lever</div><div class="vc-tag t-lever">Levers</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A <strong>fixed rigid beam</strong> that pivots around a point called the fulcrum. It requires three things: effort (input force), fulcrum (pivot point), and load (output force). Levers create mechanical advantage.</div>
+        <div class="vc-ex">"A <em>crowbar</em> is a class 1 lever — a small effort applied at one end can lift a heavy load at the other, because the lever creates mechanical advantage."</div>
+        <div class="vc-mem">💡 A lever = a rigid bar + a pivot (fulcrum). The position of the fulcrum determines the class (1, 2 or 3). Always three components: <strong>Effort → Fulcrum → Load</strong> (in different orders for each class).</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="lever">
+      <div class="vc-top"><div class="vc-word">Fulcrum</div><div class="vc-tag t-lever">Levers</div></div>
+      <div class="vc-body">
+        <div class="vc-def">The <strong>fixed pivot point</strong> around which a lever turns or rotates. The position of the fulcrum relative to the effort and load determines what class of lever it is.</div>
+        <div class="vc-ex">"In a seesaw (a Class 1 lever), the <em>fulcrum</em> is the central pivot in the middle — the two children sit on either side as the effort and load."</div>
+        <div class="vc-mem">💡 The fulcrum = the pivot. Think of a seesaw — the metal triangle in the middle that it balances on is the fulcrum. Without a fulcrum, there is no lever.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="lever">
+      <div class="vc-top"><div class="vc-word">Mechanical Advantage (MA)</div><div class="vc-tag t-lever">Levers</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A number that tells you <strong>how much a mechanism multiplies the input force</strong>. MA = Load ÷ Effort. An MA greater than 1 means the lever helps you — the output force is greater than the input force.</div>
+        <div class="vc-ex">"A wheelbarrow has an MA of 6 — a 50N effort can lift a 300N load, because MA = 300 ÷ 50 = 6."</div>
+        <div class="vc-mem">💡 MA &gt; 1 = the machine helps you (less effort needed). MA &lt; 1 = you need more effort than the output (like tweezers — less force but more precise control). Formula: <strong>MA = Load ÷ Effort</strong>.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="lever">
+      <div class="vc-top"><div class="vc-word">Velocity Ratio (VR)</div><div class="vc-tag t-math">Maths</div></div>
+      <div class="vc-body">
+        <div class="vc-def">The ratio of <strong>how far the effort moves compared to how far the load moves</strong>. VR = Distance moved by effort ÷ Distance moved by load. A high VR means you move the effort a long way to move the load a small amount.</div>
+        <div class="vc-ex">"A wheelbarrow has a VR of 8 — the handles move 800 mm while the load only rises 100 mm. VR = 800 ÷ 100 = 8."</div>
+        <div class="vc-mem">💡 VR = how far you push ÷ how far the load moves. VR is always about DISTANCE, not force. High VR = large mechanical advantage but you move your hands further. <strong>VR = Distance by effort ÷ Distance by load</strong>.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="lever">
+      <div class="vc-top"><div class="vc-word">Efficiency</div><div class="vc-tag t-math">Maths</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A percentage showing <strong>how well a mechanism converts input energy into useful output energy</strong>. No mechanism is 100% efficient because friction always wastes some energy. Efficiency = (MA ÷ VR) × 100%.</div>
+        <div class="vc-ex">"The wheelbarrow has an efficiency of 75% (MA=6, VR=8): Efficiency = 6/8 × 100 = 75%. The other 25% is lost to friction."</div>
+        <div class="vc-mem">💡 Efficiency is always less than 100% in real life — friction steals energy as heat. Formula: <strong>Efficiency = MA ÷ VR × 100%</strong>. High efficiency = less energy wasted.</div>
+      </div>
+    </div>
+
+    <!-- CAMS -->
+    <div class="vc" data-topic="cam">
+      <div class="vc-top"><div class="vc-word">Cam</div><div class="vc-tag t-cam">Cams</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A mechanism that <strong>converts rotary motion into reciprocating or oscillating motion</strong>. A cam is an irregularly shaped disc attached to a rotating shaft. As it rotates, it pushes a follower up and down.</div>
+        <div class="vc-ex">"Car engines use pear-shaped <em>cams</em> to open and close valves — as the cam rotates, it pushes the valve open (rise), holds it (dwell), then allows it to close (fall)."</div>
+        <div class="vc-mem">💡 Cam = a shaped disc that converts spinning (rotary) → up-and-down (reciprocating). Always three stages of follower movement: <strong>RISE → DWELL → FALL</strong>. The shape of the cam controls the pattern.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="cam">
+      <div class="vc-top"><div class="vc-word">Follower</div><div class="vc-tag t-cam">Cams</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A device that <strong>rests against the cam surface and follows its profile</strong>, moving up and down as the cam rotates. There are three types: roller (reduces friction), knife edge (accurate), and flat (high load bearing).</div>
+        <div class="vc-ex">"The <em>roller follower</em> in a car engine uses a small wheel to roll along the cam surface, reducing friction and allowing the engine to run at high speeds."</div>
+        <div class="vc-mem">💡 Three follower types: Roller = low friction (fast); Knife edge = accurate (embroidery); Flat = high load but more friction (steam engine). The follower translates the cam's shape into movement.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="cam">
+      <div class="vc-top"><div class="vc-word">Dwell</div><div class="vc-tag t-cam">Cams</div></div>
+      <div class="vc-body">
+        <div class="vc-def">The stage of a cam's rotation when the <strong>follower remains stationary</strong> (does not move up or down). This happens when the part of the cam in contact with the follower is equidistant from the centre of rotation.</div>
+        <div class="vc-ex">"A pear-shaped cam <em>dwells</em> (keeps the follower still) for about half of each rotation, then rapidly rises and falls in the second half of the cycle."</div>
+        <div class="vc-mem">💡 Dwell = pause. The follower is at rest during the dwell phase. Three phases: rise (goes up), <strong>dwell</strong> (stays still), fall (comes down). The pear cam has the longest dwell phase.</div>
+      </div>
+    </div>
+
+    <!-- PULLEYS -->
+    <div class="vc" data-topic="pulley">
+      <div class="vc-top"><div class="vc-word">Pulley System</div><div class="vc-tag t-pulley">Pulleys</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A mechanism using <strong>wheels with a belt running in their grooves</strong> to transmit rotary motion from a driver shaft to a driven shaft. When two pulleys of different sizes are used, the smaller one spins faster.</div>
+        <div class="vc-ex">"A <em>pillar drill</em> uses a pulley system — by moving the belt to different sized wheels, the user can change the drill's speed without changing the motor."</div>
+        <div class="vc-mem">💡 Driver pulley (connected to motor) → belt → driven pulley (connected to output). Smaller pulley = faster. Key: both pulleys rotate in the SAME direction in a standard configuration.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="pulley">
+      <div class="vc-top"><div class="vc-word">V-Belt</div><div class="vc-tag t-pulley">Pulleys</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A belt with a <strong>V-shaped cross-section</strong> that fits into a matching groove in the pulley wheel. The V-shape wedges into the groove as it tightens under load, increasing grip and reducing slipping.</div>
+        <div class="vc-ex">"Car engines use <em>V-belts</em> to drive accessories like the alternator and water pump — the V-shape ensures the belt does not slip even under high load."</div>
+        <div class="vc-mem">💡 V-belt = V-shaped = wedges into groove = grips better = less slipping. Key advantage over flat belt: more efficient power transfer because it self-tightens as the load increases.</div>
+      </div>
+    </div>
+
+    <!-- GEARS -->
+    <div class="vc" data-topic="gear">
+      <div class="vc-top"><div class="vc-word">Gear</div><div class="vc-tag t-gear">Gears</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A <strong>toothed wheel fixed to a shaft</strong> that meshes (interlocks) with other gears to change the speed, torque, or direction of rotation. Because teeth mesh directly, gears cannot slip — unlike belts.</div>
+        <div class="vc-ex">"A bicycle uses <em>gears</em> — a large front chainring drives a small rear sprocket, making the wheel rotate faster than the pedals with each turn."</div>
+        <div class="vc-mem">💡 Key advantage over pulleys: no slipping (teeth interlock). Key fact: two meshed spur gears ALWAYS rotate in <strong>opposite directions</strong>. An idler gear reverses this.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="gear">
+      <div class="vc-top"><div class="vc-word">Idler Gear</div><div class="vc-tag t-gear">Gears</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A gear placed <strong>between the driver and driven gear</strong> that reverses the direction of the driven gear — making driver and driven rotate in the same direction. It does <strong>not change the speed</strong> of the output.</div>
+        <div class="vc-ex">"Adding an <em>idler gear</em> to a simple gear train makes the driver and driven gears rotate in the same direction, which is useful in clock mechanisms."</div>
+        <div class="vc-mem">💡 Idler gear = middle gear = direction reverser ONLY. It does NOT affect speed or VR — the VR is still calculated from driver and driven gears only. It just changes the rotation direction.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="gear">
+      <div class="vc-top"><div class="vc-word">Bevel Gear</div><div class="vc-tag t-gear">Gears</div></div>
+      <div class="vc-body">
+        <div class="vc-def">Specialist gears with teeth cut at an angle that <strong>transmit rotary motion through 90 degrees</strong>. Two identically sized bevel gears are called mitre gears (equal input and output speed). A hand drill is a common example.</div>
+        <div class="vc-ex">"A <em>bevel gear</em> in a hand drill converts the horizontal rotation of the handle into vertical rotation of the drill bit — changing the direction of motion by 90°."</div>
+        <div class="vc-mem">💡 Bevel gear = transmits motion through 90° (a right angle). Same-size bevel gears = mitre gears (speed stays equal). Where else? Car differential, angle grinder, helicopter rotor.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="gear">
+      <div class="vc-top"><div class="vc-word">Rack and Pinion</div><div class="vc-tag t-gear">Gears</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A gear system using a circular <strong>pinion gear meshing with a flat toothed rack</strong> to convert rotary motion into linear motion (or vice versa). Used in car steering systems and pillar drills.</div>
+        <div class="vc-ex">"A car's <em>rack and pinion</em> steering system converts the rotary turning of the steering wheel into the linear side-to-side movement of the front wheels."</div>
+        <div class="vc-mem">💡 Rack = flat toothed bar (linear). Pinion = circular gear (rotary). Rack and pinion converts between these two: rotary → linear (or linear → rotary). Examples: car steering, pillar drill depth stop.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="gear">
+      <div class="vc-top"><div class="vc-word">Torque</div><div class="vc-tag t-gear">Gears</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A measure of a system's <strong>turning or rotational force</strong> (twisting power). A high torque means the mechanism can exert a large rotational force. When speed increases, torque decreases (and vice versa) in gear systems.</div>
+        <div class="vc-ex">"A screwdriver with a long handle provides more <em>torque</em> because the increased distance from the turning axis multiplies the rotational force applied."</div>
+        <div class="vc-mem">💡 Torque = turning power. In gears: speed up → torque goes DOWN. Slow down → torque goes UP. This is the trade-off in all gear systems — you can have speed or force, but not both at the same time.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="gear">
+      <div class="vc-top"><div class="vc-word">Compound Gear Train</div><div class="vc-tag t-gear">Gears</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A gear system with <strong>more than one gear on a single shaft</strong>, allowing much higher velocity ratios than a simple gear train. The total VR is calculated by multiplying the VRs of each simple gear pair.</div>
+        <div class="vc-ex">"A compound gear train with two pairs of gears (VR1 = 1:2, VR2 = 1:4) gives a total VR of 1:8 — the output rotates 8 times faster than the input."</div>
+        <div class="vc-mem">💡 Compound = two or more gear pairs sharing shafts. Total VR = VR₁ × VR₂. Used when a large speed change is needed that a single pair of gears cannot achieve without being impractically large.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════ 3. TOPIC SUMMARIES ══════════════════ -->
+<div id="sec-topics" class="section">
+  <div class="sec-head"><h2>Topic Summaries</h2><p>Select a topic below. Each section includes live animations (built-in), GIF slots for real-world footage, labelled diagrams, and key fact tables.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Tip — Animation → Words:</strong> When you see an animation or GIF, try to describe what is happening in English. Say it out loud: "The cam rotates. The follower rises up. Then it dwells. Then it falls." Speaking what you see is one of the best ways to build subject vocabulary.</div>
+
+  <div class="topic-nav">
+    <button class="tp-btn tp-move  active" onclick="showTopic('move',this)">🔄 Movement</button>
+    <button class="tp-btn tp-lever"        onclick="showTopic('lever',this)">⚖️ Levers</button>
+    <button class="tp-btn tp-link"         onclick="showTopic('link',this)">🔗 Linkages</button>
+    <button class="tp-btn tp-cam"          onclick="showTopic('cam',this)">🔁 Cams</button>
+    <button class="tp-btn tp-pulley"       onclick="showTopic('pulley',this)">🪝 Pulleys</button>
+    <button class="tp-btn tp-crank"        onclick="showTopic('crank',this)">🔩 Cranks</button>
+    <button class="tp-btn tp-gear"         onclick="showTopic('gear',this)">⚙️ Gears</button>
+  </div>
+
+  <!-- MOVEMENT -->
+  <div class="topic-panel active" id="tp-move">
+    <div class="tp-header tph-move"><h3>🔄 Types of Movement</h3><p>Spec ref: 1.5.1 | Key question: <em>What are the four types of movement and how do we recognise each one?</em></p></div>
+    <div class="tp-body">
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px;">Mechanisms change one type of force or movement into another. The four basic types of movement below are the building blocks of all mechanical systems.</p>
+
+      <!-- LIVE CSS ANIMATIONS -->
+      <div class="anim-box">
+        <div class="anim-label"><div class="live-dot"></div> Live animations — built into this page, no internet needed</div>
+        <div class="anim-grid">
+          <div class="anim-card">
+            <h4>⟶ Linear Motion</h4>
+            <p>Moves in a straight line, one direction only.</p>
+            <div class="anim-stage">
+              <div class="linear-track"></div>
+              <div class="linear-obj"></div>
+              <div class="linear-arrow">→</div>
+              <div class="linear-label">one direction only →</div>
+            </div>
+          </div>
+          <div class="anim-card">
+            <h4>↻ Rotary Motion</h4>
+            <p>Rotates continuously around a central point.</p>
+            <div class="anim-stage">
+              <div class="rotary-wheel"><div class="rotary-spoke"></div></div>
+            </div>
+          </div>
+          <div class="anim-card">
+            <h4>↙↗ Oscillating Motion</h4>
+            <p>Swings back and forth in a curved arc.</p>
+            <div class="anim-stage osc-stage">
+              <div class="osc-arm"><div class="osc-bob"></div></div>
+              <div class="osc-pivot"></div>
+            </div>
+          </div>
+          <div class="anim-card">
+            <h4>← → Reciprocating Motion</h4>
+            <p>Moves back and forth in a straight line.</p>
+            <div class="anim-stage">
+              <div class="recip-arrow-strip"><span>←</span><div class="recip-line"></div><span>→</span></div>
+              <div class="recip-track"></div>
+              <div class="recip-obj"></div>
+              <div class="recip-label">← back and forth →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GIF SLOT 1 -->
+      <div class="media-slot">
+        <img src="" alt="Real world examples of all four types of movement" class="slot-media">
+        <div class="slot-ph">
+          <div class="slot-icon">🎬</div>
+          <div class="slot-type-badge gif-badge">GIF Slot 1</div>
+          <div class="slot-title">Real-world examples of all 4 movement types</div>
+          <div class="slot-desc">A short GIF or video clip showing all four movements in familiar contexts — train (linear), fan (rotary), pendulum (oscillating), piston (reciprocating)</div>
+          <div class="slot-search">🔍 Search: "four types of motion mechanical engineering animation"</div>
+        </div>
+      </div>
+
+      <table class="big-tbl">
+        <tr><th class="h1">Movement Type</th><th class="h2">Description</th><th class="h3">Real-world Examples</th><th class="h4">Produced By</th></tr>
+        <tr><td class="mn">Linear</td><td>Straight line, one direction</td><td>Train on track, bullet, drawer opening, elevator</td><td>Rack and pinion, crank and slider (output)</td></tr>
+        <tr><td class="mn">Rotary</td><td>Circular, around a central point</td><td>Fan blade, bicycle wheel, drill bit, gear</td><td>Motor, engine, pulley, gear system</td></tr>
+        <tr><td class="mn">Oscillating</td><td>Back and forth in a curved arc</td><td>Pendulum, child on swing, windscreen wiper</td><td>Cam with follower, bell crank</td></tr>
+        <tr><td class="mn">Reciprocating</td><td>Back and forth in a straight line</td><td>Sewing machine needle, car piston, saw blade</td><td>Crank and slider, cam and follower</td></tr>
+      </table>
+      <div class="insight-box">💡 <strong>Exam insight:</strong> A common 1-mark question asks you to identify the type of movement. Key distinctions: Oscillating vs Reciprocating — both go back and forth but <strong>oscillating follows an arc</strong> (curved) while <strong>reciprocating follows a straight line</strong>. The sewing machine needle = reciprocating. A pendulum = oscillating.</div>
+    </div>
+  </div>
+
+  <!-- LEVERS -->
+  <div class="topic-panel" id="tp-lever">
+    <div class="tp-header tph-lever"><h3>⚖️ Levers — Classification &amp; Mechanical Advantage</h3><p>Spec ref: 1.5.1 | Key question: <em>How do the three classes of lever differ, and how do we calculate mechanical advantage?</em></p></div>
+    <div class="tp-body">
+      <div class="concept-grid">
+        <div class="cbox"><div class="cbox-icon">💪</div><div class="cbox-title">Effort</div><div class="cbox-desc">The input force applied by the user. The distance from the effort to the fulcrum determines the mechanical advantage.</div></div>
+        <div class="cbox"><div class="cbox-icon">📍</div><div class="cbox-title">Fulcrum</div><div class="cbox-desc">The fixed pivot point. Its position relative to effort and load determines the class of lever (1, 2 or 3).</div></div>
+        <div class="cbox"><div class="cbox-icon">📦</div><div class="cbox-title">Load</div><div class="cbox-desc">The output force exerted on the object being moved. Also called the resistance.</div></div>
+        <div class="cbox"><div class="cbox-icon">🔢</div><div class="cbox-title">Key Rule</div><div class="cbox-desc">The further the effort is from the fulcrum, the greater the mechanical advantage — less effort is needed.</div></div>
+      </div>
+
+      <!-- SVG lever diagrams -->
+      <div class="lever-diagrams">
+        <div class="lever-diag">
+          <h4>Class 1 Lever — Fulcrum in the MIDDLE</h4>
+          <svg class="lever-svg" viewBox="0 0 200 90">
+            <rect x="5" y="42" width="190" height="8" rx="4" fill="#166534"/>
+            <polygon points="95,85 105,85 100,55" fill="#f59e0b"/>
+            <text x="100" y="93" text-anchor="middle" font-size="9" fill="#64748b">Fulcrum (F)</text>
+            <rect x="10" y="30" width="24" height="14" rx="3" fill="#1d4ed8"/>
+            <text x="22" y="28" text-anchor="middle" font-size="9" fill="#1d4ed8">Load</text>
+            <line x1="22" x2="22" y1="30" y2="42" stroke="#1d4ed8" stroke-width="2"/>
+            <rect x="162" y="30" width="24" height="14" rx="3" fill="#c0392b"/>
+            <text x="174" y="28" text-anchor="middle" font-size="9" fill="#c0392b">Effort</text>
+            <line x1="174" x2="174" y1="30" y2="42" stroke="#c0392b" stroke-width="2" stroke-dasharray="3,2"/>
+          </svg>
+          <div class="lever-examples">Pliers, crowbar, seesaw, scissors</div>
+        </div>
+        <div class="lever-diag">
+          <h4>Class 2 Lever — Load in the MIDDLE</h4>
+          <svg class="lever-svg" viewBox="0 0 200 90">
+            <rect x="5" y="42" width="190" height="8" rx="4" fill="#166534"/>
+            <polygon points="5,85 15,85 10,55" fill="#f59e0b"/>
+            <text x="10" y="93" text-anchor="middle" font-size="9" fill="#64748b">Fulcrum (F)</text>
+            <rect x="86" y="30" width="24" height="14" rx="3" fill="#1d4ed8"/>
+            <text x="98" y="28" text-anchor="middle" font-size="9" fill="#1d4ed8">Load</text>
+            <line x1="98" x2="98" y1="30" y2="42" stroke="#1d4ed8" stroke-width="2"/>
+            <rect x="162" y="30" width="24" height="14" rx="3" fill="#c0392b"/>
+            <text x="174" y="28" text-anchor="middle" font-size="9" fill="#c0392b">Effort</text>
+            <line x1="174" x2="174" y1="30" y2="42" stroke="#c0392b" stroke-width="2" stroke-dasharray="3,2"/>
+          </svg>
+          <div class="lever-examples">Wheelbarrow, nutcracker, bottle opener</div>
+        </div>
+        <div class="lever-diag">
+          <h4>Class 3 Lever — Effort in the MIDDLE</h4>
+          <svg class="lever-svg" viewBox="0 0 200 90">
+            <rect x="5" y="42" width="190" height="8" rx="4" fill="#166534"/>
+            <polygon points="185,85 195,85 190,55" fill="#f59e0b"/>
+            <text x="190" y="93" text-anchor="middle" font-size="9" fill="#64748b">Fulcrum (F)</text>
+            <rect x="86" y="30" width="24" height="14" rx="3" fill="#c0392b"/>
+            <text x="98" y="28" text-anchor="middle" font-size="9" fill="#c0392b">Effort</text>
+            <line x1="98" x2="98" y1="30" y2="42" stroke="#c0392b" stroke-width="2" stroke-dasharray="3,2"/>
+            <rect x="10" y="30" width="24" height="14" rx="3" fill="#1d4ed8"/>
+            <text x="22" y="28" text-anchor="middle" font-size="9" fill="#1d4ed8">Load</text>
+            <line x1="22" x2="22" y1="30" y2="42" stroke="#1d4ed8" stroke-width="2"/>
+          </svg>
+          <div class="lever-examples">Tweezers, fishing rod, spade, forearm</div>
+        </div>
+      </div>
+
+      <!-- GIF SLOT 2 -->
+      <div class="media-row">
+        <div class="media-slot">
+          <img src="" alt="Class 1 lever in action crowbar or seesaw" class="slot-media">
+          <div class="slot-ph">
+            <div class="slot-icon">🎬</div>
+            <div class="slot-type-badge gif-badge">GIF Slot 2</div>
+            <div class="slot-title">Class 1 lever action</div>
+            <div class="slot-desc">GIF showing a crowbar lifting an object, OR a seesaw pivoting. Fulcrum visible in the middle.</div>
+            <div class="slot-search">🔍 Search: "class 1 lever animation" or "crowbar lever gif"</div>
+          </div>
+        </div>
+        <div class="media-slot">
+          <img src="" alt="Class 2 lever wheelbarrow or nutcracker in use" class="slot-media">
+          <div class="slot-ph">
+            <div class="slot-icon">🎬</div>
+            <div class="slot-type-badge gif-badge">GIF Slot 3</div>
+            <div class="slot-title">Class 2 lever action</div>
+            <div class="slot-desc">GIF showing a wheelbarrow being lifted, or a nutcracker cracking a nut. Load visible in the middle.</div>
+            <div class="slot-search">🔍 Search: "class 2 lever wheelbarrow animation" or "nutcracker gif"</div>
+          </div>
+        </div>
+      </div>
+
+      <table class="big-tbl" style="margin-top:16px;">
+        <tr><th class="h1" style="width:80px;">Class</th><th class="h2">Fulcrum position</th><th class="h3">Mechanical advantage</th><th class="h4">Examples</th></tr>
+        <tr><td class="mn">Class 1</td><td>Between effort and load</td><td>Can be &gt;1 (large input movement → greater output force)</td><td>Crowbar, pliers, scissors, seesaw</td></tr>
+        <tr><td class="mn">Class 2</td><td>Load between fulcrum and effort</td><td>Always &gt;1 (smaller effort needed to lift large load)</td><td>Wheelbarrow, nutcracker, bottle opener</td></tr>
+        <tr><td class="mn">Class 3</td><td>Effort between fulcrum and load</td><td>Always &lt;1 (effort &gt; load; less force, more control)</td><td>Tweezers, fishing rod, spade, human forearm</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- LINKAGES -->
+  <div class="topic-panel" id="tp-link">
+    <div class="tp-header tph-link"><h3>🔗 Linkages — Transmitting Force</h3><p>Spec ref: 1.5.1 | Key question: <em>What are linkages and how do they transmit or change the direction of motion?</em></p></div>
+    <div class="tp-body">
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:14px;">Linkages are levers that allow forces and motion to be transmitted over a distance or in a different direction. The same rules of mechanical advantage apply — they still have an input, a fulcrum, and an output.</p>
+      <div class="media-row">
+        <div class="media-slot">
+          <img src="" alt="Bell crank linkage animation showing 90 degree motion transfer" class="slot-media">
+          <div class="slot-ph">
+            <div class="slot-icon">🎬</div>
+            <div class="slot-type-badge gif-badge">GIF Slot 4</div>
+            <div class="slot-title">Bell crank linkage in action</div>
+            <div class="slot-desc">GIF showing a bell crank transmitting a downward push into a sideways pull through 90° — as seen in bicycle brake cables or sack barrows.</div>
+            <div class="slot-search">🔍 Search: "bell crank linkage animation" or "bell crank mechanism gif"</div>
+          </div>
+        </div>
+        <div class="media-slot">
+          <img src="" alt="Reverse motion linkage animation showing direction reversal" class="slot-media">
+          <div class="slot-ph">
+            <div class="slot-icon">🎬</div>
+            <div class="slot-type-badge gif-badge">GIF Slot 5</div>
+            <div class="slot-title">Reverse motion linkage</div>
+            <div class="slot-desc">GIF showing a reverse motion linkage — input moves left, output moves right. Used in windscreen wipers and gear levers.</div>
+            <div class="slot-search">🔍 Search: "reverse motion linkage animation" or "class 1 linkage reversal gif"</div>
+          </div>
+        </div>
+      </div>
+      <div class="concept-grid" style="margin-top:16px;">
+        <div class="cbox"><div class="cbox-icon">🔔</div><div class="cbox-title">Bell Crank Linkage</div><div class="cbox-desc">A Class 1 lever shaped like an L. It transmits motion through <strong>90 degrees</strong> — input force goes in, output comes out at a right angle. Used in bicycle brakes and sack barrows.</div></div>
+        <div class="cbox"><div class="cbox-icon">↔️</div><div class="cbox-title">Reverse Motion Linkage</div><div class="cbox-desc">Based on Class 1 lever. Reverses the direction of input motion — push left, output goes right. Used in windscreen wipers and car gear levers.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAMS -->
+  <div class="topic-panel" id="tp-cam">
+    <div class="tp-header tph-cam"><h3>🔁 Cams &amp; Followers</h3><p>Spec ref: 1.5.2 | Key question: <em>How do different cam shapes create different follower movements?</em></p></div>
+    <div class="tp-body">
+      <div class="insight-box" style="margin-bottom:18px;">💡 <strong>Key principle:</strong> A cam is ALWAYS attached to a rotating shaft. As it spins, its <strong>irregular shape</strong> pushes a follower up (rise), holds it still (dwell), or lets it fall (fall). The shape of the cam determines the pattern of movement.</div>
+
+      <!-- GIF SLOT 6 -->
+      <div class="media-slot">
+        <img src="" alt="Cam and follower animated showing rise dwell fall stages" class="slot-media">
+        <div class="slot-ph">
+          <div class="slot-icon">🎬</div>
+          <div class="slot-type-badge gif-badge">GIF Slot 6 ⭐ Most Important</div>
+          <div class="slot-title">Cam and follower — rise, dwell, fall</div>
+          <div class="slot-desc">GIF clearly showing a pear-shaped cam rotating while a follower moves up (rise), stays still (dwell), then drops (fall). Labels would help ESL students greatly.</div>
+          <div class="slot-search">🔍 Search: "cam and follower animation" or "cam follower rise dwell fall gif"</div>
+        </div>
+      </div>
+
+      <table class="big-tbl">
+        <tr><th class="h1">Cam Shape</th><th class="h2">What the follower does</th><th class="h3">✓ Used for</th><th class="h4">Example product</th></tr>
+        <tr><td class="mn">Pear-shaped</td><td>Dwells (stays still) for about half the cycle, then rises and falls in the second half</td><td>Opening/closing valves at precise intervals</td><td>Car engine valves</td></tr>
+        <tr><td class="mn">Eccentric (Circular)</td><td>Smooth, continuous, uniform rise and fall with no dwell</td><td>Smooth constant reciprocating motion</td><td>Fuel pumps, steam engines</td></tr>
+        <tr><td class="mn">Drop (Snail)</td><td>Slow gradual rise (spiral), then sudden rapid fall (drop)</td><td>Mechanisms needing a slow build-up then a sudden strike</td><td>Hammers, hole punches, timing mechanisms</td></tr>
+      </table>
+
+      <div class="divider"></div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:14px;">Types of Follower</h3>
+      <!-- GIF SLOT 7 -->
+      <div class="media-slot">
+        <img src="" alt="Three types of follower roller knife edge flat comparison" class="slot-media">
+        <div class="slot-ph">
+          <div class="slot-icon">📸</div>
+          <div class="slot-type-badge img-badge">Image / GIF Slot 7</div>
+          <div class="slot-title">Follower types — roller, knife edge, flat</div>
+          <div class="slot-desc">Diagram or GIF showing all three follower types in contact with a cam. Your textbook (p.28) has an excellent diagram — scan or photograph it.</div>
+          <div class="slot-search">🔍 Search: "cam follower types roller knife flat" or use textbook p.28 diagram</div>
+        </div>
+      </div>
+      <table class="big-tbl" style="margin-top:14px;">
+        <tr><th class="h1">Follower Type</th><th class="h2">How it works</th><th class="h3">✓ Advantage</th><th class="h4">✗ Disadvantage</th></tr>
+        <tr><td class="mn">Roller</td><td>Small wheel rolls along cam surface</td><td>Low friction — good for high speeds</td><td>Has separate parts; forces push it sideways</td></tr>
+        <tr><td class="mn">Knife Edge</td><td>Sharp point traces cam profile closely</td><td>Very accurate — follows cam profile precisely</td><td>Wears out quickly; sideways forces</td></tr>
+        <tr><td class="mn">Flat</td><td>Flat face slides along cam surface</td><td>High load-bearing ability; follows cam closely</td><td>High friction — less suitable for high speeds</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- PULLEYS -->
+  <div class="topic-panel" id="tp-pulley">
+    <div class="tp-header tph-pulley"><h3>🪝 Pulleys &amp; Belts</h3><p>Spec ref: 1.5.2 | Key question: <em>How do pulleys transmit rotary motion and how do we calculate velocity ratio?</em></p></div>
+    <div class="tp-body">
+      <!-- GIF SLOT 8 -->
+      <div class="media-slot">
+        <img src="" alt="Pulley system rotating showing belt and driver driven wheels" class="slot-media">
+        <div class="slot-ph">
+          <div class="slot-icon">🎬</div>
+          <div class="slot-type-badge gif-badge">GIF Slot 8</div>
+          <div class="slot-title">Pulley system in motion</div>
+          <div class="slot-desc">GIF showing two pulleys of different sizes connected by a belt. The smaller driven pulley should visibly rotate faster than the larger driver pulley.</div>
+          <div class="slot-search">🔍 Search: "pulley belt system animation" or "pulley velocity ratio animation gif"</div>
+        </div>
+      </div>
+      <div class="concept-grid" style="margin-top:16px;">
+        <div class="cbox"><div class="cbox-icon">⚙️</div><div class="cbox-title">Driver Pulley</div><div class="cbox-desc">Connected to the motor or power source. This pulley provides the input motion. Its size determines the output speed of the driven pulley.</div></div>
+        <div class="cbox"><div class="cbox-icon">🔧</div><div class="cbox-title">Driven Pulley</div><div class="cbox-desc">Connected to the output shaft. If the driven pulley is <strong>smaller</strong> than the driver, it spins <strong>faster</strong>. If larger, it spins slower.</div></div>
+        <div class="cbox"><div class="cbox-icon">〰️</div><div class="cbox-title">V-Belt</div><div class="cbox-desc">V-shaped cross-section that wedges into the groove, increasing grip and preventing slipping under high loads. More efficient than a flat belt.</div></div>
+        <div class="cbox"><div class="cbox-icon">📐</div><div class="cbox-title">VR Formula</div><div class="cbox-desc">VR = Driven pulley diameter ÷ Driver pulley diameter. The smaller the driven pulley, the higher the VR, the faster it spins.</div></div>
+      </div>
+      <div class="insight-box" style="margin-top:16px;">💡 <strong>Direction note:</strong> In a standard pulley setup, <strong>both pulleys rotate in the same direction</strong>. If you cross the belt in a figure-of-8 pattern, the pulleys rotate in opposite directions. Gears always rotate in opposite directions without an idler.</div>
+    </div>
+  </div>
+
+  <!-- CRANK AND SLIDER -->
+  <div class="topic-panel" id="tp-crank">
+    <div class="tp-header tph-crank"><h3>🔩 Crank and Slider</h3><p>Spec ref: 1.5.2 | Key question: <em>How does a crank and slider convert rotary motion to reciprocating motion?</em></p></div>
+    <div class="tp-body">
+      <!-- GIF SLOT 9 -->
+      <div class="media-slot">
+        <img src="" alt="Crank and slider mechanism converting rotary to reciprocating motion" class="slot-media">
+        <div class="slot-ph">
+          <div class="slot-icon">🎬</div>
+          <div class="slot-type-badge gif-badge">GIF Slot 9 ⭐ Very Important</div>
+          <div class="slot-title">Crank and slider — rotary → reciprocating</div>
+          <div class="slot-desc">GIF showing a rotating crank arm connected to a slider via a connecting rod. As the crank rotates, the slider moves back and forth. Labels for crank, connecting rod and slider would help greatly.</div>
+          <div class="slot-search">🔍 Search: "crank slider mechanism animation" or "piston connecting rod crankshaft gif"</div>
+        </div>
+      </div>
+      <div class="concept-grid" style="margin-top:16px;">
+        <div class="cbox"><div class="cbox-icon">🔄</div><div class="cbox-title">How it works</div><div class="cbox-desc">A <strong>crank</strong> (rotating arm) is connected to a <strong>slider</strong> by a <strong>connecting rod</strong>. As the crank rotates, the connecting rod pushes the slider back and forth.</div></div>
+        <div class="cbox"><div class="cbox-icon">📏</div><div class="cbox-title">Size rule</div><div class="cbox-desc">The slider's maximum movement = <strong>twice the radius of the crank arm</strong>. A larger crank arm produces longer slider travel.</div></div>
+        <div class="cbox"><div class="cbox-icon">🚗</div><div class="cbox-title">Applications</div><div class="cbox-desc">Car engine pistons and crankshaft; compressors; steam engines; sewing machine needle mechanism.</div></div>
+        <div class="cbox"><div class="cbox-icon">↔️</div><div class="cbox-title">Reversible</div><div class="cbox-desc">The mechanism can work in reverse — the slider can drive the crank. In steam engines, steam pushes the piston (slider) which turns the wheels (crank).</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GEARS -->
+  <div class="topic-panel" id="tp-gear">
+    <div class="tp-header tph-gear"><h3>⚙️ Gear Types &amp; Systems</h3><p>Spec ref: 1.5.3 | Key question: <em>What are the different gear types and how do we calculate gear velocity ratios?</em></p></div>
+    <div class="tp-body">
+      <div class="media-row">
+        <div class="media-slot">
+          <img src="" alt="Simple gear train two meshing gears rotating in opposite directions" class="slot-media">
+          <div class="slot-ph">
+            <div class="slot-icon">🎬</div>
+            <div class="slot-type-badge gif-badge">GIF Slot 10</div>
+            <div class="slot-title">Simple gear train</div>
+            <div class="slot-desc">GIF showing two meshing spur gears clearly rotating in opposite directions. Ideally shows different sizes so the speed difference is visible.</div>
+            <div class="slot-search">🔍 Search: "simple gear train animation" or "two meshing gears gif"</div>
+          </div>
+        </div>
+        <div class="media-slot">
+          <img src="" alt="Rack and pinion animation showing rotary to linear conversion" class="slot-media">
+          <div class="slot-ph">
+            <div class="slot-icon">🎬</div>
+            <div class="slot-type-badge gif-badge">GIF Slot 11</div>
+            <div class="slot-title">Rack and pinion in action</div>
+            <div class="slot-desc">GIF showing a pinion gear rotating while a rack (flat toothed bar) moves linearly back and forth — clearly showing rotary → linear conversion.</div>
+            <div class="slot-search">🔍 Search: "rack and pinion animation" or "rack pinion steering gif"</div>
+          </div>
+        </div>
+      </div>
+
+      <table class="big-tbl" style="margin-top:16px;">
+        <tr><th class="h1">Gear Type</th><th class="h2">What it does</th><th class="h3">Key feature</th><th class="h4">Real examples</th></tr>
+        <tr><td class="mn">Simple Gear Train</td><td>Two spur gears meshed — changes speed; reverses direction</td><td>Driver and driven always rotate in <strong>opposite</strong> directions</td><td>Clock mechanisms, manual can openers</td></tr>
+        <tr><td class="mn">Idler Gear</td><td>Added between driver and driven — makes them rotate in the same direction</td><td>Does <strong>not</strong> change speed or VR</td><td>Reverse gear in a car gearbox</td></tr>
+        <tr><td class="mn">Compound Gear Train</td><td>Multiple gears sharing a shaft — achieves very high VR</td><td>Total VR = VR₁ × VR₂</td><td>Bicycle gears, clock mechanisms</td></tr>
+        <tr><td class="mn">Bevel Gear</td><td>Transmits rotary motion through 90 degrees</td><td>Same-size = mitre gear (equal speed I/O)</td><td>Hand drill, car differential, helicopter</td></tr>
+        <tr><td class="mn">Rack and Pinion</td><td>Converts rotary → linear (or linear → rotary)</td><td>Rack movement per revolution = teeth on pinion ÷ TPM</td><td>Car steering, pillar drill depth stop</td></tr>
+      </table>
+
+      <div class="insight-box" style="margin-top:14px;">💡 <strong>Key advantage of gears over pulleys:</strong> Because teeth interlock, <strong>gears cannot slip</strong>. This means greater forces can be applied and the velocity ratio is precise and constant. Pulleys can slip, especially if the belt stretches or becomes oily.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 4. MATHS CORNER ══════════════════ -->
+<div id="sec-maths" class="section">
+  <div class="sec-head"><h2>🔢 Maths Corner</h2><p>All the formulas you need for Topic 1.5. Each formula includes a worked example, step by step, exactly as you would need to show your working in the exam.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Tip — Formula First:</strong> For each formula, first learn what the letters stand for (the words behind the symbols). MA = Load ÷ Effort means nothing unless you know that Load = the output force and Effort = the input force. Write each formula in words AND letters in your notes.</div>
+  <div class="formula-grid">
+
+    <div class="formula-card">
+      <div class="formula-head fh-ma">⚖️ Mechanical Advantage (MA)</div>
+      <div class="formula-body">
+        <div class="formula-eq"><span class="var">MA</span> = <span class="var">Load</span> ÷ <span class="var">Effort</span></div>
+        <div class="formula-words">Load = output force (Newtons, N)<br>Effort = input force (Newtons, N)<br>MA &gt; 1 = machine helps you; MA &lt; 1 = more effort than output</div>
+        <div class="worked-eg">
+          <strong>📝 Worked Example: Wheelbarrow</strong>
+          <div class="worked-step"><div class="step-num">1</div><div class="step-text">Load = 300 N, Effort = 50 N</div></div>
+          <div class="worked-step"><div class="step-num">2</div><div class="step-text">MA = 300 ÷ 50</div></div>
+          <div class="step-ans">MA = 6</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:6px;">A 50 N effort can lift a 300 N load — the lever multiplies your force by 6.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-head fh-vr">📏 Velocity Ratio — Levers</div>
+      <div class="formula-body">
+        <div class="formula-eq"><span class="var">VR</span> = Distance by <span class="var">effort</span> ÷ Distance by <span class="var">load</span></div>
+        <div class="formula-words">Both distances in the same unit (mm, cm, or m)<br>VR tells you how far the effort moves per unit of load movement<br>High VR = more mechanical advantage but effort moves further</div>
+        <div class="worked-eg">
+          <strong>📝 Worked Example: Wheelbarrow</strong>
+          <div class="worked-step"><div class="step-num">1</div><div class="step-text">Effort distance = 800 mm, Load distance = 100 mm</div></div>
+          <div class="worked-step"><div class="step-num">2</div><div class="step-text">VR = 800 ÷ 100</div></div>
+          <div class="step-ans">VR = 8</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-head fh-eff">📊 Efficiency</div>
+      <div class="formula-body">
+        <div class="formula-eq"><span class="var">Efficiency</span> = (<span class="var">MA</span> ÷ <span class="var">VR</span>) × 100%</div>
+        <div class="formula-words">Always a percentage (%). No mechanism is 100% efficient — friction always steals some energy. A higher % = less energy wasted.</div>
+        <div class="worked-eg">
+          <strong>📝 Worked Example: Wheelbarrow (MA=6, VR=8)</strong>
+          <div class="worked-step"><div class="step-num">1</div><div class="step-text">Efficiency = (6 ÷ 8) × 100%</div></div>
+          <div class="worked-step"><div class="step-num">2</div><div class="step-text">= 0.75 × 100%</div></div>
+          <div class="step-ans">Efficiency = 75%</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:6px;">25% of input energy is lost to friction.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-head fh-pulley">🪝 Velocity Ratio — Pulleys</div>
+      <div class="formula-body">
+        <div class="formula-eq"><span class="var">VR</span> = Driven diameter ÷ Driver diameter</div>
+        <div class="formula-words">Driven = the output pulley (connected to what you want to spin)<br>Driver = the input pulley (connected to the motor)<br>If driven &lt; driver → VR &lt; 1 → output spins FASTER</div>
+        <div class="worked-eg">
+          <strong>📝 Worked Example</strong>
+          <div class="worked-step"><div class="step-num">1</div><div class="step-text">Driver = 60 mm, Driven = 20 mm</div></div>
+          <div class="worked-step"><div class="step-num">2</div><div class="step-text">VR = 20 ÷ 60 = 1/3</div></div>
+          <div class="step-ans">VR = 1:3</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:6px;">Output spins 3× faster than input.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-head fh-gear">⚙️ Velocity Ratio — Gears</div>
+      <div class="formula-body">
+        <div class="formula-eq"><span class="var">VR</span> = Driven teeth ÷ Driver teeth</div>
+        <div class="formula-words">Output speed = Input speed ÷ VR<br>Driver = gear connected to the motor (input)<br>Driven = gear on the output shaft</div>
+        <div class="worked-eg">
+          <strong>📝 Worked Example: Simple gear train</strong>
+          <div class="worked-step"><div class="step-num">1</div><div class="step-text">Driver = 32 teeth, Driven = 16 teeth</div></div>
+          <div class="worked-step"><div class="step-num">2</div><div class="step-text">VR = 16 ÷ 32 = 1/2 = 1:2</div></div>
+          <div class="worked-step"><div class="step-num">3</div><div class="step-text">If input = 100 rpm → Output = 100 ÷ (1/2) = 200 rpm</div></div>
+          <div class="step-ans">Output speed = 200 rpm</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-head fh-rack">🔩 Rack &amp; Pinion — Movement</div>
+      <div class="formula-body">
+        <div class="formula-eq">Movement = (Pinion teeth ÷ TPM) × 1 metre</div>
+        <div class="formula-words">TPM = Teeth Per Metre on the rack<br>This gives the distance the rack moves for each full revolution of the pinion gear.</div>
+        <div class="worked-eg">
+          <strong>📝 Worked Example</strong>
+          <div class="worked-step"><div class="step-num">1</div><div class="step-text">Pinion = 60 teeth, Rack TPM = 200</div></div>
+          <div class="worked-step"><div class="step-num">2</div><div class="step-text">= (60 ÷ 200) × 1 m = 0.3 m</div></div>
+          <div class="step-ans">Rack moves 300 mm per revolution</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════ 5. ACTIVITIES ══════════════════ -->
+<div id="sec-activities" class="section">
+  <div class="sec-head"><h2>Revision Activities</h2><p>Three activities — gap fill, matching, and true/false — to test your understanding of all Topic 1.5 content. Word banks are deliberately shuffled so the order does not give away the answers!</p></div>
+  <div class="esl-tip"><strong>📌 ESL Tip:</strong> Do not look at your notes while completing activities. If you are unsure, make a guess first, then check. Learning from mistakes is proven to be more effective than studying from notes.</div>
+
+  <!-- ACTIVITY 1: GAP FILL -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 1 — Gap Fill: Mechanisms Vocabulary</h3><div class="act-badge">Fill in the blanks</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a word from the Word Bank, then click the blank where it belongs. Press Check Answers when finished. The word bank is NOT in answer order!</div>
+      <div class="word-bank" id="wb1">
+        <span class="wchip" data-word="rack and pinion">rack and pinion</span>
+        <span class="wchip" data-word="oscillating">oscillating</span>
+        <span class="wchip" data-word="fulcrum">fulcrum</span>
+        <span class="wchip" data-word="velocity ratio">velocity ratio</span>
+        <span class="wchip" data-word="reciprocating">reciprocating</span>
+        <span class="wchip" data-word="mechanical advantage">mechanical advantage</span>
+        <span class="wchip" data-word="cam">cam</span>
+        <span class="wchip" data-word="idler gear">idler gear</span>
+        <span class="wchip" data-word="bevel gear">bevel gear</span>
+        <span class="wchip" data-word="dwell">dwell</span>
+      </div>
+      <div id="gf1">
+        <div class="gap-sent">1. A pendulum swinging backwards and forwards in a curved arc is an example of <input type="text" class="gf" data-answer="oscillating"> motion.</div>
+        <div class="gap-sent">2. The fixed pivot point around which a lever turns is called the <input type="text" class="gf" data-answer="fulcrum">.</div>
+        <div class="gap-sent">3. A small effort that can move a large load shows that a lever has a high <input type="text" class="gf" data-answer="mechanical advantage">.</div>
+        <div class="gap-sent">4. The <input type="text" class="gf" data-answer="velocity ratio"> of a mechanism is calculated by dividing the distance moved by the effort by the distance moved by the load.</div>
+        <div class="gap-sent">5. A <input type="text" class="gf" data-answer="cam"> is a mechanism that converts rotary motion into reciprocating or oscillating motion.</div>
+        <div class="gap-sent">6. When the follower of a cam remains stationary during part of the cam's rotation, this stage is called the <input type="text" class="gf" data-answer="dwell">.</div>
+        <div class="gap-sent">7. A sewing machine needle moves up and down in a straight line — this is an example of <input type="text" class="gf" data-answer="reciprocating"> motion.</div>
+        <div class="gap-sent">8. An <input type="text" class="gf" data-answer="idler gear"> is placed between a driver and driven gear to make them rotate in the same direction, without changing the speed.</div>
+        <div class="gap-sent">9. A <input type="text" class="gf" data-answer="bevel gear"> is used to transmit rotary motion through 90 degrees — it is found in hand drills and car differentials.</div>
+        <div class="gap-sent">10. A <input type="text" class="gf" data-answer="rack and pinion"> system converts the rotary motion of a gear into linear (straight line) motion of a flat toothed bar.</div>
+      </div>
+      <div><button class="check-btn" onclick="checkGF('gf1','sc1')">✓ Check Answers</button><button class="reset-btn" onclick="resetGF('gf1','sc1','wb1')">↺ Reset</button><div class="score-box" id="sc1"></div></div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 2: MATCHING -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 2 — Matching: Mechanism to Description</h3><div class="act-badge">Click to match</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a mechanism name on the LEFT, then click its correct description on the RIGHT. Green = correct, Red = wrong — try again!</div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-lbl">⚙️ Mechanism</div>
+          <div class="mi mw" data-id="1" onclick="sm(this,'w')">Bell Crank Linkage</div>
+          <div class="mi mw" data-id="2" onclick="sm(this,'w')">Class 2 Lever</div>
+          <div class="mi mw" data-id="3" onclick="sm(this,'w')">Drop (Snail) Cam</div>
+          <div class="mi mw" data-id="4" onclick="sm(this,'w')">Compound Gear Train</div>
+          <div class="mi mw" data-id="5" onclick="sm(this,'w')">V-Belt</div>
+          <div class="mi mw" data-id="6" onclick="sm(this,'w')">Crank and Slider</div>
+          <div class="mi mw" data-id="7" onclick="sm(this,'w')">Pear-Shaped Cam</div>
+          <div class="mi mw" data-id="8" onclick="sm(this,'w')">Knife Edge Follower</div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-lbl">📝 Description</div>
+          <div class="mi" data-id="3" onclick="sm(this,'d')">Creates a slow, gradual rise followed by a sudden drop — used in hammers and punches</div>
+          <div class="mi" data-id="8" onclick="sm(this,'d')">Sharp point type used when accuracy is needed, such as in an embroidery machine</div>
+          <div class="mi" data-id="2" onclick="sm(this,'d')">A lever where the load is positioned between the fulcrum and the effort — e.g. a wheelbarrow</div>
+          <div class="mi" data-id="6" onclick="sm(this,'d')">Converts rotary motion of a crank arm into back-and-forth motion of a slider via a connecting rod</div>
+          <div class="mi" data-id="1" onclick="sm(this,'d')">An L-shaped Class 1 lever that transmits force through 90 degrees — used in bicycle brakes</div>
+          <div class="mi" data-id="4" onclick="sm(this,'d')">Has more than one gear on a shaft — achieves very high velocity ratios; total VR = VR₁ × VR₂</div>
+          <div class="mi" data-id="7" onclick="sm(this,'d')">Keeps the follower stationary (dwell) for half the cycle, then rises and falls — used in car engine valves</div>
+          <div class="mi" data-id="5" onclick="sm(this,'d')">Belt with a V-shaped cross section that wedges into the pulley groove to increase grip and reduce slipping</div>
+        </div>
+      </div>
+      <button class="reset-btn" style="margin-top:14px;" onclick="resetMatch()">↺ Reset</button>
+      <div id="mDone" style="display:none;margin-top:12px;font-size:14px;font-weight:600;color:var(--green);background:var(--green-l);padding:10px 16px;border-radius:8px;">🎉 All 8 matched correctly! Excellent knowledge of mechanical devices!</div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 3: TRUE/FALSE -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 3 — True or False?</h3><div class="act-badge">Test understanding</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Read each statement carefully. Press True or False. You get immediate feedback with an explanation. Focus on WHY — this is what exam questions test.</div>
+      <div class="tf-item">
+        <div class="tf-stmt">1. Oscillating motion and reciprocating motion are exactly the same — both move back and forth.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,1)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,1)">False</button></div>
+        <div class="tf-fb" id="tf1">❌ <strong>False.</strong> They are similar but NOT the same. Both go back and forth, BUT: <strong>reciprocating motion</strong> follows a <strong>straight line</strong> (like a piston or sewing needle), whereas <strong>oscillating motion</strong> follows a <strong>curved arc</strong> (like a pendulum or swing). This distinction is worth 1 mark in the exam.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">2. In a Class 2 lever, the fulcrum is positioned at one end, the effort at the other, and the load is in the middle.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,true,2)">True</button><button class="tf-btn fb" onclick="chkTF(this,true,2)">False</button></div>
+        <div class="tf-fb" id="tf2">✅ <strong>True.</strong> In a Class 2 lever, the order from one end to the other is: <strong>Fulcrum → Load → Effort</strong>. The load is always in the middle. A wheelbarrow is the classic example — the wheel is the fulcrum, the load sits in the barrow (middle), and the handles are where you apply effort (at the far end).</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">3. Adding an idler gear between a driver and driven gear makes the output speed twice as fast.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,3)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,3)">False</button></div>
+        <div class="tf-fb" id="tf3">❌ <strong>False.</strong> An idler gear only changes the <strong>direction</strong> of rotation — it does NOT change the speed or velocity ratio at all. The VR is still calculated only from the driver and driven gears. The idler gear simply makes the driver and driven gear rotate in the <strong>same direction</strong> instead of opposite directions.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">4. A mechanism with a Mechanical Advantage of 8 and a Velocity Ratio of 10 has an efficiency of 80%.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,true,4)">True</button><button class="tf-btn fb" onclick="chkTF(this,true,4)">False</button></div>
+        <div class="tf-fb" id="tf4">✅ <strong>True.</strong> Efficiency = (MA ÷ VR) × 100% = (8 ÷ 10) × 100% = 80%. This means 80% of the input energy is converted into useful output energy, and 20% is lost to friction. The mechanism is reasonably efficient but not perfect — no real mechanism achieves 100% efficiency.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">5. In a standard pulley system, the driver and driven pulleys rotate in opposite directions — one clockwise, one anticlockwise.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,5)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,5)">False</button></div>
+        <div class="tf-fb" id="tf5">❌ <strong>False.</strong> This is a common confusion with gears! In a standard pulley system, both pulleys rotate in the <strong>same direction</strong> — because the belt connects their top surfaces. <strong>Gears</strong> (without an idler) rotate in opposite directions. If you cross the belt in a figure-of-8, the pulleys then rotate in opposite directions — but this is not the standard configuration.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">6. A drop (snail) cam is best suited to applications that require a slow, smooth rise followed by a sudden fall — such as a hammer or punch mechanism.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,true,6)">True</button><button class="tf-btn fb" onclick="chkTF(this,true,6)">False</button></div>
+        <div class="tf-fb" id="tf6">✅ <strong>True.</strong> The snail (drop) cam's spiral cross-section creates a very gradual rise as the cam rotates, then a sudden, rapid drop at one point in the cycle. This is exactly the motion needed for hammers, hole punches, and timing mechanisms where a controlled build-up followed by an abrupt strike is required.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 6. EXAM LANGUAGE ══════════════════ -->
+<div id="sec-exam" class="section">
+  <div class="sec-head"><h2>Exam Language &amp; Practice</h2><p>Command words, sentence frames specific to mechanisms, and model answers for typical exam questions.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Tip — Numbers in Answers:</strong> For maths questions in D&T, always show your working clearly. Write the formula first, then substitute values, then calculate. You may get marks for the correct method even if you make an arithmetic error at the end.</div>
+
+  <div class="cmd-grid">
+    <div class="cmd-card"><div class="cmd-word">State</div><div class="cmd-means">Give a short direct answer. One word or phrase — no explanation needed. Often 1 mark per item.</div><span class="cmd-marks">1 mark</span></div>
+    <div class="cmd-card"><div class="cmd-word">Describe</div><div class="cmd-means">Say what something is or what it does. Give features. No need to explain why — just what.</div><span class="cmd-marks">1–2 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Explain</div><div class="cmd-means">Give the what AND the why. Use: <em>"because…", "this means that…", "therefore…"</em> A reason is essential.</div><span class="cmd-marks">2–4 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Calculate</div><div class="cmd-means">Show all working clearly. Write the formula, substitute the values, perform the calculation. Show units in the answer.</div><span class="cmd-marks">2–3 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Evaluate</div><div class="cmd-means">Discuss advantages AND disadvantages of a mechanism choice. Reach a conclusion about which is most suitable and why.</div><span class="cmd-marks">6–9 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Draw / Sketch</div><div class="cmd-means">Produce a labelled diagram. Always label: effort, fulcrum, load (for levers); driver, driven, VR (for gears/pulleys).</div><span class="cmd-marks">2–4 marks</span></div>
+  </div>
+
+  <div style="margin-bottom:28px;">
+    <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:14px;padding-bottom:9px;border-bottom:2px solid var(--border);">✍️ Sentence Frames for Mechanism Questions</h3>
+
+    <div class="frame-card">
+      <div class="frame-type">Describing how a mechanism works (2–3 marks)</div>
+      <div class="frame-body">
+        <div class="frame-tpl">A <span class="blank">[mechanism name]</span> converts <span class="blank">[input motion type]</span> into <span class="blank">[output motion type]</span>. As the <span class="blank">[input component]</span> rotates/moves, it causes the <span class="blank">[output component]</span> to <span class="blank">[what it does]</span>.</div>
+        <div class="frame-ex">"A <strong>crank and slider</strong> converts <strong>rotary motion</strong> into <strong>reciprocating motion</strong>. As the <strong>crank arm</strong> rotates, it causes the <strong>slider</strong> to move back and forth in a straight line via the connecting rod."</div>
+      </div>
+    </div>
+
+    <div class="frame-card">
+      <div class="frame-type">Explaining the class of a lever (2 marks)</div>
+      <div class="frame-body">
+        <div class="frame-tpl">This is a Class <span class="blank">[1/2/3]</span> lever because the <span class="blank">[fulcrum/load/effort]</span> is positioned between the <span class="blank">[other two components]</span>. This means that <span class="blank">[mechanical advantage consequence]</span>.</div>
+        <div class="frame-ex">"This is a <strong>Class 2</strong> lever because the <strong>load (the barrow)</strong> is positioned between the <strong>fulcrum (the wheel) and the effort (the handles)</strong>. This means that the mechanical advantage is always greater than 1, so less effort is needed to lift a heavy load."</div>
+      </div>
+    </div>
+
+    <div class="frame-card">
+      <div class="frame-type">Showing maths working (Calculate questions)</div>
+      <div class="frame-body">
+        <div class="frame-tpl">Step 1: Write the formula — <span class="blank">[formula]</span><br>Step 2: Substitute values — <span class="blank">[formula with numbers]</span><br>Step 3: Calculate and state units — <span class="blank">[answer + unit]</span></div>
+        <div class="frame-ex">"Step 1: VR = Number of teeth on driven gear ÷ Number of teeth on driver gear<br>Step 2: VR = 16 ÷ 32<br>Step 3: VR = <strong>1:2</strong> (for every 1 revolution of the driver, the driven gear rotates twice)"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRACTICE QUESTIONS -->
+  <div class="sec-head"><h2 style="font-size:22px;">📝 Practice Exam Questions</h2></div>
+  <div class="esl-tip"><strong>📌 ESL Tip:</strong> Write your own answer first, then reveal the model answer. After reading the model, highlight any sentence structures or key vocabulary you did not use — add these to your vocabulary notebook.</div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Q1 · Types of Movement · 1 mark</span><span class="eq-marks">1 mark</span></div>
+    <div class="eq-body">
+      <div class="eq-text">State the type of movement of a car travelling along a motorway.</div>
+      <div class="eq-hint">💡 <strong>Language hint:</strong> For a "State" question, just name the type. One word or short phrase is enough — no explanation needed.</div>
+      <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans"><div class="mp"><div class="mpn">1</div><div><strong>Linear motion.</strong> The car moves in a straight line in one direction along the motorway.</div></div>
+      <div style="margin-top:7px;font-size:13px;color:#555;">✏️ Note: If the car goes around a bend, it would be oscillating. If the question says "along a straight motorway" → always linear.</div></div>
+    </div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Q2 · Levers · 2 marks</span><span class="eq-marks">2 marks</span></div>
+    <div class="eq-body">
+      <div class="eq-text">Explain how you can create a larger output movement from a reverse motion linkage.</div>
+      <div class="eq-hint">💡 <strong>Language hint:</strong> Explain = what + why. Think about where the pivot is and how moving it changes the output. Use: <em>"If the pivot is moved... this causes... because..."</em></div>
+      <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans">
+        <div class="mp"><div class="mpn">1</div><div>To create a larger output movement from a reverse motion linkage, the fixed pivot point (fulcrum) should be moved closer to the input (effort) end of the linkage.</div></div>
+        <div class="mp"><div class="mpn">2</div><div>This increases the mechanical advantage because the distance from the pivot to the output side becomes greater than the distance to the input side, so the output arm travels a larger distance for the same input movement.</div></div>
+        <div style="margin-top:7px;font-size:13px;color:#555;">✏️ Key words: pivot position, mechanical advantage, distance from fulcrum, output arm.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Q3 · Cam Followers · 2 marks</span><span class="eq-marks">2 marks</span></div>
+    <div class="eq-body">
+      <div class="eq-text">Explain the movement of a follower while the cam is at the dwell stage of its rotation.</div>
+      <div class="eq-hint">💡 <strong>Language hint:</strong> This says "explain" — give the what (what the follower does) AND why (what property of the cam causes this). Think about what "dwell" means.</div>
+      <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans">
+        <div class="mp"><div class="mpn">1</div><div>During the dwell stage, the follower remains completely stationary — it does not rise or fall.</div></div>
+        <div class="mp"><div class="mpn">2</div><div>This is because during the dwell phase, the part of the cam surface in contact with the follower is at a constant, equal distance from the centre of rotation. Since the cam profile does not change height in this section, the follower has no movement to follow and stays still.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Q4 · Gears Calculation · 3 marks</span><span class="eq-marks">3 marks</span></div>
+    <div class="eq-body">
+      <div class="eq-text">A designer needs an input speed of 800 rpm and an output speed of 3200 rpm. If the driven gear has 20 teeth, calculate how many teeth the driver gear needs.</div>
+      <div class="eq-hint">💡 <strong>Maths hint:</strong> Start with VR = Output speed ÷ Input speed, then rearrange: Driver teeth = Driven teeth ÷ VR. Show all three steps of working.</div>
+      <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans">
+        <div class="mp"><div class="mpn">1</div><div><strong>Step 1 — Find the VR:</strong> VR = Input speed ÷ Output speed = 800 ÷ 3200 = 1/4 = 1:4</div></div>
+        <div class="mp"><div class="mpn">2</div><div><strong>Step 2 — Use VR formula:</strong> VR = Driven teeth ÷ Driver teeth → 1/4 = 20 ÷ Driver teeth → Driver teeth = 20 × 4</div></div>
+        <div class="mp"><div class="mpn">3</div><div><strong>Step 3 — Answer:</strong> Driver gear needs <strong>80 teeth</strong>.</div></div>
+        <div style="margin-top:8px;padding:9px 13px;background:#f0fef9;border-radius:8px;font-size:13px;"><strong>Check:</strong> VR = 20 ÷ 80 = 1:4. Output = 800 ÷ (1/4) = 3200 rpm ✓</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Q5 · Crank and Slider · 3 marks</span><span class="eq-marks">3 marks</span></div>
+    <div class="eq-body">
+      <div class="eq-text">Calculate the length of the crank arm used in a crank and slider mechanism if the slider has a maximum movement of 30 mm.</div>
+      <div class="eq-hint">💡 <strong>Maths hint:</strong> Remember the key rule: slider movement = 2 × radius of crank arm. So crank arm radius = slider movement ÷ 2.</div>
+      <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans">
+        <div class="mp"><div class="mpn">1</div><div><strong>Rule:</strong> Maximum slider movement = 2 × crank arm radius (length)</div></div>
+        <div class="mp"><div class="mpn">2</div><div><strong>Rearrange:</strong> Crank arm length = Maximum slider movement ÷ 2 = 30 ÷ 2</div></div>
+        <div class="mp"><div class="mpn">3</div><div><strong>Answer: Crank arm length = 15 mm</strong></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 7. ESL TOOLKIT ══════════════════ -->
+<div id="sec-toolkit" class="section">
+  <div class="sec-head"><h2>ESL Language Toolkit</h2><p>Word roots, simplified synonyms, common mistakes, and phrases for writing about mechanisms.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Tip — Prepositions of Movement:</strong> English uses specific prepositions with movement vocabulary. These are important for exam answers: <em>rotates <strong>around</strong> a point; moves <strong>along</strong> a line; oscillates <strong>about</strong> a pivot; slides <strong>in</strong> a straight line; converts <strong>into</strong> another type of motion.</em></div>
+  <div class="tk-grid">
+    <div class="tk-card">
+      <div class="tk-head tkh-navy">🔤 Key Word Roots for Mechanisms</div>
+      <div class="tk-body">
+        <table class="pre-tbl">
+          <tr><th>Root</th><th>Meaning</th><th>Mechanism Examples</th></tr>
+          <tr><td class="pfx">rot-</td><td>to turn/wheel</td><td>rotary, rotate, rotation</td></tr>
+          <tr><td class="pfx">recip-</td><td>back and forth</td><td>reciprocate, reciprocating</td></tr>
+          <tr><td class="pfx">oscill-</td><td>to swing</td><td>oscillate, oscillating</td></tr>
+          <tr><td class="pfx">lin-</td><td>line</td><td>linear, lineal</td></tr>
+          <tr><td class="pfx">mech-</td><td>machine</td><td>mechanism, mechanical</td></tr>
+          <tr><td class="pfx">fulcr-</td><td>prop/support</td><td>fulcrum (Latin origin)</td></tr>
+          <tr><td class="pfx">vel-</td><td>speed</td><td>velocity, velocity ratio</td></tr>
+          <tr><td class="pfx">trans-</td><td>across/through</td><td>transmit, transfer, translate</td></tr>
+          <tr><td class="pfx">-ion/-ing</td><td>action/process</td><td>rotation, oscillation, reciprocating</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="tk-card">
+      <div class="tk-head tkh-orange">🔄 Complex → Simple</div>
+      <div class="tk-body">
+        <div class="syn-p"><span class="syn-c">Mechanical advantage</span><span class="syn-a">→</span><span class="syn-s">How much the machine multiplies your force</span></div>
+        <div class="syn-p"><span class="syn-c">Velocity ratio</span><span class="syn-a">→</span><span class="syn-s">How far you push compared to how far the load moves</span></div>
+        <div class="syn-p"><span class="syn-c">Oscillating motion</span><span class="syn-a">→</span><span class="syn-s">Swings back and forth in a curved arc</span></div>
+        <div class="syn-p"><span class="syn-c">Reciprocating motion</span><span class="syn-a">→</span><span class="syn-s">Goes back and forth in a straight line</span></div>
+        <div class="syn-p"><span class="syn-c">Fulcrum</span><span class="syn-a">→</span><span class="syn-s">The pivot / balancing point of a lever</span></div>
+        <div class="syn-p"><span class="syn-c">Dwell (cam)</span><span class="syn-a">→</span><span class="syn-s">The pause / when the follower is still</span></div>
+        <div class="syn-p"><span class="syn-c">Compound gear train</span><span class="syn-a">→</span><span class="syn-s">Multiple gears sharing shafts for big speed changes</span></div>
+        <div class="syn-p"><span class="syn-c">Rack and pinion</span><span class="syn-a">→</span><span class="syn-s">Gear that converts spinning → straight-line movement</span></div>
+        <div class="syn-p"><span class="syn-c">Bevel gear</span><span class="syn-a">→</span><span class="syn-s">A gear that changes direction by 90°</span></div>
+      </div>
+    </div>
+    <div class="tk-card">
+      <div class="tk-head tkh-green">🔗 Phrases for Mechanism Questions</div>
+      <div class="tk-body">
+        <ul class="con-list">
+          <li><span class="con-chip">converts [X] into [Y] motion</span> core phrase for all mechanism descriptions</li>
+          <li><span class="con-chip">as the [part] rotates,...</span> describes rotary input triggering output</li>
+          <li><span class="con-chip">this causes the [part] to...</span> links mechanism action to output result</li>
+          <li><span class="con-chip">the follower rises/dwells/falls...</span> specific to cam mechanism descriptions</li>
+          <li><span class="con-chip">the mechanical advantage is...</span> for quantifying lever effectiveness</li>
+          <li><span class="con-chip">this is because the fulcrum is positioned...</span> explaining lever class</li>
+          <li><span class="con-chip">unlike [mechanism X], [Y]...</span> comparing two mechanisms</li>
+          <li><span class="con-chip">gears cannot slip because...</span> key advantage of gears over belts</li>
+          <li><span class="con-chip">the idler gear reverses the direction without...</span> for idler gear explanation</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tk-card" style="grid-column:1/-1;">
+      <div class="tk-head tkh-teal">🚨 Common ESL Mistakes — Mechanisms Topic</div>
+      <div class="tk-body">
+        <table class="pre-tbl">
+          <tr><th style="width:35%">❌ Avoid writing this</th><th style="width:40%">✅ Write this instead</th><th>Why?</th></tr>
+          <tr><td>"The gear makes it go faster"</td><td>"The smaller driven gear rotates at a higher speed because the velocity ratio is less than 1"</td><td>Be precise — explain the VR relationship</td></tr>
+          <tr><td>"Oscillating and reciprocating are the same"</td><td>"Both move back and forth, however oscillating follows a <strong>curved arc</strong> while reciprocating follows a <strong>straight line</strong>"</td><td>Critical distinction — worth 1 mark in the exam</td></tr>
+          <tr><td>"The idler gear makes it go faster"</td><td>"The idler gear <strong>does not change the speed</strong> — it only reverses the direction of the driven gear"</td><td>Very common exam mistake about idler gears</td></tr>
+          <tr><td>"Pulleys rotate in opposite directions"</td><td>"In a standard pulley system, both pulleys rotate in the <strong>same direction</strong> because the belt connects their surfaces"</td><td>Gears rotate opposite; pulleys rotate same — common confusion</td></tr>
+          <tr><td>"MA = Effort ÷ Load"</td><td>"MA = <strong>Load ÷ Effort</strong>"</td><td>The formula is the other way around — Load on top!</td></tr>
+          <tr><td>"The cam makes the follower move"</td><td>"As the cam <strong>rotates</strong>, its irregular profile <strong>pushes</strong> the follower upward (rise), holds it still (dwell), then allows it to <strong>fall</strong>"</td><td>Always describe all three cam stages: rise, dwell, fall</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 8. MEDIA GUIDE ══════════════════ -->
+<div id="sec-mediaguide" class="section">
+  <div class="sec-head">
+    <h2>🎬 Media Guide — GIF &amp; Image Slots</h2>
+    <p>This page lists all 11 media slots, where they appear, what to add, and where to search for suitable GIFs or images. GIF slots (🎬) benefit most from animated content. Image slots (📸) can use still photographs or scanned diagrams.</p>
+  </div>
+  <div class="esl-tip">
+    <strong>📌 How to add GIFs / images:</strong> Open the HTML file in Notepad (Windows) or TextEdit (Mac). Find the <code>&lt;img src="" alt="..."&gt;</code> tag inside the relevant slot. Replace <code>src=""</code> with your file path, e.g. <code>src="gifs/cam_follower.gif"</code>. Save and refresh. The placeholder disappears automatically. For online URLs: paste the GIF URL directly into src="" — but this requires internet to display.
+  </div>
+  <div style="background:var(--orange-l);border-left:4px solid var(--orange);padding:13px 18px;border-radius:0 10px 10px 0;font-size:13.5px;color:#5a3800;margin-bottom:20px;">
+    <strong>⭐ Priority GIFs (most important for ESL understanding):</strong> Slots 6 (cam and follower — rise/dwell/fall), 9 (crank and slider), and 10 (simple gear train) are the most visually complex topics. Adding animated GIFs to these three slots will make the biggest difference to student understanding.
+  </div>
+  <table class="mg-tbl">
+    <tr><th>#</th><th>Type</th><th>Section</th><th>What to add</th><th>Search suggestion</th></tr>
+    <tr><td><span class="slot-num-g">GIF 1</span></td><td>🎬 GIF</td><td>Topic Summaries → Movement</td><td>Animation showing all four movement types — linear, rotary, oscillating, reciprocating — in familiar contexts</td><td>"four types of motion animation" or "types of movement mechanism gif"</td></tr>
+    <tr><td><span class="slot-num-g">GIF 2</span></td><td>🎬 GIF</td><td>Topic Summaries → Levers (left)</td><td>Class 1 lever in action — a crowbar prying open a lid, or a seesaw pivoting. Fulcrum clearly in the middle.</td><td>"class 1 lever animation crowbar" or "first class lever gif"</td></tr>
+    <tr><td><span class="slot-num-g">GIF 3</span></td><td>🎬 GIF</td><td>Topic Summaries → Levers (right)</td><td>Class 2 lever in action — a wheelbarrow being lifted, or a nutcracker. Load clearly in the middle.</td><td>"wheelbarrow lever animation" or "class 2 lever mechanism gif"</td></tr>
+    <tr><td><span class="slot-num-g">GIF 4</span></td><td>🎬 GIF</td><td>Topic Summaries → Linkages (left)</td><td>Bell crank linkage — showing input force going in one direction, output coming out at 90°. Bicycle brake application ideal.</td><td>"bell crank mechanism animation" or "bell crank linkage gif"</td></tr>
+    <tr><td><span class="slot-num-g">GIF 5</span></td><td>🎬 GIF</td><td>Topic Summaries → Linkages (right)</td><td>Reverse motion linkage — input moves left, output moves right simultaneously. Windscreen wiper linkage is ideal.</td><td>"reverse motion linkage animation" or "windscreen wiper mechanism gif"</td></tr>
+    <tr><td><span class="slot-num-g">GIF 6 ⭐</span></td><td>🎬 GIF</td><td>Topic Summaries → Cams (full width)</td><td>Pear-shaped cam rotating with follower showing all 3 stages labelled: RISE → DWELL → FALL. Most important GIF in this pack.</td><td>"cam follower animation rise dwell fall" or "cam mechanism gif labelled"</td></tr>
+    <tr><td><span class="slot-num-i">IMG 7</span></td><td>📸 Image</td><td>Topic Summaries → Cams (follower types)</td><td>Diagram showing roller, knife edge, and flat followers side by side. Your textbook page 28 has an excellent diagram — photograph or scan it.</td><td>"cam follower types diagram" or use textbook p.28</td></tr>
+    <tr><td><span class="slot-num-g">GIF 8</span></td><td>🎬 GIF</td><td>Topic Summaries → Pulleys</td><td>Two pulleys of different sizes with a belt. Smaller driven pulley should visibly spin faster than the larger driver pulley.</td><td>"pulley system speed animation" or "belt drive pulley gif"</td></tr>
+    <tr><td><span class="slot-num-g">GIF 9 ⭐</span></td><td>🎬 GIF</td><td>Topic Summaries → Cranks</td><td>Crank arm rotating, connected via a rod to a slider moving back and forth. Labels: crank, connecting rod, slider. Car piston/engine animation is ideal.</td><td>"crank slider mechanism animation" or "piston crankshaft gif"</td></tr>
+    <tr><td><span class="slot-num-g">GIF 10 ⭐</span></td><td>🎬 GIF</td><td>Topic Summaries → Gears (left)</td><td>Two meshing spur gears of different sizes, clearly rotating in opposite directions. The speed difference between large and small gear should be visible.</td><td>"simple gear train animation" or "spur gears meshing gif"</td></tr>
+    <tr><td><span class="slot-num-g">GIF 11</span></td><td>🎬 GIF</td><td>Topic Summaries → Gears (right)</td><td>Rack and pinion — pinion gear rotating while flat rack moves linearly. Car steering system or machine tool application ideal.</td><td>"rack and pinion animation" or "rack pinion steering gif"</td></tr>
+  </table>
+  <div style="margin-top:22px;background:var(--teal-l);border-left:4px solid var(--teal);padding:13px 18px;border-radius:0 10px 10px 0;font-size:13.5px;color:#064e4a;">
+    <strong>📌 Best free GIF sources for mechanisms:</strong> <br>
+    • <strong>Giphy.com</strong> — search "gear mechanism" or "cam follower" — many high-quality engineering GIFs available<br>
+    • <strong>Pinterest</strong> — excellent source for labelled mechanism GIFs and animations<br>
+    • <strong>Google Images</strong> → Filter by GIF → search "cam follower animation"<br>
+    • <strong>YouTube</strong> → paste video URL into <em>ezgif.com/video-to-gif</em> to convert a short clip to GIF<br>
+    • <strong>Wikipedia</strong> → many mechanical device pages have animated SVG diagrams (freely licensed)
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<footer>
+  <strong>Edexcel GCSE Design &amp; Technology</strong> · Topic 1.5 · Mechanical Devices Used to Produce Movement<br>
+  Cross-referenced with Pearson Edexcel Specification (Issue 4, Nov 2022) and course textbook (pp. 25–32) · For educational use only
+</footer>
+
+<script>
+// ── TABS ──
+function showTab(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+// ── VOCAB FILTER ──
+function fv(t,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.vc').forEach(c=>{
+    c.style.display=(t==='all'||c.dataset.topic===t)?'block':'none';
+  });
+}
+// ── TOPIC PANELS ──
+function showTopic(id,btn){
+  document.querySelectorAll('.topic-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tp-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tp-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+// ── GAP FILL ──
+let selChip=null;
+document.querySelectorAll('.wchip').forEach(c=>{
+  c.addEventListener('click',function(){
+    document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));
+    selChip=this.dataset.word;this.classList.add('sel');
+  });
+});
+document.querySelectorAll('.gf').forEach(inp=>{
+  inp.addEventListener('click',function(){
+    if(selChip){this.value=selChip;selChip=null;document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));}
+  });
+  inp.addEventListener('input',function(){this.classList.remove('correct','incorrect');});
+});
+function checkGF(cid,sid){
+  const ins=document.getElementById(cid).querySelectorAll('.gf');
+  let ok=0;
+  ins.forEach(i=>{
+    const pass=i.value.toLowerCase().trim()===i.dataset.answer.toLowerCase().trim();
+    i.classList.toggle('correct',pass);i.classList.toggle('incorrect',!pass);
+    if(pass)ok++;
+  });
+  const s=document.getElementById(sid);
+  const p=ok/ins.length;
+  s.className='score-box show '+(p>=.85?'good':p>=.5?'ok':'low');
+  s.style.display='inline-flex';
+  s.innerHTML=(p>=.85?'🎉':p>=.5?'👍':'📚')+` Score: ${ok}/${ins.length}`+(p>=.85?' — Excellent!':p>=.5?' — Good effort!':" — Keep revising!");
+}
+function resetGF(cid,sid,wid){
+  document.getElementById(cid).querySelectorAll('.gf').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});
+  const s=document.getElementById(sid);s.className='score-box';s.style.display='none';
+  if(wid)document.getElementById(wid).querySelectorAll('.wchip').forEach(c=>c.classList.remove('sel'));
+  selChip=null;
+}
+// ── MATCHING ──
+let mSel={w:null,d:null},mCnt=0;
+function sm(el,t){
+  if(el.classList.contains('matched'))return;
+  if(mSel[t])mSel[t].classList.remove('sel');
+  mSel[t]=el;el.classList.add('sel');
+  if(mSel.w&&mSel.d){
+    if(mSel.w.dataset.id===mSel.d.dataset.id){
+      [mSel.w,mSel.d].forEach(e=>{e.classList.add('matched');e.classList.remove('sel');});
+      mCnt++;if(mCnt===8)document.getElementById('mDone').style.display='block';
+    }else{
+      [mSel.w,mSel.d].forEach(e=>{e.classList.add('wrong');setTimeout(()=>{e.classList.remove('wrong','sel');},600);});
+      setTimeout(()=>{mSel={w:null,d:null};},600);return;
+    }
+    mSel={w:null,d:null};
+  }
+}
+function resetMatch(){
+  document.querySelectorAll('.mi').forEach(e=>e.classList.remove('matched','sel','wrong'));
+  mSel={w:null,d:null};mCnt=0;document.getElementById('mDone').style.display='none';
+}
+// ── TRUE/FALSE ──
+function chkTF(btn,correct,n){
+  const isT=btn.classList.contains('tb');
+  const pass=(isT===correct);
+  const parent=btn.closest('.tf-item');
+  parent.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);
+  btn.classList.add(pass?'ca':'wa');
+  if(!pass){const cb=correct?parent.querySelector('.tb'):parent.querySelector('.fb');cb.classList.add('ca');}
+  const fb=document.getElementById('tf'+n);
+  fb.className='tf-fb show '+(pass?'ok':'no');
+}
+// ── SHOW/HIDE ANSWER ──
+function togAns(btn){
+  const a=btn.nextElementSibling;
+  if(a.classList.contains('show')){a.classList.remove('show');btn.textContent='👁 Show Model Answer';}
+  else{a.classList.add('show');btn.textContent='🙈 Hide Model Answer';}
+}
+</script>
+</body>
+</html>

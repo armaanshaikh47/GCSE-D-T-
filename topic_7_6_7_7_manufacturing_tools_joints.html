@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topics 7.6 & 7.7 — Manufacturing, Tools & Joints · GCSE D&T Timbers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0f9fa;--navy:#042a2b;--teal:#0e7490;--teal-l:#e0f5f9;--teal-m:#38bdf8;
+  --green:#166534;--green-l:#dcfce7;--red:#991b1b;--red-l:#fee2e2;
+  --amber:#d97706;--amber-l:#fef3c7;--blue:#1e40af;--blue-l:#dbeafe;
+  --purple:#5b21b6;--purple-l:#ede9fe;--muted:#64748b;--border:#cce5ea;
+  --card:#fff;--text:#0f172a;--shadow:0 2px 16px rgba(4,42,43,.09);--shadow-h:0 6px 28px rgba(4,42,43,.17);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;}
+.hero{background:linear-gradient(135deg,#042a2b 0%,#0e4a5a 55%,#0a2714 100%);color:#fff;padding:52px 40px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(14,116,144,.3) 0%,transparent 55%);}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.hero-badge{display:inline-block;background:var(--teal);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,48px);font-weight:900;line-height:1.08;margin-bottom:8px;}
+.hero h1 .ac{color:var(--teal-m);}
+.hero-spec{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:14px;text-transform:uppercase;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.72);max-width:680px;line-height:1.65;margin-bottom:26px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.hero-tag{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);font-size:12px;padding:5px 13px;border-radius:20px;}
+.nav-bar{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 20px;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:14px 17px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-2px;}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--teal);font-weight:600;}
+.main{max-width:1100px;margin:0 auto;padding:38px 20px 80px;}
+.section{display:none;}
+.section.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sec-head{margin-bottom:24px;}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+.sec-head p{color:var(--muted);font-size:15px;line-height:1.65;max-width:700px;}
+.esl-tip{background:linear-gradient(135deg,#f0feff,var(--teal-l));border-left:4px solid var(--teal);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:24px;font-size:13.5px;color:#064e3b;line-height:1.6;}
+.insight-box{border-left:4px solid var(--teal);background:var(--teal-l);padding:11px 15px;border-radius:0 8px 8px 0;font-size:13.5px;color:#064e3b;margin:14px 0;}
+
+/* SPEC */
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px;}
+.spec-card{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.spec-head{padding:12px 16px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;}
+.sh-a{background:linear-gradient(135deg,#042a2b,#0e7490);}
+.sh-b{background:linear-gradient(135deg,#063550,#1e40af);}
+.sh-c{background:linear-gradient(135deg,#166534,#15803d);}
+.sh-d{background:linear-gradient(135deg,#5b21b6,#7c3aed);}
+.spec-body{padding:11px 16px;}
+.spec-item{display:flex;align-items:flex-start;gap:9px;padding:5px 0;border-bottom:1px solid #eef9fb;font-size:13px;line-height:1.45;}
+.spec-item:last-child{border-bottom:none;}
+.spec-item input[type=checkbox]{margin-top:3px;accent-color:var(--teal);flex-shrink:0;width:14px;height:14px;}
+
+/* SUB-NAV panels */
+.sub-nav{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px;}
+.sn-btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;opacity:.55;font-family:'DM Sans',sans-serif;}
+.sn-btn.active{opacity:1;box-shadow:var(--shadow);}
+.sn-a{background:var(--teal);color:#fff;}
+.sn-b{background:var(--blue);color:#fff;}
+.sn-c{background:var(--green);color:#fff;}
+.sn-d{background:#5b21b6;color:#fff;}
+.sn-e{background:#dc2626;color:#fff;}
+.sub-panel{display:none;}
+.sub-panel.active{display:block;animation:fadeUp .3s ease;}
+.panel-head{border-radius:12px 12px 0 0;padding:18px 24px;color:#fff;}
+.ph-a{background:linear-gradient(135deg,#042a2b,#0e7490);}
+.ph-b{background:linear-gradient(135deg,#063550,#1e40af);}
+.ph-c{background:linear-gradient(135deg,#0c2714,#166534);}
+.ph-d{background:linear-gradient(135deg,#2d1060,#5b21b6);}
+.ph-e{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.panel-head h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:4px;}
+.panel-head p{font-size:13px;opacity:.82;}
+.panel-body{background:var(--card);border-radius:0 0 12px 12px;border:1.5px solid var(--border);border-top:none;padding:22px 24px;margin-bottom:20px;box-shadow:var(--shadow);}
+
+/* VOCAB */
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;align-items:center;}
+.filter-btn{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--muted);}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start;}
+.vc{background:var(--card);border-radius:12px;border:1.5px solid var(--border);box-shadow:var(--shadow);display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;transition:transform .2s;}
+.vc:hover{transform:translateY(-2px);}
+.vc-top{padding:14px 16px 11px;border-bottom:1px solid var(--border);display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:10px;writing-mode:horizontal-tb;}
+.vc-word{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--navy);writing-mode:horizontal-tb;flex:1;min-width:0;word-break:break-word;}
+.vc-tag{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px;flex-shrink:0;writing-mode:horizontal-tb;white-space:nowrap;margin-top:3px;}
+.t-mfg{background:var(--teal-l);color:var(--teal);}
+.t-tool{background:var(--blue-l);color:var(--blue);}
+.t-joint{background:var(--green-l);color:var(--green);}
+.t-scale{background:var(--amber-l);color:#92400e;}
+.vc-body{padding:13px 16px;display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;}
+.def-lbl{display:none;}
+.vc-def{font-size:13.5px;color:var(--text);line-height:1.65;margin-bottom:10px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex{background:#f0feff;border-left:3px solid var(--teal);padding:8px 11px;border-radius:0 7px 7px 0;font-size:12.5px;color:#444;font-style:italic;line-height:1.55;margin-bottom:10px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex em{font-style:normal;background:var(--teal-l);padding:1px 3px;border-radius:2px;}
+.vc-mem{background:var(--green-l);border:1px solid #bbf7d0;padding:8px 11px;border-radius:7px;font-size:12px;color:#14532d;line-height:1.6;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+
+/* COMPARISON TABLES */
+.ctbl{width:100%;border-collapse:collapse;font-size:12.5px;margin:12px 0;}
+.ctbl th{padding:8px 11px;text-align:left;font-size:10.5px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;vertical-align:bottom;}
+.ctbl td{padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:#f8fdfe;}
+.ctbl .tn{font-weight:700;color:var(--navy);}
+.ctbl td ul{padding-left:13px;}
+.ctbl td ul li{margin-bottom:2px;}
+.th-nm{background:var(--navy);color:#fff;border-radius:7px 0 0 0;width:110px;}
+.th-us{background:#2c4a4b;color:#fff;}
+.th-ad{background:var(--green);color:#fff;}
+.th-ds{background:var(--red);color:#fff;border-radius:0 7px 0 0;}
+/* scales table has 5 cols */
+.th-sc{background:#0e7490;color:#fff;border-radius:0 7px 0 0;}
+
+/* PROCESSES GRID */
+.proc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:14px 0;}
+.proc-card{background:#f8fdfe;border:1.5px solid var(--border);border-radius:10px;padding:13px 14px;}
+.proc-card h4{font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:7px;}
+.proc-card p{font-size:12.5px;color:var(--muted);line-height:1.55;}
+.proc-card .pc-key{margin-top:7px;font-size:12px;background:var(--teal-l);padding:5px 9px;border-radius:5px;color:#064e3b;line-height:1.5;}
+
+/* SCALE VISUAL */
+.scale-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0;}
+.scale-card{border-radius:10px;overflow:hidden;border:1.5px solid var(--border);}
+.scale-num{height:5px;}
+.s1{background:#38bdf8;}
+.s2{background:var(--blue);}
+.s3{background:var(--teal);}
+.s4{background:#042a2b;}
+.scale-body{padding:12px 14px;background:var(--card);}
+.scale-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.scale-desc{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;}
+.scale-eg{font-size:12px;background:#f8fdfe;padding:5px 8px;border-radius:5px;color:#064e3b;line-height:1.45;}
+
+/* JOINT CARDS */
+.joint-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:14px 0;}
+.joint-card{background:var(--card);border-radius:10px;border:1.5px solid var(--border);overflow:hidden;}
+.joint-head{padding:10px 13px;font-weight:700;font-size:13px;color:#fff;}
+.jh1{background:linear-gradient(135deg,#042a2b,#0e7490);}
+.jh2{background:linear-gradient(135deg,#063550,#1e40af);}
+.jh3{background:linear-gradient(135deg,#0c2714,#166534);}
+.jh4{background:linear-gradient(135deg,#2d1060,#5b21b6);}
+.jh5{background:linear-gradient(135deg,#7c2d12,#ea580c);}
+.jh6{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.jh7{background:linear-gradient(135deg,#042a2b,#166534);}
+.joint-body{padding:11px 13px;background:var(--card);}
+.joint-body p{font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:6px;}
+.jstrength{display:inline-block;font-size:11px;font-family:'DM Mono',monospace;padding:2px 7px;border-radius:4px;font-weight:600;margin-bottom:6px;}
+.j-weak{background:var(--red-l);color:var(--red);}
+.j-med{background:var(--amber-l);color:#92400e;}
+.j-strong{background:var(--green-l);color:var(--green);}
+.j-vstrong{background:#14532d;color:#fff;}
+.juses{font-size:12px;color:var(--teal);font-style:italic;}
+
+/* MATHS */
+.maths-box{background:linear-gradient(135deg,#f0feff,var(--teal-l));border:2px solid #67e8f9;border-radius:12px;padding:20px 24px;margin:16px 0;}
+.maths-box h3{font-family:'Playfair Display',serif;font-size:18px;color:#064e3b;margin-bottom:12px;}
+.formula{background:#fff;border:2px solid #67e8f9;border-radius:9px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:15px;color:#064e3b;margin:8px 0;letter-spacing:.04em;}
+.formula-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:10px 0;}
+.formula-sm{background:#fff;border:1.5px solid #67e8f9;border-radius:8px;padding:9px 13px;font-family:'DM Mono',monospace;font-size:13px;color:#064e3b;text-align:center;line-height:1.6;}
+
+/* ACTIVITIES */
+.act-block{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow);}
+.act-head{background:var(--navy);padding:15px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.act-head h3{color:#fff;font-family:'Playfair Display',serif;font-size:17px;}
+.act-badge{background:var(--teal);color:#fff;font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:4px;}
+.act-body{padding:20px;}
+.act-instr{background:var(--teal-l);border-radius:8px;padding:10px 14px;font-size:13px;color:#064e3b;margin-bottom:16px;line-height:1.55;}
+.gap-sent{font-size:14px;line-height:2.5;margin-bottom:3px;color:var(--text);writing-mode:horizontal-tb;display:block;}
+.gf{border:none;border-bottom:2.5px solid var(--teal);background:var(--teal-l);width:175px;padding:3px 7px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--navy);border-radius:4px 4px 0 0;outline:none;writing-mode:horizontal-tb;}
+.gf.correct{background:var(--green-l);border-bottom-color:var(--green);}
+.gf.incorrect{background:var(--red-l);border-bottom-color:var(--red);}
+.word-bank{display:flex;flex-wrap:wrap;gap:7px;padding:12px;background:var(--teal-l);border-radius:9px;margin-bottom:14px;}
+.wchip{background:var(--card);border:1.5px solid var(--border);border-radius:6px;padding:5px 10px;font-size:13px;font-weight:500;color:var(--navy);cursor:pointer;transition:all .15s;user-select:none;writing-mode:horizontal-tb;}
+.wchip:hover,.wchip.sel{border-color:var(--teal);background:var(--teal-l);}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;margin-top:11px;}
+.reset-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;margin-left:10px;margin-top:11px;color:var(--muted);}
+.score-box{display:none;align-items:center;gap:10px;margin-top:11px;padding:9px 16px;border-radius:8px;font-size:13.5px;font-weight:600;}
+.score-box.show{display:inline-flex;}
+.score-box.good{background:var(--green-l);color:var(--green);}
+.score-box.ok{background:var(--amber-l);color:#92400e;}
+.score-box.low{background:var(--red-l);color:var(--red);}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.match-col{display:flex;flex-direction:column;gap:7px;}
+.match-col-lbl{font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:3px;}
+.mi{background:var(--card);border:2px solid var(--border);border-radius:8px;padding:10px 13px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.4;}
+.mi.mw{font-weight:700;color:var(--navy);}
+.mi:hover,.mi.sel{border-color:var(--teal);background:var(--teal-l);}
+.mi.matched{border-color:var(--green);background:var(--green-l);color:var(--green);pointer-events:none;font-weight:600;}
+.mi.wrong{border-color:var(--red);background:var(--red-l);animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.tf-item{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:14px 17px;margin-bottom:10px;}
+.tf-stmt{font-size:14px;color:var(--text);margin-bottom:10px;line-height:1.55;font-weight:500;}
+.tf-btns{display:flex;gap:9px;}
+.tf-btn{padding:6px 18px;border-radius:7px;border:1.5px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;background:var(--card);}
+.tf-btn.tb:hover{background:var(--green-l);border-color:var(--green);color:var(--green);}
+.tf-btn.fb:hover{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-btn.ca{background:var(--green-l);border-color:var(--green);color:var(--green);pointer-events:none;}
+.tf-btn.wa{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-fb{font-size:13px;margin-top:8px;padding:8px 11px;border-radius:7px;display:none;line-height:1.5;}
+.tf-fb.show{display:block;}
+.tf-fb.ok{background:var(--green-l);color:var(--green);}
+.tf-fb.no{background:var(--red-l);color:var(--red);}
+
+/* EXAM */
+.cmd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-bottom:24px;}
+.cmd-card{background:var(--card);border:1.5px solid var(--border);border-radius:11px;padding:15px;box-shadow:var(--shadow);}
+.cmd-word{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.cmd-means{font-size:13px;color:var(--muted);margin-bottom:8px;line-height:1.5;}
+.cmd-marks{display:inline-block;background:var(--teal-l);color:#064e3b;font-size:11px;font-family:'DM Mono',monospace;padding:2px 8px;border-radius:4px;font-weight:500;}
+.frame-card{background:var(--card);border:1.5px solid var(--border);border-radius:11px;overflow:hidden;margin-bottom:11px;}
+.frame-type{background:var(--teal-l);padding:6px 15px;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:#064e3b;}
+.frame-body{padding:12px 16px;}
+.frame-tpl{font-size:13.5px;color:var(--text);line-height:1.8;margin-bottom:7px;}
+.blank{background:var(--teal-l);padding:2px 6px;border-radius:4px;font-style:italic;color:#064e3b;font-size:13px;}
+.frame-ex{font-size:12.5px;color:var(--muted);font-style:italic;border-left:3px solid var(--blue);padding-left:10px;margin-top:7px;line-height:1.55;}
+.eq-block{background:var(--card);border:1.5px solid var(--border);border-radius:11px;margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow);}
+.eq-head{background:var(--teal-l);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
+.eq-head span{font-size:12px;font-family:'DM Mono',monospace;color:#064e3b;text-transform:uppercase;}
+.eq-marks{background:var(--navy);color:#fff;font-size:11px;font-family:'DM Mono',monospace;padding:3px 9px;border-radius:4px;}
+.eq-body{padding:14px 17px;}
+.eq-text{font-size:14.5px;color:var(--navy);margin-bottom:10px;font-weight:500;line-height:1.5;}
+.eq-hint{background:var(--blue-l);padding:8px 12px;border-radius:8px;font-size:12.5px;color:#1e3a8a;line-height:1.5;}
+.show-ans-btn{background:none;border:1.5px solid var(--teal);border-radius:6px;padding:6px 12px;font-size:12.5px;color:var(--teal);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:10px;transition:all .2s;}
+.show-ans-btn:hover{background:var(--teal);color:#fff;}
+.model-ans{display:none;background:#f0fef9;border:1px solid #a7f3d0;border-radius:8px;padding:12px;margin-top:10px;font-size:13.5px;line-height:1.65;color:#134e2a;}
+.model-ans.show{display:block;}
+.mp{display:flex;gap:9px;margin-bottom:6px;}
+.mpn{background:var(--green);color:#fff;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* TOOLKIT */
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:16px;}
+.tk-card{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.tk-head{padding:13px 17px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.tkh-a{background:var(--navy);color:#fff;}
+.tkh-b{background:var(--teal);color:#fff;}
+.tkh-c{background:#166534;color:#fff;}
+.tk-body{padding:13px 17px;}
+.pre-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.pre-tbl th{background:var(--teal-l);padding:7px 10px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#064e3b;}
+.pre-tbl td{padding:6px 10px;border-bottom:1px solid var(--border);line-height:1.5;}
+.pre-tbl tr:last-child td{border-bottom:none;}
+.pfx{font-weight:700;color:var(--navy);}
+.syn-p{display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.syn-p:last-child{border-bottom:none;}
+.syn-c{font-weight:600;color:var(--navy);min-width:130px;line-height:1.4;}
+.syn-a{color:var(--teal);font-size:15px;flex-shrink:0;margin-top:2px;}
+.syn-s{color:var(--muted);font-style:italic;font-size:12.5px;line-height:1.4;}
+.con-list{list-style:none;}
+.con-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+.con-list li:last-child{border-bottom:none;}
+.con-chip{background:var(--teal-l);color:#064e3b;padding:2px 7px;border-radius:4px;font-weight:600;font-size:12px;white-space:nowrap;flex-shrink:0;}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:12px;margin-top:60px;}
+footer strong{color:var(--teal-m);}
+@media(max-width:600px){.hero{padding:34px 18px 30px}.main{padding:20px 14px 60px}.scale-row,.match-grid,.joint-grid,.formula-row{grid-template-columns:1fr}.panel-body{padding:16px 18px}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="hero-inner">
+  <div class="hero-badge">Edexcel GCSE D&T · Topics 7.6 & 7.7 · Timbers Specialist · Revision Pack</div>
+  <h1>Manufacturing, Tools<br>&amp; <span class="ac">Joints</span></h1>
+  <div class="hero-spec">Spec Ref: 7.6.1–7.6.4 · 7.7.1–7.7.6 &nbsp;|&nbsp; Textbook pp. 292–303 &nbsp;|&nbsp; Section B — 60 marks</div>
+  <p class="hero-sub">A complete ESL-focused revision guide covering manufacturing processes, all four scales of production, marking out and production aids, all hand tools and machines for drilling/cutting/shaping, all seven wood joints, adhesives, and assembly fittings — with six comparison tables, a maths corner, and full exam language support.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📋 Spec Checklist</span><span class="hero-tag">🏭 4 Scales of Production</span>
+    <span class="hero-tag">🔩 Drill Bits (5 types)</span><span class="hero-tag">🪚 Saws (5 types)</span>
+    <span class="hero-tag">🔨 7 Wood Joints</span><span class="hero-tag">🔢 Wastage Maths</span><span class="hero-tag">✏️ Activities</span>
+  </div>
+</div></div>
+
+<div class="nav-bar"><div class="nav-inner">
+  <button class="tab-btn active" onclick="showTab('spec')">📋 Spec Checklist</button>
+  <button class="tab-btn" onclick="showTab('vocab')">📖 Key Vocabulary</button>
+  <button class="tab-btn" onclick="showTab('mfg')">🏭 7.6 Manufacturing</button>
+  <button class="tab-btn" onclick="showTab('tools')">🔧 7.7 Tools &amp; Equipment</button>
+  <button class="tab-btn" onclick="showTab('joints')">🔗 7.7 Joints &amp; Fittings</button>
+  <button class="tab-btn" onclick="showTab('activities')">✏️ Activities</button>
+  <button class="tab-btn" onclick="showTab('exam')">📝 Exam Language</button>
+  <button class="tab-btn" onclick="showTab('toolkit')">💬 ESL Toolkit</button>
+</div></div>
+
+<div class="main">
+
+<!-- SPEC CHECKLIST -->
+<div id="sec-spec" class="section active">
+  <div class="sec-head"><h2>Specification Checklist</h2><p>Topics 7.6 and 7.7 are the most content-heavy topics in the Timbers specialist section. They require you to know specific names, uses, advantages and disadvantages — not just general descriptions. Tick each point only when you can give a full exam answer.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Name → Use → One advantage → One disadvantage:</strong> For every tool, joint, saw or drill bit, practise saying this four-part sequence out loud: its NAME, its USE, one ADVANTAGE, one DISADVANTAGE. If you can say all four for every item in the tables without looking, you are ready for the exam.</div>
+  <div class="spec-grid">
+    <div class="spec-card"><div class="spec-head sh-a">🏭 7.6.1–7.6.2 — Manufacturing Processes</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Routing — uses rotating cutter; makes slots, shapes, profiles; computer-controlled versions available</div>
+      <div class="spec-item"><input type="checkbox"> Sawing machines — circular saw (straight cuts) and bandsaw (straight and curved)</div>
+      <div class="spec-item"><input type="checkbox"> Mortiser — makes square holes for mortise joints; round centre + square chisel</div>
+      <div class="spec-item"><input type="checkbox"> Bag press — removes air from bag to press laminates into mould shape while glue dries</div>
+      <div class="spec-item"><input type="checkbox"> CAM/CNC — computer sends cutting instructions; very accurate; 24/7 operation; high initial costs</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-b">📏 7.6.3–7.6.4 — Scales &amp; Production Techniques</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> One-off — individual product; no set-up cost; slow; expensive for several</div>
+      <div class="spec-item"><input type="checkbox"> Batch — several identical; jigs/templates/moulds used; labour intensive per unit</div>
+      <div class="spec-item"><input type="checkbox"> Mass production — factory machinery; quick and cheap per unit; expensive machine set-up</div>
+      <div class="spec-item"><input type="checkbox"> Continuous — 24/7 production; fastest and cheapest per unit; most expensive machinery</div>
+      <div class="spec-item"><input type="checkbox"> Jigs — guide drills/saws; reusable for batch production; must be positioned correctly</div>
+      <div class="spec-item"><input type="checkbox"> Templates — cut-out shape to draw around; allows same shape to be reproduced accurately</div>
+      <div class="spec-item"><input type="checkbox"> Quality control — sampling at stages; working within tolerance; go/no-go gauges</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-c">🔧 7.7.1–7.7.3 — Tools &amp; Equipment</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Marking out tools — try square (90° lines), marking gauge (parallel lines)</div>
+      <div class="spec-item"><input type="checkbox"> Drill bits — twist, flat bit, forstner, auger, hole saw — name, use, adv, disadv</div>
+      <div class="spec-item"><input type="checkbox"> Saws — hand saw, tenon saw, coping saw, scroll saw, jigsaw — name, use, adv, disadv</div>
+      <div class="spec-item"><input type="checkbox"> Planes — hand plane (edge work) and planer/thicknesser (machine, prepares flat faces)</div>
+      <div class="spec-item"><input type="checkbox"> Chiselling — paring, mortise chisel; keep sharp; hard across end grain</div>
+      <div class="spec-item"><input type="checkbox"> Abrading — sandpaper grit numbers (P80 coarse → P240 fine); file, rasp, surform</div>
+      <div class="spec-item"><input type="checkbox"> Wood turning lathe — spins workpiece; operator guides chisel; makes table legs and bowls</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-d">🔗 7.7.4–7.7.6 — Joints, Adhesives &amp; Fittings</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> All 7 joints — butt, dowel, lap, housing, mitre, mortise &amp; tenon, dovetail — strength and use</div>
+      <div class="spec-item"><input type="checkbox"> PVA glue — strong, white liquid, clear when dry, almost impossible to disassemble once set</div>
+      <div class="spec-item"><input type="checkbox"> Contact adhesive — coat both surfaces, wait until nearly dry, press together; no repositioning</div>
+      <div class="spec-item"><input type="checkbox"> Screws — countersunk; need clearance hole AND pilot hole; slotted and Phillips head types</div>
+      <div class="spec-item"><input type="checkbox"> Nails — round wire, oval, panel pins — different uses</div>
+      <div class="spec-item"><input type="checkbox"> Knock-down fittings — easy to assemble/disassemble; used for flat-pack furniture</div>
+      <div class="spec-item"><input type="checkbox"> Hinges — butt, flush, butterfly, T hinge — use and whether they show on surface</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- VOCAB -->
+<div id="sec-vocab" class="section">
+  <div class="sec-head"><h2>Key Vocabulary</h2><p>20 key terms across Topics 7.6 and 7.7. This topic relies heavily on precise naming — "a saw that cuts curves" is not enough; you must say "coping saw" or "scroll saw" and explain the difference.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Vocabulary in Context:</strong> For every tool name, connect it to something physical you have used in the workshop. "Tenon saw — I used this to cut the joint on my shelf project." Personal physical memory is the strongest form of vocabulary retention for ESL learners. After reading each card, close your eyes and picture using that tool.</div>
+  <div class="filter-row">
+    <span style="font-size:13px;color:var(--muted);font-weight:500;">Filter:</span>
+    <button class="filter-btn active" onclick="fv('all',this)">All</button>
+    <button class="filter-btn" onclick="fv('mfg',this)">🏭 Manufacturing</button>
+    <button class="filter-btn" onclick="fv('tool',this)">🔧 Tools</button>
+    <button class="filter-btn" onclick="fv('joint',this)">🔗 Joints</button>
+    <button class="filter-btn" onclick="fv('scale',this)">📊 Scales</button>
+  </div>
+  <div class="vocab-grid" id="vg">
+
+    <div class="vc" data-topic="scale"><div class="vc-top"><div class="vc-word">One-Off Production</div><div class="vc-tag t-scale">Scales</div></div><div class="vc-body">
+      <div class="vc-def">A single product made by a craftsperson, <strong>one at a time</strong>, either for an individual client who wants something unique or as a prototype to test a design. No expensive set-up is needed, but each item takes a long time to make.</div>
+      <div class="vc-ex">"A bespoke dining table hand-crafted by a furniture maker is a <em>one-off</em> — every measurement and detail is tailored to a specific client, but the time required makes it expensive."</div>
+      <div class="vc-mem">💡 One-off = ONE product, ONE time. No set-up cost (advantage) but slow and expensive per unit (disadvantage). Examples: bespoke furniture, prototypes, surgical implants, custom instruments.</div>
+    </div></div>
+
+    <div class="vc" data-topic="scale"><div class="vc-top"><div class="vc-word">Batch Production</div><div class="vc-tag t-scale">Scales</div></div><div class="vc-body">
+      <div class="vc-def">Making <strong>several copies of the same product at the same time</strong>, using jigs, templates, and moulds to speed up the process. No special machinery is needed, making set-up costs low — but each item is still relatively expensive because of the labour involved.</div>
+      <div class="vc-ex">"A school workshop making 20 identical stools uses <em>batch production</em> — a drilling jig ensures all screw holes are in exactly the same position on every leg, saving time and improving consistency."</div>
+      <div class="vc-mem">💡 Batch = a GROUP made together. Uses jigs and templates (advantage: no special machinery needed). Still labour intensive (disadvantage). Examples: school furniture, restaurant chairs, limited-edition products.</div>
+    </div></div>
+
+    <div class="vc" data-topic="mfg"><div class="vc-top"><div class="vc-word">Jig</div><div class="vc-tag t-mfg">Manufacturing</div></div><div class="vc-body">
+      <div class="vc-def">A device that is placed over a workpiece to <strong>guide a drill or saw to cut in exactly the correct position</strong>. A jig is positioned accurately once, then the same cut or hole can be reproduced identically on multiple pieces — making it ideal for batch production.</div>
+      <div class="vc-ex">"A <em>jig</em> clamped to the corner of a chair leg guided the drill to make screw holes in exactly the right position on all 20 chair legs in the batch — without the jig, each hole would have to be measured and marked individually."</div>
+      <div class="vc-mem">💡 Jig = guides the TOOL (drill or saw) to the correct position. Different from template (which you draw around). Key exam point: jigs are most useful for batch production — once you have the jig, you can replicate the cut quickly on many identical pieces.</div>
+    </div></div>
+
+    <div class="vc" data-topic="mfg"><div class="vc-top"><div class="vc-word">Quality Control</div><div class="vc-tag t-mfg">Manufacturing</div></div><div class="vc-body">
+      <div class="vc-def">A system for checking that manufactured products <strong>meet the required standard at each stage of production</strong>. A sample of products is inspected at regular intervals. If a fault is found, production stops so it can be corrected before more faulty products are made.</div>
+      <div class="vc-ex">"At the flat-pack furniture factory, <em>quality control</em> workers check a sample of chipboard panels at each stage — measuring hole positions with a go/no-go gauge to ensure all fittings will align when the customer assembles the product."</div>
+      <div class="vc-mem">💡 Quality control = checking products DURING production (not just at the end). It includes working within tolerance — the acceptable range of sizes (e.g. ±0.5 mm). Go/no-go gauges check whether a part is within tolerance without measuring every dimension.</div>
+    </div></div>
+
+    <div class="vc" data-topic="tool"><div class="vc-top"><div class="vc-word">Tenon Saw</div><div class="vc-tag t-tool">Tools</div></div><div class="vc-body">
+      <div class="vc-def">A hand saw with a <strong>stiffened back (spine) running along the top of the blade</strong> to keep it rigid and prevent bending. Used for cutting smaller pieces of timber accurately and for cutting joints. The stiffened back means it cannot cut deeper than the blade length.</div>
+      <div class="vc-ex">"The <em>tenon saw's</em> rigid back prevented the blade from wandering, making it ideal for cutting the tenon of a mortise and tenon joint where accuracy of a fraction of a millimetre is essential."</div>
+      <div class="vc-mem">💡 Tenon saw = small + accurate + stiff back. The stiffened back (spine) is BOTH the advantage (keeps blade straight) AND the disadvantage (limits cutting depth — cannot cut deeper than the blade is long). Used for: joints, small accurate cuts, detail work.</div>
+    </div></div>
+
+    <div class="vc" data-topic="tool"><div class="vc-top"><div class="vc-word">Forstner Bit</div><div class="vc-tag t-tool">Tools</div></div><div class="vc-body">
+      <div class="vc-def">A drill bit specifically designed to produce <strong>flat-bottomed blind holes</strong> (holes that do not go all the way through). A small centre spur provides an accurate starting point. Produces a clean, flat base — essential for hinge recesses and concealed fittings.</div>
+      <div class="vc-ex">"To fit a concealed hinge to a cabinet door, the cabinetmaker used a <em>forstner bit</em> — the flat-bottomed hole it produced gave the hinge cup a perfectly flat seating at exactly the correct depth."</div>
+      <div class="vc-mem">💡 Forstner = FLAT bottom hole (blind hole). Key difference from flat bit: flat bit drills quickly but leaves a pointed bottom (spike). Forstner is slower but leaves a perfectly flat base. Used for: concealed hinges, knock-down fittings, hinge seatings.</div>
+    </div></div>
+
+    <div class="vc" data-topic="joint"><div class="vc-top"><div class="vc-word">Mortise and Tenon Joint</div><div class="vc-tag t-joint">Joints</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>strong mechanical joint</strong> where a projecting piece (the tenon) fits tightly into a matching rectangular hole (the mortise) in the other piece. The interlocking shapes resist pulling forces. Used for chair and table frames, doors, and anywhere structural strength is needed.</div>
+      <div class="vc-ex">"The dining chair frame used <em>mortise and tenon joints</em> at every leg-to-rail connection — the mechanical interlock means the joints resist the racking forces from someone leaning back in the chair."</div>
+      <div class="vc-mem">💡 Mortise = the HOLE. Tenon = the PEG (projection). Together they interlock mechanically. Strong joint because the shapes resist both pulling and rotating. Disadvantage: time-consuming to cut accurately by hand. A mortiser machine can cut mortises quickly.</div>
+    </div></div>
+
+    <div class="vc" data-topic="joint"><div class="vc-top"><div class="vc-word">Dovetail Joint</div><div class="vc-tag t-joint">Joints</div></div><div class="vc-body">
+      <div class="vc-def">The <strong>strongest wood joint</strong> — interlocking fan-shaped tails and pins that lock together mechanically, preventing the joint from being pulled apart in the direction of the tails. The angled shape means the joint is virtually impossible to pull open once glued. Very difficult to cut accurately by hand.</div>
+      <div class="vc-ex">"Traditional drawer boxes use <em>dovetail joints</em> — when you pull the drawer open, the handles pull the front outward, but the dovetails lock the sides to the front, making it virtually impossible to pull the drawer apart."</div>
+      <div class="vc-mem">💡 Dovetail = STRONGEST joint. The fan shape (like a dove's tail) locks the joint against being pulled apart. Advantage: extremely strong in tension. Disadvantage: very tricky to cut by hand — requires skill and practice. CNC routers can cut them quickly and accurately.</div>
+    </div></div>
+
+    <div class="vc" data-topic="joint"><div class="vc-top"><div class="vc-word">Housing Joint</div><div class="vc-tag t-joint">Joints</div></div><div class="vc-body">
+      <div class="vc-def">A joint where a <strong>full-width groove (housing) is cut across one piece of timber</strong>, and the end of the other piece sits in it. Holds a shelf or divider securely in the middle of a carcass. Works well in combination with corner lap joints.</div>
+      <div class="vc-ex">"The bookcase shelves used <em>housing joints</em> — a groove routed across the full width of each side panel ensured the shelves were held level and could not sag at the ends under the weight of books."</div>
+      <div class="vc-mem">💡 Housing = a CHANNEL cut across the full width of a board. The shelf end sits in the groove — this is what keeps it level and prevents it drooping. Key exam point: a housing joint must be very accurately cut to ensure shelves are perfectly level.</div>
+    </div></div>
+
+    <div class="vc" data-topic="mfg"><div class="vc-top"><div class="vc-word">PVA Adhesive</div><div class="vc-tag t-mfg">Manufacturing</div></div><div class="vc-body">
+      <div class="vc-def">Polyvinyl acetate — a <strong>thick white liquid wood glue</strong> that becomes clear when dry. Creates an extremely strong bond between wood surfaces — when cured, it is almost impossible to disassemble the joint without destroying the wood. Pieces must be clamped tightly while the glue dries.</div>
+      <div class="vc-ex">"The bookcase joints were glued with <em>PVA</em> and clamped overnight — when the glue had fully cured, the mortise and tenon joints were stronger than the surrounding wood itself."</div>
+      <div class="vc-mem">💡 PVA = the white glue. Advantages: strong bond, cheap, water-based (not solvent), dries clear. Disadvantages: must clamp while drying; almost impossible to open joint once cured. Different from contact adhesive: PVA bonds wood-to-wood; contact adhesive bonds different materials.</div>
+    </div></div>
+
+  </div>
+</div>
+
+<!-- 7.6 MANUFACTURING -->
+<div id="sec-mfg" class="section">
+  <div class="sec-head"><h2>7.6 — Manufacturing Processes</h2><p>Topic 7.6 covers the machinery used to cut and shape timber, the four scales of production, and the production aids and quality systems used in manufacturing. The scales of production table is the most commonly examined part of this topic.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Compare and Contrast:</strong> The scales of production are best revised by comparing them against each other, not by memorising each one in isolation. After reading, try answering: "What is the difference between batch and mass production?" and "Why would a company switch from batch to mass production?" These comparison questions are exactly what the exam sets.</div>
+
+  <div class="sub-nav">
+    <button class="sn-btn sn-a active" onclick="showSub('mfg','proc',this)">⚙️ Processes &amp; Machinery</button>
+    <button class="sn-btn sn-b"        onclick="showSub('mfg','scales',this)">📊 Scales of Production</button>
+    <button class="sn-btn sn-c"        onclick="showSub('mfg','aids',this)">🛠️ Production Aids &amp; Quality</button>
+  </div>
+
+  <div class="sub-panel active" id="mfg-proc">
+    <div class="panel-head ph-a"><h3>⚙️ Processes to Cut and Shape Timber</h3><p>Machinery used in workshop and industrial manufacturing of timber products.</p></div>
+    <div class="panel-body">
+      <div class="proc-grid">
+        <div class="proc-card"><h4>🔄 Routing</h4><p>A router contains a rapidly rotating cutter. It is used to cut straight slots, profile edges, and curved shapes. It can be used with a jig to cut the same shape repeatedly. Computer-controlled CNC routers can cut very accurately and operate continuously.</p><div class="pc-key">⚠️ Large cuts may burn/blacken timber — move the router slowly and use sharp cutters.</div></div>
+        <div class="proc-card"><h4>🪚 Sawing Machines</h4><p>The <strong>circular saw</strong> (table saw) uses a rotating blade to make straight cuts through timber. The <strong>bandsaw</strong> uses a continuous band blade that can make both straight and curved cuts. Sawmills use very large versions to cut whole tree trunks into planks.</p><div class="pc-key">⚠️ Cutting thicker timber on a bandsaw may result in edges that are not perfectly square.</div></div>
+        <div class="proc-card"><h4>🔲 Mortiser</h4><p>A bench-top machine that makes square holes for mortise and tenon joints. A round central chisel drills a round hole, then a square outer chisel cuts the corners square. Produces mortises quickly and accurately but requires careful marking out beforehand.</p><div class="pc-key">Best for: batch production of identical furniture frames — chairs, tables, cabinet carcasses.</div></div>
+        <div class="proc-card"><h4>🛄 Bag Press</h4><p>A bag that can be sealed and have the air sucked out of it. A mould and laminate strips are placed inside. When air is removed, atmospheric pressure forces the laminates evenly onto the mould shape while the glue dries. Presses equally on all surface areas but may not work with very thick laminates.</p><div class="pc-key">Best for: laminating curved chair seats and backs where even pressure across all surfaces is essential.</div></div>
+        <div class="proc-card"><h4>💻 CAD/CAM &amp; CNC</h4><p>Computer-Aided Manufacturing (CAM) uses a computer to send cutting instructions to a CNC (Computer Numerically Controlled) machine. The cutter is moved by electric motors with extreme precision. Can operate 24/7 with minimal human supervision once set up.</p><div class="pc-key">High initial cost and training required; extremely accurate; suitable for all scales of production.</div></div>
+        <div class="proc-card"><h4>🎯 Planer/Thicknesser</h4><p>A machine with a rotating cutter block that planes timber to get flat, true faces and edges, then feeds it through to plane it to an exact set thickness. Essential for preparing sawn timber for furniture-making where consistent dimensions are needed throughout a batch.</p><div class="pc-key">Produces: consistent thickness, flat faces, square edges — all essential for accurate joints.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="mfg-scales">
+    <div class="panel-head ph-b"><h3>📊 Scales of Production</h3><p>Choosing the right scale of production is critical — investing in expensive machinery only makes financial sense if enough products will be made to recover the set-up cost.</p></div>
+    <div class="panel-body">
+      <div class="scale-row">
+        <div class="scale-card"><div class="scale-num s1"></div><div class="scale-body">
+          <div class="scale-name">One-Off</div>
+          <div class="scale-desc">One product made at a time, by a craftsperson, for an individual client or as a prototype.</div>
+          <div class="scale-eg">✓ No set-up cost<br>✓ Made with existing equipment<br>✓ Fully customisable<br>✗ Slow — expensive per unit</div>
+        </div></div>
+        <div class="scale-card"><div class="scale-num s2"></div><div class="scale-body">
+          <div class="scale-name">Batch</div>
+          <div class="scale-desc">Several identical products made at the same time using jigs, templates, and moulds.</div>
+          <div class="scale-eg">✓ No special machinery needed<br>✓ Jigs/moulds reusable<br>✗ Labour intensive<br>✗ Time needed to make jigs</div>
+        </div></div>
+        <div class="scale-card"><div class="scale-num s3"></div><div class="scale-body">
+          <div class="scale-name">Mass</div>
+          <div class="scale-desc">Factory machinery set up to produce large numbers of identical products all day long.</div>
+          <div class="scale-eg">✓ Quick and cheap per unit<br>✓ Consistent quality<br>✗ Machinery expensive to set up<br>✗ Only worthwhile for large quantities</div>
+        </div></div>
+        <div class="scale-card"><div class="scale-num s4"></div><div class="scale-body">
+          <div class="scale-name">Continuous</div>
+          <div class="scale-desc">Highly automated factory making the same product 24 hours a day, 7 days a week.</div>
+          <div class="scale-eg">✓ Fastest and cheapest per unit<br>✓ Very consistent quality<br>✗ Most expensive machinery<br>✗ Only for huge quantities</div>
+        </div></div>
+      </div>
+      <table class="ctbl" style="margin-top:8px;">
+        <tr><th class="th-nm">Scale</th><th class="th-us">Description</th><th class="th-ad">✓ Advantages</th><th class="th-ds">✗ Disadvantages</th><th class="th-sc">Example</th></tr>
+        <tr><td class="tn">One-off</td><td>One product made at a time</td><td>No set-up cost; customisable; made with existing tools</td><td>Slow; expensive per unit if making several</td><td>Bespoke furniture, prototype, custom implant</td></tr>
+        <tr><td class="tn">Batch</td><td>Several identical products made simultaneously</td><td>No special machinery; jigs/moulds can be reused; low set-up cost</td><td>Labour intensive per product; time to make jigs and templates</td><td>School chairs, restaurant furniture, limited-edition items</td></tr>
+        <tr><td class="tn">Mass</td><td>Factory machinery making lots of identical products</td><td>Quick and cheap per unit; consistent quality</td><td>Machinery expensive to set up; only worthwhile for large quantities</td><td>Flat-pack furniture (IKEA), chipboard panels, window frames</td></tr>
+        <tr><td class="tn">Continuous</td><td>Highly automated 24/7 production</td><td>Very fast; cheapest per unit; most consistent</td><td>Most expensive machinery; only worthwhile for huge quantities</td><td>Paper manufacturing, MDF board production</td></tr>
+      </table>
+      <div class="insight-box">💡 <strong>Key exam question pattern:</strong> "A company has been batch producing coffee tables. A large retailer has ordered 3,000 tables. Explain two reasons why the company should change to mass production." Answer using the table above — mass production is quicker and cheaper per unit, making it appropriate when large quantities are needed. Always explain WHY, not just state what.</div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="mfg-aids">
+    <div class="panel-head ph-c"><h3>🛠️ Production Aids, Marking Out &amp; Quality Control</h3><p>Techniques and systems that improve accuracy, consistency, and quality in manufacturing.</p></div>
+    <div class="panel-body">
+      <div class="proc-grid">
+        <div class="proc-card"><h4>📐 Jig</h4><p>A device placed over a workpiece to guide a drill or saw to cut in exactly the correct place. Very useful for batch production — once set up, the same cut can be made on many pieces quickly and accurately.</p><div class="pc-key">Exam use: explain how a jig improves consistency in batch production by ensuring every piece is drilled or cut in identical positions without individual marking out.</div></div>
+        <div class="proc-card"><h4>📋 Template</h4><p>A cut-out shape drawn around to mark the same shape on multiple pieces of material. Paper or card for single use; thin wood or metal for repeated use. Allows the same shape to be reproduced accurately without re-measuring each time.</p><div class="pc-key">Key exam point: templates also allow efficient cutting layout — shapes can be arranged closely together to minimise waste material.</div></div>
+        <div class="proc-card"><h4>🗜️ Fixture</h4><p>A device that holds the workpiece securely in position while it is being cut or shaped. Speeds up the cutting process significantly. However, different products may need different fixtures, adding to initial setup costs.</p><div class="pc-key">Different from a jig: a fixture holds the WORKPIECE; a jig guides the TOOL.</div></div>
+        <div class="proc-card"><h4>📏 Marking Out</h4><p>Transferring measurements onto the material before cutting. A reference point (datum) is essential — usually the bottom left corner, or the face side and face edge. All measurements are taken from the same reference to prevent cumulative errors.</p><div class="pc-key">Face side = the best, flattest face. Face edge = the best, squarest edge. All marking out starts from these surfaces.</div></div>
+        <div class="proc-card"><h4>✅ Quality Control</h4><p>A system for checking that products meet the required standard at each stage of production. Samples are inspected at regular intervals. If a fault is found, production stops to correct it before more faulty products are made.</p><div class="pc-key">Go/no-go gauges: check whether a part is within tolerance without measuring. If it fits the "go" gauge but not the "no-go" gauge, the part is acceptable.</div></div>
+        <div class="proc-card"><h4>⚡ CAM &amp; Efficient Cutting</h4><p>Material costs money so it is important to minimise waste. Using a template, arrange parts as close together as possible. CAM software can automatically calculate the most efficient cutting layout (nesting) to reduce material waste to a minimum.</p><div class="pc-key">Waste reduction = lower cost per unit and better environmental impact — important for both exam answers.</div></div>
+      </div>
+
+      <div class="maths-box" style="margin-top:16px;">
+        <h3>🔢 Maths Corner — Calculating Wastage</h3>
+        <p style="font-size:13.5px;color:#064e3b;margin-bottom:12px;">Section B includes calculation marks. Wastage questions require you to calculate the area of shapes and subtract them from the overall sheet area. You need three formulae:</p>
+        <div class="formula-row">
+          <div class="formula-sm">Rectangle<br><strong>A = width × length</strong></div>
+          <div class="formula-sm">Triangle<br><strong>A = ½ × base × height</strong></div>
+          <div class="formula-sm">Circle<br><strong>A = π × r²</strong><br>(π = 3.14, r = radius)</div>
+        </div>
+        <div style="background:#fff;border-radius:9px;padding:14px 18px;margin-top:10px;font-size:13.5px;line-height:1.7;">
+          <strong>Worked Example:</strong> A shape (rectangle + circle) is cut from 6 mm MDF. Sheet = 60 mm × 160 mm. Shape = 100 mm × 60 mm rectangle + one whole circle (radius 30 mm). Calculate the area wasted.
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+            <div><strong>Sheet area:</strong> 60 × 160 = 9,600 mm²<br><strong>Rectangle area:</strong> 100 × 60 = 6,000 mm²<br><strong>Circle area:</strong> 3.14 × 30 × 30 = 2,826 mm²<br><strong>Shape area total:</strong> 6,000 + 2,826 = 8,826 mm²<br><strong>Wastage:</strong> 9,600 − 8,826 = <strong>774 mm²</strong></div>
+            <div style="background:#f0feff;padding:10px;border-radius:7px;font-size:12.5px;color:#064e3b;"><strong>⚠️ Key points:</strong><br>• Always show working — partial marks awarded<br>• State all units (mm²)<br>• π = 3.14 (not 3.14159...)<br>• Radius = diameter ÷ 2<br>• r² = r × r (not r × 2)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 7.7 TOOLS & EQUIPMENT -->
+<div id="sec-tools" class="section">
+  <div class="sec-head"><h2>7.7 — Tools &amp; Equipment</h2><p>Topic 7.7 covers all the tools and equipment used to mark out, drill, cut, plane, shape, and abrade timber. You must know the NAME, USE, one ADVANTAGE, and one DISADVANTAGE for each tool in the comparison tables.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Read → Cover → Recall:</strong> For each table, read one row carefully. Cover the advantages and disadvantages columns with your hand. Try to recall them from memory. Check. Move to the next row only when you can recall the previous one correctly. This method takes longer but produces much stronger memory than simply reading all rows.</div>
+
+  <div class="sub-nav">
+    <button class="sn-btn sn-a active" onclick="showSub('tools','mark',this)">📏 Marking &amp; Drilling</button>
+    <button class="sn-btn sn-b"        onclick="showSub('tools','saws',this)">🪚 Saws</button>
+    <button class="sn-btn sn-c"        onclick="showSub('tools','shape',this)">🔨 Shaping &amp; Abrading</button>
+  </div>
+
+  <div class="sub-panel active" id="tools-mark">
+    <div class="panel-head ph-a"><h3>📏 Marking Out &amp; Drilling</h3><p>Accurate marking out is the foundation of accurate making. "Measure twice, cut once."</p></div>
+    <div class="panel-body">
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:10px;">Marking Out Tools</h3>
+      <table class="ctbl">
+        <tr><th class="th-nm">Tool</th><th class="th-us">Use &amp; Description</th><th class="th-ad">✓ Advantages</th><th class="th-ds">✗ Disadvantages</th></tr>
+        <tr><td class="tn">Try Square</td><td>Used to mark a line at exactly 90° to an edge, and to check if a piece of timber or a joint is truly square</td><td>Versatile — used for both marking and checking; essential for accurate joint work</td><td>If dropped, the blade may be knocked out of square — rendering it inaccurate and dangerous to use</td></tr>
+        <tr><td class="tn">Marking Gauge</td><td>A scribing point (spur) that scratches a line parallel to an edge, at a set distance. Can mark several pieces to the same measurement without re-setting</td><td>Marks the same distance consistently across multiple pieces; faster than a ruler and pencil for parallel lines</td><td>Must be set correctly — a mis-set gauge will mark all pieces wrongly; the spur can tear the grain if used carelessly</td></tr>
+      </table>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:18px 0 10px;">Drill Bits — Types, Uses &amp; Properties</h3>
+      <table class="ctbl">
+        <tr><th class="th-nm">Drill Bit</th><th class="th-us">Use</th><th class="th-ad">✓ Advantages</th><th class="th-ds">✗ Disadvantages</th></tr>
+        <tr><td class="tn">Twist Drill</td><td>Drilling smaller holes (up to ~13 mm) in most materials including timber, metal and plastics. The helical flutes lift swarf (waste material) out of the hole as it drills.</td><td>Readily available in a very wide range of sizes from very small upward; versatile — works in many materials</td><td>Usually limited to 13 mm diameter; deep holes can cause the flutes to block up with waste material, causing the drill to jam</td></tr>
+        <tr><td class="tn">Flat Bit</td><td>Drilling larger holes in timber. A central spur gives an accurate starting point on the surface before the flat blades cut the hole. Drills quickly.</td><td>Centre spur gives a very accurate starting point; drills quickly and cleanly in timber for its size</td><td>Cannot be used to make an existing hole larger; leaves a rough bottom (not flat); unsuitable for metal or plastic</td></tr>
+        <tr><td class="tn">Forstner Bit</td><td>Drilling flat-bottomed (blind) holes in timber — holes that do not go all the way through. Small centre spur ensures accurate positioning.</td><td>Produces a clean, perfectly flat-bottomed hole — essential for fitting concealed hinges and knock-down fittings</td><td>Slower than a flat bit; must be used in a pillar drill for best results; expensive compared to twist drills</td></tr>
+        <tr><td class="tn">Auger Bit</td><td>Drilling deep holes in timber. The helical (screw-like) body pulls the bit into the wood as it drills, making it self-feeding.</td><td>Can bore very deep holes that other bits cannot reach; self-feeding action reduces the force needed</td><td>Must be used at a slow speed; not suitable for drilling into metal or most manufactured boards</td></tr>
+        <tr><td class="tn">Hole Saw</td><td>Cutting large-diameter holes in thin sheet materials — manufactured boards, thin plywood, and thin solid timber</td><td>Can make a very large diameter hole in a single operation; the centre drill guides it accurately</td><td>Only suitable for thin materials; limited to a fixed range of diameters (different hole saws needed for different sizes)</td></tr>
+      </table>
+      <div class="insight-box">💡 <strong>Pillar drill vs hand drill:</strong> The pillar drill (bench drill) ensures holes are drilled at a perfect 90° to the surface — essential for joints and fittings. A cordless hand drill is portable and useful on site or for large workpieces that cannot be moved to the pillar drill.</div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="tools-saws">
+    <div class="panel-head ph-b"><h3>🪚 Saws — Cutting Timber</h3><p>Different saws are chosen for different cutting tasks. The key question is always: what size is the material, and do I need a straight cut or a curved cut?</p></div>
+    <div class="panel-body">
+      <table class="ctbl">
+        <tr><th class="th-nm">Saw</th><th class="th-us">Use</th><th class="th-ad">✓ Advantages</th><th class="th-ds">✗ Disadvantages</th></tr>
+        <tr><td class="tn">Hand Saw</td><td>Cutting larger pieces of solid timber along or across the grain. The long flexible blade can make deep cuts through thick planks.</td><td>Can cut long, deep cuts through large planks of solid timber; no power source needed</td><td>Blade can bend (wander) sideways — important to saw carefully and keep the blade vertical; harder work than a power saw</td></tr>
+        <tr><td class="tn">Tenon Saw</td><td>Cutting smaller pieces of timber accurately, and cutting joints such as mortise and tenon. The stiffened back (spine) keeps the blade rigid.</td><td>Stiffened back prevents the blade from bending — makes very precise, accurate straight cuts for joints and detail work</td><td>The stiffened back limits cutting depth — the saw cannot cut deeper than the length of the blade below the spine</td></tr>
+        <tr><td class="tn">Coping Saw</td><td>Cutting curves and internal shapes in thin timber and manufactured boards. The blade can be removed, threaded through a pre-drilled hole, and refitted to cut internal shapes.</td><td>Thin blade can follow curved lines; blade can be removed and passed through a hole to cut internal shapes (like a jigsaw puzzle piece cutout)</td><td>Blade snaps quite easily; the fine teeth cut slowly; unsuitable for thick timber</td></tr>
+        <tr><td class="tn">Scroll Saw</td><td>Cutting very fine, accurate shapes and details in thin timber and manufactured boards. A machine version of the coping saw, with a small blade moving up and down.</td><td>Can cut very fine, accurate details that are impossible by hand; cuts curves and internal shapes cleanly</td><td>Only suitable for thin material; large pieces of timber cannot be cut with it; relatively slow</td></tr>
+        <tr><td class="tn">Jigsaw</td><td>Cutting large thin sheets of timber clamped to a workbench. The blade moves up and down rapidly and can follow curved lines in large sheets of manufactured board.</td><td>Can cut quite quickly; the thin blade can follow curved shapes in large sheet materials; portable — can be used on site</td><td>Difficult to cut perfectly straight lines (blade can wander); blade can wander in thicker, denser materials</td></tr>
+      </table>
+      <div class="insight-box">💡 <strong>Choosing the right saw:</strong> Large solid timber → hand saw. Accurate joint work → tenon saw. Curves in thin material → coping or scroll saw. Curves in large sheet material → jigsaw. The exam will give a product context and ask which saw is most appropriate — always justify your choice by linking the saw's property to the material and the cut type needed.</div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="tools-shape">
+    <div class="panel-head ph-c"><h3>🔨 Shaping, Planing &amp; Abrading</h3><p>Tools for removing material to get the final shape, smooth the surface, and prepare timber for finishing.</p></div>
+    <div class="panel-body">
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:10px;">Planing &amp; Chiselling</h3>
+      <div class="proc-grid">
+        <div class="proc-card"><h4>✂️ Hand Plane</h4><p>A sharp blade protrudes slightly from a flat base plate. Used to remove thin shavings from the edge or face of timber to get a straight, flat surface. Different lengths: <strong>jack plane</strong> (long — good for large flat surfaces or edges), <strong>smoothing plane</strong> (short — easier to handle on small pieces).</p><div class="pc-key">Key exam point: a plane removes very thin, controlled shavings — far more precise than a saw, which removes material in wider, less controlled cuts.</div></div>
+        <div class="proc-card"><h4>🏭 Planer/Thicknesser</h4><p>A rotating cutter block planes timber flat and square. The top table planes to get a flat, true face. The thicknesser section draws the timber in under the cutter and planes it to an exact set thickness — essential for preparing sawn timber to precise dimensions before joint-cutting.</p><div class="pc-key">Cannot be used as a hand-held tool — always a fixed workshop machine. Requires correct and consistent grain direction to prevent tearing.</div></div>
+        <div class="proc-card"><h4>🔪 Chisel</h4><p>Used for <strong>paring</strong> (slicing wood away between grains) and cutting joints. A mortise chisel has a thicker, heavier blade and stronger handle — designed to be struck with a mallet for cutting the mortise slot. Chisels must be kept sharp — a blunt chisel is more dangerous and less effective than a sharp one.</p><div class="pc-key">⚠️ Hard to use across end grain — it can split. Always work WITH the grain where possible. Sharp chisel = safer chisel.</div></div>
+        <div class="proc-card"><h4>🪵 Wood-Turning Lathe</h4><p>Holds a piece of timber between centres and rotates it at speed. The operator holds a chisel against a tool rest and moves it carefully against the spinning wood to remove material and create circular cross-sections. Requires careful preparation and machine setup.</p><div class="pc-key">Uses: table legs, chair spindles, wooden bowls, decorative knobs and handles — any product with a circular cross-section.</div></div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:18px 0 10px;">Abrading Tools</h3>
+      <div class="insight-box" style="margin-bottom:12px;">💡 <strong>Sandpaper grit guide:</strong> P80 = coarse (initial rough shaping, removing saw marks). P120 = medium (removing P80 scratches, general smoothing). P240 = fine (final smooth surface ready for finishing). Always sand IN THE DIRECTION of the grain — sanding across the grain tears the fibres and leaves scratches that are very difficult to remove.</div>
+      <table class="ctbl">
+        <tr><th class="th-nm">Tool</th><th class="th-us">Use &amp; Description</th><th class="th-ad">✓ Advantages</th><th class="th-ds">✗ Disadvantages</th></tr>
+        <tr><td class="tn">File</td><td>Available in a range of tooth sizes and cross-sectional shapes (flat, half-round, round). Good for smoothing and refining the sawn edges of manufactured boards.</td><td>Good for smoothing and shaping the sawn edges of MDF and chipboard; many shapes available for different surface profiles</td><td>Small teeth are quite slow on solid timber — a rasp is faster for rough shaping</td></tr>
+        <tr><td class="tn">Rasp</td><td>Large individual teeth (not continuous rows like a file). Available in flat, half-round, and round shapes. Good for rapid rough shaping of soft woods.</td><td>Large teeth cut soft timber quickly; available in different shapes for flat, concave and convex surfaces; good for rapid initial shaping</td><td>Large teeth leave deep marks that need to be removed with a file or sandpaper before finishing — leaves a very rough surface</td></tr>
+        <tr><td class="tn">Surform</td><td>A frame holds a blade with pressed metal teeth — like a cheese grater. The blade can be removed from the frame and replaced when worn. Good for rapid initial shaping of soft materials.</td><td>Good for rapid rough shaping of soft materials; blade replaceable when worn out</td><td>Leaves a rough surface that requires significant further smoothing; harder woods are difficult to work with a surform</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- JOINTS & FITTINGS -->
+<div id="sec-joints" class="section">
+  <div class="sec-head"><h2>7.7 — Joints, Adhesives &amp; Fittings</h2><p>You must know all seven wood joints by name, strength, use, advantage and disadvantage. The dovetail and mortise and tenon are the most commonly examined. Hinges and knock-down fittings are also examined.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Rank by Strength:</strong> Rank the seven joints from weakest to strongest, then write this ranking from memory. This forces you to understand the structural reason for each joint's strength, which is exactly what exam "explain" questions test. Ranking order: Butt (weakest) → Mitre → Lap → Housing → Dowel → Mortise &amp; Tenon → Dovetail (strongest).</div>
+
+  <div class="sub-nav">
+    <button class="sn-btn sn-a active" onclick="showSub('joints','woodjoints',this)">🔗 Wood Joints</button>
+    <button class="sn-btn sn-b"        onclick="showSub('joints','adhesives',this)">🧪 Adhesives &amp; Fixings</button>
+    <button class="sn-btn sn-c"        onclick="showSub('joints','fittings',this)">⚙️ Hinges &amp; Fittings</button>
+  </div>
+
+  <div class="sub-panel active" id="joints-woodjoints">
+    <div class="panel-head ph-a"><h3>🔗 Wood Joints — All Seven Types</h3><p>Ranked from weakest to strongest. Each joint's strength comes from its structure — not just the glue.</p></div>
+    <div class="panel-body">
+      <div class="joint-grid">
+        <div class="joint-card"><div class="joint-head jh1">Butt Joint</div><div class="joint-body">
+          <span class="jstrength j-weak">⚠️ Weakest</span>
+          <p>Two square-cut ends are glued together. No mechanical interlocking — strength comes entirely from the glue. Very easy to make with a tenon saw and bench hook.</p>
+          <p class="juses">Uses: simple boxes, internal construction where joint will not be stressed.</p>
+        </div></div>
+        <div class="joint-card"><div class="joint-head jh2">Mitre Joint</div><div class="joint-body">
+          <span class="jstrength j-weak">⚠️ Weak</span>
+          <p>Both pieces are cut at 45° so no end grain is visible on the surface — gives a clean, professional appearance at corners. Structurally it is just a butt joint at an angle.</p>
+          <p class="juses">Uses: picture frames, decorative boxes, skirting board corners where appearance matters most.</p>
+        </div></div>
+        <div class="joint-card"><div class="joint-head jh3">Lap Joint</div><div class="joint-body">
+          <span class="jstrength j-med">▲ Medium</span>
+          <p>Half the thickness of each piece is removed so they overlap and sit flush. Quite easy to cut with a tenon saw and chisel. Provides a larger gluing surface than a butt joint.</p>
+          <p class="juses">Uses: frame construction, joining battens, making lightweight boxes.</p>
+        </div></div>
+        <div class="joint-card"><div class="joint-head jh4">Housing Joint</div><div class="joint-body">
+          <span class="jstrength j-med">▲ Medium</span>
+          <p>A full-width groove (housing) is cut across one piece. The end of the other piece sits in it. Must be very accurately cut to ensure the shelf sits level. Works well with corner lap joints.</p>
+          <p class="juses">Uses: bookshelves, cabinet shelves, dividers — anywhere a shelf must be held level in the middle of a carcass.</p>
+        </div></div>
+        <div class="joint-card"><div class="joint-head jh5">Dowel Joint</div><div class="joint-body">
+          <span class="jstrength j-med">▲ Medium–Strong</span>
+          <p>Wooden dowel rods are pressed into holes drilled in both pieces. Automated machines can drill holes quickly and accurately. Very difficult to align holes accurately by hand.</p>
+          <p class="juses">Uses: flat-pack furniture, cabinet assembly, anywhere a hidden joint with good alignment is needed.</p>
+        </div></div>
+        <div class="joint-card"><div class="joint-head jh6">Mortise &amp; Tenon</div><div class="joint-body">
+          <span class="jstrength j-strong">✓ Strong</span>
+          <p>A projecting tenon fits into a matching rectangular mortise hole. Interlocking shapes resist both pulling and rotating forces. Time-consuming to cut by hand; a mortiser machine cuts it quickly.</p>
+          <p class="juses">Uses: chair and table frames, door construction, anywhere structural strength must resist racking forces.</p>
+        </div></div>
+        <div class="joint-card"><div class="joint-head jh7">Dovetail Joint</div><div class="joint-body">
+          <span class="jstrength j-vstrong">★ Strongest</span>
+          <p>Fan-shaped tails and matching pins interlock mechanically — the angled shape prevents the joint from being pulled apart in the direction of the tails. Once glued, virtually indestructible. Very difficult to cut accurately by hand.</p>
+          <p class="juses">Uses: drawer boxes (resists being pulled open), high-quality cabinet construction, hardwood tool boxes.</p>
+        </div></div>
+      </div>
+      <table class="ctbl" style="margin-top:16px;">
+        <tr><th class="th-nm">Joint</th><th class="th-us">Structure / How it works</th><th class="th-ad">✓ Advantages</th><th class="th-ds">✗ Disadvantages</th></tr>
+        <tr><td class="tn">Butt</td><td>Square ends simply glued together — no mechanical interlock</td><td>Very easy to make; quick</td><td>Weak — only glue holds it; not aesthetically pleasing (end grain visible)</td></tr>
+        <tr><td class="tn">Dowel</td><td>Cylindrical dowel rods glued into aligned drilled holes in both pieces</td><td>Machines can drill holes quickly and accurately; hidden joint</td><td>Very difficult to align holes accurately by hand; can split timber if drilled too close to edge</td></tr>
+        <tr><td class="tn">Lap</td><td>Half the thickness of each piece removed; pieces overlap flush</td><td>Quite easy to cut; larger gluing area than a butt joint</td><td>Not very strong; end grain visible on one face</td></tr>
+        <tr><td class="tn">Housing</td><td>Full-width groove cut across one piece; other piece's end sits in it</td><td>Holds shelf securely and level; good structural support along its full width</td><td>Tricky to cut very neatly; must be very accurately cut to keep shelf level</td></tr>
+        <tr><td class="tn">Mitre</td><td>Both pieces cut at 45°; end grain hidden from view at corner</td><td>Looks good — no end grain visible; clean corner appearance</td><td>Structurally weak — still just a butt joint at 45°; difficult to cut and clamp</td></tr>
+        <tr><td class="tn">Mortise &amp; Tenon</td><td>Rectangular projection (tenon) fits into matching rectangular hole (mortise)</td><td>A strong joint; resists racking and pulling forces; can be cut by mortiser machine</td><td>Time-consuming to cut by hand; requires accurate marking out and cutting</td></tr>
+        <tr><td class="tn">Dovetail</td><td>Fan-shaped tails interlock mechanically with matching pins; the shape prevents pulling apart</td><td>Extremely strong — resists being pulled apart in direction of tails; aesthetically attractive</td><td>Very tricky to cut accurately by hand; requires considerable skill and practice</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="joints-adhesives">
+    <div class="panel-head ph-b"><h3>🧪 Adhesives, Screws &amp; Nails</h3><p>Choosing the right fixing method is as important as choosing the right joint. Some fixings are permanent (PVA); others are removable (screws).</p></div>
+    <div class="panel-body">
+      <div class="proc-grid">
+        <div class="proc-card"><h4>🟤 PVA Adhesive</h4><p>Polyvinyl acetate — a thick white liquid wood glue. Becomes clear when dry. Creates a very strong bond — once fully cured, it is almost impossible to disassemble the joint without destroying the wood. Pieces must be clamped together tightly while the glue cures.</p><div class="pc-key">Best for: permanent timber-to-timber bonds. Water-based (safe), cheap, strong. Not suitable for bonding different materials (wood to metal, wood to plastic).</div></div>
+        <div class="proc-card"><h4>🔴 Contact Adhesive</h4><p>Applied in a thin film to BOTH surfaces. Wait until the glue is almost dry (tacky but not wet). Press the two surfaces firmly together. The bond forms instantly on contact — no clamping needed. However, repositioning is almost impossible once contact is made.</p><div class="pc-key">⚠️ Gives off solvent fumes — ventilation essential. Best for: bonding plastic laminate (Formica) onto chipboard or MDF worktops; sticking fabric or other materials onto timber.</div></div>
+        <div class="proc-card"><h4>🔩 Countersunk Screws</h4><p>The most useful fixing for joining pieces of timber — creates a tight fit, is very strong, and can be removed if needed. Slotted (flat-head) and Phillips (cross-head) types. For a countersunk screw: drill a clearance hole (wider than screw shank) in the top piece first, then a pilot hole (narrower than threads) in the bottom piece to prevent splitting.</p><div class="pc-key">Three holes: countersink recess → clearance hole (in top piece) → pilot hole (in bottom piece). All three are essential for a neat, strong screw fixing.</div></div>
+        <div class="proc-card"><h4>🔨 Nails</h4><p>Hammered into wood — the grain pinches around the nail, holding it. Fast to use and cheap. Holes may need to be pre-drilled to prevent splitting near edges.<br>• <strong>Round wire nails</strong>: large flat head, won't pull through thin material<br>• <strong>Oval nails</strong>: oval cross-section, spreads grain less, less likely to split<br>• <strong>Panel pins</strong>: small nails for thin material and model-making</p><div class="pc-key">Nails vs screws: nails are faster but cannot be removed cleanly; screws are stronger and removable but slower to insert.</div></div>
+        <div class="proc-card"><h4>🪵 Veneering</h4><p>A veneer is a thin layer of high-quality (often expensive) wood. It is glued onto the surface of a cheaper material — usually MDF or chipboard — to make the product look like it is made from solid expensive timber. MDF is often bought pre-veneered with oak, walnut, or other hardwoods.</p><div class="pc-key">Advantage: the appearance of expensive hardwood at a fraction of the cost. Disadvantage: if the surface is scratched or chipped, the cheap substrate beneath shows through.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="joints-fittings">
+    <div class="panel-head ph-c"><h3>⚙️ Hinges, Knock-Down Fittings &amp; Ironmongery</h3><p>Fittings are bought-in components that add functionality to a product. Knowing when to specify each type — and what its trade-offs are — is what the exam tests.</p></div>
+    <div class="panel-body">
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:12px;">Knock-Down Fittings</h3>
+      <div class="proc-grid" style="margin-bottom:18px;">
+        <div class="proc-card"><h4>📦 Knock-Down Fittings</h4><p>A range of blocks and fittings designed so that a product can be assembled and disassembled easily without specialist tools — ideal for flat-pack furniture. The customer can assemble the product themselves using only the provided Allen key.</p><div class="pc-key">Advantages: easy for customer assembly; can be packed flat (reduces transport cost and volume); pieces can be replaced if damaged. Disadvantages: the joint is weaker than a glued mortise and tenon; visible fitting may be unattractive.</div></div>
+        <div class="proc-card"><h4>🔧 Ironmongery</h4><p>A collective term for the range of metal hardware that can be added to a timber product to provide functionality. Items include: hinges, handles, knobs, hooks, drawer runners, locks, screws, and bolts. Ironmongery is usually bought-in rather than made from scratch, and is specified by the designer.</p><div class="pc-key">Good ironmongery improves both the function AND aesthetics of a product. Poor choice of ironmongery (wrong size, wrong style, wrong finish) can undermine an otherwise well-made product.</div></div>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:10px;">Types of Hinge</h3>
+      <table class="ctbl">
+        <tr><th class="th-nm">Hinge Type</th><th class="th-us">Use &amp; Description</th><th class="th-ad">✓ Advantages</th><th class="th-ds">✗ Disadvantages</th></tr>
+        <tr><td class="tn">Butt Hinge</td><td>The standard hinge for fitting interior doors. Recessed (mortised) into slots cut in both the door edge and the door frame.</td><td>Hidden from sight when the door is closed — a clean, professional appearance</td><td>Hard and time-consuming to fit — an accurate slot (housing) must be cut to the exact depth on both the door and the frame</td></tr>
+        <tr><td class="tn">Flush Hinge</td><td>Used for small cupboard doors. Fits flat onto the surface of both the door and the frame — no housing needs to be cut.</td><td>Very easy to fit as no slots need to be cut in the timber — just screw on to the surface</td><td>Leaves a visible gap between the door and the frame when the door is closed; not as neat as a butt hinge</td></tr>
+        <tr><td class="tn">Butterfly Hinge</td><td>A decorative hinge that screws onto the surfaces of both the door and the frame. Often made in decorative shapes. Used where the hinge is meant to be seen as a design feature.</td><td>Easy to fit as it screws onto the surface with the two parts naturally lined up; acts as a decorative feature</td><td>The whole hinge is visible on the surface — may look attractive as a design feature but is not suitable where a clean appearance is required</td></tr>
+        <tr><td class="tn">T Hinge</td><td>A hinge with a long horizontal bar and a short pivot plate. Used for gates, shed doors, and outdoor structures where the weight of the door is significant.</td><td>The long bar distributes the weight of a heavy gate or door across a wider area of the door surface, giving better support</td><td>Sits entirely on the surface of the door and gate post — highly visible from the front; not suitable for interior furniture</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVITIES -->
+<div id="sec-activities" class="section">
+  <div class="sec-head"><h2>Revision Activities</h2><p>Gap fill, matching, and true/false across Topics 7.6 and 7.7. Word bank is NOT in answer order.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Attempt First:</strong> Complete each activity without consulting the Topic Summaries tab. After checking your answers, return to the relevant panel for any question you got wrong and re-read that section carefully. The act of looking up the correct answer after getting it wrong is far more effective than just reading the answer.</div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 1 — Gap Fill: Manufacturing &amp; Tools Vocabulary</h3><div class="act-badge">Fill in the blanks</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a word from the Word Bank, then click the correct blank. The bank is NOT in answer order.</div>
+      <div class="word-bank" id="wb1">
+        <span class="wchip" data-word="housing">housing</span>
+        <span class="wchip" data-word="PVA">PVA</span>
+        <span class="wchip" data-word="coping saw">coping saw</span>
+        <span class="wchip" data-word="jig">jig</span>
+        <span class="wchip" data-word="mass">mass</span>
+        <span class="wchip" data-word="contact adhesive">contact adhesive</span>
+        <span class="wchip" data-word="forstner">forstner</span>
+        <span class="wchip" data-word="tenon saw">tenon saw</span>
+        <span class="wchip" data-word="quality control">quality control</span>
+        <span class="wchip" data-word="mortise and tenon">mortise and tenon</span>
+        <span class="wchip" data-word="batch">batch</span>
+        <span class="wchip" data-word="dovetail">dovetail</span>
+      </div>
+      <div id="gf1">
+        <div class="gap-sent">1. Making several identical products at the same time using jigs and templates to improve speed and consistency is called <input type="text" class="gf" data-answer="batch"> production.</div>
+        <div class="gap-sent">2. Factory machinery is set up to produce large numbers of identical products quickly and cheaply in <input type="text" class="gf" data-answer="mass"> production — the high machinery set-up cost is only justified for large quantities.</div>
+        <div class="gap-sent">3. A <input type="text" class="gf" data-answer="jig"> is placed over a workpiece to guide a drill or saw to cut in exactly the correct place — making it possible to reproduce the same cut identically on every piece in a batch.</div>
+        <div class="gap-sent">4. A system for sampling and inspecting products at each stage of manufacturing to ensure they meet the required standard is called <input type="text" class="gf" data-answer="quality control">.</div>
+        <div class="gap-sent">5. A <input type="text" class="gf" data-answer="tenon saw"> has a stiffened back (spine) that keeps the blade rigid for accurate joint cutting — but this same spine limits the depth of cut.</div>
+        <div class="gap-sent">6. A <input type="text" class="gf" data-answer="coping saw"> is used to cut curves and internal shapes in thin timber — its blade can be removed, threaded through a pre-drilled hole, and refitted to cut internal shapes.</div>
+        <div class="gap-sent">7. A <input type="text" class="gf" data-answer="forstner"> bit produces a clean flat-bottomed blind hole in timber — essential for fitting concealed hinges and knock-down fittings that require a perfectly flat seating.</div>
+        <div class="gap-sent">8. A full-width groove cut across one piece of timber to receive the end of a shelf is called a <input type="text" class="gf" data-answer="housing"> joint — it holds the shelf securely and keeps it level.</div>
+        <div class="gap-sent">9. A <input type="text" class="gf" data-answer="mortise and tenon"> joint is a strong mechanical joint where a projecting piece (the tenon) fits tightly into a matching rectangular hole — used for chair and table frames.</div>
+        <div class="gap-sent">10. The <input type="text" class="gf" data-answer="dovetail"> joint is the strongest wood joint — the interlocking fan-shaped tails and pins are virtually impossible to pull apart in the direction of the tails, making it ideal for drawer construction.</div>
+        <div class="gap-sent">11. <input type="text" class="gf" data-answer="PVA"> (polyvinyl acetate) is a thick white wood glue that becomes clear when dry — it creates an extremely strong bond but once cured, the joint is almost impossible to disassemble.</div>
+        <div class="gap-sent">12. <input type="text" class="gf" data-answer="contact adhesive"> is applied to both surfaces, allowed to become nearly dry, then the surfaces are pressed firmly together — the bond forms instantly and repositioning is almost impossible.</div>
+      </div>
+      <div><button class="check-btn" onclick="checkGF('gf1','sc1')">✓ Check Answers</button><button class="reset-btn" onclick="resetGF('gf1','sc1','wb1')">↺ Reset</button><div class="score-box" id="sc1"></div></div>
+    </div>
+  </div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 2 — Matching: Tool / Joint to Correct Description</h3><div class="act-badge">Click to match</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a term on the LEFT, then its correct description on the RIGHT. Descriptions are NOT in the same order as terms.</div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-lbl">📋 Term</div>
+          <div class="mi mw" data-id="1" onclick="sm(this,'w')">Forstner bit</div>
+          <div class="mi mw" data-id="2" onclick="sm(this,'w')">Tenon saw</div>
+          <div class="mi mw" data-id="3" onclick="sm(this,'w')">Dovetail joint</div>
+          <div class="mi mw" data-id="4" onclick="sm(this,'w')">Butt hinge</div>
+          <div class="mi mw" data-id="5" onclick="sm(this,'w')">Batch production</div>
+          <div class="mi mw" data-id="6" onclick="sm(this,'w')">Housing joint</div>
+          <div class="mi mw" data-id="7" onclick="sm(this,'w')">Contact adhesive</div>
+          <div class="mi mw" data-id="8" onclick="sm(this,'w')">Coping saw</div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-lbl">📋 Description</div>
+          <div class="mi" data-id="6" onclick="sm(this,'d')">A full-width groove cut across one piece of timber to hold a shelf level and securely in the middle of a carcass</div>
+          <div class="mi" data-id="2" onclick="sm(this,'d')">A hand saw with a stiffened spine that keeps the blade rigid for precise joint cutting — but limits the maximum depth of cut</div>
+          <div class="mi" data-id="5" onclick="sm(this,'d')">Making several identical products simultaneously using jigs and templates — no special machinery needed but labour intensive per unit</div>
+          <div class="mi" data-id="4" onclick="sm(this,'d')">A hinge hidden from sight when the door is closed — requires an accurate slot to be cut in both the door edge and the door frame</div>
+          <div class="mi" data-id="7" onclick="sm(this,'d')">Applied to both surfaces and allowed to become nearly dry before pressing together — the bond forms instantly with no possibility of repositioning</div>
+          <div class="mi" data-id="1" onclick="sm(this,'d')">A drill bit that produces a perfectly flat-bottomed blind hole — essential for fitting concealed hinges and knock-down fittings</div>
+          <div class="mi" data-id="3" onclick="sm(this,'d')">The strongest wood joint — fan-shaped tails interlock mechanically to make it virtually impossible to pull the joint apart in the direction of the tails</div>
+          <div class="mi" data-id="8" onclick="sm(this,'d')">A hand saw with a thin blade that can cut curves in thin timber — the blade can be removed and passed through a pre-drilled hole to cut internal shapes</div>
+        </div>
+      </div>
+      <button class="reset-btn" style="margin-top:12px;" onclick="resetMatch()">↺ Reset</button>
+      <div id="mDone" style="display:none;margin-top:11px;font-size:14px;font-weight:600;color:var(--green);background:var(--green-l);padding:9px 15px;border-radius:8px;">🎉 All 8 matched — excellent knowledge of tools and joints!</div>
+    </div>
+  </div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 3 — True or False?</h3><div class="act-badge">Test understanding</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 These statements test the most common exam misconceptions in Topics 7.6 and 7.7. Read each explanation carefully after answering.</div>
+      <div class="tf-item"><div class="tf-stmt">1. A dovetail joint is stronger than a mortise and tenon joint because it uses more glue.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,1)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,1)">False</button></div><div class="tf-fb" id="tf1">❌ <strong>False — and the reason given is completely wrong.</strong> A dovetail joint is stronger than most other joints because of its MECHANICAL STRUCTURE — the fan-shaped tails lock together physically, making it virtually impossible to pull apart in the direction of the tails, regardless of the amount of glue. The strength comes from the geometry of the joint, not from the quantity of adhesive. In fact, all wood joints rely on the mechanical interlock first; the adhesive enhances this by filling any small gaps and bonding the surfaces.</div></div>
+      <div class="tf-item"><div class="tf-stmt">2. The stiffened spine of a tenon saw is a disadvantage because it limits how deep you can cut.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,true,2)">True</button><button class="tf-btn fb" onclick="chkTF(this,true,2)">False</button></div><div class="tf-fb" id="tf2">✅ <strong>True — but this is only half the answer the exam expects.</strong> The stiffened back IS the disadvantage (it limits cutting depth). However, the same spine is also the advantage: it prevents the blade from bending and ensures very accurate, straight cuts. A good exam answer always gives BOTH sides: "The stiffened back keeps the blade rigid for accurate cuts (advantage), but prevents the saw from cutting deeper than the length of the blade below the spine (disadvantage)."</div></div>
+      <div class="tf-item"><div class="tf-stmt">3. A butt hinge should be specified for a flat-pack kitchen cupboard door because it is hidden from view when the door is closed.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,3)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,3)">False</button></div><div class="tf-fb" id="tf3">❌ <strong>False — a butt hinge is the wrong choice for flat-pack furniture.</strong> Although a butt hinge is hidden when the door is closed, it requires an accurately cut slot (housing) to be routed into both the door edge and the frame — a skilled, time-consuming process entirely unsuitable for flat-pack furniture that customers assemble themselves. A flush hinge or concealed (European-style) hinge would be more appropriate because they require only screwing onto or into the surface, with no slot cutting needed. The exam frequently tests this distinction.</div></div>
+      <div class="tf-item"><div class="tf-stmt">4. A housing joint and a butt joint are both weak because neither uses a mechanical interlock — they rely entirely on the adhesive for strength.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,4)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,4)">False</button></div><div class="tf-fb" id="tf4">❌ <strong>False — a housing joint does have a mechanical interlock.</strong> A butt joint has no mechanical interlock and relies entirely on adhesive. However, a housing joint has a groove (the housing) cut across the full width of one piece — the end of the shelf physically sits inside this groove, and the groove's walls mechanically prevent the shelf from moving vertically. This mechanical element gives the housing joint significantly greater strength than a simple butt joint, especially for holding shelves level against the downward force of items placed on them.</div></div>
+      <div class="tf-item"><div class="tf-stmt">5. Mass production always produces better quality products than one-off production because automated machinery is more precise than handwork.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,5)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,5)">False</button></div><div class="tf-fb" id="tf5">❌ <strong>False — mass production produces more CONSISTENT products, not necessarily better quality ones.</strong> Mass production machinery produces identical items repeatedly within a tight tolerance. A skilled craftsperson making a one-off product can achieve a level of care, finishing quality, and attention to individual detail that no production line can match — which is why bespoke furniture, handmade instruments, and custom products can command a price 10–100× higher than mass-produced equivalents. The exam may ask you to compare quality and cost considerations across scales of production — always consider both sides.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM LANGUAGE -->
+<div id="sec-exam" class="section">
+  <div class="sec-head"><h2>Exam Language &amp; Practice</h2><p>Topics 7.6 and 7.7 generate a wide variety of question types — name/state, describe, explain, justify, and evaluate. The most challenging are "justify" questions that ask you to select and defend the most appropriate tool or joint for a given context.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Context First:</strong> Before choosing a tool or joint in an exam question, underline the product context. The context tells you: what material? what size? what shape cut needed? what forces will act on the joint? These four questions determine the correct answer. Never choose a tool or joint without linking it back to the specific context.</div>
+
+  <div class="cmd-grid">
+    <div class="cmd-card"><div class="cmd-word">State / Name</div><div class="cmd-means">One correct term. No explanation needed. "Give one type of..." is this command.</div><span class="cmd-marks">1 mark</span></div>
+    <div class="cmd-card"><div class="cmd-word">Describe</div><div class="cmd-means">Say what the tool/process is and what it does. Give specific features — how it works, what it looks like, its key characteristic.</div><span class="cmd-marks">1–2 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Explain</div><div class="cmd-means">State the feature AND give the reason why it makes it suitable or unsuitable. Use: "because… which means that…"</div><span class="cmd-marks">2–4 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Justify</div><div class="cmd-means">Say WHICH is the most appropriate choice AND give specific reasons tied to the product context. Must link properties to requirements.</div><span class="cmd-marks">3–4 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Calculate</div><div class="cmd-means">Show formula, substitution, and answer with correct units. Partial marks for correct method even with wrong answer.</div><span class="cmd-marks">2–3 marks</span></div>
+  </div>
+
+  <div class="frame-card"><div class="frame-type">Justifying a joint choice — 3 marks</div><div class="frame-body">
+    <div class="frame-tpl"><span class="blank">[Joint name]</span> would be the most appropriate joint for <span class="blank">[product]</span> because <span class="blank">[key property of joint]</span>. This is important because <span class="blank">[specific force or requirement of the product]</span>.</div>
+    <div class="frame-ex">"A <strong>mortise and tenon joint</strong> would be the most appropriate joint for the chair leg-to-rail connection because <strong>it has a mechanical interlock — the tenon fits into the mortise and resists both pulling and rotating forces</strong>. This is important because <strong>a chair frame is subject to racking forces when someone leans back in the seat, which a simple butt joint could not withstand</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Explaining a scale of production — 4 marks</div><div class="frame-body">
+    <div class="frame-tpl">The company should change to <span class="blank">[scale]</span> production because <span class="blank">[advantage 1]</span>. This means that <span class="blank">[consequence]</span>. Furthermore, <span class="blank">[advantage 2]</span>.</div>
+    <div class="frame-ex">"The company should change to <strong>mass production</strong> because <strong>factory machinery can produce identical components much faster than batch production with jigs and templates</strong>. This means that <strong>the 3,000 tables can be manufactured within the retailer's required timescale</strong>. Furthermore, <strong>the higher volume reduces the cost per unit significantly — the expensive machinery set-up cost is spread across 3,000 units rather than just a few, making each table cheaper to produce</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Choosing a saw for a specific task — 2 marks</div><div class="frame-body">
+    <div class="frame-tpl">For cutting <span class="blank">[material description and cut type]</span>, a <span class="blank">[saw name]</span> would be most appropriate because <span class="blank">[property that makes it suitable]</span>.</div>
+    <div class="frame-ex">"For cutting the curved handle shape from a 6 mm sheet of MDF, a <strong>coping saw</strong> would be most appropriate because <strong>its thin, narrow blade can follow curved lines and cut tight internal curves that would be impossible with a tenon or hand saw</strong>."</div>
+  </div></div>
+
+  <div style="margin-top:24px;margin-bottom:13px;"><h2 style="font-family:'Playfair Display',serif;font-size:21px;color:var(--navy);">📝 Practice Questions</h2></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q1 · Scales · 4 marks</span><span class="eq-marks">4 marks</span></div><div class="eq-body">
+    <div class="eq-text">A company has been batch producing coffee tables. A large retailer has just ordered 3,000 of its tables. Explain <strong>two</strong> reasons why the directors should change to mass production.</div>
+    <div class="eq-hint">💡 Two developed reasons: each needs a property of mass production AND the consequence for the company/retailer. Use: "Mass production allows… which means that…"</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>Speed and volume:</strong> Mass production uses dedicated factory machinery that makes the same product continuously, far faster than batch production with jigs and templates. This means the company can fulfil the retailer's order of 3,000 tables within a reasonable timescale — batch production would be too slow to meet the deadline for such a large order.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>Reduced cost per unit:</strong> Although the machinery investment is high, the cost is spread across 3,000 units — dramatically reducing the cost per table compared to batch production. This allows the company to offer the retailer a competitive price that makes the order commercially viable, while still maintaining a profit margin.</div></div>
+    </div>
+  </div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q2 · Joints · 4 marks</span><span class="eq-marks">4 marks</span></div><div class="eq-body">
+    <div class="eq-text">A designer is making a solid oak bookcase with adjustable shelves. Explain why a <strong>housing joint</strong> is appropriate for fixing the shelves, and give one disadvantage of this joint.</div>
+    <div class="eq-hint">💡 Advantage: 2 marks (what the joint does + why it matters for this product). Disadvantage: 1–2 marks (specific difficulty + consequence).</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>Advantage:</strong> A housing joint cuts a full-width groove (the housing) across the inner face of each side panel. The full width of the shelf end sits inside this groove, giving mechanical support across the entire shelf width. This prevents the shelf from sagging or pulling away at the ends when heavy books are placed on it — the groove walls bear the load directly rather than relying on adhesive alone.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>Disadvantage:</strong> The housing must be cut very accurately to the correct depth and width — if it is even slightly uneven, the shelf will not sit perfectly level, and a visibly sloping shelf is both aesthetically unacceptable and structurally weaker. This requires very careful marking out and skilled use of a router or saw and chisel.</div></div>
+    </div>
+  </div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q3 · Wastage Calculation · 3 marks</span><span class="eq-marks">3 marks</span></div><div class="eq-body">
+    <div class="eq-text">A rectangular piece of plywood measures 80 mm × 200 mm. A designer cuts out a triangle with a base of 40 mm and a height of 60 mm, and a circle with a radius of 20 mm. Calculate the area of plywood that is wasted. Show all working.</div>
+    <div class="eq-hint">💡 Rectangle − (triangle + circle) = wastage. Use π = 3.14. Show each step separately. Give answer in mm².</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div>Sheet area = 80 × 200 = <strong>16,000 mm²</strong></div></div>
+      <div class="mp"><div class="mpn">2</div><div>Triangle area = ½ × 40 × 60 = <strong>1,200 mm²</strong><br>Circle area = 3.14 × 20 × 20 = <strong>1,256 mm²</strong><br>Total cut-out area = 1,200 + 1,256 = <strong>2,456 mm²</strong></div></div>
+      <div class="mp"><div class="mpn">3</div><div>Area wasted = 16,000 − 2,456 = <strong>13,544 mm²</strong></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ESL TOOLKIT -->
+<div id="sec-toolkit" class="section">
+  <div class="sec-head"><h2>ESL Language Toolkit</h2><p>Word roots, plain-English synonyms, exam phrases, and the most common mistakes — specific to manufacturing, tools, and joints vocabulary.</p></div>
+  <div class="tk-grid">
+    <div class="tk-card"><div class="tk-head tkh-a">🔤 Key Word Roots</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th>Root</th><th>Meaning</th><th>Examples in this topic</th></tr>
+        <tr><td class="pfx">templ-</td><td>a pattern/form</td><td>template, template-making</td></tr>
+        <tr><td class="pfx">jig</td><td>a guide device</td><td>drilling jig, sawing jig</td></tr>
+        <tr><td class="pfx">mort-</td><td>to bite/cut</td><td>mortise, mortiser</td></tr>
+        <tr><td class="pfx">tenon</td><td>to hold/hold fast</td><td>tenon (projection), tenon saw</td></tr>
+        <tr><td class="pfx">dovetail</td><td>shape of a dove's tail</td><td>dovetail joint (fan-shaped tails)</td></tr>
+        <tr><td class="pfx">iron-</td><td>iron/metal goods</td><td>ironmongery (metal hardware)</td></tr>
+        <tr><td class="pfx">continu-</td><td>to continue/go on</td><td>continuous production (24/7)</td></tr>
+        <tr><td class="pfx">toler-</td><td>to bear/endure</td><td>tolerance (acceptable size range)</td></tr>
+        <tr><td class="pfx">cali-</td><td>a measuring device</td><td>calibrate, calibration (setting a tool accurately)</td></tr>
+        <tr><td class="pfx">veneer</td><td>thin surface layer (French)</td><td>veneering, veneered MDF</td></tr>
+      </table>
+    </div></div>
+    <div class="tk-card"><div class="tk-head tkh-b">🔄 Technical Term → Plain English</div><div class="tk-body">
+      <div class="syn-p"><span class="syn-c">One-off production</span><span class="syn-a">→</span><span class="syn-s">One product made at a time by a craftsperson</span></div>
+      <div class="syn-p"><span class="syn-c">Batch production</span><span class="syn-a">→</span><span class="syn-s">Several identical products made at the same time using jigs</span></div>
+      <div class="syn-p"><span class="syn-c">Jig</span><span class="syn-a">→</span><span class="syn-s">A device that guides a drill or saw to cut in the right place</span></div>
+      <div class="syn-p"><span class="syn-c">Template</span><span class="syn-a">→</span><span class="syn-s">A cut-out shape you draw around to reproduce the same outline</span></div>
+      <div class="syn-p"><span class="syn-c">Mortise</span><span class="syn-a">→</span><span class="syn-s">The rectangular HOLE in a mortise and tenon joint</span></div>
+      <div class="syn-p"><span class="syn-c">Tenon</span><span class="syn-a">→</span><span class="syn-s">The rectangular PROJECTION that fits into the mortise</span></div>
+      <div class="syn-p"><span class="syn-c">Housing joint</span><span class="syn-a">→</span><span class="syn-s">A groove cut across a board for a shelf end to sit in</span></div>
+      <div class="syn-p"><span class="syn-c">Forstner bit</span><span class="syn-a">→</span><span class="syn-s">A drill bit that makes a flat-bottomed (blind) hole</span></div>
+      <div class="syn-p"><span class="syn-c">Knock-down fitting</span><span class="syn-a">→</span><span class="syn-s">A fitting that lets you assemble and take apart furniture easily</span></div>
+      <div class="syn-p"><span class="syn-c">Ironmongery</span><span class="syn-a">→</span><span class="syn-s">Metal hardware added to a product (hinges, handles, locks)</span></div>
+    </div></div>
+    <div class="tk-card" style="grid-column:1/-1;"><div class="tk-head tkh-c">🚨 Common Exam Mistakes — Manufacturing &amp; Joints</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th style="width:30%">❌ Avoid writing this</th><th style="width:38%">✅ Write this instead</th><th>Why?</th></tr>
+        <tr><td>"The dovetail is strong because it has lots of glue"</td><td>"The dovetail is strong because its <strong>fan-shaped tails mechanically interlock</strong> with the pins, making it <strong>virtually impossible to pull apart in the direction of the tails</strong>"</td><td>Strength comes from mechanical structure, not adhesive quantity</td></tr>
+        <tr><td>"Use a mitre joint for the chair because it looks good"</td><td>"A <strong>mortise and tenon joint</strong> is appropriate for the chair — it has a <strong>mechanical interlock that resists racking forces</strong>. The mitre joint is only a butt joint at 45° and would not withstand the forces on a chair frame."</td><td>Always choose joints for structural reasons, not just appearance</td></tr>
+        <tr><td>"Batch production is when you make things in batches"</td><td>"Batch production is making <strong>several identical products simultaneously</strong> using <strong>jigs, templates and moulds</strong> to speed up the process. No special machinery is needed but it is <strong>labour intensive per unit</strong>."</td><td>Circular definition earns no marks — define using the key features</td></tr>
+        <tr><td>"A coping saw is for cutting thick wood"</td><td>"A coping saw is for cutting <strong>curves and internal shapes in THIN timber and thin manufactured boards</strong>. For thick timber, a hand saw or jigsaw would be more appropriate."</td><td>Coping saws are for THIN material and CURVES — both limitations are important</td></tr>
+        <tr><td>"Use a butt hinge for flat-pack furniture"</td><td>"A <strong>flush hinge or concealed hinge</strong> would be appropriate for flat-pack furniture — a butt hinge requires a skilled-router cut housing in both the door and frame, unsuitable for customer self-assembly."</td><td>Butt hinge = high skill to fit. Wrong choice for flat-pack.</td></tr>
+        <tr><td>"PVA is waterproof"</td><td>"Standard <strong>PVA is NOT waterproof</strong> — it softens when exposed to moisture. Waterproof PVA (exterior grade) or a different adhesive must be specified for products that will be used outdoors or in wet conditions."</td><td>PVA waterproofing is a common misconception — standard PVA fails outdoors</td></tr>
+      </table>
+    </div></div>
+  </div>
+</div>
+
+</div>
+<footer><strong>Edexcel GCSE Design &amp; Technology</strong> · Topics 7.6 &amp; 7.7 · Manufacturing Processes, Tools &amp; Joints · Specialist Timbers Content<br>Cross-referenced with Pearson Edexcel Specification (Issue 4) and Timbers Textbook (pp. 292–303) · Section B · For educational use only</footer>
+
+<script>
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('sec-'+id).classList.add('active');event.currentTarget.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function fv(t,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.vc').forEach(c=>{c.style.display=(t==='all'||c.dataset.topic===t)?'block':'none';});}
+function showSub(tabId,panelId,btn){
+  const prefix = tabId+'-';
+  document.querySelectorAll('[id^="'+prefix+'"]').forEach(p=>p.classList.remove('active'));
+  document.getElementById(prefix+panelId).classList.add('active');
+  btn.closest('.sub-nav').querySelectorAll('.sn-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+let selChip=null;
+document.querySelectorAll('.wchip').forEach(c=>{c.addEventListener('click',function(){document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));selChip=this.dataset.word;this.classList.add('sel');});});
+document.querySelectorAll('.gf').forEach(inp=>{inp.addEventListener('click',function(){if(selChip){this.value=selChip;selChip=null;document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));}});inp.addEventListener('input',function(){this.classList.remove('correct','incorrect');});});
+function checkGF(cid,sid){const ins=document.getElementById(cid).querySelectorAll('.gf');let ok=0;ins.forEach(i=>{const pass=i.value.toLowerCase().trim()===i.dataset.answer.toLowerCase().trim();i.classList.toggle('correct',pass);i.classList.toggle('incorrect',!pass);if(pass)ok++;});const s=document.getElementById(sid);const p=ok/ins.length;s.className='score-box show '+(p>=.85?'good':p>=.5?'ok':'low');s.style.display='inline-flex';s.innerHTML=(p>=.85?'🎉':p>=.5?'👍':'📚')+` Score: ${ok}/${ins.length}`+(p>=.85?' — Excellent!':p>=.5?' — Good effort!':" — Keep revising!");}
+function resetGF(cid,sid,wid){document.getElementById(cid).querySelectorAll('.gf').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});const s=document.getElementById(sid);s.className='score-box';s.style.display='none';if(wid)document.getElementById(wid).querySelectorAll('.wchip').forEach(c=>c.classList.remove('sel'));selChip=null;}
+let mSel={w:null,d:null},mCnt=0;
+function sm(el,t){if(el.classList.contains('matched'))return;if(mSel[t])mSel[t].classList.remove('sel');mSel[t]=el;el.classList.add('sel');if(mSel.w&&mSel.d){if(mSel.w.dataset.id===mSel.d.dataset.id){[mSel.w,mSel.d].forEach(e=>{e.classList.add('matched');e.classList.remove('sel');});mCnt++;if(mCnt===8)document.getElementById('mDone').style.display='block';}else{[mSel.w,mSel.d].forEach(e=>{e.classList.add('wrong');setTimeout(()=>{e.classList.remove('wrong','sel');},600);});setTimeout(()=>{mSel={w:null,d:null};},600);return;}mSel={w:null,d:null};}}
+function resetMatch(){document.querySelectorAll('.mi').forEach(e=>e.classList.remove('matched','sel','wrong'));mSel={w:null,d:null};mCnt=0;document.getElementById('mDone').style.display='none';}
+function chkTF(btn,correct,n){const isT=btn.classList.contains('tb');const pass=(isT===correct);const parent=btn.closest('.tf-item');parent.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);btn.classList.add(pass?'ca':'wa');if(!pass){const cb=correct?parent.querySelector('.tb'):parent.querySelector('.fb');cb.classList.add('ca');}const fb=document.getElementById('tf'+n);fb.className='tf-fb show '+(pass?'ok':'no');}
+function togAns(btn){const a=btn.nextElementSibling;if(a.classList.contains('show')){a.classList.remove('show');btn.textContent='👁 Show Model Answer';}else{a.classList.add('show');btn.textContent='🙈 Hide Model Answer';}}
+</script>
+</body>
+</html>

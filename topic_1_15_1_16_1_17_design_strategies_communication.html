@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topics 1.15–1.17 — Designers, Strategies & Communication · GCSE D&T Core</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7ff;--navy:#1a0b2e;--vi:#7c3aed;--vi-l:#ede9fe;--vi-m:#c4b5fd;
+  --teal:#0e7490;--teal-l:#e0f5f9;--green:#166534;--green-l:#dcfce7;
+  --red:#991b1b;--red-l:#fee2e2;--amber:#d97706;--amber-l:#fef3c7;
+  --blue:#1e40af;--blue-l:#dbeafe;--muted:#6b7280;--border:#ddd6fe;
+  --card:#fff;--text:#1a0b2e;--shadow:0 2px 16px rgba(26,11,46,.09);--shadow-h:0 6px 28px rgba(26,11,46,.17);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;}
+.hero{background:linear-gradient(135deg,#1a0b2e 0%,#3b0764 55%,#0c2714 100%);color:#fff;padding:52px 40px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(124,58,237,.28) 0%,transparent 55%);}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.hero-badge{display:inline-block;background:var(--vi);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,48px);font-weight:900;line-height:1.08;margin-bottom:8px;}
+.hero h1 .ac{color:var(--vi-m);}
+.hero-spec{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:14px;text-transform:uppercase;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.72);max-width:660px;line-height:1.65;margin-bottom:26px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.hero-tag{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);font-size:12px;padding:5px 13px;border-radius:20px;}
+.nav-bar{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 20px;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:14px 17px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-2px;}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--vi);font-weight:600;}
+.main{max-width:1100px;margin:0 auto;padding:38px 20px 80px;}
+.section{display:none;}
+.section.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sec-head{margin-bottom:24px;}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+.sec-head p{color:var(--muted);font-size:15px;line-height:1.65;max-width:700px;}
+.esl-tip{background:linear-gradient(135deg,#f5f3ff,var(--vi-l));border-left:4px solid var(--vi);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:24px;font-size:13.5px;color:#2d1b6b;line-height:1.6;}
+.insight-box{border-left:4px solid var(--vi);background:var(--vi-l);padding:11px 15px;border-radius:0 8px 8px 0;font-size:13.5px;color:#2d1b6b;margin:14px 0;}
+
+/* SPEC */
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px;}
+.spec-card{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.spec-head{padding:13px 16px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;}
+.sh-a{background:linear-gradient(135deg,#1a0b2e,#7c3aed);}
+.sh-b{background:linear-gradient(135deg,#0f2d5e,#1e40af);}
+.sh-c{background:linear-gradient(135deg,#0c2714,#166534);}
+.spec-body{padding:11px 16px;}
+.spec-item{display:flex;align-items:flex-start;gap:9px;padding:5px 0;border-bottom:1px solid #f0ebff;font-size:13px;line-height:1.45;}
+.spec-item:last-child{border-bottom:none;}
+.spec-item input[type=checkbox]{margin-top:3px;accent-color:var(--vi);flex-shrink:0;width:14px;height:14px;}
+
+/* SUB NAV */
+.sub-nav{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px;}
+.sn-btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;opacity:.55;font-family:'DM Sans',sans-serif;}
+.sn-btn.active{opacity:1;box-shadow:var(--shadow);}
+.sn-a{background:var(--vi);color:#fff;}
+.sn-b{background:var(--blue);color:#fff;}
+.sn-c{background:var(--green);color:#fff;}
+.sn-d{background:#b45309;color:#fff;}
+.sub-panel{display:none;}
+.sub-panel.active{display:block;animation:fadeUp .3s ease;}
+.panel-head{border-radius:12px 12px 0 0;padding:18px 24px;color:#fff;}
+.ph-a{background:linear-gradient(135deg,#1a0b2e,#7c3aed);}
+.ph-b{background:linear-gradient(135deg,#0f2d5e,#1e40af);}
+.ph-c{background:linear-gradient(135deg,#0c2714,#166534);}
+.ph-d{background:linear-gradient(135deg,#4c1d00,#d97706);}
+.panel-head h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:4px;}
+.panel-head p{font-size:13px;opacity:.82;}
+.panel-body{background:var(--card);border-radius:0 0 12px 12px;border:1.5px solid var(--border);border-top:none;padding:22px 24px;margin-bottom:20px;box-shadow:var(--shadow);}
+
+/* VOCAB */
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;align-items:center;}
+.filter-btn{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--muted);}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start;}
+.vc{background:var(--card);border-radius:12px;border:1.5px solid var(--border);box-shadow:var(--shadow);display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;transition:transform .2s;}
+.vc:hover{transform:translateY(-2px);}
+.vc-top{padding:14px 16px 11px;border-bottom:1px solid var(--border);display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:10px;writing-mode:horizontal-tb;}
+.vc-word{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--navy);writing-mode:horizontal-tb;flex:1;min-width:0;word-break:break-word;}
+.vc-tag{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px;flex-shrink:0;writing-mode:horizontal-tb;white-space:nowrap;margin-top:3px;}
+.t-an{background:var(--vi-l);color:var(--vi);}
+.t-ds{background:var(--blue-l);color:var(--blue);}
+.t-dr{background:var(--green-l);color:var(--green);}
+.t-cad{background:var(--amber-l);color:#92400e;}
+.vc-body{padding:13px 16px;display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;}
+.def-lbl{display:none;}
+.vc-def{font-size:13.5px;color:var(--text);line-height:1.65;margin-bottom:10px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex{background:#f5f3ff;border-left:3px solid var(--vi);padding:8px 11px;border-radius:0 7px 7px 0;font-size:12.5px;color:#444;font-style:italic;line-height:1.55;margin-bottom:10px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex em{font-style:normal;background:var(--vi-l);padding:1px 3px;border-radius:2px;}
+.vc-mem{background:var(--green-l);border:1px solid #bbf7d0;padding:8px 11px;border-radius:7px;font-size:12px;color:#14532d;line-height:1.6;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+
+/* SPEC CRITERIA TABLE */
+.crit-tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin:12px 0;}
+.crit-tbl th{padding:8px 11px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;}
+.crit-tbl td{padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.crit-tbl tr:last-child td{border-bottom:none;}
+.crit-tbl tr:nth-child(even) td{background:#f9f7ff;}
+.crit-tbl .cn{font-weight:700;color:var(--navy);}
+.th-cr{background:var(--navy);color:#fff;border-radius:7px 0 0 0;width:130px;}
+.th-df{background:#2d1b6b;color:#fff;}
+.th-eg{background:var(--vi);color:#fff;border-radius:0 7px 0 0;}
+
+/* DESIGNER CARDS */
+.designer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:14px 0;}
+.des-card{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.des-head{padding:11px 14px;font-weight:700;font-size:13.5px;color:#fff;display:flex;justify-content:space-between;align-items:center;}
+.des-head .des-year{font-family:'DM Mono',monospace;font-size:10px;opacity:.7;font-weight:400;}
+.dh1{background:linear-gradient(135deg,#1a0b2e,#7c3aed);}
+.dh2{background:linear-gradient(135deg,#063550,#0e7490);}
+.dh3{background:linear-gradient(135deg,#0c2714,#166534);}
+.dh4{background:linear-gradient(135deg,#4c1d00,#d97706);}
+.dh5{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.dh6{background:linear-gradient(135deg,#0f2d5e,#1e40af);}
+.dh7{background:linear-gradient(135deg,#1a0b2e,#5b21b6);}
+.dh8{background:linear-gradient(135deg,#2d4a00,#4d7c0f);}
+.des-body{padding:12px 14px;background:var(--card);}
+.des-body p{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:6px;}
+.des-why{font-size:12px;background:#f5f3ff;padding:6px 9px;border-radius:5px;color:#2d1b6b;line-height:1.5;}
+.des-why strong{color:var(--navy);}
+
+/* SCAMPER */
+.scamper-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:11px;margin:14px 0;}
+.sc-card{border-radius:10px;overflow:hidden;border:1.5px solid var(--border);}
+.sc-head{padding:10px 13px;font-weight:700;font-size:18px;color:#fff;display:flex;align-items:center;gap:8px;}
+.sc-word{font-size:13px;font-weight:600;}
+.sc1{background:linear-gradient(135deg,#7c3aed,#6d28d9);}
+.sc2{background:linear-gradient(135deg,#1e40af,#1d4ed8);}
+.sc3{background:linear-gradient(135deg,#0e7490,#0891b2);}
+.sc4{background:linear-gradient(135deg,#166534,#15803d);}
+.sc5{background:linear-gradient(135deg,#d97706,#f59e0b);}
+.sc6{background:linear-gradient(135deg,#991b1b,#dc2626);}
+.sc7{background:linear-gradient(135deg,#1a0b2e,#4c1d95);}
+.sc-body{padding:10px 13px;background:var(--card);}
+.sc-body p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+/* STRATEGY CARDS */
+.strat-card{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px;}
+.strat-card h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:7px;display:flex;align-items:center;gap:7px;}
+.strat-card p{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:8px;}
+.strat-steps{list-style:none;padding:0;}
+.strat-steps li{font-size:13px;color:var(--muted);padding:3px 0;display:flex;gap:8px;line-height:1.45;}
+.strat-steps li::before{content:"→";color:var(--vi);font-weight:700;flex-shrink:0;}
+
+/* SYSTEMS DIAGRAM */
+.sys-flow{display:flex;flex-wrap:wrap;align-items:center;gap:0;margin:14px 0;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;}
+.sys-box{flex:1;min-width:120px;padding:14px 16px;}
+.sys-in{background:var(--blue-l);}
+.sys-pr{background:var(--vi-l);}
+.sys-out{background:var(--green-l);}
+.sys-arr{background:#f5f3ff;padding:10px 8px;font-size:20px;color:var(--vi);font-weight:700;display:flex;align-items:center;justify-content:center;}
+.sys-box h4{font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;margin-bottom:6px;color:var(--navy);}
+.sys-box ul{list-style:none;padding:0;}
+.sys-box ul li{font-size:12.5px;color:var(--muted);padding:2px 0;line-height:1.4;}
+
+/* DRAWING CARDS */
+.draw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:14px 0;}
+.draw-card{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.draw-head{padding:11px 14px;font-weight:700;font-size:13.5px;color:#fff;}
+.drh1{background:linear-gradient(135deg,#1a0b2e,#7c3aed);}
+.drh2{background:linear-gradient(135deg,#0f2d5e,#1e40af);}
+.drh3{background:linear-gradient(135deg,#0c2714,#166534);}
+.drh4{background:linear-gradient(135deg,#063550,#0e7490);}
+.drh5{background:linear-gradient(135deg,#4c1d00,#d97706);}
+.drh6{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.drh7{background:linear-gradient(135deg,#2d1b6b,#5b21b6);}
+.draw-body{padding:12px 14px;background:var(--card);}
+.draw-body p{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:7px;}
+.draw-key{font-size:12px;background:#f5f3ff;padding:5px 9px;border-radius:5px;color:#2d1b6b;line-height:1.5;}
+.draw-angle{font-family:'DM Mono',monospace;font-size:20px;font-weight:700;color:var(--vi);float:right;margin-top:-3px;}
+
+/* DRAWING TYPE COMPARISON TABLE */
+.draw-tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin:14px 0;}
+.draw-tbl th{padding:8px 11px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;}
+.draw-tbl td{padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.draw-tbl tr:last-child td{border-bottom:none;}
+.draw-tbl tr:nth-child(even) td{background:#f9f7ff;}
+.draw-tbl .dn{font-weight:700;color:var(--navy);}
+.th-d1{background:var(--navy);color:#fff;border-radius:7px 0 0 0;width:130px;}
+.th-d2{background:#2d1b6b;color:#fff;}
+.th-d3{background:var(--vi);color:#fff;}
+.th-d4{background:var(--green);color:#fff;border-radius:0 7px 0 0;}
+
+/* ACTIVITIES */
+.act-block{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow);}
+.act-head{background:var(--navy);padding:15px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.act-head h3{color:#fff;font-family:'Playfair Display',serif;font-size:17px;}
+.act-badge{background:var(--vi);color:#fff;font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:4px;}
+.act-body{padding:20px;}
+.act-instr{background:var(--vi-l);border-radius:8px;padding:10px 14px;font-size:13px;color:#2d1b6b;margin-bottom:16px;line-height:1.55;}
+.gap-sent{font-size:14px;line-height:2.5;margin-bottom:3px;color:var(--text);writing-mode:horizontal-tb;display:block;}
+.gf{border:none;border-bottom:2.5px solid var(--vi);background:var(--vi-l);width:175px;padding:3px 7px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--navy);border-radius:4px 4px 0 0;outline:none;writing-mode:horizontal-tb;}
+.gf.correct{background:var(--green-l);border-bottom-color:var(--green);}
+.gf.incorrect{background:var(--red-l);border-bottom-color:var(--red);}
+.word-bank{display:flex;flex-wrap:wrap;gap:7px;padding:12px;background:var(--vi-l);border-radius:9px;margin-bottom:14px;}
+.wchip{background:var(--card);border:1.5px solid var(--border);border-radius:6px;padding:5px 10px;font-size:13px;font-weight:500;color:var(--navy);cursor:pointer;transition:all .15s;user-select:none;writing-mode:horizontal-tb;}
+.wchip:hover,.wchip.sel{border-color:var(--vi);background:var(--vi-l);}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;margin-top:11px;}
+.reset-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;margin-left:10px;margin-top:11px;color:var(--muted);}
+.score-box{display:none;align-items:center;gap:10px;margin-top:11px;padding:9px 16px;border-radius:8px;font-size:13.5px;font-weight:600;}
+.score-box.show{display:inline-flex;}
+.score-box.good{background:var(--green-l);color:var(--green);}
+.score-box.ok{background:var(--amber-l);color:#92400e;}
+.score-box.low{background:var(--red-l);color:var(--red);}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.match-col{display:flex;flex-direction:column;gap:7px;}
+.match-col-lbl{font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:3px;}
+.mi{background:var(--card);border:2px solid var(--border);border-radius:8px;padding:10px 13px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.4;}
+.mi.mw{font-weight:700;color:var(--navy);}
+.mi:hover,.mi.sel{border-color:var(--vi);background:var(--vi-l);}
+.mi.matched{border-color:var(--green);background:var(--green-l);color:var(--green);pointer-events:none;font-weight:600;}
+.mi.wrong{border-color:var(--red);background:var(--red-l);animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.tf-item{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:14px 17px;margin-bottom:10px;}
+.tf-stmt{font-size:14px;color:var(--text);margin-bottom:10px;line-height:1.55;font-weight:500;}
+.tf-btns{display:flex;gap:9px;}
+.tf-btn{padding:6px 18px;border-radius:7px;border:1.5px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;background:var(--card);}
+.tf-btn.tb:hover{background:var(--green-l);border-color:var(--green);color:var(--green);}
+.tf-btn.fb:hover{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-btn.ca{background:var(--green-l);border-color:var(--green);color:var(--green);pointer-events:none;}
+.tf-btn.wa{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-fb{font-size:13px;margin-top:8px;padding:8px 11px;border-radius:7px;display:none;line-height:1.5;}
+.tf-fb.show{display:block;}
+.tf-fb.ok{background:var(--green-l);color:var(--green);}
+.tf-fb.no{background:var(--red-l);color:var(--red);}
+
+/* EXAM */
+.frame-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:11px;}
+.frame-type{background:var(--vi-l);padding:6px 15px;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:#2d1b6b;}
+.frame-body{padding:12px 16px;}
+.frame-tpl{font-size:13.5px;color:var(--text);line-height:1.8;margin-bottom:7px;}
+.blank{background:var(--vi-l);padding:2px 6px;border-radius:4px;font-style:italic;color:#2d1b6b;font-size:13px;}
+.frame-ex{font-size:12.5px;color:var(--muted);font-style:italic;border-left:3px solid var(--teal);padding-left:10px;margin-top:7px;line-height:1.55;}
+.eq-block{background:var(--card);border:1.5px solid var(--border);border-radius:12px;margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow);}
+.eq-head{background:var(--vi-l);padding:10px 17px;display:flex;justify-content:space-between;align-items:center;}
+.eq-head span{font-size:12px;font-family:'DM Mono',monospace;color:#2d1b6b;text-transform:uppercase;}
+.eq-marks{background:var(--navy);color:#fff;font-size:11px;font-family:'DM Mono',monospace;padding:3px 9px;border-radius:4px;}
+.eq-body{padding:14px 17px;}
+.eq-text{font-size:14.5px;color:var(--navy);margin-bottom:10px;font-weight:500;line-height:1.5;}
+.eq-hint{background:var(--blue-l);padding:8px 12px;border-radius:8px;font-size:12.5px;color:#1e3a8a;line-height:1.5;}
+.show-ans-btn{background:none;border:1.5px solid var(--vi);border-radius:6px;padding:6px 12px;font-size:12.5px;color:var(--vi);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:10px;transition:all .2s;}
+.show-ans-btn:hover{background:var(--vi);color:#fff;}
+.model-ans{display:none;background:#f0fef9;border:1px solid #a7f3d0;border-radius:8px;padding:12px;margin-top:10px;font-size:13.5px;line-height:1.65;color:#134e2a;}
+.model-ans.show{display:block;}
+.mp{display:flex;gap:9px;margin-bottom:6px;}
+.mpn{background:var(--green);color:#fff;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* TOOLKIT */
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:16px;}
+.tk-card{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.tk-head{padding:13px 17px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.tkh-a{background:var(--navy);color:#fff;}
+.tkh-b{background:var(--vi);color:#fff;}
+.tkh-c{background:#166534;color:#fff;}
+.tk-body{padding:13px 17px;}
+.pre-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.pre-tbl th{background:var(--vi-l);padding:7px 10px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#2d1b6b;}
+.pre-tbl td{padding:6px 10px;border-bottom:1px solid var(--border);line-height:1.5;}
+.pre-tbl tr:last-child td{border-bottom:none;}
+.pfx{font-weight:700;color:var(--navy);}
+.syn-p{display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.syn-p:last-child{border-bottom:none;}
+.syn-c{font-weight:600;color:var(--navy);min-width:140px;line-height:1.4;}
+.syn-a{color:var(--vi);font-size:15px;flex-shrink:0;margin-top:2px;}
+.syn-s{color:var(--muted);font-style:italic;font-size:12.5px;line-height:1.4;}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:12px;margin-top:60px;}
+footer strong{color:var(--vi-m);}
+@media(max-width:600px){.hero{padding:34px 18px 30px}.main{padding:20px 14px 60px}.match-grid,.designer-grid,.draw-grid,.scamper-grid{grid-template-columns:1fr}.panel-body{padding:16px 18px}.sys-flow{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="hero-inner">
+  <div class="hero-badge">GCSE D&T · Core Content · Topics 1.15–1.17 · Design Practice</div>
+  <h1>Designers, Strategies<br>&amp; <span class="ac">Communication</span></h1>
+  <div class="hero-spec">Spec Ref: 1.15 · 1.16 · 1.17 &nbsp;|&nbsp; Section A — 40 marks &nbsp;|&nbsp; Core Content for all students</div>
+  <p class="hero-sub">The final core content pack — covering product analysis specification criteria, 8 influential designers and companies, three design strategies (SCAMPER, user-centred design, systems thinking), and all seven communication techniques including oblique, isometric, perspective, orthographic, exploded views, and CAD.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📋 Spec Checklist</span><span class="hero-tag">📐 10 Spec Criteria</span>
+    <span class="hero-tag">🎨 8 Influential Designers</span><span class="hero-tag">🔀 SCAMPER</span>
+    <span class="hero-tag">👤 User-Centred Design</span><span class="hero-tag">✏️ 7 Drawing Types</span><span class="hero-tag">💻 CAD/CAM</span>
+  </div>
+</div></div>
+
+<div class="nav-bar"><div class="nav-inner">
+  <button class="tab-btn active" onclick="showTab('spec')">📋 Spec Checklist</button>
+  <button class="tab-btn" onclick="showTab('vocab')">📖 Key Vocabulary</button>
+  <button class="tab-btn" onclick="showTab('t115')">🔍 1.15 — Analyse &amp; Designers</button>
+  <button class="tab-btn" onclick="showTab('t116')">💡 1.16 — Design Strategies</button>
+  <button class="tab-btn" onclick="showTab('t117')">✏️ 1.17 — Communication</button>
+  <button class="tab-btn" onclick="showTab('activities')">📝 Activities</button>
+  <button class="tab-btn" onclick="showTab('exam')">🎯 Exam Language</button>
+  <button class="tab-btn" onclick="showTab('toolkit')">💬 ESL Toolkit</button>
+</div></div>
+
+<div class="main">
+
+<!-- SPEC CHECKLIST -->
+<div id="sec-spec" class="section active">
+  <div class="sec-head"><h2>Specification Checklist</h2><p>Topics 1.15–1.17 test applied knowledge — the exam gives you a design scenario and asks you to apply a strategy, identify a drawing type, or evaluate a product against specification criteria.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Apply, Don't Just Recall:</strong> These topics are tested through application, not recall. After learning each drawing type, DRAW an example. After learning each SCAMPER letter, apply it to a real product (e.g. your phone). After learning each specification criterion, describe how a specific product meets it. Active application during revision produces far stronger memory than passive reading.</div>
+  <div class="spec-grid">
+    <div class="spec-card"><div class="spec-head sh-a">🔍 1.15 — Analysing Products &amp; Professionals</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> 10 specification criteria: form, function, user requirements, performance requirements, materials/components, scale of production, sustainability, aesthetics, marketability, consideration of innovation</div>
+      <div class="spec-item"><input type="checkbox"> Alessi — iconic kitchen products, uses famous designers (Philippe Starck)</div>
+      <div class="spec-item"><input type="checkbox"> Apple — ground-breaking consumer electronics; iPod made digital music mainstream</div>
+      <div class="spec-item"><input type="checkbox"> Heatherwick Studio — stretches boundaries of materials and craftsmanship</div>
+      <div class="spec-item"><input type="checkbox"> Raymond Loewy — "father of modern design"; better aesthetics = more popular; Coca-Cola bottle</div>
+      <div class="spec-item"><input type="checkbox"> Tesla — zero-emission electric cars; no compromise on power or quality</div>
+      <div class="spec-item"><input type="checkbox"> Zaha Hadid — integrated geometric/fluid forms; overcame barriers; 1000+ iconic buildings</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-b">💡 1.16 — Design Strategies</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Collaboration — rarely one designer; different perspectives generate more ideas; SCAMPER technique</div>
+      <div class="spec-item"><input type="checkbox"> SCAMPER: Substitute, Combine, Adapt, Modify, Put (to other use), Eliminate, Reverse</div>
+      <div class="spec-item"><input type="checkbox"> User-centred design — users' needs at centre of EVERY decision; feedback at every stage; anthropometric data</div>
+      <div class="spec-item"><input type="checkbox"> Systems thinking — solve complex problems; whole system + individual parts; input → process → output flowchart</div>
+      <div class="spec-item"><input type="checkbox"> Anthropometric data — measurements of the human body; used to design products that fit users</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-c">✏️ 1.17 — Communication Techniques</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Freehand sketching — 2D or 3D; different mediums; grid paper/templates; arrows for movement</div>
+      <div class="spec-item"><input type="checkbox"> Oblique drawing — simplest 3D; 45° lines; half true length on receding edges</div>
+      <div class="spec-item"><input type="checkbox"> Isometric drawing — more realistic; 30° lines; all edges true length; start with vertical edge</div>
+      <div class="spec-item"><input type="checkbox"> One-point perspective — one vanishing point; used for interiors; good sense of depth</div>
+      <div class="spec-item"><input type="checkbox"> Two-point perspective — two vanishing points; most realistic; used by architects</div>
+      <div class="spec-item"><input type="checkbox"> Orthographic projection — front, side, top views in 2D; first or third angle; dimensions and projection lines</div>
+      <div class="spec-item"><input type="checkbox"> Exploded views — shows how product is assembled/disassembled; used in patents and assembly instructions</div>
+      <div class="spec-item"><input type="checkbox"> Assembly drawings — numbered parts; how to assemble; IKEA-style; dimensioned detail drawings</div>
+      <div class="spec-item"><input type="checkbox"> CAD — freehand sketching, 2D modelling (laser cutter), 3D modelling (3D printer/CNC); system design</div>
+      <div class="spec-item"><input type="checkbox"> Ergonomics — designing products that account for human strengths and limitations; fits well, reduces effort</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- VOCAB -->
+<div id="sec-vocab" class="section">
+  <div class="sec-head"><h2>Key Vocabulary</h2><p>16 key terms. Drawing technique vocabulary is visual — after reading each card, close your eyes and try to picture the drawing type before moving on.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Vocabulary in Pairs:</strong> Many terms in this topic come in contrasting pairs: oblique vs isometric (both 3D but different angles), one-point vs two-point perspective, CAD vs CAM, freehand vs technical drawing. Study pairs together by writing one sentence that uses BOTH terms and explains the key difference.</div>
+  <div class="filter-row">
+    <span style="font-size:13px;color:var(--muted);font-weight:500;">Filter:</span>
+    <button class="filter-btn active" onclick="fv('all',this)">All</button>
+    <button class="filter-btn" onclick="fv('an',this)">🔍 Analysis</button>
+    <button class="filter-btn" onclick="fv('ds',this)">💡 Strategies</button>
+    <button class="filter-btn" onclick="fv('dr',this)">✏️ Drawing</button>
+    <button class="filter-btn" onclick="fv('cad',this)">💻 CAD</button>
+  </div>
+  <div class="vocab-grid" id="vg">
+
+    <div class="vc" data-topic="an"><div class="vc-top"><div class="vc-word">Specification Criteria</div><div class="vc-tag t-an">Analysis</div></div><div class="vc-body">
+      <div class="vc-def">The <strong>set of requirements a product must satisfy</strong> — used both to guide the design process and to evaluate existing products. Includes form, function, user requirements, performance requirements, materials, scale of production, sustainability, aesthetics, marketability, and innovation.</div>
+      <div class="vc-ex">"Before designing the new chair, the design team established the <em>specification criteria</em> — it must support 150 kg, be made from recyclable materials, weigh under 4 kg, and have an RRP under £80. Every design decision was checked against these criteria."</div>
+      <div class="vc-mem">💡 Specification = the complete list of requirements. A product that meets ALL criteria is a successful design. A product that fails one criterion fails — even if it excels in all others. The exam will give you criteria and ask you to evaluate how well a product meets them.</div>
+    </div></div>
+
+    <div class="vc" data-topic="an"><div class="vc-top"><div class="vc-word">Ergonomics</div><div class="vc-tag t-an">Analysis</div></div><div class="vc-body">
+      <div class="vc-def">The science of designing products that <strong>account for the strengths and limitations of people</strong> — so that the product fits the user well, reduces effort, and increases performance and safety. An ergonomically designed product feels natural and intuitive to use.</div>
+      <div class="vc-ex">"The new garden tool was redesigned with <em>ergonomic</em> handles — angled to reduce wrist strain during repeated use, with a textured grip that requires less force to hold, significantly reducing fatigue and the risk of repetitive strain injury."</div>
+      <div class="vc-mem">💡 Ergonomics = designing for human comfort, safety, and performance. Greek: ergon (work) + nomos (law). Related to anthropometric data (measurements of the human body) — ergonomics uses those measurements to design products that fit people. Examples: chair height, keyboard angle, car seat position, tool grip size.</div>
+    </div></div>
+
+    <div class="vc" data-topic="ds"><div class="vc-top"><div class="vc-word">SCAMPER</div><div class="vc-tag t-ds">Strategies</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>structured creative thinking technique</strong> used to generate new design ideas by systematically asking seven different types of question about an existing product or design. Developed by Alex Osborn (1953) and refined by Bob Eberle (1971). Forces designers to consider angles they might otherwise overlook.</div>
+      <div class="vc-ex">"Applying <em>SCAMPER</em> to a standard bicycle: Substitute the chain with a belt drive? Combine with electric motor? Adapt for people with limited mobility? Modify the frame for cargo carrying? Put the handlebars to use as a storage bar? Eliminate the saddle for a standing design? Reverse the wheel sizes for a different aesthetic?"</div>
+      <div class="vc-mem">💡 S=Substitute, C=Combine, A=Adapt, M=Modify, P=Put to other use, E=Eliminate, R=Reverse. A mnemonic that ensures you systematically explore many possible design directions. Use it in the exam if asked "how could this design be improved?" — work through SCAMPER letters.</div>
+    </div></div>
+
+    <div class="vc" data-topic="ds"><div class="vc-top"><div class="vc-word">User-Centred Design (UCD)</div><div class="vc-tag t-ds">Strategies</div></div><div class="vc-body">
+      <div class="vc-def">A design approach that <strong>places the needs, preferences, and limitations of the end user at the centre of every decision</strong> throughout the entire design process. User feedback is gathered and incorporated at every stage to ensure the final product feels natural and intuitive to its intended users.</div>
+      <div class="vc-ex">"When designing the new hospital website, the team used <em>user-centred design</em> — they tested every page with actual patients, including elderly users and those with visual impairments, adjusting font sizes, button positions, and colour contrast based on real user feedback before any code was finalised."</div>
+      <div class="vc-mem">💡 UCD = users first, always. Not: "I think this is a good design." But: "Our users tested this and found it easy/hard to use." Methods: user testing, interviews, surveys, anthropometric data, observational studies. Websites, apps, medical devices, vehicles — all use UCD.</div>
+    </div></div>
+
+    <div class="vc" data-topic="ds"><div class="vc-top"><div class="vc-word">Systems Thinking</div><div class="vc-tag t-ds">Strategies</div></div><div class="vc-body">
+      <div class="vc-def">A design strategy that <strong>analyses a product or problem as a complete system</strong> — looking at how each part or stage interacts with all others. Designers think backwards from the desired output to identify what processes and inputs are needed. Represented as input → process → output diagrams.</div>
+      <div class="vc-ex">"The designers used <em>systems thinking</em> for the new heating controller: they first defined the output (comfortable room temperature), then the process (temperature sensing and valve control), then the inputs needed (electricity, target temperature setting, current temperature reading)."</div>
+      <div class="vc-mem">💡 Systems thinking = start from the END and work backwards. 1) What do I want to OUTPUT? 2) What PROCESS achieves that? 3) What INPUTS does that process need? Signal types connect the stages: electrical, mechanical, light, sound. Used for electronics, apps, industrial processes, vending machines.</div>
+    </div></div>
+
+    <div class="vc" data-topic="dr"><div class="vc-top"><div class="vc-word">Isometric Drawing</div><div class="vc-tag t-dr">Drawing</div></div><div class="vc-body">
+      <div class="vc-def">A 3D drawing technique where <strong>all lines recede at 30° to the horizontal</strong> and all edges are drawn at their true length (no foreshortening). More realistic looking than oblique because the scale is consistent throughout. Uses isometric grid paper for accuracy.</div>
+      <div class="vc-ex">"The product designer produced an <em>isometric drawing</em> of the packaging prototype — the 30° grid ensured that all three visible faces appeared proportionally correct and all dimensions could be accurately scaled from the drawing."</div>
+      <div class="vc-mem">💡 Isometric = 30° lines. ALL edges = true length (no foreshortening). Looks more realistic than oblique. Steps: draw a vertical line (front edge) → 30° construction lines left and right → fill in vertical lines → draw product. Contrast with oblique: oblique uses 45° and the receding edge is HALF true length.</div>
+    </div></div>
+
+    <div class="vc" data-topic="dr"><div class="vc-top"><div class="vc-word">Orthographic Projection</div><div class="vc-tag t-dr">Drawing</div></div><div class="vc-body">
+      <div class="vc-def">A technical drawing method that <strong>shows a product from multiple views (front, side, top) in 2D</strong> with accurate dimensions and projection lines. Anyone — including a manufacturer who has never seen the product — can use an orthographic projection to make the product accurately without needing to speak to the designer.</div>
+      <div class="vc-ex">"The furniture workshop produced the chair from an <em>orthographic projection</em> — the drawing showed the front, side, and top views with full dimensions, cutting lists, and material specifications, allowing the craftsperson to make every component accurately without any further instruction."</div>
+      <div class="vc-mem">💡 Orthographic = multi-view technical drawing with dimensions. Two types: First angle (views projected in the direction of viewing — British standard) and Third angle (views projected in opposite direction — American standard). Used for engineering and manufacturing because it contains all the information needed to make the product.</div>
+    </div></div>
+
+    <div class="vc" data-topic="cad"><div class="vc-top"><div class="vc-word">CAD / CAM</div><div class="vc-tag t-cad">CAD</div></div><div class="vc-body">
+      <div class="vc-def"><strong>CAD (Computer-Aided Design)</strong> = using computer software to create, develop, and modify designs digitally. <strong>CAM (Computer-Aided Manufacture)</strong> = using a computer to control manufacturing machines (laser cutter, CNC router, 3D printer) to produce components directly from CAD files.</div>
+      <div class="vc-ex">"The designer created the product in <em>CAD</em> (using ProDesktop to model the 3D shape), then sent the file directly to the <em>CAM</em> machine — the CNC router cut the component from sheet material exactly as specified in the digital model, without any manual marking out or cutting."</div>
+      <div class="vc-mem">💡 CAD = design on computer. CAM = make using computer-controlled machine. Key link: CAD file → CAM machine. Types of CAM: laser cutter (cuts 2D shapes), CNC router (cuts 3D shapes in solid material), 3D printer (adds material layer by layer). Advantage: eliminates human error in marking out and cutting.</div>
+    </div></div>
+
+  </div>
+</div>
+
+<!-- 1.15 -->
+<div id="sec-t115" class="section">
+  <div class="sec-head"><h2>1.15 — Investigating Products &amp; Professionals</h2><p>Topic 1.15 is about understanding how to evaluate products systematically against specification criteria, and recognising the influence of key designers and companies.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Kettle Template:</strong> The textbook uses a kettle as the example product for all 10 specification criteria. After studying the table below, practise applying all 10 criteria to a DIFFERENT product (e.g. your school chair, a sports shoe, or a mobile phone). This is exactly what the exam does — applies the same framework to a new product you haven't seen before.</div>
+
+  <div class="sub-nav">
+    <button class="sn-btn sn-a active" onclick="showSub('115','crit',this)">📊 Spec Criteria</button>
+    <button class="sn-btn sn-b"        onclick="showSub('115','des',this)">🎨 Influential Designers</button>
+  </div>
+
+  <div class="sub-panel active" id="115-crit">
+    <div class="panel-head ph-a"><h3>📊 10 Specification Criteria for Product Analysis (Table 1.15.1)</h3><p>Every product can be evaluated against these 10 criteria. The exam gives you a product and one or more criteria — you must explain how well the product meets them.</p></div>
+    <div class="panel-body">
+      <table class="crit-tbl">
+        <tr><th class="th-cr">Criterion</th><th class="th-df">Definition</th><th class="th-eg">Example — applied to a kettle</th></tr>
+        <tr><td class="cn">Form</td><td>A product's shape, appearance, and aesthetics — physical space (size, proportion, weight, colour, texture, tone)</td><td>Shape, colour, how much space it takes up on the worktop, comfort to hold</td></tr>
+        <tr><td class="cn">Function</td><td>What the product is intended to do and how well it performs for the user</td><td>Ease of adding water, ability to know water is at desired level, ability to filter impurities, connection to power source, how well it pours</td></tr>
+        <tr><td class="cn">User requirements</td><td>How the product will fulfil the wants and needs of its users — who the end user is, what they prefer</td><td>Weight, colour, portability, safety (e.g. automatic switch-off at boiling point), ease of use for elderly users</td></tr>
+        <tr><td class="cn">Performance requirements</td><td>A product's ability to complete a given task to a measurable standard — speed, size, distance, quality, accuracy</td><td>Capacity (litres), time to reach boiling point, length of power cord, carbon output per boil</td></tr>
+        <tr><td class="cn">Materials &amp; components</td><td>Best materials for making the product — depend on purpose, end user, scale of manufacture, cost, aesthetics, availability, mechanical properties</td><td>Heat insulation, ability to meet strength requirements, cleanability, corrosion resistance, fit to standard UK plug</td></tr>
+        <tr><td class="cn">Scale of production</td><td>Relationship between quantity produced and per-unit cost — economies of scale; one-off/batch/mass/continuous production</td><td>Materials and processes used, production method, appropriate quality, ideal price, suitability for assembly-line manufacture, ability to be broken into components</td></tr>
+        <tr><td class="cn" style="color:#166534;font-weight:700;">Sustainability</td><td>Environmental impact of the product from manufacture to end of use — assessed via LCA; Forest Stewardship Council; plastic recycling codes encourage sustainable products</td><td>Environmental impact of extraction/processing of raw materials, manufacturing methods, lifetime power consumption, end-of-life disassembly and recyclability</td></tr>
+        <tr><td class="cn">Aesthetics</td><td>How we interpret a product as being attractive or pleasing — related to how we see, touch, hear, smell, or taste an object</td><td>Pleasing colours, smooth to touch, clear lines with rounded surfaces, attractive design on the worktop</td></tr>
+        <tr><td class="cn">Marketability</td><td>The ability of a product to be sold — related to how easily it will sell in relation to its competitors</td><td>Correct pricing for quality, extra functionality (e.g. temperature control), fits with current interior design trends</td></tr>
+        <tr><td class="cn">Consideration of innovation</td><td>How a company will look at new ideas and methods to improve the design — how technology is used to improve design, manufacture, features, and functionality</td><td>Improved materials (lighter, stronger), advanced manufacturing methods, exciting new features (app control, filter, precise temperature settings)</td></tr>
+      </table>
+      <div class="insight-box">💡 <strong>Sustainability is highlighted in the textbook</strong> because it is the criterion most often underweighted by students in exam answers. Every product should be evaluated against its environmental impact across its FULL lifecycle — not just "it's made from recycled material." Consider energy use in manufacture AND during use, disposal at end of life, and whether components can be separated for recycling.</div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="115-des">
+    <div class="panel-head ph-b"><h3>🎨 Influential Designers &amp; Companies (Table 1.15.2)</h3><p>You do not need to memorise all 8 — but you should know the key contribution of each, and be able to explain WHY they are influential, not just WHAT they produced.</p></div>
+    <div class="panel-body">
+      <div class="designer-grid">
+        <div class="des-card"><div class="des-head dh1">Alessi<span class="des-year">Company · Italy · est. 1921</span></div><div class="des-body">
+          <p>Designer and mass producer of functional but visually appealing homeware and kitchen products. Commissions famous designers including Philippe Starck to create iconic products.</p>
+          <div class="des-why"><strong>Why influential:</strong> Set the standard for other homeware companies by proving that everyday kitchen objects could be beautifully designed — including the Juicy Salif lemon squeezer and retro-styled kettles.</div>
+        </div></div>
+        <div class="des-card"><div class="des-head dh2">Apple<span class="des-year">Company · USA · est. 1976</span></div><div class="des-body">
+          <p>Producer of consumer electronics and software using cutting-edge technologies — iPad, iWatch, iPod, iPhone, iTunes.</p>
+          <div class="des-why"><strong>Why influential:</strong> Ground-breaking design that looked completely different to anything before. The iPod made digital music accessible and mainstream. Developed one of the most loyal customer bases in the world.</div>
+        </div></div>
+        <div class="des-card"><div class="des-head dh3">Heatherwick Studio<span class="des-year">Design studio · UK · est. 1994</span></div><div class="des-body">
+          <p>Around 200 designers, architects, and makers who have worked on projects ranging from perfume bottles to Routemaster buses to Singapore University buildings.</p>
+          <div class="des-why"><strong>Why influential:</strong> Stretches the boundaries of materials, craftsmanship, and artistic thinking — showing that products and buildings can be unusual, experimental, and visually extraordinary.</div>
+        </div></div>
+        <div class="des-card"><div class="des-head dh4">Joe Casely-Hayford<span class="des-year">Fashion designer · born 1956</span></div><div class="des-body">
+          <p>Original but wearable designs that push the barriers of conformity, made by master craftspeople using traditional English tailoring methods.</p>
+          <div class="des-why"><strong>Why influential:</strong> Sets standards for British tailoring that combines style with character — popular with celebrities and influential in the fashion industry for pushing the boundaries of traditional British menswear.</div>
+        </div></div>
+        <div class="des-card"><div class="des-head dh5">Pixar<span class="des-year">Animation studio · USA · est. 1979</span></div><div class="des-body">
+          <p>Among the first to develop computer-animated feature films, using new techniques and technologies to make commercially successful films.</p>
+          <div class="des-why"><strong>Why influential:</strong> Pioneered computer animation as a mainstream art form with Toy Story and Finding Nemo — changing what was technically and artistically possible in animation and visual storytelling.</div>
+        </div></div>
+        <div class="des-card"><div class="des-head dh6">Raymond Loewy<span class="des-year">Industrial designer · 1893–1986</span></div><div class="des-body">
+          <p>"The father of modern design." Emphasised combining simplicity with functionality across 200+ companies and products ranging from refrigerators to planes and trains.</p>
+          <div class="des-why"><strong>Why influential:</strong> Introduced the principle that if two products have the same price, function, and quality, the one with better aesthetics will always be more popular. Iconic work: Coca-Cola bottle, Le Creuset Coquelle, Shell and BP logos.</div>
+        </div></div>
+        <div class="des-card"><div class="des-head dh7">Tesla, Inc.<span class="des-year">Company · USA · est. 2008</span></div><div class="des-body">
+          <p>Produces electric cars that don't compromise on power or quality, have zero emissions, are affordable, and can be charged at home. Tesla Model X SUV (2016).</p>
+          <div class="des-why"><strong>Why influential:</strong> Leads electric vehicle design and technology — proving that sustainable, zero-emission cars can be desirable, high-performance vehicles rather than compromises.</div>
+        </div></div>
+        <div class="des-card"><div class="des-head dh8">Zaha Hadid<span class="des-year">Architect · 1950–2016</span></div><div class="des-body">
+          <p>Integrated geometric forms with expressive, sweeping fluid shapes. Promoted architecture as a visual art form where buildings are intended to give aesthetic pleasure.</p>
+          <div class="des-why"><strong>Why influential:</strong> Overcame racial and gender barriers to establish an architecture practice that designed over 1,000 iconic buildings worldwide — and proved that architecture can be a form of art.</div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.16 -->
+<div id="sec-t116" class="section">
+  <div class="sec-head"><h2>1.16 — Use of Different Design Strategies</h2><p>Topic 1.16 covers three key approaches to generating design ideas. The exam may ask you to "discuss which design strategies a designer might use" for a given product — and expects you to describe HOW each strategy would work in that context, not just name it.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — SCAMPER in Chinese:</strong> SCAMPER can be practised in your first language (L1). Take a familiar product and ask each SCAMPER question in Chinese (替代？结合？改编？修改？改变用途？消除？颠倒？). Thinking through creative challenges in L1 first, then translating the answers into English exam language, is a legitimate and effective strategy for ESL learners.</div>
+
+  <div class="sub-nav">
+    <button class="sn-btn sn-a active" onclick="showSub('116','scamper',this)">🔀 SCAMPER</button>
+    <button class="sn-btn sn-b"        onclick="showSub('116','ucd',this)">👤 User-Centred Design</button>
+    <button class="sn-btn sn-c"        onclick="showSub('116','sys',this)">⚙️ Systems Thinking</button>
+  </div>
+
+  <div class="sub-panel active" id="116-scamper">
+    <div class="panel-head ph-a"><h3>🔀 Collaboration &amp; SCAMPER</h3><p>Rarely does one designer produce everything alone. Collaboration — sharing perspectives — generates far more ideas. SCAMPER is a structured technique to force creative thinking.</p></div>
+    <div class="panel-body">
+      <div class="strat-card">
+        <h4>👥 Why Collaboration?</h4>
+        <p>In design companies, it is very rare for one person to be responsible for the whole design process. Collaboration means looking at problems from different perspectives, which generates many more ideas than working alone. It means asking other users or designers to spark your imagination.</p>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin:16px 0 12px;">SCAMPER — 7 Creative Questions</h3>
+      <div class="scamper-grid">
+        <div class="sc-card"><div class="sc-head sc1"><span>S</span><span class="sc-word">Substitute</span></div><div class="sc-body"><p>Could you use different materials, components, or sources of energy? What if you replaced one key material with something new?</p></div></div>
+        <div class="sc-card"><div class="sc-head sc2"><span>C</span><span class="sc-word">Combine</span></div><div class="sc-body"><p>Could you take successful parts from other ideas and form new combinations? What happens if you merge two different product functions?</p></div></div>
+        <div class="sc-card"><div class="sc-head sc3"><span>A</span><span class="sc-word">Adapt</span></div><div class="sc-body"><p>Could you incorporate a different function or make use of a different technology? How could this product adapt to a different user's needs?</p></div></div>
+        <div class="sc-card"><div class="sc-head sc4"><span>M</span><span class="sc-word">Modify</span></div><div class="sc-body"><p>Could you change the aesthetics — shrink it, expand it, change the shape or colour? What if the form was completely redesigned?</p></div></div>
+        <div class="sc-card"><div class="sc-head sc5"><span>P</span><span class="sc-word">Put to use</span></div><div class="sc-body"><p>Could this design have a second or third purpose? How could the same form serve a completely different function elsewhere?</p></div></div>
+        <div class="sc-card"><div class="sc-head sc6"><span>E</span><span class="sc-word">Eliminate</span></div><div class="sc-body"><p>Could you take away part of the design? Have you over-complicated it? What is truly essential vs what could be removed?</p></div></div>
+        <div class="sc-card"><div class="sc-head sc7"><span>R</span><span class="sc-word">Reverse</span></div><div class="sc-body"><p>Could you look at the design completely differently — inside out, upside down? Could you move parts around or flip the assembly order?</p></div></div>
+      </div>
+      <div class="insight-box">💡 <strong>SCAMPER in the exam:</strong> If a question asks "Suggest how the designer could generate more design ideas using a systematic technique" — describe SCAMPER. Explain that it stands for 7 types of question (name them), and then apply 2–3 of them to the specific product in the question. Always apply to the product — don't just list the letters.</div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="116-ucd">
+    <div class="panel-head ph-b"><h3>👤 User-Centred Design</h3><p>The most important design philosophy in modern product design — every decision is made with the user's needs, preferences, and limitations as the primary consideration.</p></div>
+    <div class="panel-body">
+      <div class="strat-card">
+        <h4>🎯 What Is User-Centred Design?</h4>
+        <p>User-centred design revolves around putting users' needs at the centre of every decision throughout the whole design process. This ensures that users' opinions are considered at every stage so that the design cannot go off at a tangent or get lost. It is used extensively in web design, app development, medical devices, and consumer products.</p>
+        <p>In your classroom, you put the user at the heart of design decisions — particularly in the generation of design ideas. Methods include:</p>
+        <ul class="strat-steps">
+          <li>Using user requirements as the starting point for all design ideas</li>
+          <li>Asking your user to draw out some ideas or make a simple model as a starting point to generate further ideas</li>
+          <li>Modelling your ideas in 3D to gain user feedback and aid development</li>
+          <li>Using <strong>anthropometric data</strong> from your user to directly influence design decisions — e.g. using hand measurements to determine the correct grip size</li>
+        </ul>
+      </div>
+      <div class="strat-card" style="border-left:4px solid var(--blue);">
+        <h4>📏 Anthropometric Data</h4>
+        <p>Anthropometric data = measurements of the human body. Designers use percentile data (e.g. 5th percentile, 50th percentile, 95th percentile) to ensure products fit the widest possible range of users.</p>
+        <ul class="strat-steps">
+          <li>Car seats must accommodate the smallest to the tallest drivers</li>
+          <li>Keyboard key size must suit the range of adult finger sizes</li>
+          <li>Children's furniture must be proportioned for children's bodies, not scaled-down adult furniture</li>
+          <li>Safety equipment (helmets, gloves) must fit the full range of head/hand sizes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="116-sys">
+    <div class="panel-head ph-c"><h3>⚙️ Systems Thinking</h3><p>Systems thinking is used by designers to solve complex problems. It looks at a whole product or system and how each part contributes and feeds back into the whole.</p></div>
+    <div class="panel-body">
+      <div class="strat-card">
+        <h4>🔄 How Systems Thinking Works</h4>
+        <p>The simplest method is to create a flowchart — but start backwards from what you want to achieve:</p>
+        <ul class="strat-steps">
+          <li><strong>Output first:</strong> What do you want your product to achieve? (e.g. dispense a drink)</li>
+          <li><strong>Process:</strong> How is it going to achieve that function? (e.g. count coins, release mechanism)</li>
+          <li><strong>Inputs:</strong> What inputs or energies does it need to do that? (e.g. user selection, coins, electricity)</li>
+        </ul>
+        <p style="margin-top:10px;font-size:13px;color:var(--muted);line-height:1.6;">This backwards thinking helps designers to not miss any critical component or stage. Product designers and engineers use this for mobile phones, baby monitors, kitchen timers, car alarms, heating systems — anything with multiple interacting parts.</p>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:16px 0 12px;">Example: Vending Machine</h3>
+      <div class="sys-flow">
+        <div class="sys-box sys-in">
+          <h4>📥 Inputs</h4>
+          <ul><li>User selection</li><li>Coins inserted</li><li>Electricity (power)</li></ul>
+        </div>
+        <div class="sys-arr">→</div>
+        <div class="sys-box sys-pr">
+          <h4>⚙️ Processes</h4>
+          <ul><li>Coins are counted</li><li>Selection is verified</li><li>Release mechanism activates</li></ul>
+        </div>
+        <div class="sys-arr">→</div>
+        <div class="sys-box sys-out">
+          <h4>📤 Output</h4>
+          <ul><li>Drink is dispensed</li><li>Change is returned</li></ul>
+        </div>
+      </div>
+      <div class="insight-box">💡 <strong>Signal types:</strong> Each arrow between stages carries a signal. Signals can be: electrical (voltage/current), mechanical (force/movement), light (optical), sound (acoustic), or thermal (heat). In the exam, name the signal type for each arrow in your systems diagram.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.17 -->
+<div id="sec-t117" class="section">
+  <div class="sec-head"><h2>1.17 — Communication Techniques for Design Ideas</h2><p>Topic 1.17 covers all the methods designers use to communicate their ideas — from quick freehand sketches to precise technical drawings and computer modelling. You must know the name, purpose, key characteristics, and typical use of each technique.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Draw the Differences:</strong> The most reliable way to learn the 3D drawing types (oblique, isometric, perspective) is to draw the same simple object (a cube or a shoe box) using each technique. The act of drawing forces you to understand the geometric rules — which is exactly what the exam tests. Do this once, and you will remember the differences permanently.</div>
+
+  <div class="sub-nav">
+    <button class="sn-btn sn-a active" onclick="showSub('117','drawing',this)">✏️ Drawing Types</button>
+    <button class="sn-btn sn-b"        onclick="showSub('117','models',this)">🧊 Models &amp; Sketching</button>
+    <button class="sn-btn sn-c"        onclick="showSub('117','cad',this)">💻 CAD / CAM</button>
+  </div>
+
+  <div class="sub-panel active" id="117-drawing">
+    <div class="panel-head ph-a"><h3>✏️ Drawing Types — All Seven Techniques</h3><p>Designers choose different drawing types for different stages of the design process and for different audiences. Know which type to use when.</p></div>
+    <div class="panel-body">
+      <table class="draw-tbl">
+        <tr><th class="th-d1">Drawing Type</th><th class="th-d2">Key Features</th><th class="th-d3">When Used</th><th class="th-d4">Audience</th></tr>
+        <tr>
+          <td class="dn">Oblique<div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:700;color:var(--vi);line-height:1;">45°</div></td>
+          <td>Simplest 3D. Draw front view in 2D → construction lines project back at 45°. Receding edges drawn at HALF true length. Use oblique grid paper.</td>
+          <td>Quick 3D representations in early idea generation. Easy to learn and draw rapidly.</td>
+          <td>Designer's own use; early-stage sketches; non-technical audience</td>
+        </tr>
+        <tr>
+          <td class="dn">Isometric<div style="font-family:'DM Mono',monospace;font-size:18px;font-weight:700;color:var(--vi);line-height:1;">30°</div></td>
+          <td>More realistic than oblique. All lines recede at 30° to horizontal. All edges drawn at TRUE length (no foreshortening). Start with a vertical line. Use isometric grid paper.</td>
+          <td>Product visualisation, technical illustrations, assembly guides. More proportionally accurate than oblique.</td>
+          <td>Designer, client, manufacturer; technical and non-technical</td>
+        </tr>
+        <tr>
+          <td class="dn">One-point perspective</td>
+          <td>All lines project to ONE vanishing point in the distance. Start with front view → construction lines to single vanishing point → verticals between lines.</td>
+          <td>Interior design; gives a strong sense of depth. Shows a viewer how a space or product would look from a specific viewpoint.</td>
+          <td>Clients, customers, interior designers; non-technical audience</td>
+        </tr>
+        <tr>
+          <td class="dn">Two-point perspective</td>
+          <td>Two vanishing points on either side of the object. Begin with a vertical line (front edge) → construction lines to both vanishing points. Most realistic of all 3D techniques.</td>
+          <td>Architectural drawings, product exterior views. Most realistic visual appearance. Used by architects to show clients building exteriors.</td>
+          <td>Clients, architects, planning applications; non-technical</td>
+        </tr>
+        <tr>
+          <td class="dn">Orthographic projection</td>
+          <td>Multiple 2D views (front, side, top) with precise dimensions, projection lines, and material/finish notes. First angle (British) or third angle (American). Anyone can use to manufacture.</td>
+          <td>Final engineering drawings for manufacture. All information needed to make the product without further clarification. Used in engineering and product manufacturing.</td>
+          <td>Manufacturer, engineer, toolmaker; technical audience</td>
+        </tr>
+        <tr>
+          <td class="dn">Exploded view</td>
+          <td>All components shown separated along their assembly axes — showing how they fit together when assembled. Each part numbered. Often used in patents.</td>
+          <td>Design development and final concept drawings; patent applications; understanding assembly sequences; design reviews.</td>
+          <td>Designer, manufacturer, patent office; semi-technical</td>
+        </tr>
+        <tr>
+          <td class="dn">Assembly drawing</td>
+          <td>Shows how all parts fit together and which component goes where. Each part numbered and named. Dimensioned detail drawings for each part. Tells manufacturer and customer how to assemble.</td>
+          <td>Flat-pack furniture instructions (IKEA), construction manuals, product assembly guides. Crucial for products assembled by non-specialists.</td>
+          <td>Manufacturer and END USER (customer assembling themselves); non-technical</td>
+        </tr>
+      </table>
+      <div class="insight-box">💡 <strong>Oblique vs Isometric — the key exam distinction:</strong> Both are 3D drawing techniques. Oblique uses <strong>45° lines</strong> and the receding edges are <strong>HALF true length</strong>. Isometric uses <strong>30° lines</strong> and ALL edges are <strong>true length</strong>. Isometric looks more proportionally realistic. If the exam asks "which 3D drawing technique shows all edges at their true length?" — the answer is isometric.</div>
+      <div class="insight-box" style="margin-top:8px;">💡 <strong>Construction lines:</strong> Faint sketched lines that help you build up the rough shape of a product before drawing the final lines within them. Construction lines should NOT be rubbed out — leave them faint as they show your working method.</div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="117-models">
+    <div class="panel-head ph-b"><h3>🧊 Freehand Sketching, Models &amp; Other Communication</h3><p>Beyond formal drawing types, designers use a range of informal and physical communication methods — especially in early-stage ideation where speed is more important than precision.</p></div>
+    <div class="panel-body">
+      <div class="draw-grid">
+        <div class="draw-card"><div class="draw-head drh1">✏️ Freehand Sketching</div><div class="draw-body">
+          <p>Quick generation of 2D or 3D ideas — gets thoughts from head to paper rapidly. Can be developed further with other techniques.</p>
+          <div class="draw-key">Mediums: pencils, ballpoint pens, fine liners, markers, coloured pencils. Grid paper or templates (e.g. human figure outline for scale). Use arrows to show movement (lids, buttons, zips).</div>
+        </div></div>
+        <div class="draw-card"><div class="draw-head drh2">📸 Digital Photography</div><div class="draw-body">
+          <p>Graphic designers use edited photos and digital media to develop complex or futuristic design ideas. Product designers place tracing paper over a photograph and adapt the image into a new product.</p>
+          <div class="draw-key">Useful when a design idea is too complex or futuristic to sketch easily. Also used for mood boards and design inspiration research.</div>
+        </div></div>
+        <div class="draw-card"><div class="draw-head drh3">✂️ Cut &amp; Paste</div><div class="draw-body">
+          <p>Copy and paste parts of photographs, existing product images, or own design work — then edit and develop. Placing tracing paper over an image and adapting it is a low-tech version.</p>
+          <div class="draw-key">Creates rapid visual collages; useful for exploring colour, proportion, and form combinations without drawing from scratch.</div>
+        </div></div>
+        <div class="draw-card"><div class="draw-head drh4">🧊 3D Physical Models</div><div class="draw-body">
+          <p>When drawings are hard to visualise, 3D models make the design physical. Can be full size or scaled down depending on size and complexity.</p>
+          <div class="draw-key">Materials: paper, fabric, cardboard, <strong>Styrofoam</strong> (modelling foam shaped with hot wire cutter), HIPS, small building bricks. Allows user testing and feedback on physical form before committing to production.</div>
+        </div></div>
+        <div class="draw-card"><div class="draw-head drh5">📊 Systems Diagrams</div><div class="draw-body">
+          <p>Visual representation of a product or system showing inputs → processes → outputs with signal types. Used in electronics design to show how a system will function before schematic drawings are made.</p>
+          <div class="draw-key">Create a flowchart first (simple boxes and arrows), then develop into a full systems diagram with named signal types on each arrow.</div>
+        </div></div>
+        <div class="draw-card"><div class="draw-head drh6">📋 Schematic Diagrams</div><div class="draw-body">
+          <p>Detailed diagrams showing exactly what electronic components will be in a circuit — component names, values, and how they will be connected. Hand drawn or drawn using programs like SmartDraw.</p>
+          <div class="draw-key">Used by engineers to specify and communicate circuit designs precisely. A successful schematic clearly shows all component names, values, and provides labels to explain the intended purpose of each section.</div>
+        </div></div>
+        <div class="draw-card"><div class="draw-head drh7">🔮 3D Computer Models</div><div class="draw-body">
+          <p>Computer modelling allows designers to create, rotate, section, and simulate products before any physical material is used. Models can be sent directly to 3D printers or CNC machines.</p>
+          <div class="draw-key">System modelling uses <strong>stripboards</strong> or <strong>breadboards</strong> (electronics prototyping boards) to test circuits physically before committing to PCB manufacture.</div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="117-cad">
+    <div class="panel-head ph-c"><h3>💻 Computer-Aided Design (CAD) &amp; CAM</h3><p>CAD is now used by designers across all disciplines. The key advantage is that a CAD model can be directly connected to manufacturing (CAM) — eliminating manual marking out and reducing human error.</p></div>
+    <div class="panel-body">
+      <div class="draw-grid">
+        <div class="draw-card"><div class="draw-head drh1">✏️ CAD Freehand Sketching</div><div class="draw-body">
+          <p>Programs such as Adobe Photoshop, 2D Design, and Pro Sketch allow designers to draw design ideas directly on screen — either from scratch or by enhancing hand-drawn sketches photographed and imported.</p>
+          <div class="draw-key">Advantage: easy to edit, undo, adjust colours and proportions without redrawing from scratch. Produces professional-looking presentations.</div>
+        </div></div>
+        <div class="draw-card"><div class="draw-head drh2">📐 2D CAD Modelling</div><div class="draw-body">
+          <p>Programs such as 2D Design and Adobe Illustrator create 2D designs that can be sent directly to a laser cutter (CAM) to produce cut-out models or final product components.</p>
+          <div class="draw-key">CAD → laser cutter workflow: design in 2D → set material and cut parameters → laser cutter cuts precisely from flat sheet. Used for: signs, acrylic components, packaging nets, model parts.</div>
+        </div></div>
+        <div class="draw-card"><div class="draw-head drh3">🧊 3D CAD Modelling</div><div class="draw-body">
+          <p>Programs such as ProDesktop, Fusion 360, and SolidWorks create 3D designs that can be sent to 3D printers or CNC routers to produce physical models or final components.</p>
+          <div class="draw-key">3D CAD → 3D printer: design model → slice software → print layer by layer. 3D CAD → CNC router: design model → toolpath software → CNC cuts from solid block. No manual marking out required.</div>
+        </div></div>
+        <div class="draw-card"><div class="draw-head drh4">⚡ System Design (CAD)</div><div class="draw-body">
+          <p>Programs such as Yenka Technology and PCB Wizard allow engineers to build and test electrical/electronic systems on screen — allowing components and layouts to be changed electronically before any physical components are purchased.</p>
+          <div class="draw-key">Virtual simulation = no wasted components. Changes are instant and free. The virtual system can be tested for faults before any physical prototype is built.</div>
+        </div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;">
+        <div style="background:var(--vi-l);border:2px solid var(--vi);border-radius:10px;padding:14px;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:15px;color:var(--navy);margin-bottom:8px;">🔵 CAD — Computer-Aided Design</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;">Using computer software to create, develop, modify, and visualise designs. Designs look realistic and professional. Easy to present to clients. Infinite undo. Files can be shared globally instantly.</p>
+        </div>
+        <div style="background:var(--green-l);border:2px solid var(--green);border-radius:10px;padding:14px;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:15px;color:var(--navy);margin-bottom:8px;">🟢 CAM — Computer-Aided Manufacture</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;">Using a computer to control manufacturing machines — laser cutter, CNC router, 3D printer. Eliminates human error in marking out and cutting. Machines can run 24/7. Very high precision and repeatability.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVITIES -->
+<div id="sec-activities" class="section">
+  <div class="sec-head"><h2>Revision Activities</h2><p>Gap fill, matching, and true/false testing vocabulary, drawing type knowledge, and design strategy application. Word bank NOT in answer order.</p></div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 1 — Gap Fill: Key Concepts</h3><div class="act-badge">Fill in the blanks</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a word from the Word Bank, then click the correct blank. NOT in answer order.</div>
+      <div class="word-bank" id="wb1">
+        <span class="wchip" data-word="orthographic">orthographic</span>
+        <span class="wchip" data-word="systems thinking">systems thinking</span>
+        <span class="wchip" data-word="isometric">isometric</span>
+        <span class="wchip" data-word="anthropometric">anthropometric</span>
+        <span class="wchip" data-word="SCAMPER">SCAMPER</span>
+        <span class="wchip" data-word="CAM">CAM</span>
+        <span class="wchip" data-word="sustainability">sustainability</span>
+        <span class="wchip" data-word="user-centred">user-centred</span>
+        <span class="wchip" data-word="ergonomics">ergonomics</span>
+        <span class="wchip" data-word="exploded">exploded</span>
+        <span class="wchip" data-word="oblique">oblique</span>
+        <span class="wchip" data-word="CAD">CAD</span>
+      </div>
+      <div id="gf1">
+        <div class="gap-sent">1. <input type="text" class="gf" data-answer="SCAMPER"> is a structured creative thinking technique — the letters stand for: Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse.</div>
+        <div class="gap-sent">2. <input type="text" class="gf" data-answer="user-centred"> design places the needs, preferences, and limitations of the user at the centre of EVERY decision throughout the whole design process.</div>
+        <div class="gap-sent">3. <input type="text" class="gf" data-answer="systems thinking"> analyses a product by breaking it into inputs, processes, and outputs — and encourages designers to think backwards from the desired result.</div>
+        <div class="gap-sent">4. <input type="text" class="gf" data-answer="anthropometric"> data consists of measurements of the human body — used by designers to ensure products fit within human physical capabilities.</div>
+        <div class="gap-sent">5. <input type="text" class="gf" data-answer="ergonomics"> is designing products that account for the strengths and limitations of people, so the product fits well, reduces effort, and increases performance and safety.</div>
+        <div class="gap-sent">6. <input type="text" class="gf" data-answer="sustainability"> is one of the 10 product specification criteria — it refers to the environmental impact of a product from manufacture through to end of use, assessed through LCA.</div>
+        <div class="gap-sent">7. <input type="text" class="gf" data-answer="oblique"> drawing is the simplest 3D technique — construction lines project at 45°, and the receding edges are drawn at HALF their true length.</div>
+        <div class="gap-sent">8. <input type="text" class="gf" data-answer="isometric"> drawing uses 30° construction lines, and all edges are drawn at their TRUE length — making it more proportionally realistic than the oblique technique.</div>
+        <div class="gap-sent">9. An <input type="text" class="gf" data-answer="orthographic"> projection shows the front, side, and top views of a product in 2D with full dimensions — providing enough information for a manufacturer to make the product without any further instruction.</div>
+        <div class="gap-sent">10. An <input type="text" class="gf" data-answer="exploded"> view shows all components separated along their assembly axes — used in patent applications and design development to show how a product would look if disassembled.</div>
+        <div class="gap-sent">11. <input type="text" class="gf" data-answer="CAD"> (Computer-Aided Design) uses computer software to create and modify designs digitally — producing professional-looking results that can be shared instantly and easily modified.</div>
+        <div class="gap-sent">12. <input type="text" class="gf" data-answer="CAM"> (Computer-Aided Manufacture) uses a computer to control manufacturing machines such as laser cutters, CNC routers, and 3D printers — directly from CAD files, eliminating manual marking out.</div>
+      </div>
+      <div><button class="check-btn" onclick="checkGF('gf1','sc1')">✓ Check Answers</button><button class="reset-btn" onclick="resetGF('gf1','sc1','wb1')">↺ Reset</button><div class="score-box" id="sc1"></div></div>
+    </div>
+  </div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 2 — Matching: Designer to Their Key Contribution</h3><div class="act-badge">Click to match</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a designer/company LEFT, then their correct key contribution RIGHT. NOT in order.</div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-lbl">🎨 Designer / Company</div>
+          <div class="mi mw" data-id="1" onclick="sm(this,'w')">Raymond Loewy</div>
+          <div class="mi mw" data-id="2" onclick="sm(this,'w')">Zaha Hadid</div>
+          <div class="mi mw" data-id="3" onclick="sm(this,'w')">Apple</div>
+          <div class="mi mw" data-id="4" onclick="sm(this,'w')">Tesla, Inc.</div>
+          <div class="mi mw" data-id="5" onclick="sm(this,'w')">Alessi</div>
+          <div class="mi mw" data-id="6" onclick="sm(this,'w')">Pixar</div>
+          <div class="mi mw" data-id="7" onclick="sm(this,'w')">Heatherwick Studio</div>
+          <div class="mi mw" data-id="8" onclick="sm(this,'w')">Joe Casely-Hayford</div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-lbl">🔑 Key Contribution</div>
+          <div class="mi" data-id="3" onclick="sm(this,'d')">Ground-breaking consumer electronics; the iPod made digital music mainstream; created one of the world's most loyal customer bases</div>
+          <div class="mi" data-id="5" onclick="sm(this,'d')">Uses famous designers including Philippe Starck to create iconic kitchen products, setting a standard for visually appealing homeware</div>
+          <div class="mi" data-id="1" onclick="sm(this,'d')">"Father of modern design" — introduced the principle that if two products are equal in function and price, the one with better aesthetics wins. Coca-Cola bottle, Le Creuset.</div>
+          <div class="mi" data-id="7" onclick="sm(this,'d')">Stretches the boundaries of materials, craftsmanship, and artistic thinking across projects from perfume bottles to buses to buildings</div>
+          <div class="mi" data-id="4" onclick="sm(this,'d')">Produces zero-emission electric cars without compromising on power, quality, or desirability — leads electric vehicle design and technology</div>
+          <div class="mi" data-id="2" onclick="sm(this,'d')">Integrated geometric forms with sweeping fluid shapes; overcame racial and gender barriers; designed 1000+ iconic buildings worldwide</div>
+          <div class="mi" data-id="6" onclick="sm(this,'d')">Among the first to develop computer-animated feature films — Toy Story and Finding Nemo — using new technologies to create popular art</div>
+          <div class="mi" data-id="8" onclick="sm(this,'d')">Sets standards for British tailoring by combining style with character — wearable designs that push conformity barriers using traditional craftspeople</div>
+        </div>
+      </div>
+      <button class="reset-btn" style="margin-top:12px;" onclick="resetMatch()">↺ Reset</button>
+      <div id="mDone" style="display:none;margin-top:11px;font-size:14px;font-weight:600;color:var(--green);background:var(--green-l);padding:9px 15px;border-radius:8px;">🎉 All 8 matched — excellent knowledge of influential designers!</div>
+    </div>
+  </div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 3 — True or False?</h3><div class="act-badge">Test understanding</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Common misconceptions about drawing techniques and design strategies.</div>
+      <div class="tf-item"><div class="tf-stmt">1. In an oblique drawing, all edges are drawn at their true length — the same as in an isometric drawing.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,1)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,1)">False</button></div><div class="tf-fb" id="tf1">❌ <strong>False — this is the key distinction between oblique and isometric.</strong> In an <strong>isometric</strong> drawing, all edges ARE drawn at true length (the 30° grid ensures all dimensions are consistent). In an <strong>oblique</strong> drawing, the front face is drawn at true size in 2D, but the receding edges projecting backwards at 45° are drawn at HALF their true length. This is why oblique drawings can look slightly distorted compared to isometric ones.</div></div>
+      <div class="tf-item"><div class="tf-stmt">2. An orthographic projection is primarily used to communicate design ideas to clients who are not technical specialists.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,2)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,2)">False</button></div><div class="tf-fb" id="tf2">❌ <strong>False — orthographic projection is a technical drawing type aimed at manufacturers and engineers, not at non-technical clients.</strong> It shows the front, side, and top views in 2D with precise dimensions and projection lines — a format that requires technical knowledge to interpret. Non-technical clients are better served by perspective drawings (one-point or two-point) or isometric drawings, which show the product in a way that is immediately recognisable and intuitive without technical training.</div></div>
+      <div class="tf-item"><div class="tf-stmt">3. User-centred design means that the designer simply asks the user what they want and then builds exactly that — without making any independent design judgements.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,3)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,3)">False</button></div><div class="tf-fb" id="tf3">❌ <strong>False — user-centred design is not the same as "doing whatever the user says."</strong> Users often cannot articulate what they need — they describe what they already know. Henry Ford reportedly said that if he'd asked his customers what they wanted, they would have said "a faster horse." User-centred design means continuously testing designs with real users and gathering their feedback — but the designer still makes independent creative and technical judgements. The user's needs inform the design; the user doesn't create the design.</div></div>
+      <div class="tf-item"><div class="tf-stmt">4. CAD (Computer-Aided Design) and CAM (Computer-Aided Manufacture) are two separate and unconnected processes — CAD is for designers and CAM is for factory engineers.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,4)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,4)">False</button></div><div class="tf-fb" id="tf4">❌ <strong>False — the power of CAD/CAM is that they are directly connected.</strong> A design created in CAD software can be sent DIRECTLY to a CAM machine (laser cutter, CNC router, 3D printer) which reads the digital file and produces the component without any manual marking out. This CAD→CAM link eliminates human error in the transfer from design to manufacture, ensures perfect repeatability, and allows the same design to be produced identically thousands of times. The connection between CAD and CAM is what makes modern precision manufacturing possible.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM LANGUAGE -->
+<div id="sec-exam" class="section">
+  <div class="sec-head"><h2>Exam Language &amp; Practice</h2><p>Topics 1.15–1.17 generate "describe," "explain," "identify," and "discuss" questions. The most common question types: identifying the correct drawing technique for a given purpose, applying SCAMPER to a specific product, and explaining a designer's influence.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Name → Define → Apply:</strong> For any drawing type question, use: (1) Name the technique, (2) Define its key characteristics (angle, true length, number of views), (3) Explain why it is most appropriate for this specific use/audience. Three steps = full marks.</div>
+
+  <div class="frame-card"><div class="frame-type">Identifying and justifying the correct drawing type — 3 marks</div><div class="frame-body">
+    <div class="frame-tpl">For <span class="blank">[purpose/audience]</span>, a <span class="blank">[drawing type]</span> would be most appropriate because <span class="blank">[key property of that drawing type]</span>. This suits this purpose because <span class="blank">[how that property matches the requirement]</span>.</div>
+    <div class="frame-ex">"For showing a furniture manufacturer exactly how to make each component of the chair design, an <strong>orthographic projection</strong> would be most appropriate because <strong>it shows the front, side, and top views in 2D with full dimensions and projection lines</strong>. This suits this purpose because <strong>a manufacturer who has never seen the product can use the dimensions shown to cut, shape, and assemble all components accurately without needing to consult the designer</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Applying SCAMPER to generate design ideas — 4 marks</div><div class="frame-body">
+    <div class="frame-tpl">Using the <span class="blank">[letter]</span> from SCAMPER, the designer could <span class="blank">[specific idea]</span>. This would <span class="blank">[benefit or change]</span>. Using the <span class="blank">[letter]</span> from SCAMPER, the designer could also <span class="blank">[second idea]</span>.</div>
+    <div class="frame-ex">"Using the <strong>S (Substitute)</strong> from SCAMPER, the designer could <strong>replace the standard plastic casing of the headphones with a recycled aluminium shell</strong>. This would <strong>improve sustainability and give a premium aesthetic feel that appeals to a different market segment</strong>. Using the <strong>E (Eliminate)</strong> from SCAMPER, the designer could also <strong>remove the cable entirely and make the headphones fully wireless</strong>, which would <strong>eliminate cable tangling and improve user freedom of movement</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Explaining a designer's influence — 3 marks</div><div class="frame-body">
+    <div class="frame-tpl"><span class="blank">[Designer/company]</span> is influential because <span class="blank">[key contribution to design]</span>. This influenced other designers by <span class="blank">[broader impact on the design world]</span>.</div>
+    <div class="frame-ex">"<strong>Raymond Loewy</strong> is influential because <strong>he introduced the principle that if two products have the same price, quality, and function, the one with more attractive aesthetics will always be more commercially successful</strong>. This influenced other designers by <strong>demonstrating that aesthetic quality is not a luxury but a commercial necessity — inspiring generations of product designers to prioritise visual appeal alongside function, rather than treating them as separate concerns</strong>."</div>
+  </div></div>
+
+  <div style="margin-top:22px;margin-bottom:13px;"><h2 style="font-family:'Playfair Display',serif;font-size:21px;color:var(--navy);">📝 Practice Questions</h2></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q1 · Drawing Techniques · 4 marks</span><span class="eq-marks">4 marks</span></div><div class="eq-body">
+    <div class="eq-text">A designer needs to communicate their new product idea. Explain the difference between an oblique drawing and an isometric drawing, and state ONE situation where each would be preferred.</div>
+    <div class="eq-hint">💡 Oblique vs isometric: define the angle AND the key difference in edge lengths (1 mark each). Then one appropriate use for each (1 mark each).</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>Oblique:</strong> Lines project backwards at 45° to the horizontal. The front face is drawn at true size in 2D, but the receding edges going back are drawn at HALF their true length. It is the simplest 3D drawing technique. Best used for: quick idea generation sketches in early design stages, where speed is more important than precise proportions.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>Isometric:</strong> All lines recede at 30° to the horizontal, and all edges are drawn at their TRUE length throughout — there is no foreshortening. This makes it more proportionally accurate and more realistic-looking than oblique. Best used for: product visualisation and technical illustrations where accurate proportions matter, such as assembly guides or concept presentations to clients.</div></div>
+    </div>
+  </div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q2 · Design Strategies · 6 marks</span><span class="eq-marks">6 marks</span></div><div class="eq-body">
+    <div class="eq-text">Discuss which design strategies a designer might use when designing a new pair of wireless headphones. Refer to at least two different strategies and include a judgement about which would be most beneficial overall.</div>
+    <div class="eq-hint">💡 High-mark question: describe at least 2 strategies applied TO headphones (not just defined generally). Include a justified judgement about which is most valuable. Well-balanced discussion scores highest.</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>User-centred design:</strong> The designer would continuously test prototypes with real users — music listeners, athletes, gamers — gathering feedback on comfort, sound quality, and ease of pairing. Anthropometric data of ear and head sizes would be used to design ear cups that fit the widest possible range of users. User testing at every stage ensures the final product feels intuitive and comfortable.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>SCAMPER:</strong> Applying S (Substitute) — could the plastic headband be replaced with a flexible titanium alloy? A (Adapt) — could noise cancellation technology from aviation headsets be incorporated? E (Eliminate) — could the physical controls be eliminated in favour of touch gestures? This generates many more ideas than simply improving the existing design.</div></div>
+      <div class="mp"><div class="mpn">3</div><div><strong>Judgement:</strong> User-centred design is likely to be the most beneficial strategy for wireless headphones because the product's success depends entirely on how comfortable and intuitive it is for the end user — a product that sounds technically excellent but is uncomfortable to wear for more than 30 minutes will fail commercially regardless of its specifications. SCAMPER is valuable for generating creative features but user-centred design ensures those features actually serve user needs.</div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- TOOLKIT -->
+<div id="sec-toolkit" class="section">
+  <div class="sec-head"><h2>ESL Language Toolkit</h2><p>Word roots, plain-English synonyms, and common mistakes specific to Topics 1.15, 1.16, and 1.17.</p></div>
+  <div class="tk-grid">
+    <div class="tk-card"><div class="tk-head tkh-a">🔤 Key Word Roots</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th>Root</th><th>Meaning</th><th>Examples</th></tr>
+        <tr><td class="pfx">ergo-</td><td>work (Greek)</td><td>ergonomics, ergonomic design</td></tr>
+        <tr><td class="pfx">anthrop-</td><td>human (Greek)</td><td>anthropometric, anthropology</td></tr>
+        <tr><td class="pfx">iso-</td><td>equal/same</td><td>isometric (equal measurement in all directions)</td></tr>
+        <tr><td class="pfx">ortho-</td><td>straight/correct</td><td>orthographic (straight/true view)</td></tr>
+        <tr><td class="pfx">perspect-</td><td>to look through</td><td>perspective drawing (as if looking through a window)</td></tr>
+        <tr><td class="pfx">oblique</td><td>slanting/at an angle</td><td>oblique drawing (angled lines)</td></tr>
+        <tr><td class="pfx">schem-</td><td>figure/plan</td><td>schematic diagram (a planned layout diagram)</td></tr>
+        <tr><td class="pfx">spec-</td><td>to look/see</td><td>specification, specification criteria</td></tr>
+        <tr><td class="pfx">inno-</td><td>new</td><td>innovation, innovative design</td></tr>
+        <tr><td class="pfx">market-</td><td>to trade/sell</td><td>marketability, marketing, marketable</td></tr>
+      </table>
+    </div></div>
+    <div class="tk-card"><div class="tk-head tkh-b">🔄 Technical Term → Plain English</div><div class="tk-body">
+      <div class="syn-p"><span class="syn-c">Ergonomics</span><span class="syn-a">→</span><span class="syn-s">Designing to fit people's bodies and abilities — comfortable, safe, easy to use</span></div>
+      <div class="syn-p"><span class="syn-c">Anthropometric data</span><span class="syn-a">→</span><span class="syn-s">Measurements of the human body (height, hand size, reach, etc.)</span></div>
+      <div class="syn-p"><span class="syn-c">User-centred design</span><span class="syn-a">→</span><span class="syn-s">Always put the user's needs first — test with real users at every stage</span></div>
+      <div class="syn-p"><span class="syn-c">Oblique drawing</span><span class="syn-a">→</span><span class="syn-s">Simplest 3D drawing — 45° lines, receding edges at half length</span></div>
+      <div class="syn-p"><span class="syn-c">Isometric drawing</span><span class="syn-a">→</span><span class="syn-s">More realistic 3D drawing — 30° lines, all edges at true length</span></div>
+      <div class="syn-p"><span class="syn-c">Orthographic</span><span class="syn-a">→</span><span class="syn-s">Multi-view technical drawing with dimensions — for manufacturers</span></div>
+      <div class="syn-p"><span class="syn-c">Exploded view</span><span class="syn-a">→</span><span class="syn-s">Drawing showing all parts pulled apart to show how they fit together</span></div>
+      <div class="syn-p"><span class="syn-c">CAD</span><span class="syn-a">→</span><span class="syn-s">Computer-Aided Design — design on screen using software</span></div>
+      <div class="syn-p"><span class="syn-c">CAM</span><span class="syn-a">→</span><span class="syn-s">Computer-Aided Manufacture — computer controls the cutting machine</span></div>
+      <div class="syn-p"><span class="syn-c">Vanishing point</span><span class="syn-a">→</span><span class="syn-s">The point in the distance where parallel lines appear to meet in perspective drawing</span></div>
+    </div></div>
+    <div class="tk-card" style="grid-column:1/-1;"><div class="tk-head tkh-c">🚨 Common Exam Mistakes — Design Strategies &amp; Communication</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th style="width:30%">❌ Avoid writing this</th><th style="width:38%">✅ Write this instead</th><th>Why?</th></tr>
+        <tr><td>"Oblique and isometric both draw all edges at true length"</td><td>"<strong>Isometric</strong> draws all edges at true length. <strong>Oblique</strong> draws the front face at true size but the receding edges at <strong>HALF</strong> true length."</td><td>Oblique foreshortens the receding edges — this is the key distinction</td></tr>
+        <tr><td>"Orthographic drawings are for clients to see the product idea"</td><td>"Orthographic drawings are <strong>technical manufacturing drawings</strong> for engineers and manufacturers — they show precise dimensions and multiple views. <strong>Perspective drawings</strong> are used for non-technical clients."</td><td>Orthographic = technical audience. Perspective = non-technical audience.</td></tr>
+        <tr><td>"SCAMPER stands for: Substitute, Copy, Adapt, Make, Plan, Edit, Redo"</td><td>"SCAMPER = <strong>Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse</strong>"</td><td>The SCAMPER letters are fixed — memorise the correct words for each letter</td></tr>
+        <tr><td>"Raymond Loewy was an architect who designed famous buildings"</td><td>"Raymond Loewy was an <strong>industrial designer</strong> (not architect) known as the 'father of modern design' who worked across 200+ products including the <strong>Coca-Cola bottle</strong>, Le Creuset Coquelle, and Shell/BP logos."</td><td>Students confuse Loewy (industrial/product designer) with Zaha Hadid (architect)</td></tr>
+        <tr><td>"CAD and CAM are the same thing"</td><td>"<strong>CAD</strong> = designing on a computer (software). <strong>CAM</strong> = manufacturing using a computer-controlled machine (hardware). CAD creates the design file; CAM uses that file to physically cut or print the product."</td><td>CAD = design. CAM = make. Different stages connected by the digital file.</td></tr>
+      </table>
+    </div></div>
+  </div>
+</div>
+
+</div>
+<footer><strong>Edexcel GCSE Design &amp; Technology</strong> · Topics 1.15–1.17 · Designers, Strategies &amp; Communication · Core Content · Section A<br>Cross-referenced with Pearson Edexcel Specification (Issue 4) and Core Content Textbook (pp. 62–75) · For educational use only</footer>
+
+<script>
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('sec-'+id).classList.add('active');event.currentTarget.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function fv(t,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.vc').forEach(c=>{c.style.display=(t==='all'||c.dataset.topic===t)?'block':'none';});}
+function showSub(tabId,panelId,btn){
+  const prefix=tabId+'-';
+  document.querySelectorAll('[id^="'+prefix+'"]').forEach(p=>p.classList.remove('active'));
+  document.getElementById(prefix+panelId).classList.add('active');
+  btn.closest('.sub-nav').querySelectorAll('.sn-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+let selChip=null;
+document.querySelectorAll('.wchip').forEach(c=>{c.addEventListener('click',function(){document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));selChip=this.dataset.word;this.classList.add('sel');});});
+document.querySelectorAll('.gf').forEach(inp=>{inp.addEventListener('click',function(){if(selChip){this.value=selChip;selChip=null;document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));}});inp.addEventListener('input',function(){this.classList.remove('correct','incorrect');});});
+function checkGF(cid,sid){const ins=document.getElementById(cid).querySelectorAll('.gf');let ok=0;ins.forEach(i=>{const pass=i.value.toLowerCase().trim()===i.dataset.answer.toLowerCase().trim();i.classList.toggle('correct',pass);i.classList.toggle('incorrect',!pass);if(pass)ok++;});const s=document.getElementById(sid);const p=ok/ins.length;s.className='score-box show '+(p>=.85?'good':p>=.5?'ok':'low');s.style.display='inline-flex';s.innerHTML=(p>=.85?'🎉':p>=.5?'👍':'📚')+` Score: ${ok}/${ins.length}`+(p>=.85?' — Excellent!':p>=.5?' — Good effort!':" — Keep revising!");}
+function resetGF(cid,sid,wid){document.getElementById(cid).querySelectorAll('.gf').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});const s=document.getElementById(sid);s.className='score-box';s.style.display='none';if(wid)document.getElementById(wid).querySelectorAll('.wchip').forEach(c=>c.classList.remove('sel'));selChip=null;}
+let mSel={w:null,d:null},mCnt=0;
+function sm(el,t){if(el.classList.contains('matched'))return;if(mSel[t])mSel[t].classList.remove('sel');mSel[t]=el;el.classList.add('sel');if(mSel.w&&mSel.d){if(mSel.w.dataset.id===mSel.d.dataset.id){[mSel.w,mSel.d].forEach(e=>{e.classList.add('matched');e.classList.remove('sel');});mCnt++;if(mCnt===8)document.getElementById('mDone').style.display='block';}else{[mSel.w,mSel.d].forEach(e=>{e.classList.add('wrong');setTimeout(()=>{e.classList.remove('wrong','sel');},600);});setTimeout(()=>{mSel={w:null,d:null};},600);return;}mSel={w:null,d:null};}}
+function resetMatch(){document.querySelectorAll('.mi').forEach(e=>e.classList.remove('matched','sel','wrong'));mSel={w:null,d:null};mCnt=0;document.getElementById('mDone').style.display='none';}
+function chkTF(btn,correct,n){const isT=btn.classList.contains('tb');const pass=(isT===correct);const parent=btn.closest('.tf-item');parent.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);btn.classList.add(pass?'ca':'wa');if(!pass){const cb=correct?parent.querySelector('.tb'):parent.querySelector('.fb');cb.classList.add('ca');}const fb=document.getElementById('tf'+n);fb.className='tf-fb show '+(pass?'ok':'no');}
+function togAns(btn){const a=btn.nextElementSibling;if(a.classList.contains('show')){a.classList.remove('show');btn.textContent='👁 Show Model Answer';}else{a.classList.add('show');btn.textContent='🙈 Hide Model Answer';}}
+</script>
+</body>
+</html>

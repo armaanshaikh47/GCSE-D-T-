@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topics 1.13 & 1.14 — Design Contexts & Challenges · GCSE D&T Core</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0faf7;--navy:#042018;--em:#0f766e;--em-l:#d1fae5;--em-m:#34d399;
+  --blue:#1e40af;--blue-l:#dbeafe;--red:#991b1b;--red-l:#fee2e2;
+  --amber:#d97706;--amber-l:#fef3c7;--purple:#5b21b6;--purple-l:#ede9fe;
+  --teal:#0e7490;--teal-l:#e0f5f9;--green:#166534;--green-l:#dcfce7;
+  --muted:#64748b;--border:#c9e8e0;--card:#fff;--text:#042018;
+  --shadow:0 2px 16px rgba(4,32,24,.09);--shadow-h:0 6px 28px rgba(4,32,24,.17);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;}
+.hero{background:linear-gradient(135deg,#042018 0%,#0f4c3a 55%,#0f2d5e 100%);color:#fff;padding:52px 40px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(15,118,110,.3) 0%,transparent 55%);}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.hero-badge{display:inline-block;background:var(--em);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,48px);font-weight:900;line-height:1.08;margin-bottom:8px;}
+.hero h1 .ac{color:var(--em-m);}
+.hero-spec{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:14px;text-transform:uppercase;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.72);max-width:660px;line-height:1.65;margin-bottom:26px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.hero-tag{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);font-size:12px;padding:5px 13px;border-radius:20px;}
+.nav-bar{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 20px;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:15px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-2px;}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--em);font-weight:600;}
+.main{max-width:1100px;margin:0 auto;padding:38px 20px 80px;}
+.section{display:none;}
+.section.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sec-head{margin-bottom:24px;}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+.sec-head p{color:var(--muted);font-size:15px;line-height:1.65;max-width:700px;}
+.esl-tip{background:linear-gradient(135deg,#f0faf7,var(--em-l));border-left:4px solid var(--em);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:24px;font-size:13.5px;color:#042018;line-height:1.6;}
+.insight-box{border-left:4px solid var(--em);background:var(--em-l);padding:11px 15px;border-radius:0 8px 8px 0;font-size:13.5px;color:#042018;margin:14px 0;}
+
+/* SPEC */
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px;}
+.spec-card{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.spec-head{padding:13px 16px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;}
+.sh-a{background:linear-gradient(135deg,#042018,#0f766e);}
+.sh-b{background:linear-gradient(135deg,#0f2d5e,#1e40af);}
+.sh-c{background:linear-gradient(135deg,#0c2714,#166534);}
+.sh-d{background:linear-gradient(135deg,#4c1d00,#d97706);}
+.spec-body{padding:11px 16px;}
+.spec-item{display:flex;align-items:flex-start;gap:9px;padding:5px 0;border-bottom:1px solid #e8f7f3;font-size:13px;line-height:1.45;}
+.spec-item:last-child{border-bottom:none;}
+.spec-item input[type=checkbox]{margin-top:3px;accent-color:var(--em);flex-shrink:0;width:14px;height:14px;}
+
+/* SUB NAV */
+.sub-nav{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px;}
+.sn-btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;opacity:.55;font-family:'DM Sans',sans-serif;}
+.sn-btn.active{opacity:1;box-shadow:var(--shadow);}
+.sn-a{background:var(--em);color:#fff;}
+.sn-b{background:var(--blue);color:#fff;}
+.sn-c{background:var(--green);color:#fff;}
+.sn-d{background:var(--amber);color:#fff;}
+.sub-panel{display:none;}
+.sub-panel.active{display:block;animation:fadeUp .3s ease;}
+.panel-head{border-radius:12px 12px 0 0;padding:18px 24px;color:#fff;}
+.ph-a{background:linear-gradient(135deg,#042018,#0f766e);}
+.ph-b{background:linear-gradient(135deg,#0f2d5e,#1e40af);}
+.ph-c{background:linear-gradient(135deg,#0c2714,#166534);}
+.ph-d{background:linear-gradient(135deg,#4c1d00,#d97706);}
+.panel-head h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:4px;}
+.panel-head p{font-size:13px;opacity:.82;}
+.panel-body{background:var(--card);border-radius:0 0 12px 12px;border:1.5px solid var(--border);border-top:none;padding:22px 24px;margin-bottom:20px;box-shadow:var(--shadow);}
+
+/* VOCAB */
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;align-items:center;}
+.filter-btn{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--muted);}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start;}
+.vc{background:var(--card);border-radius:12px;border:1.5px solid var(--border);box-shadow:var(--shadow);display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;transition:transform .2s;}
+.vc:hover{transform:translateY(-2px);}
+.vc-top{padding:14px 16px 11px;border-bottom:1px solid var(--border);display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:10px;writing-mode:horizontal-tb;}
+.vc-word{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--navy);writing-mode:horizontal-tb;flex:1;min-width:0;word-break:break-word;}
+.vc-tag{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px;flex-shrink:0;writing-mode:horizontal-tb;white-space:nowrap;margin-top:3px;}
+.t-mat{background:var(--em-l);color:var(--em);}
+.t-env{background:var(--green-l);color:var(--green);}
+.t-soc{background:var(--blue-l);color:var(--blue);}
+.t-mfg{background:var(--amber-l);color:#92400e;}
+.vc-body{padding:13px 16px;display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;}
+.def-lbl{display:none;}
+.vc-def{font-size:13.5px;color:var(--text);line-height:1.65;margin-bottom:10px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex{background:#f0faf7;border-left:3px solid var(--em);padding:8px 11px;border-radius:0 7px 7px 0;font-size:12.5px;color:#444;font-style:italic;line-height:1.55;margin-bottom:10px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex em{font-style:normal;background:var(--em-l);padding:1px 3px;border-radius:2px;}
+.vc-mem{background:var(--green-l);border:1px solid #bbf7d0;padding:8px 11px;border-radius:7px;font-size:12px;color:#14532d;line-height:1.6;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+
+/* PROPERTY TABLES */
+.prop-tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin:12px 0;}
+.prop-tbl th{padding:8px 11px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;}
+.prop-tbl td{padding:8px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.prop-tbl tr:last-child td{border-bottom:none;}
+.prop-tbl tr:nth-child(even) td{background:#f5fdfb;}
+.prop-tbl .pn{font-weight:700;color:var(--navy);}
+.th-nm{background:var(--navy);color:#fff;border-radius:7px 0 0 0;width:130px;}
+.th-def{background:#1a4030;color:#fff;border-radius:0 7px 0 0;}
+.th-eg{background:var(--em);color:#fff;border-radius:0 7px 0 0;}
+.th-mech{background:linear-gradient(135deg,#042018,#0f766e);color:#fff;border-radius:7px 0 0 0;}
+.th-phys{background:linear-gradient(135deg,#0f2d5e,#1e40af);color:#fff;border-radius:0 7px 0 0;}
+
+/* SELECTION GRID */
+.sel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:12px;margin:14px 0;}
+.sel-card{background:#f5fdfb;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;}
+.sel-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:5px;display:flex;align-items:center;gap:6px;}
+.sel-card p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+/* MIXED MATERIALS */
+.mixed-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0;}
+.mixed-card{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow);}
+.mixed-card h4{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.mat-row{display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;line-height:1.45;}
+.mat-row:last-child{border-bottom:none;}
+.mat-name{font-weight:600;color:var(--navy);min-width:120px;flex-shrink:0;}
+.mat-why{color:var(--muted);font-style:italic;}
+
+/* CHALLENGES: social/ethnic/economic */
+.group-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+.group-card{border-radius:10px;overflow:hidden;border:1.5px solid var(--border);}
+.group-head{padding:11px 14px;font-weight:700;font-size:13.5px;color:#fff;}
+.gh-soc{background:linear-gradient(135deg,#1e40af,#3b82f6);}
+.gh-eth{background:linear-gradient(135deg,#5b21b6,#7c3aed);}
+.gh-eco{background:linear-gradient(135deg,#d97706,#f59e0b);}
+.group-body{padding:12px 14px;background:var(--card);}
+.group-body p{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:7px;}
+.group-eg{font-size:12px;background:#f0faf7;padding:5px 9px;border-radius:5px;color:#042018;line-height:1.5;font-style:italic;}
+
+/* GREEN DESIGN */
+.green-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin:14px 0;}
+.green-card{background:var(--green-l);border:1.5px solid #86efac;border-radius:10px;padding:13px 14px;}
+.green-card h4{font-size:13.5px;font-weight:700;color:var(--green);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.green-card p{font-size:12.5px;color:#14532d;line-height:1.55;}
+
+/* RECYCLING TABLE */
+.rec-tbl{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+.rec-tbl th{padding:9px 12px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;}
+.rec-tbl td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.rec-tbl tr:last-child td{border-bottom:none;}
+.rec-tbl tr:nth-child(even) td{background:#f5fdfb;}
+.th-radv{background:var(--green);color:#fff;border-radius:7px 0 0 0;}
+.th-rdis{background:var(--red);color:#fff;border-radius:0 7px 0 0;}
+
+/* LCA FLOW */
+.lca-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0;padding:16px;background:var(--em-l);border-radius:10px;}
+.lca-step{background:var(--em);color:#fff;border-radius:7px;padding:7px 12px;font-size:13px;font-weight:600;text-align:center;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.04em;}
+.lca-arrow{color:var(--em);font-size:18px;font-weight:700;}
+
+/* DFM cards */
+.dfm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:11px;margin:12px 0;}
+.dfm-card{background:#f5fdfb;border-left:3px solid var(--em);padding:10px 13px;border-radius:0 8px 8px 0;}
+.dfm-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.dfm-card p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+/* ACTIVITIES */
+.act-block{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow);}
+.act-head{background:var(--navy);padding:15px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.act-head h3{color:#fff;font-family:'Playfair Display',serif;font-size:17px;}
+.act-badge{background:var(--em);color:#fff;font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:4px;}
+.act-body{padding:20px;}
+.act-instr{background:var(--em-l);border-radius:8px;padding:10px 14px;font-size:13px;color:#042018;margin-bottom:16px;line-height:1.55;}
+.gap-sent{font-size:14px;line-height:2.5;margin-bottom:3px;color:var(--text);writing-mode:horizontal-tb;display:block;}
+.gf{border:none;border-bottom:2.5px solid var(--em);background:var(--em-l);width:180px;padding:3px 7px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--navy);border-radius:4px 4px 0 0;outline:none;writing-mode:horizontal-tb;}
+.gf.correct{background:var(--green-l);border-bottom-color:var(--green);}
+.gf.incorrect{background:var(--red-l);border-bottom-color:var(--red);}
+.word-bank{display:flex;flex-wrap:wrap;gap:7px;padding:12px;background:var(--em-l);border-radius:9px;margin-bottom:14px;}
+.wchip{background:var(--card);border:1.5px solid var(--border);border-radius:6px;padding:5px 10px;font-size:13px;font-weight:500;color:var(--navy);cursor:pointer;transition:all .15s;user-select:none;writing-mode:horizontal-tb;}
+.wchip:hover,.wchip.sel{border-color:var(--em);background:var(--em-l);}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;margin-top:11px;}
+.reset-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;margin-left:10px;margin-top:11px;color:var(--muted);}
+.score-box{display:none;align-items:center;gap:10px;margin-top:11px;padding:9px 16px;border-radius:8px;font-size:13.5px;font-weight:600;}
+.score-box.show{display:inline-flex;}
+.score-box.good{background:var(--green-l);color:var(--green);}
+.score-box.ok{background:var(--amber-l);color:#92400e;}
+.score-box.low{background:var(--red-l);color:var(--red);}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.match-col{display:flex;flex-direction:column;gap:7px;}
+.match-col-lbl{font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:3px;}
+.mi{background:var(--card);border:2px solid var(--border);border-radius:8px;padding:10px 13px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.4;}
+.mi.mw{font-weight:700;color:var(--navy);}
+.mi:hover,.mi.sel{border-color:var(--em);background:var(--em-l);}
+.mi.matched{border-color:var(--green);background:var(--green-l);color:var(--green);pointer-events:none;font-weight:600;}
+.mi.wrong{border-color:var(--red);background:var(--red-l);animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.tf-item{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:14px 17px;margin-bottom:10px;}
+.tf-stmt{font-size:14px;color:var(--text);margin-bottom:10px;line-height:1.55;font-weight:500;}
+.tf-btns{display:flex;gap:9px;}
+.tf-btn{padding:6px 18px;border-radius:7px;border:1.5px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;background:var(--card);}
+.tf-btn.tb:hover{background:var(--green-l);border-color:var(--green);color:var(--green);}
+.tf-btn.fb:hover{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-btn.ca{background:var(--green-l);border-color:var(--green);color:var(--green);pointer-events:none;}
+.tf-btn.wa{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-fb{font-size:13px;margin-top:8px;padding:8px 11px;border-radius:7px;display:none;line-height:1.5;}
+.tf-fb.show{display:block;}
+.tf-fb.ok{background:var(--green-l);color:var(--green);}
+.tf-fb.no{background:var(--red-l);color:var(--red);}
+
+/* EXAM */
+.frame-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:11px;}
+.frame-type{background:var(--em-l);padding:6px 15px;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:#042018;}
+.frame-body{padding:12px 16px;}
+.frame-tpl{font-size:13.5px;color:var(--text);line-height:1.8;margin-bottom:7px;}
+.blank{background:var(--em-l);padding:2px 6px;border-radius:4px;font-style:italic;color:#042018;font-size:13px;}
+.frame-ex{font-size:12.5px;color:var(--muted);font-style:italic;border-left:3px solid var(--blue);padding-left:10px;margin-top:7px;line-height:1.55;}
+.eq-block{background:var(--card);border:1.5px solid var(--border);border-radius:12px;margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow);}
+.eq-head{background:var(--em-l);padding:10px 17px;display:flex;justify-content:space-between;align-items:center;}
+.eq-head span{font-size:12px;font-family:'DM Mono',monospace;color:#042018;text-transform:uppercase;}
+.eq-marks{background:var(--navy);color:#fff;font-size:11px;font-family:'DM Mono',monospace;padding:3px 9px;border-radius:4px;}
+.eq-body{padding:14px 17px;}
+.eq-text{font-size:14.5px;color:var(--navy);margin-bottom:10px;font-weight:500;line-height:1.5;}
+.eq-hint{background:var(--blue-l);padding:8px 12px;border-radius:8px;font-size:12.5px;color:#1e3a8a;line-height:1.5;}
+.show-ans-btn{background:none;border:1.5px solid var(--em);border-radius:6px;padding:6px 12px;font-size:12.5px;color:var(--em);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:10px;transition:all .2s;}
+.show-ans-btn:hover{background:var(--em);color:#fff;}
+.model-ans{display:none;background:#f0fef9;border:1px solid #a7f3d0;border-radius:8px;padding:12px;margin-top:10px;font-size:13.5px;line-height:1.65;color:#134e2a;}
+.model-ans.show{display:block;}
+.mp{display:flex;gap:9px;margin-bottom:6px;}
+.mpn{background:var(--green);color:#fff;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* TOOLKIT */
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:16px;}
+.tk-card{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.tk-head{padding:13px 17px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.tkh-a{background:var(--navy);color:#fff;}
+.tkh-b{background:var(--em);color:#fff;}
+.tkh-c{background:#166534;color:#fff;}
+.tk-body{padding:13px 17px;}
+.pre-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.pre-tbl th{background:var(--em-l);padding:7px 10px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#042018;}
+.pre-tbl td{padding:6px 10px;border-bottom:1px solid var(--border);line-height:1.5;}
+.pre-tbl tr:last-child td{border-bottom:none;}
+.pfx{font-weight:700;color:var(--navy);}
+.syn-p{display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.syn-p:last-child{border-bottom:none;}
+.syn-c{font-weight:600;color:var(--navy);min-width:145px;line-height:1.4;}
+.syn-a{color:var(--em);font-size:15px;flex-shrink:0;margin-top:2px;}
+.syn-s{color:var(--muted);font-style:italic;font-size:12.5px;line-height:1.4;}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:12px;margin-top:60px;}
+footer strong{color:var(--em-m);}
+@media(max-width:600px){.hero{padding:34px 18px 30px}.main{padding:20px 14px 60px}.group-grid,.mixed-grid,.match-grid{grid-template-columns:1fr}.panel-body{padding:16px 18px}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="hero-inner">
+  <div class="hero-badge">GCSE D&T · Core Content · Topics 1.13 & 1.14 · Design Contexts &amp; Challenges</div>
+  <h1>Design Contexts<br>&amp; <span class="ac">Challenges</span></h1>
+  <div class="hero-spec">Spec Ref: 1.13 · 1.14 &nbsp;|&nbsp; Section A — 40 marks &nbsp;|&nbsp; Core Content for all students</div>
+  <p class="hero-sub">A complete ESL-focused revision guide covering material properties and selection contexts (1.13), and all design and making challenges — social, ethnic, economic, environmental (green design, LCA, recycling), human capability, cost, and design for manufacture (1.14).</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📋 Spec Checklist</span><span class="hero-tag">⚗️ Material Properties Table</span>
+    <span class="hero-tag">👥 Social/Ethnic/Economic Groups</span><span class="hero-tag">🌱 Green Design</span>
+    <span class="hero-tag">♻️ LCA &amp; Recycling</span><span class="hero-tag">🏭 Design for Manufacture</span><span class="hero-tag">✏️ Activities</span>
+  </div>
+</div></div>
+
+<div class="nav-bar"><div class="nav-inner">
+  <button class="tab-btn active" onclick="showTab('spec')">📋 Spec Checklist</button>
+  <button class="tab-btn" onclick="showTab('vocab')">📖 Key Vocabulary</button>
+  <button class="tab-btn" onclick="showTab('t113')">⚗️ 1.13 — Material Contexts</button>
+  <button class="tab-btn" onclick="showTab('t114')">🌍 1.14 — Design Challenges</button>
+  <button class="tab-btn" onclick="showTab('activities')">✏️ Activities</button>
+  <button class="tab-btn" onclick="showTab('exam')">📝 Exam Language</button>
+  <button class="tab-btn" onclick="showTab('toolkit')">💬 ESL Toolkit</button>
+</div></div>
+
+<div class="main">
+
+<!-- SPEC CHECKLIST -->
+<div id="sec-spec" class="section active">
+  <div class="sec-head"><h2>Specification Checklist</h2><p>Topics 1.13 and 1.14 are conceptual — you are not memorising facts but practising applying knowledge to new product contexts. The exam gives you a product scenario and asks you to apply the right concept to it.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Apply to a Product:</strong> After reading each concept, immediately think of a real product example that demonstrates it. For example: LCA → a plastic bottle; green design → a bamboo toothbrush; Fairtrade → coffee or chocolate. Concrete product examples are exactly what the exam rewards with full marks.</div>
+  <div class="spec-grid">
+    <div class="spec-card"><div class="spec-head sh-a">⚗️ 1.13 — Using Properties to Inform Design Decisions</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Mechanical properties — strength, elasticity, plasticity, malleability, ductility, hardness, toughness, brittleness, durability, stability, stiffness</div>
+      <div class="spec-item"><input type="checkbox"> Physical properties — density, electrical conductivity, thermal conductivity, size, corrosion, aesthetics, optical, joining, magnetism</div>
+      <div class="spec-item"><input type="checkbox"> Elements analysed when selecting material — forms, properties, cost, tools/processes, energy, scale, waste, ease of processing</div>
+      <div class="spec-item"><input type="checkbox"> Mixed materials — why different materials are combined in one product (e.g. director's chair: beech + steel + polyester)</div>
+      <div class="spec-item"><input type="checkbox"> Justifying material choices — test pieces, prototypes, economic case, environmental evaluation</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-b">👥 1.14 — Social, Ethnic &amp; Economic Groups</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Social groups — share common age/education/gender; designs should meet specific needs (e.g. phones for young people)</div>
+      <div class="spec-item"><input type="checkbox"> Ethnic groups — share cultural background; products should be sympathetic to culture and not offend; care with symbols, clothing, labels</div>
+      <div class="spec-item"><input type="checkbox"> Economic groups — different purchasing power; cost/quality/brand influences choice (e.g. kettle range cheap to luxury)</div>
+      <div class="spec-item"><input type="checkbox"> Fairtrade Foundation — fair prices to farmers; prevents child/forced labour; prevents gender discrimination</div>
+      <div class="spec-item"><input type="checkbox"> Carbon offsetting — reduce carbon footprint; plant trees; renewable energy; encourage cycling/walking</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-c">🌱 1.14 — Environmental &amp; Green Design</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Green design — designing for energy efficiency; reducing waste; renewable materials; biodegradable materials; non-toxic recyclable materials</div>
+      <div class="spec-item"><input type="checkbox"> Product disassembly — enables recycling/reuse; reduce part count; label by material type</div>
+      <div class="spec-item"><input type="checkbox"> Recycling — advantages (less landfill, reduces demand for raw materials, reduces global warming) and disadvantages (complex, not always cost efficient, recycled material quality may be inferior)</div>
+      <div class="spec-item"><input type="checkbox"> Life-Cycle Analysis (LCA) — systematic inventory of ALL stages: extraction → transport → processing → manufacture → use → disposal</div>
+      <div class="spec-item"><input type="checkbox"> Disposal of waste — governed by international, EU, national, and local laws</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-d">🏭 1.14 — Human Capability, Cost &amp; DFM</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Human capability — product must operate within user's capabilities; unclear controls = safety risk</div>
+      <div class="spec-item"><input type="checkbox"> Cost of materials — not just initial cost; include maintenance, transportation, recycling, disposal, and environmental cost</div>
+      <div class="spec-item"><input type="checkbox"> Design for Manufacture (DFM) — standardised parts; simplify processes; modular design; reduce tolerances; quality control tests; design for disassembly</div>
+      <div class="spec-item"><input type="checkbox"> Modular design — parts of standard sizes that can be constructed in different ways</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- VOCAB -->
+<div id="sec-vocab" class="section">
+  <div class="sec-head"><h2>Key Vocabulary</h2><p>18 key terms across Topics 1.13 and 1.14. These terms appear frequently in exam questions — you must be able to define them precisely and apply them to a product context.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Definition First, Example Second:</strong> For every term, practise writing the definition in ONE sentence, then the example in ONE sentence. Two sentences total. This is the exact format the exam rewards. Do not try to write long paragraphs — precision and relevance earn more marks than length.</div>
+  <div class="filter-row">
+    <span style="font-size:13px;color:var(--muted);font-weight:500;">Filter:</span>
+    <button class="filter-btn active" onclick="fv('all',this)">All</button>
+    <button class="filter-btn" onclick="fv('mat',this)">⚗️ Properties</button>
+    <button class="filter-btn" onclick="fv('env',this)">🌱 Environmental</button>
+    <button class="filter-btn" onclick="fv('soc',this)">👥 Social</button>
+    <button class="filter-btn" onclick="fv('mfg',this)">🏭 Manufacturing</button>
+  </div>
+  <div class="vocab-grid" id="vg">
+
+    <div class="vc" data-topic="mat"><div class="vc-top"><div class="vc-word">Mechanical Properties</div><div class="vc-tag t-mat">Properties</div></div><div class="vc-body">
+      <div class="vc-def">Characteristics of a material that describe how it <strong>responds to external forces or loads</strong>. They determine whether a material will bend, break, stretch, or stay rigid under stress. Essential for selecting materials for structural components.</div>
+      <div class="vc-ex">"The designer selected aluminium for the bicycle frame because of its <em>mechanical properties</em> — specifically its high strength-to-weight ratio, meaning it resists the forces of cycling without adding excessive mass to the frame."</div>
+      <div class="vc-mem">💡 Mechanical = about force and movement. Examples: strength, hardness, toughness, ductility, elasticity. These properties determine whether a material will SURVIVE the forces it will experience in use. Contrast with physical properties (measured without applying force).</div>
+    </div></div>
+
+    <div class="vc" data-topic="mat"><div class="vc-top"><div class="vc-word">Physical Properties</div><div class="vc-tag t-mat">Properties</div></div><div class="vc-body">
+      <div class="vc-def">Characteristics of a material that can be <strong>defined and measured without applying force</strong>, such as colour, size, weight, density, electrical conductivity, and thermal conductivity. They determine how a material looks and how it behaves with electricity, heat, or light.</div>
+      <div class="vc-ex">"Copper is used for electrical wiring because of its <em>physical property</em> of high electrical conductivity — it allows electric current to flow through it with minimal resistance."</div>
+      <div class="vc-mem">💡 Physical = can be measured without breaking or deforming the material. Examples: density, conductivity, colour, magnetism. Some overlap with mechanical (hardness is sometimes both), but physical properties are generally about measurement, not force response.</div>
+    </div></div>
+
+    <div class="vc" data-topic="mat"><div class="vc-top"><div class="vc-word">Prototype</div><div class="vc-tag t-mat">Properties</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>full-size, three-dimensional model of the finished design</strong>, created for testing before mass production begins. A prototype is made using the same (or similar) manufacturing processes that will be used for the final product, so that material and process choices can be tested and refined.</div>
+      <div class="vc-ex">"Before committing to mass production, the company produced a <em>prototype</em> of the new kettle — testing its heat resistance, electrical safety, ergonomics, and aesthetic appearance with real users before finalising the manufacturing specification."</div>
+      <div class="vc-mem">💡 Proto = first (Greek). A prototype is the FIRST version made before production. Key difference from a model: a prototype is full-size and made using actual manufacturing processes. A scale model might just show appearance. Prototypes test EVERYTHING — materials, processes, ergonomics, safety.</div>
+    </div></div>
+
+    <div class="vc" data-topic="env"><div class="vc-top"><div class="vc-word">Life-Cycle Analysis (LCA)</div><div class="vc-tag t-env">Environmental</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>systematic method for assessing the total environmental impact of a product at every stage of its life</strong> — from extraction of raw materials, through manufacturing and use, to disposal. The LCA reveals which stages produce the most environmental impact and where improvements can be made.</div>
+      <div class="vc-ex">"The <em>LCA</em> for the plastic bottle revealed that the most significant environmental impact came not from manufacturing, but from the fossil fuels burned during transportation to retail stores — prompting the company to redesign for local production."</div>
+      <div class="vc-mem">💡 LCA = counting ALL environmental costs across ALL stages. Stages: extraction → transport → processing → manufacture → transport → distribution → USE → disposal/recovery. LCA makes hidden impacts visible — e.g. the transport stage is often the biggest impact, not the manufacturing stage.</div>
+    </div></div>
+
+    <div class="vc" data-topic="env"><div class="vc-top"><div class="vc-word">Green Design</div><div class="vc-tag t-env">Environmental</div></div><div class="vc-body">
+      <div class="vc-def">Designing products and systems with <strong>minimal environmental impact</strong>, without compromising function, quality, or performance. Includes designing for energy efficiency, using renewable or biodegradable materials, minimising waste, and enabling recycling and disassembly.</div>
+      <div class="vc-ex">"The designer used a <em>green design</em> approach for the new packaging — choosing recycled cardboard (renewable, biodegradable) over single-use plastic, and designing the box shape to nest together during transport, reducing the number of delivery vehicles needed."</div>
+      <div class="vc-mem">💡 Five green design strategies: (1) energy efficiency in use, (2) less waste/fewer materials, (3) renewable energy in manufacture, (4) non-toxic/recyclable/reusable materials, (5) biodegradable materials. The exam often asks for "two ways a designer can promote green design" — use these five.</div>
+    </div></div>
+
+    <div class="vc" data-topic="soc"><div class="vc-top"><div class="vc-word">Fairtrade Foundation</div><div class="vc-tag t-soc">Social</div></div><div class="vc-body">
+      <div class="vc-def">An organisation that <strong>tackles poverty and injustice in global trade</strong> by ensuring that farmers and producers in developing countries receive a fair, guaranteed price for their goods. It also works to improve working conditions and prevent child or enforced labour and discrimination by gender.</div>
+      <div class="vc-ex">"The chocolate manufacturer chose to use <em>Fairtrade</em> certified cocoa — ensuring that the farmers in Ghana who grew the cocoa beans were paid above the market rate, could invest in their communities, and worked in safe conditions."</div>
+      <div class="vc-mem">💡 Fairtrade = fair payment to farmers + safe working conditions + no child or forced labour + no gender discrimination. Products with the Fairtrade mark include coffee, chocolate, bananas, cotton. The premium paid goes into a community development fund controlled by the farmers.</div>
+    </div></div>
+
+    <div class="vc" data-topic="env"><div class="vc-top"><div class="vc-word">Carbon Offsetting</div><div class="vc-tag t-env">Environmental</div></div><div class="vc-body">
+      <div class="vc-def">A strategy that allows companies or individuals to <strong>compensate for their carbon dioxide emissions</strong> by funding activities elsewhere that absorb or prevent an equivalent amount of CO₂ — such as planting trees, installing renewable energy, or protecting forests. This can make an organisation "carbon neutral."</div>
+      <div class="vc-ex">"The airline company used <em>carbon offsetting</em> to compensate for the CO₂ emissions of its flights — for every tonne of CO₂ emitted, it funded the planting of trees in South America that would absorb an equivalent amount of carbon over their lifetimes."</div>
+      <div class="vc-mem">💡 Carbon offset = compensate (balance out) your emissions by supporting something that removes or prevents the same amount of CO₂ elsewhere. Examples: planting trees, funding solar panels in developing countries, encouraging staff to cycle to work. Criticism: it doesn't reduce YOUR emissions — it just balances them.</div>
+    </div></div>
+
+    <div class="vc" data-topic="mfg"><div class="vc-top"><div class="vc-word">Design for Manufacture (DFM)</div><div class="vc-tag t-mfg">Manufacturing</div></div><div class="vc-body">
+      <div class="vc-def">A design approach that <strong>simplifies a product so that it can be manufactured more easily, quickly, and cheaply</strong>. DFM techniques include using standardised parts, simplifying or making processes repeatable, making the design modular, and designing for disassembly, servicing, and recycling.</div>
+      <div class="vc-ex">"The new blender was redesigned using <em>DFM</em> — the number of unique parts was reduced from 47 to 23, all screws were standardised to the same size, and the housing was designed with snap-fit clips rather than screws to speed up assembly and disassembly."</div>
+      <div class="vc-mem">💡 DFM = making the product easier and cheaper to manufacture. Six DFM strategies: (1) standardised parts, (2) simplify/repeat processes, (3) reduce complexity/make modular, (4) simple quality control tests, (5) reduce tolerances, (6) design for disassembly. All reduce cost per unit.</div>
+    </div></div>
+
+    <div class="vc" data-topic="mfg"><div class="vc-top"><div class="vc-word">Modular Design</div><div class="vc-tag t-mfg">Manufacturing</div></div><div class="vc-body">
+      <div class="vc-def">A design approach where a product is built from <strong>standardised, interchangeable components (modules)</strong> of standard sizes that can be combined in different ways. Each module works independently and can be replaced or upgraded without affecting the rest of the product.</div>
+      <div class="vc-ex">"The office furniture system used <em>modular design</em> — the same standard desk top, leg, and drawer unit modules could be combined in dozens of different configurations, allowing each office to customise its layout without needing bespoke components."</div>
+      <div class="vc-mem">💡 Modular = made from modules (standard blocks). Like LEGO — each piece is standard but can be combined in many ways. Advantages: parts are interchangeable; one broken module is replaced, not the whole product; modules can be upgraded independently; reduces inventory of spare parts.</div>
+    </div></div>
+
+  </div>
+</div>
+
+<!-- 1.13 MATERIAL CONTEXTS -->
+<div id="sec-t113" class="section">
+  <div class="sec-head"><h2>1.13 — Using Material Properties to Inform Design Decisions</h2><p>Topic 1.13 is about how designers select appropriate materials by understanding mechanical and physical properties, and how to justify those choices.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Properties as Answers:</strong> Every "Explain why [material] is used for [product]" question requires you to name a SPECIFIC property and explain what that property DOES for the product. Don't say "steel is strong" — say "mild steel has high tensile strength, which means it can resist the pulling forces acting on the bicycle frame without stretching or breaking." The specific mechanism is what earns the mark.</div>
+
+  <div class="sub-nav">
+    <button class="sn-btn sn-a active" onclick="showSub('113','props',this)">📊 Material Properties</button>
+    <button class="sn-btn sn-b"        onclick="showSub('113','select',this)">🎯 Selection Criteria</button>
+    <button class="sn-btn sn-c"        onclick="showSub('113','mixed',this)">🔗 Mixed Materials</button>
+  </div>
+
+  <div class="sub-panel active" id="113-props">
+    <div class="panel-head ph-a"><h3>📊 Mechanical &amp; Physical Properties (Table 1.13.1)</h3><p>You must know and be able to apply these properties. The exam will give you a product and ask which properties are most important — and why.</p></div>
+    <div class="panel-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:10px;">Mechanical Properties — Respond to Force</h3>
+          <table class="prop-tbl">
+            <tr><th class="th-mech">Property</th><th class="th-eg">Definition</th></tr>
+            <tr><td class="pn">Strength</td><td>Ability to withstand force — resisting squashing (compression) or stretching (tension)</td></tr>
+            <tr><td class="pn">Elasticity</td><td>Ability to return to original shape once the deforming force is removed</td></tr>
+            <tr><td class="pn">Plasticity</td><td>Ability to permanently deform without breaking when a force is applied</td></tr>
+            <tr><td class="pn">Malleability</td><td>Ability to be permanently deformed in all directions without fracture (pressed/hammered into sheets)</td></tr>
+            <tr><td class="pn">Ductility</td><td>Ability to be deformed by bending, twisting, or stretching — drawn into wire</td></tr>
+            <tr><td class="pn">Hardness</td><td>Ability to resist deformation, indentation, or penetration by another material</td></tr>
+            <tr><td class="pn">Toughness</td><td>Ability to withstand sudden stress or shocks without fracturing (absorbs impact energy)</td></tr>
+            <tr><td class="pn">Brittleness</td><td>INABILITY to withstand sudden stress or shocks — breaks without bending (opposite of toughness)</td></tr>
+            <tr><td class="pn">Durability</td><td>Ability to withstand deterioration over time — resists wear, corrosion, and damage through prolonged use</td></tr>
+            <tr><td class="pn">Stability</td><td>Ability to resist changes in shape over time — does not warp, twist, or sag</td></tr>
+            <tr><td class="pn">Stiffness</td><td>Ability to resist bending — maintains its shape under load without flexing</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:10px;">Physical Properties — Measured Without Force</h3>
+          <table class="prop-tbl">
+            <tr><th class="th-nm">Property</th><th class="th-eg" style="border-radius:0 7px 0 0;">Definition</th></tr>
+            <tr><td class="pn">Density</td><td>Compactness of a material — defined as mass per unit volume (kg/m³). High density = heavy for its size</td></tr>
+            <tr><td class="pn">Electrical conductivity</td><td>Ability to conduct (allow the flow of) electricity. Copper has very high conductivity — ideal for wiring</td></tr>
+            <tr><td class="pn">Thermal conductivity</td><td>Ability to conduct (transfer) heat. Metals are good conductors; polymers are poor conductors (insulators)</td></tr>
+            <tr><td class="pn">Size</td><td>Dimensions of the material — available in standard sizes from suppliers (stock sizes)</td></tr>
+            <tr><td class="pn">Corrosion</td><td>The process by which a metal is eaten away by reaction with oxygen and water. Iron and steel rust; aluminium oxidises but forms a protective layer</td></tr>
+            <tr><td class="pn">Aesthetics</td><td>The appearance of the material — including colour, texture, grain pattern, sheen, and visual appeal</td></tr>
+            <tr><td class="pn">Optical</td><td>Ability to absorb, reflect, or transmit light. Acrylic is transparent; MDF is opaque</td></tr>
+            <tr><td class="pn">Joining</td><td>Ability to be joined to other materials — by welding, gluing, bolting, or other fixing methods</td></tr>
+            <tr><td class="pn">Magnetism</td><td>Attraction to magnetic material. Ferrous metals (iron, mild steel) are magnetic; non-ferrous metals and polymers are not</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="insight-box">💡 <strong>Brittleness vs Toughness:</strong> These are OPPOSITES. Brittle materials break suddenly without bending (glass, cast iron, urea formaldehyde). Tough materials absorb impact energy and deform before breaking (mild steel, nylon, polycarbonate). The exam often tests whether you understand which is desirable for a specific product.</div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="113-select">
+    <div class="panel-head ph-b"><h3>🎯 Elements Analysed When Selecting Materials (Figure 1.13.3)</h3><p>Before choosing a material, manufacturers analyse 8 factors beyond just the material properties.</p></div>
+    <div class="panel-body">
+      <div class="sel-grid">
+        <div class="sel-card"><h4>📦 Available Stock Forms</h4><p>What shapes and sizes is the material available in? (sheets, rods, tubes, sections) Designers use standard stock sizes to avoid waste and reduce cutting.</p></div>
+        <div class="sel-card"><h4>⚗️ Mechanical &amp; Physical Properties</h4><p>Does the material have the required strength, hardness, conductivity etc. to perform its function safely and reliably throughout the product's life?</p></div>
+        <div class="sel-card"><h4>💰 Cost &amp; Availability</h4><p>Is the material affordable in the required quantities? Is it readily available from suppliers, or are lead times long? Material cost directly affects product price.</p></div>
+        <div class="sel-card"><h4>🔧 Tools, Equipment &amp; Processes</h4><p>Does the school/factory have the tools and machines needed to shape, cut, and join this material? Can it be processed with available equipment?</p></div>
+        <div class="sel-card"><h4>⚡ Energy Demands</h4><p>How much energy does the construction process require? High-energy processes (e.g. melting metal) increase costs and environmental impact.</p></div>
+        <div class="sel-card"><h4>🏭 Scale of Production</h4><p>Is the scale of production (one-off, batch, mass) compatible with the material and process? Some materials are only economical at large volumes.</p></div>
+        <div class="sel-card"><h4>♻️ Level of Waste</h4><p>How much material is wasted during processing? Wastage adds cost. Designing to standard sizes or using additive manufacturing reduces waste.</p></div>
+        <div class="sel-card"><h4>✂️ Ease of Processing</h4><p>Is the material easy to cut, shape, join, and finish? Complex processing increases time, cost, and the chance of defects.</p></div>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:20px 0 12px;">Justifying Material and Process Choices</h3>
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:14px;line-height:1.6;">A manufacturer can justify its material and process choices in several ways — the exam may ask you to "explain how a manufacturer can justify its choice of material."</p>
+      <div class="sel-grid">
+        <div class="sel-card"><h4>🧪 Test Pieces</h4><p>Produce sample pieces from the material and test them to prove that the material has the required mechanical and physical properties under real conditions.</p></div>
+        <div class="sel-card"><h4>🔲 Prototypes</h4><p>Build a full-size, 3D prototype using the same manufacturing processes planned for production — tests how well the material and processes work together in the final product context.</p></div>
+        <div class="sel-card"><h4>💷 Economic Case</h4><p>Produce a detailed cost analysis: material cost + labour + energy + waste + transportation + hidden costs. Prove the choice makes commercial sense at the required scale of production.</p></div>
+        <div class="sel-card"><h4>🌍 Environmental Evaluation</h4><p>Evaluate the materials and production methods in relation to environmental and social impact — using LCA data, recycled content percentages, and sustainability certifications.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="113-mixed">
+    <div class="panel-head ph-c"><h3>🔗 Mixed Materials — Why Combine Different Materials?</h3><p>Most real products use multiple materials — each chosen for a specific property that no single material can provide alone.</p></div>
+    <div class="panel-body">
+      <div class="insight-box">💡 <strong>Key exam question pattern:</strong> "Explain why [material] is used for [specific part] of the product." Your answer must name the specific property AND explain what it does for that part — not for the product as a whole. The beech is hard (not "the chair is good") — the hardness of the beech specifically prevents the chair legs from being scratched by floor contact.</div>
+      <div class="mixed-grid">
+        <div class="mixed-card">
+          <h4>🍫 Chocolate Box (Fig 1.13.1)</h4>
+          <div class="mat-row"><span class="mat-name">Folding boxboard (outer):</span><span class="mat-why">Excellent printability — the white bleached surface accepts high-quality full-colour printing for the packaging design. Good creasing ability — folds cleanly into a rigid box shape.</span></div>
+          <div class="mat-row"><span class="mat-name">Rigid polystyrene (inner tray):</span><span class="mat-why">Lightweight — does not add unnecessary mass to the package. Water resistant — protects chocolates from humidity. Can be vacuum formed into the exact shape of each chocolate space.</span></div>
+        </div>
+        <div class="mixed-card">
+          <h4>🪑 Director's Chair (Fig 1.13.2)</h4>
+          <div class="mat-row"><span class="mat-name">Beech (frame):</span><span class="mat-why">Hard — chair legs resist scratching from contact with floors. Tough — chair frame withstands the rough handling of repeated folding and unfolding. Not suitable outdoors — beech is not naturally weather resistant.</span></div>
+          <div class="mat-row"><span class="mat-name">Mild steel (braces):</span><span class="mat-why">High tensile strength — the steel cross-brace resists the pulling (tension) forces that act on it when someone sits in the chair. Provides structural rigidity without excessive weight.</span></div>
+          <div class="mat-row"><span class="mat-name">Synthetic polyester (seat/back):</span><span class="mat-why">Strong when wet or dry — withstands the weight of a person sitting repeatedly. Weatherproof — resists rain and UV fading for outdoor use. Stain resistant — easy to wipe clean.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.14 DESIGN CHALLENGES -->
+<div id="sec-t114" class="section">
+  <div class="sec-head"><h2>1.14 — Challenges that Influence the Processes of Design and Making</h2><p>Topic 1.14 covers the broader factors that constrain and influence design decisions — social responsibility, environmental impact, human capabilities, cost, and manufacturing efficiency.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Connect to the Real World:</strong> All the concepts in 1.14 are visible in real products around you right now. Your phone was designed with a specific social group in mind. The packaging on your food may have a Fairtrade mark. The chair you're sitting on may have been manufactured using DFM principles. Connecting each concept to something you can see or touch makes abstract ideas concrete and memorable.</div>
+
+  <div class="sub-nav">
+    <button class="sn-btn sn-a active" onclick="showSub('114','groups',this)">👥 Social Groups</button>
+    <button class="sn-btn sn-c"        onclick="showSub('114','env',this)">🌱 Environmental</button>
+    <button class="sn-btn sn-d"        onclick="showSub('114','mfg',this)">🏭 Cost &amp; DFM</button>
+  </div>
+
+  <div class="sub-panel active" id="114-groups">
+    <div class="panel-head ph-a"><h3>👥 Respect for Social, Ethnic &amp; Economic Groups</h3><p>All designers must consider who will use their product and ensure it is appropriate, respectful, and accessible to different groups of people.</p></div>
+    <div class="panel-body">
+      <div class="group-grid">
+        <div class="group-card"><div class="group-head gh-soc">👥 Social Groups</div><div class="group-body">
+          <p>Share a <strong>common social aspect</strong> such as education level, age, or gender. Designs should incorporate the specific needs and desires of the target social group.</p>
+          <p class="group-eg">Example: phones designed for young people incorporate large screens and fast processors for easy access to social media, games, and video calling — features prioritised for that social group's usage patterns.</p>
+        </div></div>
+        <div class="group-card"><div class="group-head gh-eth">🌍 Ethnic Groups</div><div class="group-body">
+          <p>Share a <strong>common cultural background</strong> — ancestry, homeland, dialect, and cultural heritage. Products must be sympathetic to that culture and must not offend through insensitive use of symbols, clothing representations, or labels.</p>
+          <p class="group-eg">Example: care must be taken when using cultural symbols, patterns, clothing references, or colour associations in product design — meanings vary significantly between cultures and an insensitive choice can cause serious offence and commercial damage.</p>
+        </div></div>
+        <div class="group-card"><div class="group-head gh-eco">💰 Economic Groups</div><div class="group-body">
+          <p>Share <strong>similar income levels</strong>. Different economic groups have different purchasing power and may be driven by cost, quality, or brand prestige when choosing products.</p>
+          <p class="group-eg">Example: kettles are available from a basic, cheap functional model (~£15) to premium designer versions (~£200) — both boil water, but target completely different economic groups with different priorities (cost vs aesthetic quality vs brand).</p>
+        </div></div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin:20px 0 12px;">Environmental, Social &amp; Economic Initiatives</h3>
+      <div class="green-grid">
+        <div class="green-card"><h4>🌿 Fairtrade Foundation</h4><p>Tackles poverty and injustice across the global supply chain. Ensures farmers and producers in developing countries receive a fair, guaranteed price. Prevents child or forced labour and gender discrimination. Products include coffee, chocolate, cotton, bananas.</p></div>
+        <div class="green-card"><h4>🌳 Carbon Offsetting</h4><p>Companies compensate for their carbon emissions by funding activities that absorb CO₂ (tree planting) or prevent emissions elsewhere (renewable energy). Encourages staff to walk, cycle, or use public transport rather than drive. Aim: carbon neutral status.</p></div>
+        <div class="green-card"><h4>🔧 Product Disassembly</h4><p>Design products so they can be easily taken apart at end of life — enabling parts to be recycled or reused. Reduce the number of components. Label each part by material type. Design for disassembly (DfD) extends product life and reduces landfill.</p></div>
+        <div class="green-card"><h4>📜 Disposal of Waste</h4><p>Governed by laws at international, EU, national, and local levels. Laws control the collection, transportation, recovery, and disposal of waste to minimise environmental harm. Producers are increasingly responsible for the end-of-life disposal of their products (Extended Producer Responsibility).</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="114-env">
+    <div class="panel-head ph-c"><h3>🌱 Environmental Design — Green Design, Recycling &amp; LCA</h3><p>Global warming and rising energy costs have pushed environmental factors to the centre of design practice. A designer who ignores environmental impact is increasingly viewed as professionally negligent.</p></div>
+    <div class="panel-body">
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:12px;">Five Green Design Strategies</h3>
+      <div class="green-grid">
+        <div class="green-card"><h4>⚡ Energy Efficiency</h4><p>Design the product to use as little energy as possible during use. Example: LED lighting uses 90% less electricity than traditional incandescent bulbs for the same light output.</p></div>
+        <div class="green-card"><h4>📉 Less Waste / Fewer Materials</h4><p>Reduce the amount of material used in the product (lightweighting). Design parts to minimise cutting waste. Use standard stock sizes to avoid off-cuts.</p></div>
+        <div class="green-card"><h4>🌞 Renewable Energy</h4><p>Use renewable energy sources (solar, wind, hydro) or more efficient energy in the manufacturing process. Carbon footprint of manufacturing is significantly reduced.</p></div>
+        <div class="green-card"><h4>♻️ Recyclable Materials</h4><p>Use non-toxic, recyclable, or reusable materials and components. Make it easy to separate different materials at end of life. Label all materials clearly.</p></div>
+        <div class="green-card"><h4>🌱 Biodegradable Materials</h4><p>Use materials that decompose naturally (paper, cardboard, PLA bioplastic, natural textiles) instead of persistent plastics that remain in the environment for hundreds of years.</p></div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:20px 0 12px;">Life-Cycle Analysis (LCA)</h3>
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px;line-height:1.6;">An LCA systematically counts the environmental impact at <em>every single stage</em> of a product's life — not just manufacturing. This often reveals surprising results: for many products, the USE phase produces more impact than the manufacturing phase.</p>
+      <div class="lca-flow">
+        <div class="lca-step">Raw material extraction</div>
+        <div class="lca-arrow">→</div>
+        <div class="lca-step">Transportation</div>
+        <div class="lca-arrow">→</div>
+        <div class="lca-step">Processing</div>
+        <div class="lca-arrow">→</div>
+        <div class="lca-step">Manufacture</div>
+        <div class="lca-arrow">→</div>
+        <div class="lca-step">Transport/Distribution</div>
+        <div class="lca-arrow">→</div>
+        <div class="lca-step">Use</div>
+        <div class="lca-arrow">→</div>
+        <div class="lca-step">Disposal/Recovery</div>
+      </div>
+      <div class="insight-box">💡 <strong>LCA exam tip:</strong> The exam may ask you to "describe what is meant by a life-cycle analysis." Key answer points: (1) systematic — covers ALL stages; (2) identifies environmental impacts at EACH stage; (3) helps designers identify WHERE improvements can reduce the total environmental cost most effectively.</div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:20px 0 12px;">Recycling and Reusing — Advantages and Disadvantages</h3>
+      <table class="rec-tbl">
+        <tr><th class="th-radv">✓ Advantages of Recycling and Reusing</th><th class="th-rdis">✗ Disadvantages of Recycling and Reusing</th></tr>
+        <tr><td>Less waste material sent to landfill — reduces land needed for waste disposal</td><td>Recycling process can be complex when materials must be separated (e.g. composite materials)</td></tr>
+        <tr><td>Reduces the demand for new raw material extraction — conserves natural resources</td><td>Not always cost efficient — significant energy is needed to transport, process, and reassemble recyclable materials</td></tr>
+        <tr><td>Helps reduce global warming by reducing emissions from processing virgin raw materials</td><td>The recycling process itself may produce waste products and pollutants, creating new environmental problems</td></tr>
+        <tr><td>Can reduce the need for transportation and mining operations</td><td>Jobs created in the recycling industry may be low quality and poorly paid</td></tr>
+        <tr><td>Creates jobs in the recycling industry, supporting local economies</td><td>Quality of the recycled material may be inferior to virgin material (e.g. recycled paper fibres are shorter)</td></tr>
+        <tr><td>Money is saved as the materials are used for a second time rather than extracting new materials</td><td></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-panel" id="114-mfg">
+    <div class="panel-head ph-d"><h3>🏭 Human Capability, Cost of Materials &amp; Design for Manufacture</h3><p>These three factors constrain how products are designed — every design decision affects how easily a product can be made, how much it costs, and whether real people can use it safely.</p></div>
+    <div class="panel-body">
+      <div class="sel-grid" style="margin-bottom:20px;">
+        <div class="sel-card"><h4>🧠 Human Capability</h4><p>A product must meet the needs of its users AND operate within their physical and cognitive capabilities. Any product that stretches the capabilities of its users is likely to be unsafe.</p><p style="font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;">Example: if the controls on an electric heater are unclear or difficult to operate, there is a risk of accidental burns. Simple design changes — larger text, clearer icons, colour-coded buttons — can dramatically reduce accidents.</p></div>
+        <div class="sel-card"><h4>💷 True Cost of Materials</h4><p>The real cost of a material is not just its purchase price. It includes:</p><p style="font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.5;">• Ongoing maintenance costs<br>• Transportation costs<br>• Recycling and disposal costs at end of life<br>• Environmental cost — damage to landscape, emissions from conversion, energy in production process</p></div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:12px;">Design for Manufacture (DFM) — Making Products Easier to Build</h3>
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px;line-height:1.6;">The easier a product is to construct, the lower the manufacturing costs per unit. DFM is about simplifying the design without compromising on performance or quality.</p>
+      <div class="dfm-grid">
+        <div class="dfm-card"><h4>Standardised Parts</h4><p>Use the same screws, bolts, and fixings throughout — reduces the number of different components and simplifies assembly. One screwdriver fits all.</p></div>
+        <div class="dfm-card"><h4>Simplify Processes</h4><p>Use repeatable, simple manufacturing steps rather than complex, one-off operations. Automation works best with simple, consistent processes.</p></div>
+        <div class="dfm-card"><h4>Modular Design</h4><p>Build from standard-sized interchangeable modules. If one module fails, only that module needs replacing — not the whole product.</p></div>
+        <div class="dfm-card"><h4>Simple QC Tests</h4><p>Design the product so that quality can be checked with simple go/no-go gauges or visual inspection — rather than complex measurement equipment at every stage.</p></div>
+        <div class="dfm-card"><h4>Reduce Tolerances</h4><p>Where possible, design parts so they can fit together even if they are not perfectly precise — reduces the cost of machining and the number of rejected parts.</p></div>
+        <div class="dfm-card"><h4>Design for Disassembly</h4><p>Design the product so that it can be easily taken apart for servicing, repair, and recycling at end of life. Reduces long-term support costs and landfill.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVITIES -->
+<div id="sec-activities" class="section">
+  <div class="sec-head"><h2>Revision Activities</h2><p>Gap fill, matching, and true/false across both topics. Word bank NOT in answer order.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Write, Don't Just Think:</strong> After completing each activity, write a two-sentence explanation for every answer you got wrong. The act of writing the correct answer in your own words is far more effective than simply reading the correct answer. Mistakes are not failures — they are the most valuable part of revision.</div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 1 — Gap Fill: Key Concepts</h3><div class="act-badge">Fill in the blanks</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a word from the Word Bank, then click the correct blank. Bank is NOT in answer order.</div>
+      <div class="word-bank" id="wb1">
+        <span class="wchip" data-word="green design">green design</span>
+        <span class="wchip" data-word="density">density</span>
+        <span class="wchip" data-word="modular">modular</span>
+        <span class="wchip" data-word="DFM">DFM</span>
+        <span class="wchip" data-word="toughness">toughness</span>
+        <span class="wchip" data-word="brittleness">brittleness</span>
+        <span class="wchip" data-word="prototype">prototype</span>
+        <span class="wchip" data-word="LCA">LCA</span>
+        <span class="wchip" data-word="carbon offsetting">carbon offsetting</span>
+        <span class="wchip" data-word="Fairtrade">Fairtrade</span>
+        <span class="wchip" data-word="ethnic">ethnic</span>
+        <span class="wchip" data-word="elasticity">elasticity</span>
+      </div>
+      <div id="gf1">
+        <div class="gap-sent">1. The ability of a material to withstand sudden stress or shocks without fracturing is called <input type="text" class="gf" data-answer="toughness">. This is different from strength — a tough material absorbs energy; a strong material resists deformation.</div>
+        <div class="gap-sent">2. The INABILITY to withstand sudden stress or shocks — breaking without bending — is called <input type="text" class="gf" data-answer="brittleness">. Cast iron and glass are examples of materials with this property.</div>
+        <div class="gap-sent">3. The ability of a material to return to its original shape once the deforming force is removed is called <input type="text" class="gf" data-answer="elasticity">. A rubber band demonstrates this — it returns to its original length when released.</div>
+        <div class="gap-sent">4. <input type="text" class="gf" data-answer="density"> is a physical property defined as mass per unit volume — a high-density material such as lead is very heavy for its size, while low-density aluminium is light relative to its volume.</div>
+        <div class="gap-sent">5. A <input type="text" class="gf" data-answer="prototype"> is a full-size, three-dimensional model of the finished design created for testing before production begins, using the same or similar manufacturing processes as the final product.</div>
+        <div class="gap-sent">6. A <input type="text" class="gf" data-answer="LCA"> (Life-Cycle Analysis) is a systematic method for assessing the environmental impact of a product at every stage — from extraction of raw materials through to disposal at the end of its life.</div>
+        <div class="gap-sent">7. <input type="text" class="gf" data-answer="green design"> is an approach that aims to minimise the environmental impact of a product by designing for energy efficiency, using biodegradable or recycled materials, and reducing waste.</div>
+        <div class="gap-sent">8. The <input type="text" class="gf" data-answer="Fairtrade"> Foundation ensures that farmers and producers in developing countries receive a fair price for their goods and works to prevent child or enforced labour and gender discrimination.</div>
+        <div class="gap-sent">9. <input type="text" class="gf" data-answer="carbon offsetting"> allows companies to compensate for their CO₂ emissions by funding activities that absorb or prevent an equivalent amount of carbon dioxide, such as planting trees or installing renewable energy.</div>
+        <div class="gap-sent">10. Products should be designed with respect for different <input type="text" class="gf" data-answer="ethnic"> groups — sharing a common cultural background — to ensure they are sympathetic to that culture and do not cause offence through insensitive use of symbols, colours, or labelling.</div>
+        <div class="gap-sent">11. <input type="text" class="gf" data-answer="DFM"> (Design for Manufacture) is a design approach that simplifies a product to make it easier and cheaper to manufacture — using standardised parts, simplifying processes, and designing for disassembly.</div>
+        <div class="gap-sent">12. A <input type="text" class="gf" data-answer="modular"> design uses standardised, interchangeable components of standard sizes that can be assembled in different configurations — like LEGO — allowing customisation without bespoke parts.</div>
+      </div>
+      <div><button class="check-btn" onclick="checkGF('gf1','sc1')">✓ Check Answers</button><button class="reset-btn" onclick="resetGF('gf1','sc1','wb1')">↺ Reset</button><div class="score-box" id="sc1"></div></div>
+    </div>
+  </div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 2 — Matching: Term to Description</h3><div class="act-badge">Click to match</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a term LEFT, then its correct description RIGHT. NOT in order.</div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-lbl">📋 Term</div>
+          <div class="mi mw" data-id="1" onclick="sm(this,'w')">Life-Cycle Analysis</div>
+          <div class="mi mw" data-id="2" onclick="sm(this,'w')">Fairtrade Foundation</div>
+          <div class="mi mw" data-id="3" onclick="sm(this,'w')">Toughness</div>
+          <div class="mi mw" data-id="4" onclick="sm(this,'w')">Design for Manufacture</div>
+          <div class="mi mw" data-id="5" onclick="sm(this,'w')">Carbon offsetting</div>
+          <div class="mi mw" data-id="6" onclick="sm(this,'w')">Modular design</div>
+          <div class="mi mw" data-id="7" onclick="sm(this,'w')">Malleability</div>
+          <div class="mi mw" data-id="8" onclick="sm(this,'w')">Green design</div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-lbl">📋 Description</div>
+          <div class="mi" data-id="4" onclick="sm(this,'d')">A design approach that simplifies a product for easier, faster, cheaper manufacturing — using standardised parts, repeatable processes, and designs for disassembly</div>
+          <div class="mi" data-id="7" onclick="sm(this,'d')">The ability of a material to be permanently deformed in all directions without fracturing — pressed, rolled, or beaten into sheets</div>
+          <div class="mi" data-id="1" onclick="sm(this,'d')">A systematic inventory assessing the environmental impact of a product at every stage — from raw material extraction through to disposal</div>
+          <div class="mi" data-id="5" onclick="sm(this,'d')">Compensating for CO₂ emissions by funding activities that absorb or prevent an equivalent amount of carbon elsewhere — such as tree planting</div>
+          <div class="mi" data-id="6" onclick="sm(this,'d')">Building a product from standardised, interchangeable components of standard sizes that can be combined in different configurations</div>
+          <div class="mi" data-id="3" onclick="sm(this,'d')">The ability to withstand sudden stress or shocks without fracturing — a tough material absorbs impact energy rather than breaking immediately</div>
+          <div class="mi" data-id="8" onclick="sm(this,'d')">Designing products to minimise environmental impact — through energy efficiency, use of renewable/biodegradable materials, and reduced waste</div>
+          <div class="mi" data-id="2" onclick="sm(this,'d')">An organisation that ensures farmers in developing countries receive fair prices for goods and prevents child/forced labour and gender discrimination</div>
+        </div>
+      </div>
+      <button class="reset-btn" style="margin-top:12px;" onclick="resetMatch()">↺ Reset</button>
+      <div id="mDone" style="display:none;margin-top:11px;font-size:14px;font-weight:600;color:var(--green);background:var(--green-l);padding:9px 15px;border-radius:8px;">🎉 All 8 matched correctly!</div>
+    </div>
+  </div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 3 — True or False?</h3><div class="act-badge">Test understanding</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 These statements test the most common exam misconceptions across Topics 1.13 and 1.14. Read each explanation carefully.</div>
+      <div class="tf-item"><div class="tf-stmt">1. Toughness and hardness are the same property — both describe a material's ability to resist damage.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,1)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,1)">False</button></div><div class="tf-fb" id="tf1">❌ <strong>False — these are completely different properties.</strong> Hardness is the ability to resist surface indentation or scratching — a hard material is difficult to scratch or dent (diamond is the hardest material). Toughness is the ability to withstand sudden impact without fracturing — a tough material absorbs energy and bends before breaking (polycarbonate, mild steel). In fact, the hardest materials are often brittle, not tough: glass is hard but shatters on impact.</div></div>
+      <div class="tf-item"><div class="tf-stmt">2. A Life-Cycle Analysis (LCA) only considers the environmental impact of manufacturing a product.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,2)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,2)">False</button></div><div class="tf-fb" id="tf2">❌ <strong>False — an LCA covers EVERY stage of a product's life, not just manufacturing.</strong> The stages are: raw material extraction → transportation → processing → manufacture → transportation to market → distribution → USE by consumer → disposal or recovery at end of life. The USE stage is often the most significant — a car, for example, produces far more CO₂ during its operational life from burning fuel than was produced during its manufacture.</div></div>
+      <div class="tf-item"><div class="tf-stmt">3. Recycling is always better for the environment than sending materials to landfill.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,3)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,3)">False</button></div><div class="tf-fb" id="tf3">❌ <strong>False — recycling has significant disadvantages that must be weighed against its benefits.</strong> The recycling process itself requires energy for transportation, sorting, reprocessing, and reassembly — and this energy is often generated from fossil fuels. Some recycling processes produce their own waste streams and pollutants. The quality of recycled material is often inferior to virgin material. In some cases, the total environmental cost of recycling a material exceeds the cost of sending it to a modern, energy-recovering landfill. A nuanced answer that acknowledges both sides will always score better in the exam.</div></div>
+      <div class="tf-item"><div class="tf-stmt">4. Design for Manufacture (DFM) is about making products look simpler — it reduces the aesthetic quality of the product.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,4)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,4)">False</button></div><div class="tf-fb" id="tf4">❌ <strong>False — DFM is about simplifying the MANUFACTURING PROCESS, not the appearance.</strong> DFM means using standardised parts, repeatable processes, modular construction, and designs for disassembly — all of which reduce manufacturing cost and complexity without necessarily affecting how the product looks. In fact, some of the most aesthetically beautiful products (Apple's iPhone, for example) are also masterpieces of DFM — minimising part count dramatically while maintaining excellent visual design.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM LANGUAGE -->
+<div id="sec-exam" class="section">
+  <div class="sec-head"><h2>Exam Language &amp; Practice</h2><p>Topics 1.13 and 1.14 generate "explain," "describe," "evaluate," and "justify" questions. These are extended response questions worth 4–6 marks — they require structured, detailed answers using specific terminology.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — The Property-Consequence-Context Structure:</strong> For any material property question: (1) NAME the property, (2) DEFINE it precisely, (3) explain the CONSEQUENCE of that property for the product, (4) link to the specific CONTEXT given in the question. All four parts are needed for full marks.</div>
+
+  <div class="frame-card"><div class="frame-type">Explaining why a material property is important — 2 marks</div><div class="frame-body">
+    <div class="frame-tpl"><span class="blank">[Material]</span> has <span class="blank">[property]</span>, which means that it <span class="blank">[what that property enables]</span>. This is important for this product because <span class="blank">[specific product requirement]</span>.</div>
+    <div class="frame-ex">"<strong>Polycarbonate</strong> has <strong>high toughness</strong>, which means that it <strong>can absorb sudden impact energy without shattering</strong>. This is important for a safety helmet because <strong>if the helmet fractured on impact (like a brittle material would), it would no longer protect the wearer's head from the continuing force of the collision</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Explaining how a designer can promote green design — 4 marks</div><div class="frame-body">
+    <div class="frame-tpl">A designer can promote green design by <span class="blank">[method 1]</span>, which would reduce <span class="blank">[environmental impact 1]</span>. They could also <span class="blank">[method 2]</span>, which would <span class="blank">[environmental benefit 2]</span>.</div>
+    <div class="frame-ex">"A designer can promote green design by <strong>using biodegradable packaging materials instead of single-use plastic</strong>, which would reduce <strong>the amount of persistent plastic waste entering the environment and the fossil fuels used to produce it</strong>. They could also <strong>design the product for disassembly — reducing the number of parts and labelling each component by material type</strong>, which would <strong>make end-of-life recycling straightforward and increase the proportion of materials recovered rather than sent to landfill</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Describing an LCA — 3 marks</div><div class="frame-body">
+    <div class="frame-tpl">A life-cycle analysis is <span class="blank">[what it is]</span>. It covers every stage from <span class="blank">[first stage]</span> to <span class="blank">[final stage]</span>. The purpose is to <span class="blank">[why it is done]</span>.</div>
+    <div class="frame-ex">"A life-cycle analysis is <strong>a systematic inventory of the environmental impact of a product at every stage of its life</strong>. It covers every stage from <strong>the extraction of raw materials</strong> to <strong>the disposal or recovery of materials at the end of the product's useful life</strong>. The purpose is to <strong>identify which stages produce the greatest environmental impact, so that designers can focus their improvement efforts where they will make the biggest difference</strong>."</div>
+  </div></div>
+
+  <div style="margin-top:24px;margin-bottom:13px;"><h2 style="font-family:'Playfair Display',serif;font-size:21px;color:var(--navy);">📝 Practice Questions</h2></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q1 · Material Properties · 4 marks</span><span class="eq-marks">4 marks</span></div><div class="eq-body">
+    <div class="eq-text">A designer is creating a children's outdoor play set from a combination of materials. Explain why <strong>toughness</strong> is an important mechanical property for this product, and give one physical property that would also be important. Justify your choice.</div>
+    <div class="eq-hint">💡 Toughness explanation: define it + why it matters for children's outdoor equipment specifically (2 marks). Physical property: name it + justify (2 marks).</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>Toughness:</strong> Toughness is the ability of a material to withstand sudden stress or shocks without fracturing. For a children's outdoor play set, toughness is essential because children will inevitably subject the equipment to sudden impacts — dropping it, sitting on it forcefully, hitting it. A tough material absorbs this impact energy and deforms rather than breaking suddenly, reducing the risk of sharp fracture surfaces that could injure a child.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>Physical property — Corrosion resistance:</strong> Since the play set will be used outdoors year-round, the materials must be resistant to corrosion from rain, moisture, and temperature changes. If the metal components corrode (rust), they weaken structurally and also produce sharp edges that could cut a child. Materials such as aluminium (which forms its own protective oxide layer) or stainless steel would be appropriate choices.</div></div>
+    </div>
+  </div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q2 · Green Design · 4 marks</span><span class="eq-marks">4 marks</span></div><div class="eq-body">
+    <div class="eq-text">Describe what is meant by a "life-cycle analysis," and explain why it is a useful tool for a product designer.</div>
+    <div class="eq-hint">💡 Two marks for describing LCA (what it is + what stages it covers). Two marks for why it is useful (what it enables designers to do).</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>What it is:</strong> A life-cycle analysis (LCA) is a systematic method that assesses the total environmental impact of a product at every stage of its life — from the extraction of raw materials, through processing, manufacture, transportation, and use by the consumer, to the disposal or recovery of materials at the end of the product's life.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>Why it is useful:</strong> An LCA is useful because it reveals which stages of a product's life produce the greatest environmental impact — information that is not obvious without systematic analysis. For example, an LCA might reveal that the use phase (e.g. electricity consumed by an appliance over its lifetime) produces far more impact than the manufacturing phase. This directs the designer to focus improvements on energy efficiency during use rather than just on material choices in manufacturing, producing a much greater reduction in total environmental impact.</div></div>
+    </div>
+  </div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q3 · Challenges · 4 marks</span><span class="eq-marks">4 marks</span></div><div class="eq-body">
+    <div class="eq-text">A manufacturer is designing a new range of kitchen kettles to sell globally. Explain <strong>two</strong> challenges the designer must consider to ensure the product is appropriate for different groups of customers.</div>
+    <div class="eq-hint">💡 Two separate challenges worth 2 marks each — name the challenge type (social/ethnic/economic), then explain specifically how it affects the kettle design.</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>Economic groups:</strong> Different economic groups have different purchasing power — a single kettle design cannot satisfy customers who prioritise low cost and those who prioritise premium aesthetics and brand prestige. The designer should consider creating a product range: a basic functional model with simple controls and low manufacturing cost for price-sensitive customers, and a premium version with high-quality materials and an iconic design for customers prepared to pay for aesthetic quality and status.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>Human capability:</strong> The kettle will be used by people of different ages, physical abilities, and levels of technological familiarity. The controls must be intuitive and clearly labelled — unclear controls on an electric kettle (e.g. an ambiguous on/off indicator) create a risk of accidental burns from assuming the kettle has boiled when it has not. The grip must be comfortable and secure for people with arthritis or reduced hand strength, and the weight when full must be manageable for elderly users.</div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- TOOLKIT -->
+<div id="sec-toolkit" class="section">
+  <div class="sec-head"><h2>ESL Language Toolkit</h2><p>Word roots, plain-English synonyms, and common exam mistakes specific to Topics 1.13 and 1.14.</p></div>
+  <div class="tk-grid">
+    <div class="tk-card"><div class="tk-head tkh-a">🔤 Key Word Roots</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th>Root</th><th>Meaning</th><th>Examples</th></tr>
+        <tr><td class="pfx">mech-</td><td>machine/force</td><td>mechanical, mechanism, mechanically</td></tr>
+        <tr><td class="pfx">duct-</td><td>to lead/draw</td><td>ductility, ductile (drawn into wire)</td></tr>
+        <tr><td class="pfx">elast-</td><td>to spring back</td><td>elasticity, elastic</td></tr>
+        <tr><td class="pfx">plast-</td><td>to mould/shape</td><td>plasticity, plastic (permanently shapeable)</td></tr>
+        <tr><td class="pfx">bio-</td><td>life</td><td>biodegradable, bioplastic, biomaterial</td></tr>
+        <tr><td class="pfx">cycl-</td><td>circle/to go round</td><td>recycle, life-cycle, cyclical</td></tr>
+        <tr><td class="pfx">modul-</td><td>a standard unit</td><td>modular, module, modulation</td></tr>
+        <tr><td class="pfx">sustain-</td><td>to hold up/endure</td><td>sustainability, sustainable, sustain</td></tr>
+        <tr><td class="pfx">off-set</td><td>to balance/compensate</td><td>carbon offsetting (compensate for emissions)</td></tr>
+        <tr><td class="pfx">proto-</td><td>first</td><td>prototype (the first made version)</td></tr>
+      </table>
+    </div></div>
+    <div class="tk-card"><div class="tk-head tkh-b">🔄 Technical Term → Plain English</div><div class="tk-body">
+      <div class="syn-p"><span class="syn-c">Mechanical property</span><span class="syn-a">→</span><span class="syn-s">How a material behaves when force is applied to it</span></div>
+      <div class="syn-p"><span class="syn-c">Physical property</span><span class="syn-a">→</span><span class="syn-s">A measurable characteristic without applying force (colour, conductivity, density)</span></div>
+      <div class="syn-p"><span class="syn-c">Toughness</span><span class="syn-a">→</span><span class="syn-s">Can survive a sudden hit without breaking — absorbs impact</span></div>
+      <div class="syn-p"><span class="syn-c">Brittleness</span><span class="syn-a">→</span><span class="syn-s">Breaks suddenly under impact without bending — the opposite of toughness</span></div>
+      <div class="syn-p"><span class="syn-c">Life-cycle analysis</span><span class="syn-a">→</span><span class="syn-s">Counting ALL environmental costs at EVERY stage of a product's life</span></div>
+      <div class="syn-p"><span class="syn-c">Green design</span><span class="syn-a">→</span><span class="syn-s">Designing to minimise environmental harm — less energy, less waste, natural materials</span></div>
+      <div class="syn-p"><span class="syn-c">Design for Manufacture</span><span class="syn-a">→</span><span class="syn-s">Simplifying a product so it is easier and cheaper to make</span></div>
+      <div class="syn-p"><span class="syn-c">Modular design</span><span class="syn-a">→</span><span class="syn-s">Built from interchangeable standard-size blocks that can be combined differently</span></div>
+      <div class="syn-p"><span class="syn-c">Fairtrade</span><span class="syn-a">→</span><span class="syn-s">Fair pay and safe conditions for farmers in developing countries</span></div>
+      <div class="syn-p"><span class="syn-c">Carbon offsetting</span><span class="syn-a">→</span><span class="syn-s">Paying for something (tree planting) to balance out your CO₂ emissions</span></div>
+    </div></div>
+    <div class="tk-card" style="grid-column:1/-1;"><div class="tk-head tkh-c">🚨 Common Exam Mistakes — Design Contexts &amp; Challenges</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th style="width:30%">❌ Avoid writing this</th><th style="width:38%">✅ Write this instead</th><th>Why?</th></tr>
+        <tr><td>"Steel is strong so it's good for the chair"</td><td>"Mild steel has <strong>high tensile strength</strong>, which means it can resist the pulling forces acting on the cross-brace without stretching — this keeps the chair frame stable under load"</td><td>Name the specific property, explain the mechanism, link to the specific part and force</td></tr>
+        <tr><td>"Toughness and hardness are the same"</td><td>"<strong>Hardness</strong> resists surface indentation/scratching. <strong>Toughness</strong> resists sudden impact without fracturing. Hard materials are often brittle, not tough."</td><td>These are very different and commonly confused in exams</td></tr>
+        <tr><td>"Recycling is always better than landfill"</td><td>"Recycling reduces landfill and conserves raw materials, but it <strong>requires energy for transportation and processing</strong>, and the recycled material may be of inferior quality"</td><td>Full marks require balanced answer — advantages AND disadvantages</td></tr>
+        <tr><td>"LCA is about the environmental impact of making the product"</td><td>"LCA covers <strong>ALL stages — from raw material extraction to final disposal</strong> — not just manufacturing. The use phase often has the largest impact."</td><td>LCA covers the ENTIRE life, not just production — this is the key definition</td></tr>
+        <tr><td>"Green design means using green/natural colours"</td><td>"Green design means <strong>minimising environmental impact</strong> — using energy efficient designs, biodegradable materials, and reducing waste. Nothing to do with the colour green."</td><td>"Green" here is a metaphor for environmentally friendly — not a colour</td></tr>
+      </table>
+    </div></div>
+  </div>
+</div>
+
+</div>
+<footer><strong>Edexcel GCSE Design &amp; Technology</strong> · Topics 1.13 &amp; 1.14 · Design Contexts &amp; Challenges · Core Content · Section A<br>Cross-referenced with Pearson Edexcel Specification (Issue 4) and Core Content Textbook (pp. 55–61) · For educational use only</footer>
+
+<script>
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('sec-'+id).classList.add('active');event.currentTarget.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function fv(t,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.vc').forEach(c=>{c.style.display=(t==='all'||c.dataset.topic===t)?'block':'none';});}
+function showSub(tabId,panelId,btn){
+  const prefix=tabId+'-';
+  document.querySelectorAll('[id^="'+prefix+'"]').forEach(p=>p.classList.remove('active'));
+  document.getElementById(prefix+panelId).classList.add('active');
+  btn.closest('.sub-nav').querySelectorAll('.sn-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+let selChip=null;
+document.querySelectorAll('.wchip').forEach(c=>{c.addEventListener('click',function(){document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));selChip=this.dataset.word;this.classList.add('sel');});});
+document.querySelectorAll('.gf').forEach(inp=>{inp.addEventListener('click',function(){if(selChip){this.value=selChip;selChip=null;document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));}});inp.addEventListener('input',function(){this.classList.remove('correct','incorrect');});});
+function checkGF(cid,sid){const ins=document.getElementById(cid).querySelectorAll('.gf');let ok=0;ins.forEach(i=>{const pass=i.value.toLowerCase().trim()===i.dataset.answer.toLowerCase().trim();i.classList.toggle('correct',pass);i.classList.toggle('incorrect',!pass);if(pass)ok++;});const s=document.getElementById(sid);const p=ok/ins.length;s.className='score-box show '+(p>=.85?'good':p>=.5?'ok':'low');s.style.display='inline-flex';s.innerHTML=(p>=.85?'🎉':p>=.5?'👍':'📚')+` Score: ${ok}/${ins.length}`+(p>=.85?' — Excellent!':p>=.5?' — Good effort!':" — Keep revising!");}
+function resetGF(cid,sid,wid){document.getElementById(cid).querySelectorAll('.gf').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});const s=document.getElementById(sid);s.className='score-box';s.style.display='none';if(wid)document.getElementById(wid).querySelectorAll('.wchip').forEach(c=>c.classList.remove('sel'));selChip=null;}
+let mSel={w:null,d:null},mCnt=0;
+function sm(el,t){if(el.classList.contains('matched'))return;if(mSel[t])mSel[t].classList.remove('sel');mSel[t]=el;el.classList.add('sel');if(mSel.w&&mSel.d){if(mSel.w.dataset.id===mSel.d.dataset.id){[mSel.w,mSel.d].forEach(e=>{e.classList.add('matched');e.classList.remove('sel');});mCnt++;if(mCnt===8)document.getElementById('mDone').style.display='block';}else{[mSel.w,mSel.d].forEach(e=>{e.classList.add('wrong');setTimeout(()=>{e.classList.remove('wrong','sel');},600);});setTimeout(()=>{mSel={w:null,d:null};},600);return;}mSel={w:null,d:null};}}
+function resetMatch(){document.querySelectorAll('.mi').forEach(e=>e.classList.remove('matched','sel','wrong'));mSel={w:null,d:null};mCnt=0;document.getElementById('mDone').style.display='none';}
+function chkTF(btn,correct,n){const isT=btn.classList.contains('tb');const pass=(isT===correct);const parent=btn.closest('.tf-item');parent.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);btn.classList.add(pass?'ca':'wa');if(!pass){const cb=correct?parent.querySelector('.tb'):parent.querySelector('.fb');cb.classList.add('ca');}const fb=document.getElementById('tf'+n);fb.className='tf-fb show '+(pass?'ok':'no');}
+function togAns(btn){const a=btn.nextElementSibling;if(a.classList.contains('show')){a.classList.remove('show');btn.textContent='👁 Show Model Answer';}else{a.classList.add('show');btn.textContent='🙈 Hide Model Answer';}}
+</script>
+</body>
+</html>

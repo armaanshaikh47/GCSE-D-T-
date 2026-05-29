@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topics 1.8–1.11 — Material Categorisation · GCSE D&T Core Content</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2f1fa;--navy:#0d0b1e;--ind:#4338ca;--ind-l:#ede9fe;--ind-m:#a5b4fc;
+  --teal:#0e7490;--teal-l:#e0f5f9;--green:#166534;--green-l:#dcfce7;
+  --red:#991b1b;--red-l:#fee2e2;--amber:#d97706;--amber-l:#fef3c7;
+  --rose:#9f1239;--rose-l:#ffe4e6;--slate:#1e293b;--muted:#64748b;
+  --border:#e2dff5;--card:#fff;--text:#0f0e1f;
+  --shadow:0 2px 16px rgba(13,11,30,.09);--shadow-h:0 6px 28px rgba(13,11,30,.17);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0d0b1e 0%,#2d1e8a 55%,#0c2714 100%);color:#fff;padding:52px 40px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(67,56,202,.28) 0%,transparent 55%);}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.hero-badge{display:inline-block;background:var(--ind);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,48px);font-weight:900;line-height:1.08;margin-bottom:8px;}
+.hero h1 .ac{color:var(--ind-m);}
+.hero-spec{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:14px;text-transform:uppercase;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.72);max-width:680px;line-height:1.65;margin-bottom:26px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.hero-tag{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);font-size:12px;padding:5px 13px;border-radius:20px;}
+
+/* NAV */
+.nav-bar{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 20px;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-2px;}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--ind);font-weight:600;}
+
+/* LAYOUT */
+.main{max-width:1100px;margin:0 auto;padding:38px 20px 80px;}
+.section{display:none;}
+.section.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sec-head{margin-bottom:26px;}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+.sec-head p{color:var(--muted);font-size:15px;line-height:1.65;max-width:700px;}
+.esl-tip{background:linear-gradient(135deg,#f2f0ff,var(--ind-l));border-left:4px solid var(--ind);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:24px;font-size:13.5px;color:#2d1e8a;line-height:1.6;}
+.insight-box{border-left:4px solid var(--ind);background:var(--ind-l);padding:11px 15px;border-radius:0 8px 8px 0;font-size:13.5px;color:#2d1e8a;margin:14px 0;}
+
+/* MATERIAL TOPIC BUTTONS — colour-coded per topic */
+.mat-nav{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px;}
+.mat-btn{padding:9px 18px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;opacity:.55;font-family:'DM Sans',sans-serif;}
+.mat-btn.active{opacity:1;transform:scale(1.04);box-shadow:var(--shadow);}
+.mb-met{background:#475569;color:#fff;}
+.mb-pap{background:#0e7490;color:#fff;}
+.mb-pol{background:#dc2626;color:#fff;}
+.mb-tex{background:#9333ea;color:#fff;}
+.mat-panel{display:none;}
+.mat-panel.active{display:block;animation:fadeUp .3s ease;}
+.mp-head{border-radius:14px 14px 0 0;padding:22px 26px;color:#fff;}
+.mph-met{background:linear-gradient(135deg,#1e293b,#475569);}
+.mph-pap{background:linear-gradient(135deg,#063550,#0e7490);}
+.mph-pol{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.mph-tex{background:linear-gradient(135deg,#4c1d95,#9333ea);}
+.mp-head h3{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;margin-bottom:4px;}
+.mp-head p{font-size:13.5px;opacity:.82;}
+.mp-body{background:var(--card);border-radius:0 0 14px 14px;border:1.5px solid var(--border);border-top:none;padding:24px 26px;margin-bottom:22px;box-shadow:var(--shadow);}
+
+/* SPEC CHECKLIST */
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+.spec-card{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.spec-head{padding:13px 16px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;}
+.sh-met{background:linear-gradient(135deg,#1e293b,#475569);}
+.sh-pap{background:linear-gradient(135deg,#063550,#0e7490);}
+.sh-pol{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.sh-tex{background:linear-gradient(135deg,#4c1d95,#9333ea);}
+.spec-body{padding:11px 16px;}
+.spec-item{display:flex;align-items:flex-start;gap:9px;padding:5px 0;border-bottom:1px solid #f5f3ff;font-size:13px;line-height:1.45;}
+.spec-item:last-child{border-bottom:none;}
+.spec-item input[type=checkbox]{margin-top:2px;accent-color:var(--ind);flex-shrink:0;width:14px;height:14px;}
+
+/* VOCAB */
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;align-items:center;}
+.filter-btn{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--muted);}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start;}
+.vc{background:var(--card);border-radius:14px;border:1.5px solid var(--border);box-shadow:var(--shadow);display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;transition:transform .2s;}
+.vc:hover{transform:translateY(-2px);}
+.vc-top{padding:14px 16px 11px;border-bottom:1px solid var(--border);display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:10px;writing-mode:horizontal-tb;}
+.vc-word{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--navy);writing-mode:horizontal-tb;flex:1;min-width:0;word-break:break-word;overflow-wrap:anywhere;}
+.vc-tag{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px;flex-shrink:0;writing-mode:horizontal-tb;white-space:nowrap;margin-top:3px;}
+.t-met{background:#f1f5f9;color:#475569;}
+.t-pap{background:var(--teal-l);color:var(--teal);}
+.t-pol{background:var(--red-l);color:var(--red);}
+.t-tex{background:var(--ind-l);color:var(--ind);}
+.t-prop{background:var(--green-l);color:var(--green);}
+.vc-body{padding:13px 16px;display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;}
+.def-lbl{display:none;}
+.vc-def{font-size:13.5px;color:var(--text);line-height:1.65;margin-bottom:10px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex{background:#f5f3ff;border-left:3px solid var(--ind);padding:8px 11px;border-radius:0 7px 7px 0;font-size:12.5px;color:#444;font-style:italic;line-height:1.55;margin-bottom:10px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex em{font-style:normal;background:var(--ind-l);padding:1px 3px;border-radius:2px;}
+.vc-mem{background:var(--green-l);border:1px solid #bbf7d0;padding:8px 11px;border-radius:7px;font-size:12px;color:#14532d;line-height:1.6;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+
+/* MATERIAL COMPARISON TABLES */
+.mat-tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin:14px 0;}
+.mat-tbl th{padding:8px 11px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;vertical-align:bottom;}
+.mat-tbl td{padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.mat-tbl tr:last-child td{border-bottom:none;}
+.mat-tbl tr:nth-child(even) td{background:#faf9ff;}
+.mat-tbl .mn{font-weight:700;color:var(--navy);}
+.mat-tbl .sub{font-size:11px;color:var(--muted);display:block;font-family:'DM Mono',monospace;}
+.mat-tbl td ul{padding-left:14px;}
+.mat-tbl td ul li{margin-bottom:2px;}
+/* Met */
+.th-name{background:#1e293b;color:#fff;border-radius:8px 0 0 0;width:110px;}
+.th-comp{background:#374151;color:#fff;}
+.th-adv{background:#166534;color:#fff;}
+.th-dis{background:#991b1b;color:#fff;}
+.th-use{background:#0e7490;color:#fff;border-radius:0 8px 0 0;}
+/* Pap */
+.th-pap1{background:#063550;color:#fff;border-radius:8px 0 0 0;}
+.th-pap2{background:#0e4a6a;color:#fff;}
+.th-pap3{background:#166534;color:#fff;}
+.th-pap4{background:#991b1b;color:#fff;}
+.th-pap5{background:#5b21b6;color:#fff;border-radius:0 8px 0 0;}
+/* Pol */
+.th-pol1{background:#7f1d1d;color:#fff;border-radius:8px 0 0 0;}
+
+/* Properties mini cards */
+.prop-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0;}
+.prop-mini{background:#faf9ff;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;}
+.prop-mini h4{font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:5px;display:flex;align-items:center;gap:6px;}
+.prop-mini p{font-size:12.5px;color:var(--muted);line-height:1.55;}
+
+/* KEY DISTINCTION box */
+.key-dist{border:2.5px solid;border-radius:12px;padding:16px 20px;margin:16px 0;display:flex;gap:14px;}
+.kd-icon{font-size:26px;flex-shrink:0;}
+.kd-title{font-weight:700;font-size:14px;margin-bottom:5px;}
+.kd-body{font-size:13.5px;color:var(--muted);line-height:1.6;}
+.kd-green{border-color:var(--green);background:var(--green-l);}
+.kd-green .kd-title{color:var(--green);}
+.kd-red{border-color:var(--red);background:var(--red-l);}
+.kd-red .kd-title{color:var(--red);}
+.kd-ind{border-color:var(--ind);background:var(--ind-l);}
+.kd-ind .kd-title{color:var(--ind);}
+
+/* ACTIVITIES */
+.act-block{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow);}
+.act-head{background:var(--navy);padding:15px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.act-head h3{color:#fff;font-family:'Playfair Display',serif;font-size:17px;}
+.act-badge{background:var(--ind);color:#fff;font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:4px;font-weight:500;}
+.act-body{padding:20px;}
+.act-instr{background:#f5f3ff;border-radius:8px;padding:10px 14px;font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.55;}
+.gap-sent{font-size:14px;line-height:2.5;margin-bottom:3px;color:var(--text);writing-mode:horizontal-tb;display:block;}
+.gf{border:none;border-bottom:2.5px solid var(--ind);background:var(--ind-l);width:180px;padding:3px 7px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--navy);border-radius:4px 4px 0 0;outline:none;transition:background .2s;writing-mode:horizontal-tb;}
+.gf.correct{background:var(--green-l);border-bottom-color:var(--green);}
+.gf.incorrect{background:var(--red-l);border-bottom-color:var(--red);}
+.word-bank{display:flex;flex-wrap:wrap;gap:7px;padding:12px;background:#f5f3ff;border-radius:10px;margin-bottom:14px;}
+.wchip{background:var(--card);border:1.5px solid var(--border);border-radius:6px;padding:5px 11px;font-size:13px;font-weight:500;color:var(--navy);cursor:pointer;transition:all .15s;user-select:none;writing-mode:horizontal-tb;}
+.wchip:hover,.wchip.sel{border-color:var(--ind);background:var(--ind-l);}
+.check-btn{display:inline-flex;align-items:center;gap:7px;background:var(--navy);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;margin-top:11px;}
+.reset-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;margin-left:10px;margin-top:11px;color:var(--muted);}
+.score-box{display:none;align-items:center;gap:10px;margin-top:11px;padding:9px 16px;border-radius:8px;font-size:13.5px;font-weight:600;}
+.score-box.show{display:inline-flex;}
+.score-box.good{background:var(--green-l);color:var(--green);}
+.score-box.ok{background:var(--amber-l);color:#92400e;}
+.score-box.low{background:var(--red-l);color:var(--red);}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.match-col{display:flex;flex-direction:column;gap:7px;}
+.match-col-lbl{font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:3px;}
+.mi{background:var(--card);border:2px solid var(--border);border-radius:8px;padding:10px 13px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.4;}
+.mi.mw{font-weight:700;color:var(--navy);}
+.mi:hover,.mi.sel{border-color:var(--ind);background:var(--ind-l);}
+.mi.matched{border-color:var(--green);background:var(--green-l);color:var(--green);pointer-events:none;font-weight:600;}
+.mi.wrong{border-color:var(--red);background:var(--red-l);animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.tf-item{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:14px 17px;margin-bottom:10px;}
+.tf-stmt{font-size:14px;color:var(--text);margin-bottom:10px;line-height:1.55;font-weight:500;}
+.tf-btns{display:flex;gap:9px;}
+.tf-btn{padding:6px 18px;border-radius:7px;border:1.5px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;background:var(--card);}
+.tf-btn.tb:hover{background:var(--green-l);border-color:var(--green);color:var(--green);}
+.tf-btn.fb:hover{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-btn.ca{background:var(--green-l);border-color:var(--green);color:var(--green);pointer-events:none;}
+.tf-btn.wa{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-fb{font-size:13px;margin-top:8px;padding:8px 11px;border-radius:7px;display:none;line-height:1.5;}
+.tf-fb.show{display:block;}
+.tf-fb.ok{background:var(--green-l);color:var(--green);}
+.tf-fb.no{background:var(--red-l);color:var(--red);}
+
+/* EXAM */
+.frame-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:11px;}
+.frame-type{background:#f5f3ff;padding:6px 15px;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);}
+.frame-body{padding:12px 16px;}
+.frame-tpl{font-size:13.5px;color:var(--text);line-height:1.8;margin-bottom:7px;}
+.blank{background:var(--ind-l);padding:2px 6px;border-radius:4px;font-style:italic;color:#2d1e8a;font-size:13px;}
+.frame-ex{font-size:12.5px;color:var(--muted);font-style:italic;border-left:3px solid var(--teal);padding-left:10px;margin-top:7px;line-height:1.55;}
+.eq-block{background:var(--card);border:1.5px solid var(--border);border-radius:12px;margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow);}
+.eq-head{background:#f5f3ff;padding:10px 17px;display:flex;justify-content:space-between;align-items:center;}
+.eq-head span{font-size:12px;font-family:'DM Mono',monospace;color:var(--muted);text-transform:uppercase;}
+.eq-marks{background:var(--navy);color:#fff;font-size:11px;font-family:'DM Mono',monospace;padding:3px 9px;border-radius:4px;}
+.eq-body{padding:14px 17px;}
+.eq-text{font-size:14.5px;color:var(--navy);margin-bottom:10px;font-weight:500;line-height:1.5;}
+.eq-hint{background:var(--teal-l);padding:8px 12px;border-radius:8px;font-size:12.5px;color:#064e4a;line-height:1.5;}
+.show-ans-btn{background:none;border:1.5px solid var(--teal);border-radius:6px;padding:6px 12px;font-size:12.5px;color:var(--teal);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:10px;transition:all .2s;}
+.show-ans-btn:hover{background:var(--teal);color:#fff;}
+.model-ans{display:none;background:#f0fef9;border:1px solid #a7f3d0;border-radius:8px;padding:12px;margin-top:10px;font-size:13px;line-height:1.65;color:#134e2a;}
+.model-ans.show{display:block;}
+.mp{display:flex;gap:8px;margin-bottom:5px;}
+.mpn{background:var(--green);color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* TOOLKIT */
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:16px;}
+.tk-card{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.tk-head{padding:13px 17px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.tkh-navy{background:var(--navy);color:#fff;}
+.tkh-ind{background:var(--ind);color:#fff;}
+.tkh-teal{background:#0e7490;color:#fff;}
+.tk-body{padding:13px 17px;}
+.pre-tbl{width:100%;border-collapse:collapse;font-size:12.5px;}
+.pre-tbl th{background:#f5f3ff;padding:7px 10px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+.pre-tbl td{padding:6px 10px;border-bottom:1px solid var(--border);line-height:1.5;}
+.pre-tbl tr:last-child td{border-bottom:none;}
+.pfx{font-weight:700;color:var(--navy);}
+.syn-p{display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.syn-p:last-child{border-bottom:none;}
+.syn-c{font-weight:600;color:var(--navy);min-width:135px;line-height:1.4;}
+.syn-a{color:var(--ind);font-size:15px;flex-shrink:0;margin-top:2px;}
+.syn-s{color:var(--muted);font-style:italic;font-size:12.5px;line-height:1.4;}
+.con-list{list-style:none;}
+.con-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+.con-list li:last-child{border-bottom:none;}
+.con-chip{background:var(--ind-l);color:#2d1e8a;padding:2px 7px;border-radius:4px;font-weight:600;font-size:12px;white-space:nowrap;flex-shrink:0;}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:12px;margin-top:60px;}
+footer strong{color:var(--ind-m);}
+@media(max-width:600px){.hero{padding:34px 18px 30px}.main{padding:20px 14px 60px}.prop-row,.match-grid,.spec-grid{grid-template-columns:1fr}.mp-body{padding:16px 18px}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero"><div class="hero-inner">
+  <div class="hero-badge">GCSE D&T · Core Content · Topics 1.8–1.11 · Material Categorisation</div>
+  <h1>Material <span class="ac">Categorisation</span><br>Metals · Papers · Polymers · Textiles</h1>
+  <div class="hero-spec">Spec Ref: 1.8 · 1.9 · 1.10 · 1.11 &nbsp;|&nbsp; Textbook pp. 37–48 &nbsp;|&nbsp; Section A — 40 marks</div>
+  <p class="hero-sub">A combined ESL-focused revision guide covering all four material categorisation topics — ferrous and non-ferrous metals, papers and boards, thermoforming and thermosetting polymers, and natural and synthetic fibres. Includes full comparison tables, key properties, common exam questions, and vocabulary scaffolding for all four material families.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">🔩 1.8 Metals</span><span class="hero-tag">📄 1.9 Papers &amp; Boards</span>
+    <span class="hero-tag">🧪 1.10 Polymers</span><span class="hero-tag">🧵 1.11 Fibres &amp; Textiles</span>
+    <span class="hero-tag">📋 Spec Checklist</span><span class="hero-tag">✏️ Activities</span><span class="hero-tag">📝 Exam Frames</span>
+  </div>
+</div></div>
+
+<!-- NAV -->
+<div class="nav-bar"><div class="nav-inner">
+  <button class="tab-btn active" onclick="showTab('spec')">📋 Spec Checklist</button>
+  <button class="tab-btn" onclick="showTab('vocab')">📖 Key Vocabulary</button>
+  <button class="tab-btn" onclick="showTab('topics')">🗂️ Material Topics</button>
+  <button class="tab-btn" onclick="showTab('activities')">✏️ Activities</button>
+  <button class="tab-btn" onclick="showTab('exam')">📝 Exam Language</button>
+  <button class="tab-btn" onclick="showTab('toolkit')">💬 ESL Toolkit</button>
+</div></div>
+
+<div class="main">
+
+<!-- ══ SPEC CHECKLIST ══ -->
+<div id="sec-spec" class="section active">
+  <div class="sec-head"><h2>Specification Checklist</h2><p>Four material categorisation topics — all tested in Section A (40 marks, core content). Every student must know all four regardless of their specialist material. Tick each point only when you can write a full exam answer on it.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Table Fluency:</strong> The exam tests whether you know specific material names AND their properties. The fastest way to revise this topic is to cover the "advantages" column of each table and try to recall them from memory — then check. Do this for every material at least three times. This forces active recall, which is far more effective than passive reading.</div>
+  <div class="spec-grid">
+    <div class="spec-card"><div class="spec-head sh-met">🔩 1.8 — Ferrous &amp; Non-Ferrous Metals</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Difference between ferrous (contains iron) and non-ferrous (no iron)</div>
+      <div class="spec-item"><input type="checkbox"> Mild steel — composition, melting point, properties, uses</div>
+      <div class="spec-item"><input type="checkbox"> Stainless steel — composition (chromium + nickel added), corrosion resistance</div>
+      <div class="spec-item"><input type="checkbox"> Cast iron — high carbon, hard skin, brittle core, self-lubricating</div>
+      <div class="spec-item"><input type="checkbox"> Aluminium — lightweight, corrosion resistant, excellent strength-to-weight</div>
+      <div class="spec-item"><input type="checkbox"> Copper — reddish-brown, best electrical conductor, used in wiring</div>
+      <div class="spec-item"><input type="checkbox"> Brass — alloy (copper + zinc), yellow, used in plumbing and locks</div>
+      <div class="spec-item"><input type="checkbox"> Properties: ductility, malleability, hardness — definitions</div>
+      <div class="spec-item"><input type="checkbox"> Alloy = mixture of two or more metals with improved properties</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-pap">📄 1.9 — Papers &amp; Boards</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Paper vs board distinction — under/over 220 gsm</div>
+      <div class="spec-item"><input type="checkbox"> Copier paper — 80 gsm, smooth, cheap, printing/writing</div>
+      <div class="spec-item"><input type="checkbox"> Cartridge paper — 120–150 gsm, creamy/heavyweight, drawing</div>
+      <div class="spec-item"><input type="checkbox"> Tracing paper — translucent, overlays and copies</div>
+      <div class="spec-item"><input type="checkbox"> Folding boxboard — three-layer structure, cereal/food packaging</div>
+      <div class="spec-item"><input type="checkbox"> Corrugated board — fluted core between liners, impact resistant</div>
+      <div class="spec-item"><input type="checkbox"> Solid white board — bleached pulp, book covers, cosmetics packaging</div>
+      <div class="spec-item"><input type="checkbox"> Properties: flexibility, printability, biodegradability</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-pol">🧪 1.10 — Thermoforming &amp; Thermosetting Polymers</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Thermoforming = CAN be reshaped by heat; CAN be recycled</div>
+      <div class="spec-item"><input type="checkbox"> Thermosetting = CANNOT be reshaped; CANNOT be recycled (cross-linked)</div>
+      <div class="spec-item"><input type="checkbox"> Acrylic (PMMA) — tough, food safe, scratches easily, shop signs/fish tanks</div>
+      <div class="spec-item"><input type="checkbox"> HIPS — lightweight, impact resistant, vacuum forming, toys/fridge linings</div>
+      <div class="spec-item"><input type="checkbox"> Biopol® — biodegradable polymer, degrades in soil, disposable uses</div>
+      <div class="spec-item"><input type="checkbox"> Polyester resin — thermosetting, used with GRP for boat hulls</div>
+      <div class="spec-item"><input type="checkbox"> Urea formaldehyde — thermosetting, electrical fittings, adhesive in MDF</div>
+      <div class="spec-item"><input type="checkbox"> Properties: insulator of heat, insulator of electricity, toughness</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-tex">🧵 1.11 — Fibres &amp; Textiles</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Natural fibres: wool (animal — protein), cotton (plant — cellulose)</div>
+      <div class="spec-item"><input type="checkbox"> Synthetic fibres: polyester (from coal/oil), acrylic (from acrylonitrile)</div>
+      <div class="spec-item"><input type="checkbox"> Woven: plain weave (calico), twill weave (denim)</div>
+      <div class="spec-item"><input type="checkbox"> Non-woven: felted wool, bonded fibres/webs</div>
+      <div class="spec-item"><input type="checkbox"> Knitted: weft-knitted (across width), warp-knitted (along length)</div>
+      <div class="spec-item"><input type="checkbox"> Properties: elasticity, resilience, durability — definitions and which fibres demonstrate each</div>
+      <div class="spec-item"><input type="checkbox"> Advantages/disadvantages of wool, cotton, polyester, acrylic</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ══ KEY VOCABULARY ══ -->
+<div id="sec-vocab" class="section">
+  <div class="sec-head"><h2>Key Vocabulary</h2><p>24 key terms across all four material categories. These words appear most often in exam questions — knowing their exact definitions is essential for "explain" and "describe" questions.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Precision Vocabulary:</strong> In material science, two words that look similar often mean very different things (e.g. ductility vs malleability; thermoforming vs thermosetting). Study these pairs by writing one clear sentence that includes BOTH words and explains the difference between them. This forces precise understanding rather than approximate memory.</div>
+  <div class="filter-row">
+    <span style="font-size:13px;color:var(--muted);font-weight:500;">Filter:</span>
+    <button class="filter-btn active" onclick="fv('all',this)">All</button>
+    <button class="filter-btn" onclick="fv('met',this)">🔩 Metals</button>
+    <button class="filter-btn" onclick="fv('pap',this)">📄 Papers</button>
+    <button class="filter-btn" onclick="fv('pol',this)">🧪 Polymers</button>
+    <button class="filter-btn" onclick="fv('tex',this)">🧵 Textiles</button>
+    <button class="filter-btn" onclick="fv('prop',this)">⚙️ Properties</button>
+  </div>
+  <div class="vocab-grid" id="vg">
+
+    <div class="vc" data-topic="met"><div class="vc-top"><div class="vc-word">Ferrous Metal</div><div class="vc-tag t-met">Metals</div></div><div class="vc-body">
+      <div class="vc-def">A metal that <strong>contains iron (ferrite)</strong>. Most ferrous metals are magnetic and will rust when exposed to moisture — except for stainless steel and wrought iron. Small amounts of other elements can be added to improve properties.</div>
+      <div class="vc-ex">"<em>Ferrous metals</em> such as mild steel are magnetic and will corrode in damp conditions unless protected by paint, galvanising, or plating."</div>
+      <div class="vc-mem">💡 Ferro = iron (Latin). Ferrous = contains iron. Easy test: if a magnet sticks to it, it is probably ferrous. Ferrous metals: mild steel, stainless steel, cast iron. Key weakness: most will RUST (except stainless steel).</div>
+    </div></div>
+
+    <div class="vc" data-topic="met"><div class="vc-top"><div class="vc-word">Alloy</div><div class="vc-tag t-met">Metals</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>mixture of two or more metals</strong> (or a metal and a non-metal) that has improved properties compared to either element alone. Alloys are engineered for specific applications where a pure metal lacks a required property.</div>
+      <div class="vc-ex">"Stainless steel is an <em>alloy</em> of carbon steel with chromium and nickel added — the pure iron would rust, but the chromium addition makes it highly corrosion resistant."</div>
+      <div class="vc-mem">💡 Alloy = a designed mix. Brass = copper + zinc. Stainless steel = steel + chromium + nickel. The additions improve the base metal — stronger, more resistant, harder, lighter. Pure metals are rarely used in engineering.</div>
+    </div></div>
+
+    <div class="vc" data-topic="prop"><div class="vc-top"><div class="vc-word">Ductility</div><div class="vc-tag t-prop">Property</div></div><div class="vc-body">
+      <div class="vc-def">The ability of a material to <strong>deform under tensile (pulling) force without fracturing</strong> — being drawn out into a thin wire while remaining intact. Highly ductile metals: copper, aluminium, mild steel.</div>
+      <div class="vc-ex">"Copper has very high <em>ductility</em> — it can be drawn into electrical wire thinner than a human hair without breaking, making it essential for wiring and electrical components."</div>
+      <div class="vc-mem">💡 Ductile = can be drawn (pulled into wire). Duct = tube/channel — imagine pulling metal through a tiny hole. Opposite: brittle (breaks instead of bending). DUCTILITY = wire drawing. Do not confuse with malleability.</div>
+    </div></div>
+
+    <div class="vc" data-topic="prop"><div class="vc-top"><div class="vc-word">Malleability</div><div class="vc-tag t-prop">Property</div></div><div class="vc-body">
+      <div class="vc-def">The ability of a material to be <strong>permanently deformed in all directions without fracturing</strong> — beaten, pressed, or rolled into sheets. Highly malleable metals: aluminium, copper, gold, lead.</div>
+      <div class="vc-ex">"Aluminium has excellent <em>malleability</em> — it can be pressed or rolled into very thin foil or formed into complex shapes using dies without cracking."</div>
+      <div class="vc-mem">💡 Malleable = can be shaped with a hammer (mallet). Malleability = shape by pressing/hammering in ANY direction. Ductility = shape by PULLING into wire. The key difference: ductility = one direction (wire); malleability = all directions (sheet).</div>
+    </div></div>
+
+    <div class="vc" data-topic="pap"><div class="vc-top"><div class="vc-word">Corrugated Board</div><div class="vc-tag t-pap">Papers &amp; Boards</div></div><div class="vc-body">
+      <div class="vc-def">A sandwich structure consisting of <strong>a fluted (wavy) paper core bonded between two flat liner boards</strong>. The fluted centre creates air gaps which absorb impact, making it the best board for protective packaging. It is recyclable but not water resistant.</div>
+      <div class="vc-ex">"The electronic components were shipped in a <em>corrugated board</em> box — the fluted core absorbed the vibrations and impacts of transit, protecting the fragile items inside."</div>
+      <div class="vc-mem">💡 Corrugated = wavy/ridged shape. The flutes (waves) in the middle act like a spring — they absorb energy from impacts. Advantage: strong and protective. Disadvantage: absorbs water and loses strength when wet. Fully recyclable.</div>
+    </div></div>
+
+    <div class="vc" data-topic="pap"><div class="vc-top"><div class="vc-word">Biodegradability</div><div class="vc-tag t-pap">Papers &amp; Boards</div></div><div class="vc-body">
+      <div class="vc-def">The ability of a material to be <strong>broken down by bacteria and other micro-organisms</strong> into natural compounds. Most uncoated papers and boards are biodegradable. Compostable materials biodegrade within 12 weeks. Coated or laminated papers may not biodegrade.</div>
+      <div class="vc-ex">"Uncoated kraft paper is fully <em>biodegradable</em> — it breaks down in soil within weeks, unlike plastic-coated paper which resists decomposition for many years."</div>
+      <div class="vc-mem">💡 Bio = life. Degrade = break down. Biodegradable = broken down by living things (bacteria). Key distinction: biodegradable ≠ recyclable. Some things biodegrade but cannot be recycled (food-contaminated paper). Compostable = biodegrades in &lt;12 weeks.</div>
+    </div></div>
+
+    <div class="vc" data-topic="pol"><div class="vc-top"><div class="vc-word">Thermoforming Polymer</div><div class="vc-tag t-pol">Polymers</div></div><div class="vc-body">
+      <div class="vc-def">A polymer that <strong>softens when heated and can be reshaped</strong>. The polymer chains are linear (not cross-linked), so they can slide past each other when hot. Can be recycled by reheating and remoulding. Examples: acrylic, HIPS, Biopol®.</div>
+      <div class="vc-ex">"HIPS is a <em>thermoforming polymer</em> — it softens at around 100°C and can be vacuum formed over a mould to create a tray. The same material can be melted again and remoulded, making it recyclable."</div>
+      <div class="vc-mem">💡 Thermo = heat. Forming = shaping. Thermoforming = shaped by heat. KEY: polymer chains are LINEAR (like spaghetti strands) → they slide past each other when hot → CAN reshape → CAN recycle. Recycling symbol on packaging → thermoforming.</div>
+    </div></div>
+
+    <div class="vc" data-topic="pol"><div class="vc-top"><div class="vc-word">Thermosetting Polymer</div><div class="vc-tag t-pol">Polymers</div></div><div class="vc-body">
+      <div class="vc-def">A polymer that <strong>permanently hardens when heated for the first time</strong> and cannot be reshaped by reheating. The polymer chains form permanent cross-links during curing, locking the shape. Cannot be recycled. Examples: polyester resin, urea formaldehyde.</div>
+      <div class="vc-ex">"Urea formaldehyde is a <em>thermosetting polymer</em> used in electrical plug casings — once moulded and cured, it cannot be re-melted, making it safe near heat sources but impossible to recycle."</div>
+      <div class="vc-mem">💡 Thermosetting = SET by heat (permanently). KEY: polymer chains form CROSS-LINKS when cured → locked in place → CANNOT reshape → CANNOT recycle. Think of it like baking a cake: you cannot un-bake it. Cross-links = the locked bridge between chains.</div>
+    </div></div>
+
+    <div class="vc" data-topic="tex"><div class="vc-top"><div class="vc-word">Natural Fibre</div><div class="vc-tag t-tex">Textiles</div></div><div class="vc-body">
+      <div class="vc-def">Fibres obtained from <strong>plant or animal sources</strong> rather than manufactured chemically. Plant sources: cotton, flax, hemp, sisal, jute. Animal sources: silk, wool, mohair. Natural fibres are generally biodegradable but require significant land and water to produce.</div>
+      <div class="vc-ex">"Wool is a <em>natural fibre</em> from sheep — its protein structure creates a crimped, scaly surface that traps air, giving it excellent thermal insulation properties that synthetic fibres struggle to match."</div>
+      <div class="vc-mem">💡 Natural = from nature. Two sources: PLANT (cotton, linen/flax, hemp — made of cellulose) and ANIMAL (wool, silk, mohair — made of protein). Generally biodegradable and breathable. Disadvantage: can shrink, crease, be attacked by insects (wool → moths; cotton → mildew).</div>
+    </div></div>
+
+    <div class="vc" data-topic="prop"><div class="vc-top"><div class="vc-word">Resilience (Textiles)</div><div class="vc-tag t-prop">Property</div></div><div class="vc-body">
+      <div class="vc-def">The ability of a fabric to <strong>return to its original shape after being stretched, compressed, or creased</strong>. Resilient fabrics resist permanent deformation. Wool has excellent resilience — creases fall out. Polyester is also highly resilient and resists creasing.</div>
+      <div class="vc-ex">"Wool's natural <em>resilience</em> means that a wool suit will return to its shape after wearing — creases fall out overnight, reducing the need for ironing compared to cotton garments."</div>
+      <div class="vc-mem">💡 Resilient = bounces back. A resilient fabric "remembers" its original shape and returns to it. High resilience = fewer creases, retains shape after use. Wool and polyester = high resilience. Cotton = low resilience (creases easily).</div>
+    </div></div>
+
+    <div class="vc" data-topic="prop"><div class="vc-top"><div class="vc-word">Elasticity (Textiles)</div><div class="vc-tag t-prop">Property</div></div><div class="vc-body">
+      <div class="vc-def">The ability of a fabric to <strong>stretch under force and then return to its original length</strong> when the force is removed. Elastane (Lycra) has very high elasticity. Knitted fabrics have more elasticity than woven ones due to their looped structure. Not the same as resilience.</div>
+      <div class="vc-ex">"Swimwear uses fabrics blended with elastane for their <em>elasticity</em> — the fabric stretches with the swimmer's body movements and springs back to shape when relaxed."</div>
+      <div class="vc-mem">💡 Elastic = stretchy and returns. Elasticity specifically refers to STRETCHING → RETURNING. Different from resilience (shape recovery from general deformation). Knitted fabrics are more elastic than woven. Elastane/Lycra is the most elastic fibre.</div>
+    </div></div>
+
+  </div>
+</div>
+
+<!-- ══ MATERIAL TOPICS ══ -->
+<div id="sec-topics" class="section">
+  <div class="sec-head"><h2>Material Topics</h2><p>Select a material category below. Each panel contains the complete textbook content in a comparison table format designed for efficient exam revision.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Column by Column:</strong> For each comparison table, read one COLUMN at a time (e.g. read all the "Advantages" for all materials before moving on), rather than one row at a time. This lets you compare materials against the same criterion and makes the differences between materials clearer and more memorable.</div>
+
+  <div class="mat-nav">
+    <button class="mat-btn mb-met active" onclick="showMat('met',this)">🔩 1.8 Metals</button>
+    <button class="mat-btn mb-pap"        onclick="showMat('pap',this)">📄 1.9 Papers &amp; Boards</button>
+    <button class="mat-btn mb-pol"        onclick="showMat('pol',this)">🧪 1.10 Polymers</button>
+    <button class="mat-btn mb-tex"        onclick="showMat('tex',this)">🧵 1.11 Fibres &amp; Textiles</button>
+  </div>
+
+  <!-- 1.8 METALS -->
+  <div class="mat-panel active" id="mp-met">
+    <div class="mp-head mph-met"><h3>🔩 1.8 — Ferrous &amp; Non-Ferrous Metals</h3><p>Spec ref: 1.8.1–1.8.3 | Know the composition, key properties, and applications of all six metals. The most examined question: "Explain why [metal X] is used for [product Y]."</p></div>
+    <div class="mp-body">
+      <div class="key-dist kd-ind" style="margin-bottom:14px;">
+        <div class="kd-icon">🔑</div>
+        <div><div class="kd-title">The Key Distinction</div><div class="kd-body"><strong>Ferrous metals contain iron</strong> and are usually magnetic. Most rust when exposed to moisture. <strong>Non-ferrous metals do not contain iron</strong> — they are generally lighter, more corrosion-resistant, and better electrical conductors, but often more expensive.</div></div>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:10px;">Ferrous Metals</h3>
+      <table class="mat-tbl">
+        <tr><th class="th-name">Metal</th><th class="th-comp">Composition &amp; Structure</th><th class="th-adv">✓ Properties &amp; Advantages</th><th class="th-dis">✗ Disadvantages</th><th class="th-use">Common Uses</th></tr>
+        <tr>
+          <td><span class="mn">Mild Steel</span><span class="sub">Ferrous alloy</span></td>
+          <td>Iron + 0.1–0.3% carbon. Melting point ~1,400°C. Most common structural metal.</td>
+          <td><ul><li>Tough and ductile</li><li>Malleable — can be pressed/rolled</li><li>Magnetic</li><li>Cheap and widely available</li><li>Welds easily</li></ul></td>
+          <td><ul><li>Rusts if unprotected (must be painted, galvanised, or plated)</li><li>Heavier than aluminium</li></ul></td>
+          <td>Car body panels, screws, nuts and bolts, structural beams, washing machine drums</td>
+        </tr>
+        <tr>
+          <td><span class="mn">Stainless Steel</span><span class="sub">Ferrous alloy</span></td>
+          <td>Carbon steel + 10.5–18% chromium + 8% nickel + 8% manganese. Chromium forms an invisible oxide layer that prevents corrosion.</td>
+          <td><ul><li>Excellent corrosion resistance</li><li>Hygienic — easy to clean</li><li>Strong and hard</li><li>Good aesthetic appearance</li></ul></td>
+          <td><ul><li>Much more expensive than mild steel</li><li>Harder to machine and weld</li></ul></td>
+          <td>Kitchen sinks, cutlery, surgical instruments, food processing equipment, catering equipment</td>
+        </tr>
+        <tr>
+          <td><span class="mn">Cast Iron</span><span class="sub">Ferrous alloy</span></td>
+          <td>Iron + 2–6% carbon. Melting point ~1,200°C. Poured into moulds when liquid. High carbon content gives it different properties from steel.</td>
+          <td><ul><li>Hard outer surface (skin)</li><li>Self-lubricating (graphite in structure)</li><li>Good compressive strength</li><li>Retains heat well</li></ul></td>
+          <td><ul><li>Brittle — cracks under impact (soft core despite hard skin)</li><li>Heavy</li><li>Cannot be bent or pressed</li></ul></td>
+          <td>Vices, brake discs, manhole covers, cooking pots, engine blocks, decorative railings</td>
+        </tr>
+      </table>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin:18px 0 10px;">Non-Ferrous Metals</h3>
+      <table class="mat-tbl">
+        <tr><th class="th-name">Metal</th><th class="th-comp">Composition &amp; Structure</th><th class="th-adv">✓ Properties &amp; Advantages</th><th class="th-dis">✗ Disadvantages</th><th class="th-use">Common Uses</th></tr>
+        <tr>
+          <td><span class="mn">Aluminium</span><span class="sub">Non-ferrous pure metal</span></td>
+          <td>Pure element. Melting point 660°C. Grey-white colour. Naturally forms an oxide layer protecting it from further corrosion.</td>
+          <td><ul><li>Excellent strength-to-weight ratio (light yet strong)</li><li>Naturally corrosion resistant</li><li>Good conductor of heat and electricity</li><li>Malleable and ductile</li><li>Highly recyclable</li></ul></td>
+          <td><ul><li>Softer than steel</li><li>More expensive than mild steel</li><li>Cannot be case-hardened</li></ul></td>
+          <td>Aircraft and aerospace structures, drinks cans, bicycle frames, car engines, window frames, cooking foil</td>
+        </tr>
+        <tr>
+          <td><span class="mn">Copper</span><span class="sub">Non-ferrous pure metal</span></td>
+          <td>Pure element. Melting point ~1,100°C. Distinctive reddish-brown colour. Best electrical conductor of all commonly used metals.</td>
+          <td><ul><li>Excellent electrical conductor</li><li>Good thermal conductor</li><li>Naturally corrosion resistant</li><li>Highly ductile (drawn into wire)</li><li>Malleable</li></ul></td>
+          <td><ul><li>Expensive</li><li>Heavy</li><li>Can develop green patina (verdigris) outdoors</li></ul></td>
+          <td>Electrical wiring, PCB tracks, water pipes, plumbing fittings, roofing, cooking pots</td>
+        </tr>
+        <tr>
+          <td><span class="mn">Brass</span><span class="sub">Non-ferrous alloy</span></td>
+          <td>Alloy: 65% copper + 35% zinc. Melting point 900–940°C. Warm yellow colour. Easy to machine to high precision.</td>
+          <td><ul><li>Good corrosion resistance</li><li>Easy to machine (cuts cleanly)</li><li>Attractive yellow colour</li><li>Moderate electrical conductivity</li></ul></td>
+          <td><ul><li>Expensive</li><li>Can crack if bent too sharply (less ductile than copper)</li></ul></td>
+          <td>Plumbing fittings, valves, locks, musical instruments, door handles, electrical terminals</td>
+        </tr>
+      </table>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin:18px 0 10px;">Key Properties — Definitions</h3>
+      <div class="prop-row">
+        <div class="prop-mini"><h4>💪 Ductility</h4><p>Ability to be drawn out into a wire under tensile force without fracturing. Most important for: electrical wiring, copper pipes. High ductility: copper, aluminium, mild steel.</p></div>
+        <div class="prop-mini"><h4>🔨 Malleability</h4><p>Ability to be permanently deformed in ALL directions (pressed, rolled, beaten into sheets) without fracturing. High malleability: aluminium, copper, gold, lead.</p></div>
+        <div class="prop-mini"><h4>💎 Hardness</h4><p>Resistance to indentation, scratching, or surface deformation. Important for: cutting tools, dies, brake components. High hardness: cast iron skin, stainless steel, tool steel.</p></div>
+      </div>
+      <div class="insight-box">💡 <strong>Ductility vs Malleability — the exam distinction:</strong> Ductility = pulling in ONE direction into wire. Malleability = deforming in ALL directions into sheets. Copper is both highly ductile AND highly malleable — but the exam may ask which property is most relevant for a specific use. Copper wiring → ductility. Copper roofing → malleability.</div>
+    </div>
+  </div>
+
+  <!-- 1.9 PAPERS & BOARDS -->
+  <div class="mat-panel" id="mp-pap">
+    <div class="mp-head mph-pap"><h3>📄 1.9 — Papers &amp; Boards</h3><p>Spec ref: 1.9.1–1.9.3 | Key distinction: paper is under 220 gsm; board is over 220 gsm (measured in microns for thickness). Know the three-layer structure of folding boxboard.</p></div>
+    <div class="mp-body">
+      <div class="key-dist kd-ind" style="margin-bottom:14px;">
+        <div class="kd-icon">🔑</div>
+        <div><div class="kd-title">Paper vs Board</div><div class="kd-body"><strong>Paper = under 220 gsm</strong> (grams per square metre). Thin, flexible, used for writing/drawing/printing. <strong>Board = over 220 gsm</strong>. Thick, stiff, used for packaging and structural products. GSM = a measure of weight/thickness — higher gsm = heavier/thicker.</div></div>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:10px;">Papers (under 220 gsm)</h3>
+      <table class="mat-tbl">
+        <tr><th class="th-pap1">Paper Type</th><th class="th-pap2">Weight &amp; Description</th><th class="th-pap3">✓ Properties</th><th class="th-pap4">Common Uses</th></tr>
+        <tr><td><span class="mn">Copier Paper</span></td><td>80 gsm. Thin, white, smooth, cheap. Machine-made from bleached wood pulp.</td><td>Smooth surface accepts ink well; thin so multiple sheets can be fed through printers; cheap</td><td>Photocopying, laser printing, inkjet printing, general office writing</td></tr>
+        <tr><td><span class="mn">Cartridge Paper</span></td><td>120–150 gsm. Creamy white, slight texture (tooth), heavier than copier paper.</td><td>Slightly textured surface holds pencil, charcoal and paint; thick enough for watercolour without warping</td><td>Sketching, drawing, watercolour painting, design development work</td></tr>
+        <tr><td><span class="mn">Tracing Paper</span></td><td>60–90 gsm. Translucent (semi-transparent). Treated to reduce opacity.</td><td>Translucent — can see through it to copy underneath; smooth for pencil; accepts pen and ink</td><td>Copying drawings, overlaying designs, tracing and transferring patterns, architectural overlays</td></tr>
+      </table>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:18px 0 10px;">Boards (over 220 gsm)</h3>
+      <table class="mat-tbl">
+        <tr><th class="th-pap1">Board Type</th><th class="th-pap2">Structure &amp; Description</th><th class="th-pap3">✓ Properties</th><th class="th-pap4">Common Uses</th></tr>
+        <tr>
+          <td><span class="mn">Folding Boxboard</span></td>
+          <td>Three layers: bleached white top (for printing) + yellowish recycled middle + bleached inside (food-safe). Scored and folded for packaging.</td>
+          <td>Excellent printability on white outer layer; folds and creases cleanly (good for nets); food-safe inside layer; lightweight for its stiffness</td>
+          <td>Cereal boxes, food packaging, medicine boxes, toothpaste packaging, cosmetics boxes</td>
+        </tr>
+        <tr>
+          <td><span class="mn">Corrugated Board</span></td>
+          <td>Fluted (wavy) paper core bonded between two flat liner boards. Air trapped in flutes absorbs impact. Can be single, double, or triple walled.</td>
+          <td>Excellent impact resistance; lightweight relative to strength; fully recyclable; cost-effective protective packaging</td>
+          <td>Shipping boxes, packaging for fragile goods, display stands, model-making, point-of-sale displays</td>
+        </tr>
+        <tr>
+          <td><span class="mn">Solid White Board</span></td>
+          <td>Thick board made from pure bleached wood pulp throughout. Very smooth, high-quality surface on both sides. Premium material.</td>
+          <td>Very smooth, high-quality printable surface; stiff and strong; resists tearing; food-safe; premium feel</td>
+          <td>Book covers, high-quality cosmetics packaging, greeting cards, luxury product packaging</td>
+        </tr>
+      </table>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:16px 0 10px;">Key Properties</h3>
+      <div class="prop-row">
+        <div class="prop-mini"><h4>🌀 Flexibility</h4><p>For boards: the combination of stiffness (flexural stiffness — resists bending) and handling stiffness (feels rigid in hand). Corrugated board has high flexibility tolerance due to its sandwich structure.</p></div>
+        <div class="prop-mini"><h4>🖨️ Printability</h4><p>The ability to accept a printed image clearly and accurately. Affected by surface smoothness, finish, and coating. Folding boxboard and solid white board have excellent printability due to their smooth bleached surfaces.</p></div>
+        <div class="prop-mini"><h4>🌱 Biodegradability</h4><p>Most uncoated papers and boards biodegrade naturally. Compostable = biodegrades in under 12 weeks. Coated or plastic-laminated papers may not biodegrade and cannot be recycled normally.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1.10 POLYMERS -->
+  <div class="mat-panel" id="mp-pol">
+    <div class="mp-head mph-pol"><h3>🧪 1.10 — Thermoforming &amp; Thermosetting Polymers</h3><p>Spec ref: 1.10.1–1.10.3 | The single most important distinction in this topic: thermoforming CAN be recycled; thermosetting CANNOT. This comes down to whether the molecular chains are cross-linked.</p></div>
+    <div class="mp-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;">
+        <div class="key-dist kd-green" style="margin:0;">
+          <div class="kd-icon">♻️</div>
+          <div><div class="kd-title">Thermoforming Polymers</div><div class="kd-body">Polymer chains are <strong>LINEAR</strong> — they slide past each other when heated, allowing reshaping. Heat softens → reshape → cool to re-harden. <strong>CAN be recycled.</strong></div></div>
+        </div>
+        <div class="key-dist kd-red" style="margin:0;">
+          <div class="kd-icon">🚫</div>
+          <div><div class="kd-title">Thermosetting Polymers</div><div class="kd-body">Polymer chains form permanent <strong>CROSS-LINKS</strong> during curing. These locks cannot be broken by heat. Burns/chars instead of melting. <strong>CANNOT be recycled.</strong></div></div>
+        </div>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:10px;">Thermoforming Polymers — CAN recycle ♻️</h3>
+      <table class="mat-tbl">
+        <tr><th class="th-pol1">Polymer</th><th class="th-comp">Stock Forms</th><th class="th-adv">✓ Properties</th><th class="th-dis">✗ Disadvantages</th><th class="th-use">Uses</th></tr>
+        <tr>
+          <td><span class="mn">Acrylic</span><span class="sub">PMMA</span></td>
+          <td>Sheets, rods, tubes. Available in many colours — transparent, translucent, opaque.</td>
+          <td><ul><li>Tough and shatter-resistant</li><li>Easily polished to high finish</li><li>Food safe</li><li>UV resistant</li><li>Wide colour range</li></ul></td>
+          <td><ul><li>Scratches easily</li><li>Brittle if struck sharply</li><li>More expensive than glass</li></ul></td>
+          <td>Shop signs, car rear lights, fish tanks, bath panels, greenhouse panels, display stands</td>
+        </tr>
+        <tr>
+          <td><span class="mn">HIPS</span><span class="sub">High Impact Polystyrene</span></td>
+          <td>Sheets, rods, tubes. Usually white or pale. Excellent for vacuum forming.</td>
+          <td><ul><li>Lightweight</li><li>High stiffness and impact resistance</li><li>Easy to vacuum form</li><li>Good at taking detail from moulds</li></ul></td>
+          <td><ul><li>Scratches easily</li><li>Not suitable for food contact (standard grade)</li></ul></td>
+          <td>Toys, TV remote casings, fridge liners, vending machine cups, product prototypes, vacuum-formed packaging</td>
+        </tr>
+        <tr>
+          <td><span class="mn">Biopol®</span><span class="sub">Biodegradable polymer</span></td>
+          <td>Fibres, granules, sheets. White. Produced from sugar cane by bacteria.</td>
+          <td><ul><li>Biodegrades in soil within months</li><li>Lightweight</li><li>Good thermal insulator</li></ul></td>
+          <td><ul><li>Very expensive</li><li>Low impact resistance</li><li>Limited availability</li></ul></td>
+          <td>Disposable cups, surgical sutures, bone pins, medical implants that biodegrade after healing</td>
+        </tr>
+      </table>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:18px 0 10px;">Thermosetting Polymers — CANNOT recycle 🚫</h3>
+      <table class="mat-tbl">
+        <tr><th class="th-pol1">Polymer</th><th class="th-comp">Stock Forms</th><th class="th-adv">✓ Properties</th><th class="th-dis">✗ Disadvantages</th><th class="th-use">Uses</th></tr>
+        <tr>
+          <td><span class="mn">Polyester Resin</span></td>
+          <td>Thick liquid + catalyst. Mixed just before use. Sets by chemical reaction (addition of catalyst, NOT just heat).</td>
+          <td><ul><li>Rigid and hard when set</li><li>Good electrical insulation</li><li>Excellent chemical resistance</li><li>Can be reinforced with GRP (fibreglass)</li></ul></td>
+          <td><ul><li>Brittle on its own</li><li>Needs to be used with GRP for structural strength</li><li>Cannot be recycled</li></ul></td>
+          <td>Boat hulls (with GRP), sports car bodies, bathroom panels, encapsulating components</td>
+        </tr>
+        <tr>
+          <td><span class="mn">Urea Formaldehyde</span><span class="sub">UF Resin</span></td>
+          <td>Powder, granules, or preforms. Moulded under heat and pressure. Also used as an adhesive.</td>
+          <td><ul><li>Very hard and rigid</li><li>Excellent electrical insulation</li><li>Good heat resistance</li><li>White/pale colour — takes colour well</li></ul></td>
+          <td><ul><li>Brittle</li><li>Cannot be recycled</li><li>Releases formaldehyde gas during manufacture</li></ul></td>
+          <td>Electrical plugs and sockets, light fittings, control knobs, adhesive in MDF and chipboard manufacture</td>
+        </tr>
+      </table>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:16px 0 10px;">Key Properties</h3>
+      <div class="prop-row">
+        <div class="prop-mini"><h4>🌡️ Insulator of Heat</h4><p>Most polymers are poor conductors of heat — they do not transfer heat well. This makes them ideal for handles, casings, and anything that must be safe to touch near heat sources. Urea formaldehyde is used for kettle and iron handles.</p></div>
+        <div class="prop-mini"><h4>⚡ Insulator of Electricity</h4><p>Polymers do not conduct electricity — electrons cannot flow through them. This is why PVC coats electrical cables and urea formaldehyde is used for plug casings. Critical for safety in all electrical applications.</p></div>
+        <div class="prop-mini"><h4>🤜 Toughness</h4><p>The ability to withstand sudden impact without breaking. HIPS (High Impact Polystyrene) is specifically engineered for impact resistance. Acrylic is tougher than standard glass but less tough than polycarbonate.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1.11 FIBRES & TEXTILES -->
+  <div class="mat-panel" id="mp-tex">
+    <div class="mp-head mph-tex"><h3>🧵 1.11 — Fibres &amp; Textiles</h3><p>Spec ref: 1.11.1–1.11.6 | Know natural fibres (wool, cotton), synthetic fibres (polyester, acrylic), and all three fabric construction methods (woven, non-woven, knitted).</p></div>
+    <div class="mp-body">
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:10px;">Natural Fibres</h3>
+      <table class="mat-tbl">
+        <tr><th class="th-name">Fibre</th><th class="th-comp">Source &amp; Structure</th><th class="th-adv">✓ Advantages</th><th class="th-dis">✗ Disadvantages</th><th class="th-use">Uses</th></tr>
+        <tr>
+          <td><span class="mn">Wool</span><span class="sub">Animal · Protein</span></td>
+          <td>From sheep's fleece. Made of protein molecules. Short fibres with a crimp (kink) and scales that trap air for warmth. Soft or coarse depending on sheep breed.</td>
+          <td><ul><li>Warm (trapped air insulates)</li><li>Absorbent and breathable</li><li>Durable and resilient</li><li>Repels rain (water-resistant)</li><li>Hangs well; creases drop out</li></ul></td>
+          <td><ul><li>Dries slowly</li><li>Attacked by moths</li><li>Can feel itchy</li><li>Washes poorly — shrinks</li><li>Heavy when wet</li></ul></td>
+          <td>Coats, jumpers, suits, blankets, carpets, upholstery, felt (compressed wool fibres)</td>
+        </tr>
+        <tr>
+          <td><span class="mn">Cotton</span><span class="sub">Plant · Cellulose</span></td>
+          <td>From seed pods ('bolls') of cotton plant. Made of cellulose. Flat, twisted ribbon-shaped fibres. Machine-harvested; seeds removed; fibres (lint) spun into yarn.</td>
+          <td><ul><li>Cool, soft, and comfortable</li><li>Absorbent</li><li>Resists abrasion</li><li>Withstands frequent washing at high temperature</li><li>Can be ironed at high temperatures</li><li>Good drape; static resistant</li></ul></td>
+          <td><ul><li>Creases easily</li><li>Burns</li><li>Can shrink</li><li>Dries slowly</li></ul></td>
+          <td>Towels, denim jeans, socks, underwear, T-shirts, bedding, bandages, tea towels</td>
+        </tr>
+      </table>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:18px 0 10px;">Synthetic Fibres</h3>
+      <table class="mat-tbl">
+        <tr><th class="th-name">Fibre</th><th class="th-comp">Source &amp; Structure</th><th class="th-adv">✓ Advantages</th><th class="th-dis">✗ Disadvantages</th><th class="th-use">Uses</th></tr>
+        <tr>
+          <td><span class="mn">Polyester</span><span class="sub">Synthetic</span></td>
+          <td>Made from coal, oil and petrol-based chemicals. Simple monomers joined by polymerisation into long chains, then spun into yarn.</td>
+          <td><ul><li>Strong when wet or dry</li><li>Dries quickly</li><li>Crease and stain resistant</li><li>Resists abrasion</li><li>Easy care; can be recycled</li><li>Resists bacteria</li></ul></td>
+          <td><ul><li>Damaged by acids</li><li>Low warmth</li><li>Poor absorbency — does not breathe</li><li>Not environmentally friendly (microplastics)</li></ul></td>
+          <td>Raincoats, fleece jackets, nightwear, medical textiles, sportswear, reusable bags</td>
+        </tr>
+        <tr>
+          <td><span class="mn">Acrylic</span><span class="sub">Synthetic</span></td>
+          <td>Formed by polymerisation of 85%+ acrylonitrile (vinyl cyanide). Double bond between first two carbon atoms breaks and molecules join into a chain.</td>
+          <td><ul><li>Warm — good thermal insulation</li><li>Dries quickly</li><li>Good drape and soft handle</li><li>Crease resistant; easy care</li></ul></td>
+          <td><ul><li>Poor absorbency</li><li>Can feel stiff</li><li>Can irritate sensitive skin</li></ul></td>
+          <td>Imitation wool knitwear, upholstery fabrics, sportswear, fleece garments, blankets</td>
+        </tr>
+      </table>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:18px 0 10px;">Fabric Construction Methods</h3>
+      <table class="mat-tbl">
+        <tr><th class="th-name">Type</th><th class="th-comp">How It's Made</th><th class="th-adv">✓ Properties</th><th class="th-use">Examples</th></tr>
+        <tr><td><span class="mn">Woven — Plain</span></td><td>Warp threads (lengthways) interlaced with weft threads (crossways) in a simple over-one under-one pattern.</td><td>Strong, stable, does not stretch much, frays when cut</td><td>Calico (unbleached plain cotton), cotton poplin, muslin, linen</td></tr>
+        <tr><td><span class="mn">Woven — Twill</span></td><td>Warp and weft threads interlaced in a diagonal pattern (2-over-1-under or similar). Creates a diagonal rib on the surface.</td><td>Stronger than plain weave; softer drape; characteristic diagonal surface pattern</td><td>Denim (indigo-dyed cotton twill), herringbone wool, gabardine</td></tr>
+        <tr><td><span class="mn">Non-Woven — Felted</span></td><td>Wool fibres compressed, dampened, and agitated (by heat, moisture, and pressure) until the scaly fibres lock together permanently.</td><td>No woven structure — does not fray when cut; dense; good insulator; can be pressed into 3D shapes</td><td>Felt craft fabric, industrial felt, carpet underlay, hat-making (wool felt)</td></tr>
+        <tr><td><span class="mn">Non-Woven — Bonded</span></td><td>Fibres laid randomly and bonded together using heat, chemicals, or mechanical needling — no spinning or weaving required.</td><td>Cheap to produce; does not fray; disposable grades available; filters well</td><td>Interfacing (sewing backing), disposable wipes, medical dressings, geotextiles, some disposable clothing</td></tr>
+        <tr><td><span class="mn">Knitted — Weft</span></td><td>A single yarn loops through itself across the width of the fabric (horizontal loops). Most common knitted structure.</td><td>Very stretchy in all directions; comfortable and flexible; can unravel if a thread breaks</td><td>T-shirts, socks, jumpers, most everyday knitwear, sportswear</td></tr>
+        <tr><td><span class="mn">Knitted — Warp</span></td><td>Many yarns loop along the length of the fabric simultaneously (vertical loops). More stable than weft knit. Made on specialist machines.</td><td>Less stretchy than weft knit; more stable; does not unravel easily; ladder-resistant</td><td>Tights, swimwear, lace, net curtains, sportswear lining</td></tr>
+      </table>
+      <h3 style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin:16px 0 10px;">Key Properties</h3>
+      <div class="prop-row">
+        <div class="prop-mini"><h4>↕️ Elasticity</h4><p>The ability to stretch under force and return to original shape. Knitted fabrics are more elastic than woven. Elastane/Lycra has the highest elasticity. Important for sportswear, swimwear, and fitted garments.</p></div>
+        <div class="prop-mini"><h4>🔁 Resilience</h4><p>The ability to recover original shape after being stretched or compressed. Wool has very high resilience — creases fall out naturally. Polyester is also highly resilient. Cotton has low resilience (creases easily).</p></div>
+        <div class="prop-mini"><h4>🛡️ Durability</h4><p>The ability to resist wear, abrasion, and repeated washing without degrading. Polyester and nylon are very durable. Cotton is durable but can weaken with repeated bleaching. Wool can be damaged by incorrect washing.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ACTIVITIES ══ -->
+<div id="sec-activities" class="section">
+  <div class="sec-head"><h2>Revision Activities</h2><p>Three activities across all four material categories. Word banks are NOT in answer order.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Attempt First:</strong> Try all questions without notes. Wrong answers help you learn faster than correct ones — after checking, write the correct answer in a sentence of your own. This "generate and correct" approach is one of the most effective study methods for ESL learners.</div>
+
+  <!-- GAP FILL -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 1 — Gap Fill: Materials Vocabulary</h3><div class="act-badge">Fill in the blanks</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a word from the Word Bank, then click the correct blank. The bank is NOT in answer order.</div>
+      <div class="word-bank" id="wb1">
+        <span class="wchip" data-word="biodegradable">biodegradable</span><span class="wchip" data-word="ferrous">ferrous</span><span class="wchip" data-word="corrugated">corrugated</span><span class="wchip" data-word="polyester">polyester</span><span class="wchip" data-word="felting">felting</span><span class="wchip" data-word="malleability">malleability</span><span class="wchip" data-word="HIPS">HIPS</span><span class="wchip" data-word="ductility">ductility</span><span class="wchip" data-word="thermosetting">thermosetting</span><span class="wchip" data-word="thermoforming">thermoforming</span><span class="wchip" data-word="alloy">alloy</span><span class="wchip" data-word="resilience">resilience</span>
+      </div>
+      <div id="gf1">
+        <div class="gap-sent">1. Mild steel is a <input type="text" class="gf" data-answer="ferrous"> metal — it contains iron and will rust if exposed to moisture without a protective coating.</div>
+        <div class="gap-sent">2. Brass is an <input type="text" class="gf" data-answer="alloy"> — a mixture of copper (65%) and zinc (35%) — engineered to combine the best properties of both elements.</div>
+        <div class="gap-sent">3. Copper's <input type="text" class="gf" data-answer="ductility"> allows it to be drawn into electrical wire thinner than a human hair without breaking — making it essential for all electrical wiring.</div>
+        <div class="gap-sent">4. Aluminium has excellent <input type="text" class="gf" data-answer="malleability"> — it can be pressed, rolled, and beaten into sheets or complex 3D forms in all directions without fracturing.</div>
+        <div class="gap-sent">5. <input type="text" class="gf" data-answer="corrugated"> board consists of a fluted (wavy) paper core between two flat liner boards — the air gaps in the flutes absorb impact, making it ideal for protective packaging.</div>
+        <div class="gap-sent">6. Most uncoated papers and boards are <input type="text" class="gf" data-answer="biodegradable"> — they are broken down by bacteria into natural compounds, unlike plastic-laminated boards which resist decomposition.</div>
+        <div class="gap-sent">7. A <input type="text" class="gf" data-answer="thermoforming"> polymer can be reheated and reshaped because its molecular chains are linear (not cross-linked) — this also means it CAN be recycled.</div>
+        <div class="gap-sent">8. A <input type="text" class="gf" data-answer="thermosetting"> polymer forms permanent cross-links during curing — once set, it cannot be reshaped by reheating, and it CANNOT be recycled.</div>
+        <div class="gap-sent">9. <input type="text" class="gf" data-answer="HIPS"> (High Impact Polystyrene) is a thermoforming polymer commonly used for vacuum forming — it is lightweight, impact resistant, and takes fine mould detail well.</div>
+        <div class="gap-sent">10. <input type="text" class="gf" data-answer="polyester"> fibres are strong wet or dry, dry quickly, and resist creasing — but they do not breathe well and are not environmentally friendly due to microplastic shedding.</div>
+        <div class="gap-sent">11. Wool fibres are compressed, dampened and agitated to produce felt in a process called <input type="text" class="gf" data-answer="felting"> — the scaly surface of wool fibres locks them together permanently.</div>
+        <div class="gap-sent">12. Wool has excellent <input type="text" class="gf" data-answer="resilience"> — the natural crimp in its fibres allows creases to drop out over time, reducing the need for ironing compared to cotton garments.</div>
+      </div>
+      <div><button class="check-btn" onclick="checkGF('gf1','sc1')">✓ Check Answers</button><button class="reset-btn" onclick="resetGF('gf1','sc1','wb1')">↺ Reset</button><div class="score-box" id="sc1"></div></div>
+    </div>
+  </div>
+
+  <!-- MATCHING -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 2 — Matching: Material to Its Key Description</h3><div class="act-badge">Click to match</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a material LEFT, then its correct description RIGHT. Descriptions are NOT in the same order as material names.</div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-lbl">📋 Material</div>
+          <div class="mi mw" data-id="1" onclick="sm(this,'w')">Stainless Steel</div>
+          <div class="mi mw" data-id="2" onclick="sm(this,'w')">Folding Boxboard</div>
+          <div class="mi mw" data-id="3" onclick="sm(this,'w')">Urea Formaldehyde</div>
+          <div class="mi mw" data-id="4" onclick="sm(this,'w')">Cast Iron</div>
+          <div class="mi mw" data-id="5" onclick="sm(this,'w')">Biopol®</div>
+          <div class="mi mw" data-id="6" onclick="sm(this,'w')">Acrylic (PMMA)</div>
+          <div class="mi mw" data-id="7" onclick="sm(this,'w')">Cotton</div>
+          <div class="mi mw" data-id="8" onclick="sm(this,'w')">Warp-knitted fabric</div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-lbl">📋 Key Description</div>
+          <div class="mi" data-id="6" onclick="sm(this,'d')">A thermoforming polymer available in many colours — tough, food safe, but scratches easily. Used for shop signs, fish tanks, and car rear lights.</div>
+          <div class="mi" data-id="8" onclick="sm(this,'d')">A knitted fabric construction where yarns loop along the length — more stable than the other knitted type, ladder-resistant, used for tights and swimwear.</div>
+          <div class="mi" data-id="3" onclick="sm(this,'d')">A thermosetting polymer used for electrical plugs and sockets — very hard, excellent electrical insulator, but brittle and cannot be recycled. Also used as an adhesive in MDF.</div>
+          <div class="mi" data-id="7" onclick="sm(this,'d')">A natural plant fibre made of cellulose — cool, soft, absorbent, and withstands frequent washing at high temperatures. Creases easily.</div>
+          <div class="mi" data-id="4" onclick="sm(this,'d')">A ferrous metal with a hard outer skin and a soft, brittle core — self-lubricating, used for vices and brake discs, but cannot be bent without cracking.</div>
+          <div class="mi" data-id="2" onclick="sm(this,'d')">A three-layer board: bleached white outer (for printing), yellowish recycled middle, bleached food-safe inner. Used for cereal boxes and medicine packaging.</div>
+          <div class="mi" data-id="5" onclick="sm(this,'d')">A biodegradable thermoforming polymer made from sugar cane — breaks down in soil within months. Used for surgical pins and disposable cups. Very expensive.</div>
+          <div class="mi" data-id="1" onclick="sm(this,'d')">A ferrous alloy with chromium and nickel added — excellent corrosion resistance, hygienic, used for kitchen sinks, cutlery, and surgical instruments.</div>
+        </div>
+      </div>
+      <button class="reset-btn" style="margin-top:13px;" onclick="resetMatch()">↺ Reset</button>
+      <div id="mDone" style="display:none;margin-top:11px;font-size:14px;font-weight:600;color:var(--green);background:var(--green-l);padding:10px 15px;border-radius:8px;">🎉 All 8 matched correctly — excellent knowledge across all four material categories!</div>
+    </div>
+  </div>
+
+  <!-- TRUE/FALSE -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 3 — True or False?</h3><div class="act-badge">Test understanding</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 These statements target the most common misconceptions across all four material topics. Many students get these wrong in the exam — read the explanations carefully.</div>
+      <div class="tf-item"><div class="tf-stmt">1. All ferrous metals rust — including stainless steel — because they all contain iron which reacts with water and oxygen.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,1)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,1)">False</button></div><div class="tf-fb" id="tf1">❌ <strong>False.</strong> Stainless steel is a ferrous metal (it contains iron) but it does NOT rust. The chromium content (10.5–18%) reacts with oxygen to form an invisible, protective chromium oxide layer on the surface. This self-repairing layer prevents moisture from reaching the iron underneath, making stainless steel highly corrosion resistant. Wrought iron is also relatively rust-resistant despite containing iron.</div></div>
+      <div class="tf-item"><div class="tf-stmt">2. Thermoforming polymers can be recycled because their molecular chains are linear (not cross-linked) — allowing them to soften and be reshaped when heated.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,true,2)">True</button><button class="tf-btn fb" onclick="chkTF(this,true,2)">False</button></div><div class="tf-fb" id="tf2">✅ <strong>True — and this is the most important distinction in Topic 1.10.</strong> Thermoforming polymers have linear (straight) molecular chains. When heated, these chains can slide past each other, allowing the material to soften and be reshaped. When cooled, they harden again. This process can be repeated — hence they can be recycled. Thermosetting polymers form permanent cross-links between chains during curing, locking the structure permanently so they cannot be reheated and remoulded.</div></div>
+      <div class="tf-item"><div class="tf-stmt">3. Ductility and malleability are the same property described in different ways — both refer to a metal's ability to change shape without breaking.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,3)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,3)">False</button></div><div class="tf-fb" id="tf3">❌ <strong>False — these are different properties with specific definitions.</strong> Ductility = the ability to be drawn out into a wire under TENSILE (pulling) force — deformation in ONE direction (lengthways). Malleability = the ability to be deformed permanently in ALL directions by pressing, rolling, or hammering — without fracturing. A metal can be highly ductile but less malleable (e.g. steel wire drawing works, but sheet pressing would crack it at some thicknesses).</div></div>
+      <div class="tf-item"><div class="tf-stmt">4. Corrugated board is a better choice than folding boxboard for cereal packaging because it is stronger and more impact resistant.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,4)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,4)">False</button></div><div class="tf-fb" id="tf4">❌ <strong>False — folding boxboard is more appropriate for cereal packaging.</strong> Folding boxboard has a white, bleached outer surface that accepts high-quality full-colour printing, a food-safe inner layer, and can be scored and folded cleanly into box nets. Corrugated board is too thick and its fluted structure does not accept high-quality printing. Corrugated board is better for shipping boxes where impact resistance is needed, not retail food packaging where printability and appearance matter most.</div></div>
+      <div class="tf-item"><div class="tf-stmt">5. Weft-knitted fabrics are more stable and less likely to ladder than warp-knitted fabrics.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,5)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,5)">False</button></div><div class="tf-fb" id="tf5">❌ <strong>False — this is the opposite.</strong> Warp-knitted fabrics are MORE stable and ladder-resistant. In warp knitting, many yarns loop along the length simultaneously — if one loop breaks, the structure does not unravel easily. Weft-knitted fabrics (like most jumpers and T-shirts) use a single yarn looping across the width — if a loop breaks, a ladder can run down the fabric. Tights use warp knitting specifically because ladder-resistance is essential.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ EXAM LANGUAGE ══ -->
+<div id="sec-exam" class="section">
+  <div class="sec-head"><h2>Exam Language &amp; Practice</h2><p>Material categorisation questions follow predictable patterns. The two most common types are "Explain why [material] is suitable for [product]" and "Give the difference between [material A] and [material B]."</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Property → Consequence → Product:</strong> The strongest exam answers always link three things: the PROPERTY of the material → the CONSEQUENCE of that property → why it matters for the SPECIFIC PRODUCT. E.g. "Aluminium has a high strength-to-weight ratio [PROPERTY] which means the drinks can is strong enough to hold the pressurised liquid [CONSEQUENCE] while remaining light enough to be carried and transported efficiently [PRODUCT RELEVANCE]."</div>
+
+  <div class="frame-card"><div class="frame-type">Explain why [material] is used for [product] — 2 marks</div><div class="frame-body">
+    <div class="frame-tpl"><span class="blank">[Material]</span> is suitable for <span class="blank">[product]</span> because it has <span class="blank">[specific property]</span>. This is important because <span class="blank">[why that property matters for that product]</span>.</div>
+    <div class="frame-ex">"<strong>Stainless steel</strong> is suitable for <strong>kitchen sinks</strong> because it has <strong>excellent corrosion resistance due to the chromium content forming a protective oxide layer</strong>. This is important because <strong>sinks are constantly exposed to water and cleaning chemicals that would cause mild steel to rust rapidly</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Give the difference between thermoforming and thermosetting — 2 marks</div><div class="frame-body">
+    <div class="frame-tpl"><span class="blank">[Thermoforming/Thermosetting]</span> polymers have <span class="blank">[molecular structure]</span> which means they <span class="blank">[can/cannot]</span> be reshaped by heating. Unlike <span class="blank">[the other type]</span>, they <span class="blank">[can/cannot]</span> be recycled.</div>
+    <div class="frame-ex">"<strong>Thermoforming</strong> polymers have <strong>linear (non-cross-linked) molecular chains</strong> which means they <strong>can be softened and reshaped by reheating</strong>. Unlike <strong>thermosetting polymers (which have permanent cross-links and cannot be reheated)</strong>, they <strong>can be recycled by remelting and remoulding</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Compare natural and synthetic fibres — 4 marks</div><div class="frame-body">
+    <div class="frame-tpl"><span class="blank">[Natural fibre]</span> is suitable for <span class="blank">[use]</span> because <span class="blank">[advantage]</span>. However, <span class="blank">[synthetic fibre]</span> may be preferred when <span class="blank">[use requiring different property]</span> because <span class="blank">[advantage of synthetic]</span>.</div>
+    <div class="frame-ex">"<strong>Wool</strong> is suitable for <strong>winter coats</strong> because <strong>its crimped fibres trap air, providing excellent thermal insulation and keeping the wearer warm</strong>. However, <strong>polyester</strong> may be preferred when <strong>making sportswear or raincoats</strong> because <strong>it dries quickly, resists staining, and does not absorb moisture — unlike wool which becomes heavy and dries slowly when wet</strong>."</div>
+  </div></div>
+
+  <div style="margin:22px 0 13px;"><h2 style="font-family:'Playfair Display',serif;font-size:21px;color:var(--navy);">📝 Practice Questions</h2></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q1 · Metals · 2 marks</span><span class="eq-marks">2 marks</span></div><div class="eq-body"><div class="eq-text">Explain two reasons why aluminium is used for drinks cans rather than mild steel.</div><div class="eq-hint">💡 Two marks = two separate explained reasons. Each needs a property AND a consequence. Think: weight, corrosion resistance, recyclability.</div><button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button><div class="model-ans"><div class="mp"><div class="mpn">1</div><div><strong>Corrosion resistance:</strong> Aluminium naturally forms a protective oxide layer that prevents rusting — this is essential for drinks cans that contain acidic or carbonated liquids that would rapidly corrode mild steel.</div></div><div class="mp"><div class="mpn">2</div><div><strong>Lightweight / excellent strength-to-weight ratio:</strong> Aluminium is significantly lighter than steel for the same strength — this reduces transportation costs and makes the can comfortable to hold and carry, while still withstanding the internal pressure of carbonated drinks.</div></div></div></div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q2 · Papers · 4 marks</span><span class="eq-marks">4 marks</span></div><div class="eq-body"><div class="eq-text">A company is choosing between corrugated board and folding boxboard for a new product. Give one reason why corrugated board is suitable for shipping the product, and one reason why it might not be suitable for the retail packaging of the same product.</div><div class="eq-hint">💡 One advantage for shipping (impact resistance) + one disadvantage for retail (printability/appearance). Each answer needs property + consequence.</div><button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button><div class="model-ans"><div class="mp"><div class="mpn">1</div><div><strong>Suitable for shipping:</strong> The fluted core of corrugated board absorbs impact and vibration during transit, protecting fragile products from damage. The air trapped in the flutes acts like a cushion against shocks and drops during handling and transportation.</div></div><div class="mp"><div class="mpn">2</div><div><strong>Not suitable for retail packaging:</strong> The corrugated surface does not accept high-quality printing — the uneven fluted texture makes it impossible to print sharp, detailed graphics and text with the colour accuracy required for premium retail shelf display. Folding boxboard, with its smooth bleached white outer surface, would give a far superior printed result.</div></div></div></div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q3 · Polymers · 4 marks</span><span class="eq-marks">4 marks</span></div><div class="eq-body"><div class="eq-text">Explain the difference in molecular structure between a thermoforming polymer and a thermosetting polymer, and state one consequence of this difference in terms of recycling.</div><div class="eq-hint">💡 Describe LINEAR chains (thermoforming) vs CROSS-LINKED chains (thermosetting) for 2 marks. State the recycling consequence for 2 marks.</div><button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button><div class="model-ans"><div class="mp"><div class="mpn">1</div><div><strong>Thermoforming structure:</strong> Thermoforming polymers have linear (straight) molecular chains that are not bonded to each other. When heated, these chains can slide past each other, allowing the material to soften and be reshaped.</div></div><div class="mp"><div class="mpn">2</div><div><strong>Thermosetting structure:</strong> Thermosetting polymers form permanent covalent cross-links between their polymer chains during the curing process. These cross-links lock the structure rigidly in place and cannot be broken by reheating — the material will char or burn rather than melt.</div></div><div class="mp"><div class="mpn">3</div><div><strong>Recycling consequence:</strong> Thermoforming polymers CAN be recycled — they can be remelted, reformed, and reused. Thermosetting polymers CANNOT be recycled because the permanent cross-links prevent them from softening again.</div></div></div></div></div>
+</div>
+
+<!-- ══ ESL TOOLKIT ══ -->
+<div id="sec-toolkit" class="section">
+  <div class="sec-head"><h2>ESL Language Toolkit</h2><p>Word roots, plain-English synonyms, and common mistakes across all four material categories.</p></div>
+  <div class="tk-grid">
+    <div class="tk-card"><div class="tk-head tkh-navy">🔤 Key Word Roots</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th>Root</th><th>Meaning</th><th>Examples in this topic</th></tr>
+        <tr><td class="pfx">ferro-</td><td>iron</td><td>ferrous, ferrite, ferro-alloy</td></tr>
+        <tr><td class="pfx">ductil-</td><td>to lead/draw</td><td>ductility, ductile, non-ductile</td></tr>
+        <tr><td class="pfx">malle-</td><td>hammer</td><td>malleability, malleable</td></tr>
+        <tr><td class="pfx">thermo-</td><td>heat</td><td>thermoforming, thermosetting, thermoplastic</td></tr>
+        <tr><td class="pfx">bio-</td><td>life</td><td>biodegradable, biopolymer, Biopol</td></tr>
+        <tr><td class="pfx">poly-</td><td>many</td><td>polymer, polyester, polymerisation</td></tr>
+        <tr><td class="pfx">mono-</td><td>one/single</td><td>monomer (single molecule that joins to form polymer)</td></tr>
+        <tr><td class="pfx">print-</td><td>to press/mark</td><td>printability, printed, printing</td></tr>
+        <tr><td class="pfx">elast-</td><td>to spring back</td><td>elasticity, elastic, elastane</td></tr>
+        <tr><td class="pfx">resili-</td><td>to bounce back</td><td>resilience, resilient</td></tr>
+      </table>
+    </div></div>
+    <div class="tk-card"><div class="tk-head tkh-ind">🔄 Technical Term → Plain English</div><div class="tk-body">
+      <div class="syn-p"><span class="syn-c">Ferrous metal</span><span class="syn-a">→</span><span class="syn-s">A metal containing iron — usually magnetic, usually rusts</span></div>
+      <div class="syn-p"><span class="syn-c">Alloy</span><span class="syn-a">→</span><span class="syn-s">A designed mix of two or more metals with improved properties</span></div>
+      <div class="syn-p"><span class="syn-c">Ductility</span><span class="syn-a">→</span><span class="syn-s">Can be pulled into wire without breaking</span></div>
+      <div class="syn-p"><span class="syn-c">Malleability</span><span class="syn-a">→</span><span class="syn-s">Can be pressed/hammered into sheets in any direction</span></div>
+      <div class="syn-p"><span class="syn-c">Thermoforming</span><span class="syn-a">→</span><span class="syn-s">Can be re-softened by heat and reshaped → recyclable</span></div>
+      <div class="syn-p"><span class="syn-c">Thermosetting</span><span class="syn-a">→</span><span class="syn-s">Permanently set by heat → cannot recycle</span></div>
+      <div class="syn-p"><span class="syn-c">Cross-linked</span><span class="syn-a">→</span><span class="syn-s">Polymer chains permanently bonded together — cannot slide</span></div>
+      <div class="syn-p"><span class="syn-c">Biodegradable</span><span class="syn-a">→</span><span class="syn-s">Broken down naturally by bacteria — decomposes in soil</span></div>
+      <div class="syn-p"><span class="syn-c">Resilience (textile)</span><span class="syn-a">→</span><span class="syn-s">Fabric springs back to shape after being stretched or creased</span></div>
+      <div class="syn-p"><span class="syn-c">Warp / Weft</span><span class="syn-a">→</span><span class="syn-s">Warp = lengthways threads; Weft = crossways threads in weaving</span></div>
+    </div></div>
+    <div class="tk-card" style="grid-column:1/-1;"><div class="tk-head tkh-teal">🚨 Common Exam Mistakes — All Material Topics</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th style="width:30%">❌ Avoid</th><th style="width:40%">✅ Write instead</th><th>Why?</th></tr>
+        <tr><td>"All ferrous metals rust"</td><td>"Most ferrous metals rust when unprotected, <strong>but stainless steel does not rust</strong> because its chromium content forms a protective oxide layer"</td><td>Stainless steel is ferrous but does not rust — a frequent 1-mark slip</td></tr>
+        <tr><td>"Thermoforming = thermosetting (just spelled differently)"</td><td>"<strong>Thermoforming</strong> = CAN be recycled (linear chains). <strong>Thermosetting</strong> = CANNOT be recycled (cross-linked chains). They are completely different."</td><td>These are opposite polymer types — the exam frequently asks for the difference</td></tr>
+        <tr><td>"Ductility means you can bend it"</td><td>"Ductility is the ability to be drawn into a wire <strong>under tensile force</strong> without fracturing"</td><td>Bending ≠ ductility. Ductility is specifically about WIRE DRAWING in one direction</td></tr>
+        <tr><td>"Corrugated board is good for cereal boxes"</td><td>"<strong>Folding boxboard</strong> is used for cereal boxes — its bleached white outer layer accepts high-quality printing. Corrugated board is for <strong>shipping</strong>."</td><td>Extremely common mix-up — corrugated board cannot be high-quality printed</td></tr>
+        <tr><td>"Polyester is good because it is natural"</td><td>"Polyester is a <strong>synthetic</strong> fibre made from coal and oil-based chemicals — it is <strong>not natural</strong>. Natural fibres include cotton and wool."</td><td>Students confuse polyester (synthetic) with cotton (natural)</td></tr>
+        <tr><td>"Weft-knitted is stronger than warp-knitted"</td><td>"Warp-knitted fabrics are <strong>more stable and ladder-resistant</strong>. Weft-knitted are <strong>more stretchy</strong> but can unravel if a loop breaks."</td><td>The stability distinction is frequently tested — warp = stable; weft = stretchy</td></tr>
+      </table>
+    </div></div>
+  </div>
+</div>
+
+</div><!-- end main -->
+<footer><strong>Edexcel GCSE Design &amp; Technology</strong> · Topics 1.8–1.11 · Material Categorisation · Core Content<br>Cross-referenced with Pearson Edexcel Specification (Issue 4, Nov 2022) &amp; Categorisation of Materials textbook (pp. 37–48) · Section A · For educational use only</footer>
+
+<script>
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('sec-'+id).classList.add('active');event.currentTarget.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function fv(t,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.vc').forEach(c=>{c.style.display=(t==='all'||c.dataset.topic===t)?'block':'none';});}
+function showMat(id,btn){document.querySelectorAll('.mat-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.mat-btn').forEach(b=>b.classList.remove('active'));document.getElementById('mp-'+id).classList.add('active');btn.classList.add('active');}
+let selChip=null;
+document.querySelectorAll('.wchip').forEach(c=>{c.addEventListener('click',function(){document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));selChip=this.dataset.word;this.classList.add('sel');});});
+document.querySelectorAll('.gf').forEach(inp=>{inp.addEventListener('click',function(){if(selChip){this.value=selChip;selChip=null;document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));}});inp.addEventListener('input',function(){this.classList.remove('correct','incorrect');});});
+function checkGF(cid,sid){const ins=document.getElementById(cid).querySelectorAll('.gf');let ok=0;ins.forEach(i=>{const pass=i.value.toLowerCase().trim()===i.dataset.answer.toLowerCase().trim();i.classList.toggle('correct',pass);i.classList.toggle('incorrect',!pass);if(pass)ok++;});const s=document.getElementById(sid);const p=ok/ins.length;s.className='score-box show '+(p>=.85?'good':p>=.5?'ok':'low');s.style.display='inline-flex';s.innerHTML=(p>=.85?'🎉':p>=.5?'👍':'📚')+` Score: ${ok}/${ins.length}`+(p>=.85?' — Excellent!':p>=.5?' — Good effort!':" — Keep revising!");}
+function resetGF(cid,sid,wid){document.getElementById(cid).querySelectorAll('.gf').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});const s=document.getElementById(sid);s.className='score-box';s.style.display='none';if(wid)document.getElementById(wid).querySelectorAll('.wchip').forEach(c=>c.classList.remove('sel'));selChip=null;}
+let mSel={w:null,d:null},mCnt=0;
+function sm(el,t){if(el.classList.contains('matched'))return;if(mSel[t])mSel[t].classList.remove('sel');mSel[t]=el;el.classList.add('sel');if(mSel.w&&mSel.d){if(mSel.w.dataset.id===mSel.d.dataset.id){[mSel.w,mSel.d].forEach(e=>{e.classList.add('matched');e.classList.remove('sel');});mCnt++;if(mCnt===8)document.getElementById('mDone').style.display='block';}else{[mSel.w,mSel.d].forEach(e=>{e.classList.add('wrong');setTimeout(()=>{e.classList.remove('wrong','sel');},600);});setTimeout(()=>{mSel={w:null,d:null};},600);return;}mSel={w:null,d:null};}}
+function resetMatch(){document.querySelectorAll('.mi').forEach(e=>e.classList.remove('matched','sel','wrong'));mSel={w:null,d:null};mCnt=0;document.getElementById('mDone').style.display='none';}
+function chkTF(btn,correct,n){const isT=btn.classList.contains('tb');const pass=(isT===correct);const parent=btn.closest('.tf-item');parent.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);btn.classList.add(pass?'ca':'wa');if(!pass){const cb=correct?parent.querySelector('.tb'):parent.querySelector('.fb');cb.classList.add('ca');}const fb=document.getElementById('tf'+n);fb.className='tf-fb show '+(pass?'ok':'no');}
+function togAns(btn){const a=btn.nextElementSibling;if(a.classList.contains('show')){a.classList.remove('show');btn.textContent='👁 Show Model Answer';}else{a.classList.add('show');btn.textContent='🙈 Hide Model Answer';}}
+</script>
+</body>
+</html>
