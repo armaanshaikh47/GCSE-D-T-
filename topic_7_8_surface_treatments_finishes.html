@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic 7.8 — Surface Treatments & Finishes · GCSE D&T Timbers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fdf8f2;--navy:#1c0d00;--amb:#854d0e;--amb-l:#fef3c7;--amb-m:#fcd34d;
+  --teal:#0e7490;--teal-l:#e0f5f9;--green:#166534;--green-l:#dcfce7;
+  --red:#991b1b;--red-l:#fee2e2;--blue:#1e40af;--blue-l:#dbeafe;
+  --muted:#78716c;--border:#e7ddd0;--card:#fff;--text:#1c0d00;
+  --shadow:0 2px 16px rgba(28,13,0,.09);--shadow-h:0 6px 28px rgba(28,13,0,.17);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;}
+.hero{background:linear-gradient(135deg,#1c0d00 0%,#4a2000 55%,#0c2714 100%);color:#fff;padding:52px 40px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(133,77,14,.3) 0%,transparent 55%);}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.hero-badge{display:inline-block;background:var(--amb);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);font-weight:900;line-height:1.08;margin-bottom:8px;}
+.hero h1 .ac{color:var(--amb-m);}
+.hero-spec{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:14px;text-transform:uppercase;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.72);max-width:620px;line-height:1.65;margin-bottom:26px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.hero-tag{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);font-size:12px;padding:5px 13px;border-radius:20px;}
+.nav-bar{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 20px;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:15px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-2px;}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--amb);font-weight:600;}
+.main{max-width:1100px;margin:0 auto;padding:38px 20px 80px;}
+.section{display:none;}
+.section.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sec-head{margin-bottom:26px;}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+.sec-head p{color:var(--muted);font-size:15px;line-height:1.65;max-width:700px;}
+.esl-tip{background:linear-gradient(135deg,#fffbf0,var(--amb-l));border-left:4px solid var(--amb);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:26px;font-size:13.5px;color:#5c2a00;line-height:1.6;}
+.insight-box{border-left:4px solid var(--amb);background:var(--amb-l);padding:11px 15px;border-radius:0 8px 8px 0;font-size:13.5px;color:#5c2a00;margin:14px 0;}
+
+/* SPEC */
+.spec-card{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.spec-head{padding:14px 18px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#fff;background:linear-gradient(135deg,#4a2000,#854d0e);}
+.spec-body{padding:12px 18px;}
+.spec-item{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:1px solid #f5ece0;font-size:13.5px;line-height:1.5;}
+.spec-item:last-child{border-bottom:none;}
+.spec-item input[type=checkbox]{margin-top:3px;accent-color:var(--amb);flex-shrink:0;width:15px;height:15px;}
+
+/* VOCAB */
+.filter-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px;align-items:center;}
+.filter-btn{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--muted);}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;align-items:start;}
+.vc{background:var(--card);border-radius:14px;border:1.5px solid var(--border);box-shadow:var(--shadow);display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;transition:transform .2s;}
+.vc:hover{transform:translateY(-2px);}
+.vc-top{padding:15px 18px 12px;border-bottom:1px solid var(--border);display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:10px;writing-mode:horizontal-tb;}
+.vc-word{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--navy);writing-mode:horizontal-tb;flex:1;min-width:0;word-break:break-word;}
+.vc-tag{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px;flex-shrink:0;writing-mode:horizontal-tb;white-space:nowrap;margin-top:3px;}
+.t-fin{background:var(--amb-l);color:var(--amb);}
+.t-pr{background:var(--green-l);color:var(--green);}
+.t-hs{background:var(--red-l);color:var(--red);}
+.vc-body{padding:14px 18px;display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;}
+.def-lbl{display:none;}
+.vc-def{font-size:14px;color:var(--text);line-height:1.65;margin-bottom:12px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex{background:#fdf3e0;border-left:3px solid var(--amb);padding:9px 12px;border-radius:0 8px 8px 0;font-size:13px;color:#444;font-style:italic;line-height:1.55;margin-bottom:11px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex em{font-style:normal;background:var(--amb-l);padding:1px 3px;border-radius:2px;}
+.vc-mem{background:var(--green-l);border:1px solid #bbf7d0;padding:9px 12px;border-radius:8px;font-size:12.5px;color:#14532d;line-height:1.6;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+
+/* MAIN FINISH TABLE */
+.finish-tbl{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0;}
+.finish-tbl th{padding:9px 12px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;}
+.finish-tbl td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.finish-tbl tr:last-child td{border-bottom:none;}
+.finish-tbl tr:nth-child(even) td{background:#fdf8f0;}
+.finish-tbl .fn{font-weight:700;color:var(--navy);}
+.th-nm{background:var(--navy);color:#fff;border-radius:8px 0 0 0;width:90px;}
+.th-ds{background:#4a2000;color:#fff;}
+.th-fa{background:var(--amb);color:#fff;}
+.th-ad{background:var(--green);color:#fff;}
+.th-di{background:var(--red);color:#fff;border-radius:0 8px 0 0;}
+.finish-tbl td ul{padding-left:13px;}
+.finish-tbl td ul li{margin-bottom:2px;}
+.func-badge{display:inline-block;background:var(--teal-l);color:var(--teal);font-size:10px;font-family:'DM Mono',monospace;padding:2px 6px;border-radius:3px;font-weight:500;margin-left:4px;}
+.aes-badge{display:inline-block;background:var(--amb-l);color:#5c2a00;font-size:10px;font-family:'DM Mono',monospace;padding:2px 6px;border-radius:3px;font-weight:500;margin-left:4px;}
+
+/* FINISH CARDS — for product application guide */
+.finish-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:14px 0;}
+.fin-card{border-radius:12px;overflow:hidden;border:1.5px solid var(--border);box-shadow:var(--shadow);}
+.fin-head{padding:11px 14px;color:#fff;font-weight:700;font-size:13.5px;}
+.fh1{background:linear-gradient(135deg,#1c0d00,#4a2000);}
+.fh2{background:linear-gradient(135deg,#2d4a00,#4d7c0f);}
+.fh3{background:linear-gradient(135deg,#063550,#0e7490);}
+.fh4{background:linear-gradient(135deg,#2d1060,#5b21b6);}
+.fh5{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.fh6{background:linear-gradient(135deg,#854d0e,#d97706);}
+.fh7{background:linear-gradient(135deg,#0c2714,#166534);}
+.fin-body{padding:12px 14px;background:var(--card);}
+.fin-body p{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:7px;}
+.fin-when{font-size:12px;background:var(--amb-l);padding:5px 9px;border-radius:5px;color:#5c2a00;line-height:1.5;}
+
+/* WHY finishes box */
+.why-box{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0;}
+.why-card{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:16px;}
+.why-card h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:7px;}
+.why-card ul{list-style:none;padding:0;}
+.why-card ul li{font-size:13px;color:var(--muted);padding:4px 0;display:flex;gap:8px;align-items:flex-start;line-height:1.45;}
+.why-card ul li::before{content:"→";color:var(--amb);font-weight:700;flex-shrink:0;}
+
+/* PRODUCT SELECTOR */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin:14px 0;}
+.prod-card{background:#fdf8f0;border:1.5px solid var(--border);border-radius:10px;padding:14px;}
+.prod-card h4{font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.prod-card .best{font-size:12.5px;color:var(--teal);font-weight:600;margin-bottom:5px;}
+.prod-card .reason{font-size:12px;color:var(--muted);line-height:1.5;}
+.prod-card .rej{font-size:12px;color:var(--red);margin-top:5px;line-height:1.5;}
+
+/* H&S */
+.hs-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.hs-card{background:var(--card);border-left:4px solid var(--red);border-radius:0 10px 10px 0;padding:14px 16px;}
+.hs-card h4{font-size:13.5px;font-weight:700;color:var(--red);margin-bottom:6px;}
+.hs-card ul{list-style:none;padding:0;}
+.hs-card ul li{font-size:13px;color:var(--muted);padding:3px 0;display:flex;gap:8px;align-items:flex-start;line-height:1.45;}
+.hs-card ul li::before{content:"⚠️";flex-shrink:0;font-size:11px;}
+
+/* ACTIVITIES */
+.act-block{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;margin-bottom:26px;box-shadow:var(--shadow);}
+.act-head{background:var(--navy);padding:16px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.act-head h3{color:#fff;font-family:'Playfair Display',serif;font-size:18px;}
+.act-badge{background:var(--amb);color:#fff;font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:4px;}
+.act-body{padding:22px;}
+.act-instr{background:var(--amb-l);border-radius:8px;padding:11px 15px;font-size:13.5px;color:#5c2a00;margin-bottom:18px;line-height:1.55;}
+.gap-sent{font-size:14.5px;line-height:2.5;margin-bottom:4px;color:var(--text);writing-mode:horizontal-tb;display:block;}
+.gf{border:none;border-bottom:2.5px solid var(--amb);background:var(--amb-l);width:160px;padding:3px 7px;font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--navy);border-radius:4px 4px 0 0;outline:none;writing-mode:horizontal-tb;}
+.gf.correct{background:var(--green-l);border-bottom-color:var(--green);}
+.gf.incorrect{background:var(--red-l);border-bottom-color:var(--red);}
+.word-bank{display:flex;flex-wrap:wrap;gap:8px;padding:13px;background:var(--amb-l);border-radius:10px;margin-bottom:16px;}
+.wchip{background:var(--card);border:1.5px solid var(--border);border-radius:6px;padding:5px 11px;font-size:13px;font-weight:500;color:var(--navy);cursor:pointer;transition:all .15s;user-select:none;writing-mode:horizontal-tb;}
+.wchip:hover,.wchip.sel{border-color:var(--amb);background:var(--amb-l);}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;}
+.reset-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:9px 18px;font-family:'DM Sans',sans-serif;font-size:13.5px;cursor:pointer;margin-left:10px;margin-top:12px;color:var(--muted);}
+.score-box{display:none;align-items:center;gap:10px;margin-top:12px;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:600;}
+.score-box.show{display:inline-flex;}
+.score-box.good{background:var(--green-l);color:var(--green);}
+.score-box.ok{background:var(--amb-l);color:#5c2a00;}
+.score-box.low{background:var(--red-l);color:var(--red);}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.match-col{display:flex;flex-direction:column;gap:8px;}
+.match-col-lbl{font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:3px;}
+.mi{background:var(--card);border:2px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.4;}
+.mi.mw{font-weight:700;color:var(--navy);}
+.mi:hover,.mi.sel{border-color:var(--amb);background:var(--amb-l);}
+.mi.matched{border-color:var(--green);background:var(--green-l);color:var(--green);pointer-events:none;font-weight:600;}
+.mi.wrong{border-color:var(--red);background:var(--red-l);animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.tf-item{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:15px 18px;margin-bottom:11px;}
+.tf-stmt{font-size:14px;color:var(--text);margin-bottom:11px;line-height:1.55;font-weight:500;}
+.tf-btns{display:flex;gap:10px;}
+.tf-btn{padding:7px 20px;border-radius:7px;border:1.5px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;background:var(--card);}
+.tf-btn.tb:hover{background:var(--green-l);border-color:var(--green);color:var(--green);}
+.tf-btn.fb:hover{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-btn.ca{background:var(--green-l);border-color:var(--green);color:var(--green);pointer-events:none;}
+.tf-btn.wa{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-fb{font-size:13px;margin-top:9px;padding:8px 12px;border-radius:7px;display:none;line-height:1.5;}
+.tf-fb.show{display:block;}
+.tf-fb.ok{background:var(--green-l);color:var(--green);}
+.tf-fb.no{background:var(--red-l);color:var(--red);}
+
+/* EXAM */
+.frame-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:12px;}
+.frame-type{background:var(--amb-l);padding:7px 16px;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:#5c2a00;}
+.frame-body{padding:13px 16px;}
+.frame-tpl{font-size:14px;color:var(--text);line-height:1.8;margin-bottom:7px;}
+.blank{background:var(--amb-l);padding:2px 7px;border-radius:4px;font-style:italic;color:#5c2a00;font-size:13px;}
+.frame-ex{font-size:13px;color:var(--muted);font-style:italic;border-left:3px solid var(--teal);padding-left:11px;margin-top:7px;line-height:1.55;}
+.eq-block{background:var(--card);border:1.5px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow);}
+.eq-head{background:var(--amb-l);padding:11px 18px;display:flex;justify-content:space-between;align-items:center;}
+.eq-head span{font-size:12px;font-family:'DM Mono',monospace;color:#5c2a00;text-transform:uppercase;}
+.eq-marks{background:var(--navy);color:#fff;font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:4px;}
+.eq-body{padding:15px 18px;}
+.eq-text{font-size:15px;color:var(--navy);margin-bottom:11px;font-weight:500;line-height:1.5;}
+.eq-hint{background:var(--teal-l);padding:9px 13px;border-radius:8px;font-size:12.5px;color:#064e4a;line-height:1.5;}
+.show-ans-btn{background:none;border:1.5px solid var(--teal);border-radius:6px;padding:6px 13px;font-size:12.5px;color:var(--teal);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:11px;transition:all .2s;}
+.show-ans-btn:hover{background:var(--teal);color:#fff;}
+.model-ans{display:none;background:#f0fef9;border:1px solid #a7f3d0;border-radius:8px;padding:13px;margin-top:11px;font-size:13.5px;line-height:1.65;color:#134e2a;}
+.model-ans.show{display:block;}
+.mp{display:flex;gap:9px;margin-bottom:6px;}
+.mpn{background:var(--green);color:#fff;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* TOOLKIT */
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:18px;}
+.tk-card{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.tk-head{padding:14px 18px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;}
+.tkh-a{background:var(--navy);color:#fff;}
+.tkh-b{background:var(--amb);color:#fff;}
+.tkh-c{background:#166534;color:#fff;}
+.tk-body{padding:14px 18px;}
+.pre-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.pre-tbl th{background:var(--amb-l);padding:8px 11px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#5c2a00;}
+.pre-tbl td{padding:7px 11px;border-bottom:1px solid var(--border);line-height:1.5;}
+.pre-tbl tr:last-child td{border-bottom:none;}
+.pfx{font-weight:700;color:var(--navy);}
+.syn-p{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:13.5px;}
+.syn-p:last-child{border-bottom:none;}
+.syn-c{font-weight:600;color:var(--navy);min-width:120px;line-height:1.45;}
+.syn-a{color:var(--amb);font-size:16px;flex-shrink:0;margin-top:2px;}
+.syn-s{color:var(--muted);font-style:italic;font-size:13px;line-height:1.45;}
+.con-list{list-style:none;}
+.con-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13.5px;display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+.con-list li:last-child{border-bottom:none;}
+.con-chip{background:var(--amb-l);color:#5c2a00;padding:2px 8px;border-radius:4px;font-weight:600;font-size:12.5px;white-space:nowrap;flex-shrink:0;}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:12px;margin-top:60px;}
+footer strong{color:var(--amb-m);}
+@media(max-width:600px){.hero{padding:34px 18px 30px}.main{padding:20px 14px 60px}.why-box,.hs-grid,.match-grid,.finish-grid,.prod-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="hero-inner">
+  <div class="hero-badge">Edexcel GCSE D&T · Topic 7.8 · Timbers Specialist · Revision Pack</div>
+  <h1>Surface Treatments<br>&amp; <span class="ac">Finishes</span></h1>
+  <div class="hero-spec">Spec Ref: 7.8.1 &nbsp;|&nbsp; Textbook pp. 304–305 &nbsp;|&nbsp; Section B — 60 marks</div>
+  <p class="hero-sub">A complete ESL-focused revision guide covering why surface finishes are essential, all seven finish types with full comparison, the functional vs aesthetic distinction, health and safety considerations, and a product application guide — with sentence frames to help you justify finish choices in the exam.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📋 Spec Checklist</span><span class="hero-tag">🎨 7 Finishes Compared</span>
+    <span class="hero-tag">🔧 Functional vs Aesthetic</span><span class="hero-tag">⚠️ H&amp;S Considerations</span>
+    <span class="hero-tag">🏠 Product Application Guide</span><span class="hero-tag">✏️ Activities</span>
+  </div>
+</div></div>
+
+<div class="nav-bar"><div class="nav-inner">
+  <button class="tab-btn active" onclick="showTab('spec')">📋 Spec Checklist</button>
+  <button class="tab-btn" onclick="showTab('vocab')">📖 Key Vocabulary</button>
+  <button class="tab-btn" onclick="showTab('topics')">🗂️ Topic Summary</button>
+  <button class="tab-btn" onclick="showTab('activities')">✏️ Activities</button>
+  <button class="tab-btn" onclick="showTab('exam')">📝 Exam Language</button>
+  <button class="tab-btn" onclick="showTab('toolkit')">💬 ESL Toolkit</button>
+</div></div>
+
+<div class="main">
+
+<!-- SPEC CHECKLIST -->
+<div id="sec-spec" class="section active">
+  <div class="sec-head"><h2>Specification Checklist</h2><p>Topic 7.8 is compact but heavily application-tested. The exam will give you a specific product context and ask you to choose and justify a finish. You must know not just the name of each finish, but WHY it is most appropriate for particular uses.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Product Context Practice:</strong> For each finish in this topic, think of two products that would use it and one product that definitely would NOT. This "right product / wrong product" thinking is exactly what the exam tests. For example: varnish — right for a dining table (hardwearing, shows grain), wrong for a garden chair exposed to rain (varnish chips and lets moisture in).</div>
+  <div class="spec-card">
+    <div class="spec-head">🎨 7.8.1 — Surface Treatments &amp; Finishes for Functional and Aesthetic Purposes</div>
+    <div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Understand WHY finishes are applied — wood is porous; absorbs water, grease, and dirt without a finish</div>
+      <div class="spec-item"><input type="checkbox"> Functional purpose — makes timber water resistant, easier to clean, protects from damage</div>
+      <div class="spec-item"><input type="checkbox"> Aesthetic purpose — changes colour, shows grain, adds shine, improves appearance</div>
+      <div class="spec-item"><input type="checkbox"> Painting — coloured pigment in liquid; covers grain; range of colours; functional and aesthetic</div>
+      <div class="spec-item"><input type="checkbox"> Staining — soaks into wood surface; changes colour but grain still shows; mimics expensive timber</div>
+      <div class="spec-item"><input type="checkbox"> Varnishing — clear coating; hardwearing; shows grain; high gloss or matt; can chip exposing wood</div>
+      <div class="spec-item"><input type="checkbox"> Wax — rubbed in with cloth; easy to apply; natural look; rubs away and needs reapplying</div>
+      <div class="spec-item"><input type="checkbox"> Oil — soaks in; waterproofs; vegetable oil is food-safe; surface feels oily</div>
+      <div class="spec-item"><input type="checkbox"> Shellac — liquid from beetle resin; French polish; high gloss lustre; damaged by water and heat</div>
+      <div class="spec-item"><input type="checkbox"> Veneering — thin decorative wood layer glued on surface; veneer still needs a finish applied</div>
+      <div class="spec-item"><input type="checkbox"> Health and safety — solvent fumes; ventilation; PPE (gloves, mask); fire risk with solvent-based products</div>
+      <div class="spec-item"><input type="checkbox"> Timber preparation before finishing — sanding (P80→P120→P240), knotting solution on knots, grain filler for open-grained hardwoods</div>
+    </div>
+  </div>
+</div>
+
+<!-- VOCAB -->
+<div id="sec-vocab" class="section">
+  <div class="sec-head"><h2>Key Vocabulary</h2><p>12 key terms for Topic 7.8. The most important distinction is between finishes that SOAK IN (stain, oil, wax) and finishes that coat the SURFACE (paint, varnish, shellac). This determines how the finish wears and what happens when it is damaged.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Two Columns:</strong> Draw two columns on paper: "Soaks into wood" and "Coats the surface." Place each finish in the correct column. This simple categorisation gives you the key to understanding how each finish behaves — and why some are more durable than others.</div>
+  <div class="filter-row">
+    <span style="font-size:13px;color:var(--muted);font-weight:500;">Filter:</span>
+    <button class="filter-btn active" onclick="fv('all',this)">All</button>
+    <button class="filter-btn" onclick="fv('fin',this)">🎨 Finishes</button>
+    <button class="filter-btn" onclick="fv('pr',this)">⚙️ Properties</button>
+    <button class="filter-btn" onclick="fv('hs',this)">⚠️ H&amp;S</button>
+  </div>
+  <div class="vocab-grid" id="vg">
+
+    <div class="vc" data-topic="pr"><div class="vc-top"><div class="vc-word">Porous</div><div class="vc-tag t-pr">Properties</div></div><div class="vc-body">
+      <div class="vc-def">A material that has tiny holes or gaps (pores) in its surface that allow liquids and gases to pass through or be absorbed. Timber is porous — without a finish it absorbs water, grease, and dirt, becoming stained, swollen, or damaged quickly.</div>
+      <div class="vc-ex">"Because wood is <em>porous</em>, a surface finish is essential for any timber product that will be handled frequently or exposed to moisture — otherwise the wood quickly becomes discoloured and structurally weakened."</div>
+      <div class="vc-mem">💡 Porous = full of tiny holes (pores). Like a sponge — it absorbs liquids. This is WHY we apply finishes. A finish either fills the pores (oil, wax, stain) or covers the surface with a protective layer (paint, varnish, shellac).</div>
+    </div></div>
+
+    <div class="vc" data-topic="pr"><div class="vc-top"><div class="vc-word">Functional Finish</div><div class="vc-tag t-pr">Properties</div></div><div class="vc-body">
+      <div class="vc-def">A finish applied primarily to <strong>protect the timber and improve its performance</strong> — making it waterproof, easier to clean, resistant to scratches and chemicals, or more durable. The protective function is the main reason for its use.</div>
+      <div class="vc-ex">"Oil is used on a kitchen worktop primarily as a <em>functional finish</em> — it soaks into the wood fibres and makes the surface waterproof and resistant to food stains, extending the life of the worktop significantly."</div>
+      <div class="vc-mem">💡 Functional = it DOES something useful (protects, waterproofs, hardens). Examples: oil on a kitchen chopping board (waterproofs + food-safe), paint on exterior wood (protects from weather), varnish on a floor (protects against heavy foot traffic).</div>
+    </div></div>
+
+    <div class="vc" data-topic="pr"><div class="vc-top"><div class="vc-word">Aesthetic Finish</div><div class="vc-tag t-pr">Properties</div></div><div class="vc-body">
+      <div class="vc-def">A finish applied primarily to <strong>improve the appearance of the timber</strong> — changing its colour, adding shine, revealing the grain, or creating a particular visual style. The decorative effect is the main reason for its use.</div>
+      <div class="vc-ex">"Staining was chosen as an <em>aesthetic finish</em> for the pine shelves — it darkened the pale pine to resemble more expensive oak, at a fraction of the cost, while still allowing the natural grain pattern to show through."</div>
+      <div class="vc-mem">💡 Aesthetic = how it LOOKS (from Greek 'aisthētikos' = relating to perception). Examples: shellac on expensive furniture (glossy lustre), staining pine to look like oak (colour change), wax on natural timber (warm natural appearance). Most finishes serve BOTH functional and aesthetic purposes.</div>
+    </div></div>
+
+    <div class="vc" data-topic="fin"><div class="vc-top"><div class="vc-word">Varnish</div><div class="vc-tag t-fin">Surface Finish</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>clear or slightly tinted liquid coating</strong> that dries to form a hard, protective surface layer over the timber. Unlike paint, it does not hide the grain — the natural wood pattern remains visible. Available in high gloss (very shiny) or matt (flat, non-reflective) finishes.</div>
+      <div class="vc-ex">"The oak dining table was given two coats of matt <em>varnish</em> — the clear finish enhanced the natural grain pattern while providing a hardwearing, easy-to-clean surface that protects the wood from everyday use."</div>
+      <div class="vc-mem">💡 Varnish = clear coat that shows grain + protects. Advantage: hardwearing, shows grain, range of sheen levels. Disadvantage: can scratch or chip, exposing unprotected wood beneath — once the surface film is broken, moisture can get underneath and lift the remaining varnish.</div>
+    </div></div>
+
+    <div class="vc" data-topic="fin"><div class="vc-top"><div class="vc-word">Shellac / French Polish</div><div class="vc-tag t-fin">Surface Finish</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>cloudy liquid made from resin secreted by the lac beetle</strong>, dissolved in methylated spirits. Applied in many thin layers with a cloth pad (a "rubber") and polished between each coat to build up a deep, glass-like glossy surface known as French polish. Very skilled and time-consuming to apply.</div>
+      <div class="vc-ex">"The Victorian mahogany writing desk was finished with <em>French polish</em> — many thin layers of shellac rubbed on with a pad and carefully polished created the deep, mirror-like lustre characteristic of high-quality 19th-century furniture."</div>
+      <div class="vc-mem">💡 Shellac = luxury, traditional, very glossy finish. Made from BEETLE secretion (unusual — remember this detail). Advantage: extremely beautiful high-gloss lustre. Disadvantage: easily damaged by water (rings from wet glasses) and heat (hot plates). Used only on fine furniture kept away from heat and moisture.</div>
+    </div></div>
+
+    <div class="vc" data-topic="hs"><div class="vc-top"><div class="vc-word">Solvent Fumes</div><div class="vc-tag t-hs">Health &amp; Safety</div></div><div class="vc-body">
+      <div class="vc-def">Gases released by solvent-based finishes (varnish, shellac, contact adhesive, some stains and paints) as they dry. These fumes are harmful to the respiratory system (lungs and airways) if inhaled and may cause dizziness, headaches, or longer-term health damage with prolonged exposure.</div>
+      <div class="vc-ex">"When applying <em>solvent-based varnish</em> in the workshop, ensure all windows and doors are open for maximum ventilation, wear an appropriate respirator mask, and never use near open flames — the vapour is highly flammable."</div>
+      <div class="vc-mem">💡 Solvent = a liquid that dissolves other substances (carries the finish). Solvent fumes = the gas that evaporates from the liquid finish as it dries. Safety measures: VENTILATION (open windows/doors), PPE (respirator mask, gloves), NO FLAMES (solvent vapours are often flammable).</div>
+    </div></div>
+
+  </div>
+</div>
+
+<!-- TOPIC SUMMARY -->
+<div id="sec-topics" class="section">
+  <div class="sec-head"><h2>Topic Summary</h2><p>Everything you need to know for Topic 7.8 — why finishes are used, the complete comparison table, the functional vs aesthetic distinction, H&amp;S considerations, and a product application guide.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Colour Code the Table:</strong> As you read the finishes table, highlight finishes that SOAK IN (stain, oil, wax) in one colour and finishes that CREATE A SURFACE FILM (paint, varnish, shellac) in another. This visual distinction is the most important structural understanding in this topic — it determines how each finish wears and fails.</div>
+
+  <!-- WHY WE APPLY FINISHES -->
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:14px;">Why Surface Finishes Are Essential</h3>
+  <div class="why-box">
+    <div class="why-card">
+      <h4>🛡️ Functional Reasons</h4>
+      <ul>
+        <li>Wood is porous — it absorbs moisture which causes swelling, warping, and splitting</li>
+        <li>Grease and dirt soak into unfinished timber, leaving permanent stains</li>
+        <li>Unprotected outdoor timber rots quickly from rain, frost, and UV light</li>
+        <li>A finish creates a protective barrier that is easier to wipe clean</li>
+        <li>Some finishes (tanalising) penetrate deep into the wood to resist rot and insect attack</li>
+      </ul>
+    </div>
+    <div class="why-card">
+      <h4>🎨 Aesthetic Reasons</h4>
+      <ul>
+        <li>A finish can dramatically change the colour of timber (staining pine to look like oak)</li>
+        <li>Varnish and shellac enhance the natural grain and add depth and lustre</li>
+        <li>Paint covers the grain completely, allowing any colour to be applied</li>
+        <li>Wax gives a warm, natural appearance that many designers prefer for quality furniture</li>
+        <li>The sheen level (high gloss, satin, matt) creates different visual moods</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PREPARATION BEFORE FINISHING -->
+  <div class="insight-box">
+    💡 <strong>Preparation is essential — and often forgotten in exam answers:</strong> Before applying ANY finish, timber must be prepared. (1) <strong>Sand progressively</strong>: P80 (coarse, removes saw marks) → P120 (medium) → P240 (fine). Always sand in the direction of the grain. (2) <strong>Apply knotting solution</strong> to any knots in softwood — this prevents resin from bleeding through paint or stain. (3) <strong>Apply grain filler</strong> to open-grained hardwoods (oak, ash) before painting or polishing, or the finish will sink into the vessels.
+  </div>
+
+  <!-- MAIN FINISHES TABLE -->
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin:22px 0 14px;">The 7 Surface Finishes — Full Comparison (Table 7.8.1)</h3>
+  <table class="finish-tbl">
+    <tr><th class="th-nm">Finish</th><th class="th-ds">Description &amp; How Applied</th><th class="th-fa">Functional / Aesthetic</th><th class="th-ad">✓ Advantages</th><th class="th-di">✗ Disadvantages</th></tr>
+    <tr>
+      <td class="fn">Painting</td>
+      <td>A coloured pigment suspended in a liquid carrier (oil-based or water-based). Brushed, rolled, or sprayed onto the surface. Dries to form an opaque coloured film on the surface.</td>
+      <td><span class="func-badge">FUNCTIONAL</span> waterproofs and protects<br><span class="aes-badge">AESTHETIC</span> wide range of colours</td>
+      <td><ul><li>Available in an enormous range of colours</li><li>Protects timber from moisture and UV</li><li>Can cover defects, marks, and knots</li><li>Easy to repaint when worn</li></ul></td>
+      <td><ul><li>Completely covers up the natural wood grain — grain is no longer visible</li><li>Chips and peels over time, needing repainting</li></ul></td>
+    </tr>
+    <tr>
+      <td class="fn">Staining</td>
+      <td>A coloured liquid that is absorbed (soaks into) the wood fibres rather than coating the surface. Applied with a cloth or brush. Does not add a surface film — the grain pattern remains visible through the colour.</td>
+      <td><span class="aes-badge">MAINLY AESTHETIC</span> colour change while keeping grain<br><span class="func-badge">SOME FUNCTIONAL</span> — still needs a top coat</td>
+      <td><ul><li>Changes colour of timber while keeping the natural grain pattern visible</li><li>Makes inexpensive pine appear to be more expensive oak or mahogany</li></ul></td>
+      <td><ul><li>Does not look exactly like another wood — the grain of the original timber (e.g. pine's pattern) is still visible and gives it away</li><li>Stain alone provides minimal protection — a top coat (varnish or wax) is also needed</li></ul></td>
+    </tr>
+    <tr>
+      <td class="fn">Varnishing</td>
+      <td>A clear liquid (usually resin dissolved in solvent) that dries to form a hard, transparent protective film on the surface of the timber. Applied with a brush. Available in high gloss, satin, or matt finish levels.</td>
+      <td><span class="func-badge">FUNCTIONAL</span> hardwearing protective film<br><span class="aes-badge">AESTHETIC</span> enhances grain with sheen</td>
+      <td><ul><li>Hardwearing surface layer — protects against everyday wear and moisture</li><li>Grain remains clearly visible through the clear coat</li><li>Choice of sheen level: high gloss, satin, or flat matt</li></ul></td>
+      <td><ul><li>Can scratch or chip — once the film is broken, moisture can get underneath and lift the surrounding varnish</li><li>Difficult to repair locally — usually requires full sanding and reapplication</li></ul></td>
+    </tr>
+    <tr>
+      <td class="fn">Wax</td>
+      <td>A soft solid (beeswax or carnauba wax) that is melted slightly and rubbed into the surface with a cloth, then buffed to a soft sheen. Soaks partially into the surface pores and fills them. Must be reapplied periodically.</td>
+      <td><span class="func-badge">FUNCTIONAL</span> fills pores, repels some moisture<br><span class="aes-badge">AESTHETIC</span> warm, natural appearance</td>
+      <td><ul><li>Easy to apply — rub on, wait, buff off</li><li>Gives a warm, natural, low-sheen appearance that many designers prefer</li><li>Easy to touch up and reapply locally without stripping the whole surface</li></ul></td>
+      <td><ul><li>Rubs away with use and needs to be reapplied regularly (more maintenance than varnish)</li><li>Does not give a glossy finish</li><li>Less protective than varnish — not suitable for surfaces exposed to a lot of moisture</li></ul></td>
+    </tr>
+    <tr>
+      <td class="fn">Oil</td>
+      <td>Linseed oil, Danish oil, or teak oil (or vegetable oil for food-contact surfaces) is rubbed onto the timber surface and allowed to soak in. Nourishes the wood fibres from within rather than coating the surface. Multiple coats are applied.</td>
+      <td><span class="func-badge">FUNCTIONAL</span> excellent waterproofing; food-safe options<br><span class="aes-badge">AESTHETIC</span> enhances natural colour</td>
+      <td><ul><li>Excellent waterproofing — soaks into fibres and resists moisture from within</li><li>Vegetable oil on kitchen items (chopping boards, worktops) is completely food-safe and non-toxic</li><li>Nourishes and preserves the wood fibres</li></ul></td>
+      <td><ul><li>The surface retains a slightly oily feel even after drying — some users dislike this</li><li>Needs reapplication periodically, especially on outdoor timber</li><li>Takes longer to cure fully than surface coatings</li></ul></td>
+    </tr>
+    <tr>
+      <td class="fn">Shellac</td>
+      <td>A cloudy liquid made from resin secreted by the lac beetle, dissolved in methylated spirits. Applied in many very thin coats using a cloth pad (a "rubber"), polished between coats to build up a deep lustrous surface — a process called French polishing. Requires considerable skill.</td>
+      <td><span class="aes-badge">MAINLY AESTHETIC</span> premium glossy lustre<br><span class="func-badge">SOME FUNCTIONAL</span> — but limited</td>
+      <td><ul><li>Produces an extremely beautiful, deep, mirror-like glossy surface (French polish) traditionally used on the finest furniture</li><li>Enhances the colour and depth of hardwoods beautifully</li></ul></td>
+      <td><ul><li>Easily damaged by water — a wet glass left on a French-polished surface will leave a white ring mark</li><li>Easily damaged by heat — a hot mug will cause the finish to blush and cloud</li><li>Very time-consuming and skilled to apply properly</li></ul></td>
+    </tr>
+    <tr>
+      <td class="fn">Veneering</td>
+      <td>A very thin layer (0.5–1 mm) of decorative hardwood (e.g. mahogany, walnut, oak) is glued onto the surface of a cheaper base material (MDF, chipboard, or lower-grade timber) using contact adhesive or PVA in a press.</td>
+      <td><span class="aes-badge">MAINLY AESTHETIC</span> expensive wood appearance at low cost<br><span class="func-badge">NOTE</span> veneer still needs a finish on top</td>
+      <td><ul><li>Gives the appearance of an expensive, decorative hardwood at a fraction of the solid timber cost</li><li>Allows exotic or expensive timber species to be used very economically</li></ul></td>
+      <td><ul><li>The veneer is natural wood, so it is still porous and still requires a surface finish (varnish, wax, or oil) to be applied on top of it</li><li>If the veneer lifts at the edges, it is difficult to repair invisibly</li></ul></td>
+    </tr>
+  </table>
+
+  <!-- PRODUCT APPLICATION GUIDE -->
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin:26px 0 14px;">Product Application Guide — Which Finish for Which Product?</h3>
+  <p style="font-size:13.5px;color:var(--muted);margin-bottom:14px;">The exam will always give a specific product context. Use the criteria below to select and justify the most appropriate finish.</p>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <h4>🍽️ Kitchen worktop / chopping board</h4>
+      <div class="best">✓ Best: Oil (vegetable)</div>
+      <div class="reason">Soaks in and waterproofs; food-safe (vegetable oil is non-toxic); easy to reapply. Grain visible and attractive.</div>
+      <div class="rej">✗ Not paint/varnish — these may chip into food; not shellac — damaged by heat and water.</div>
+    </div>
+    <div class="prod-card">
+      <h4>🛋️ Living room furniture (visible grain)</h4>
+      <div class="best">✓ Best: Varnish (satin) or Wax</div>
+      <div class="reason">Varnish: hardwearing, shows grain, easy to clean. Wax: warm natural appearance, easy to touch up. Both preserve the aesthetic of the wood.</div>
+      <div class="rej">✗ Not paint — hides grain. Not shellac — damaged by everyday heat and moisture from drinks.</div>
+    </div>
+    <div class="prod-card">
+      <h4>🏡 Exterior garden furniture</h4>
+      <div class="best">✓ Best: Paint or Oil</div>
+      <div class="reason">Paint: forms a waterproof barrier against rain; UV pigments protect against sun bleaching. Oil: soaks in and protects wood fibres from within; can be reapplied without stripping.</div>
+      <div class="rej">✗ Not shellac — destroyed by rain. Not wax — washes off quickly outdoors.</div>
+    </div>
+    <div class="prod-card">
+      <h4>🖼️ High-quality antique-style furniture</h4>
+      <div class="best">✓ Best: Shellac (French polish)</div>
+      <div class="reason">Creates the deep, mirror-like lustre traditionally associated with fine furniture. The aesthetic effect is impossible to replicate with other finishes.</div>
+      <div class="rej">✗ Not suitable for everyday use — too easily damaged. Only appropriate where the furniture will be carefully maintained.</div>
+    </div>
+    <div class="prod-card">
+      <h4>🪟 Interior doors and skirting boards</h4>
+      <div class="best">✓ Best: Paint (gloss)</div>
+      <div class="reason">Protects against everyday knocks and dirt; wide colour choice to match interior décor; gloss paint easy to wipe clean; hides grain (appropriate for joinery, not furniture).</div>
+      <div class="rej">✗ Not varnish — looks wrong on painted joinery. Not wax — insufficient protection.</div>
+    </div>
+    <div class="prod-card">
+      <h4>🌲 Pine shelves to look more expensive</h4>
+      <div class="best">✓ Best: Stain then Varnish</div>
+      <div class="reason">Stain darkens the pale pine to resemble oak or walnut (aesthetic). Varnish on top provides the protective hardwearing coat the stain cannot provide alone.</div>
+      <div class="rej">✗ Stain alone is not enough — it provides minimal protection and needs a top coat.</div>
+    </div>
+  </div>
+
+  <!-- HEALTH & SAFETY -->
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin:26px 0 14px;">⚠️ Health &amp; Safety When Applying Finishes</h3>
+  <div class="hs-grid">
+    <div class="hs-card">
+      <h4>Ventilation</h4>
+      <ul>
+        <li>All solvent-based finishes (varnish, shellac, oil-based paint) release harmful fumes as they dry</li>
+        <li>Always apply in a well-ventilated space — open all windows and doors</li>
+        <li>Use extraction fans in professional workshops</li>
+        <li>Water-based finishes (acrylic paint, water-based varnish) produce fewer fumes but still require ventilation</li>
+      </ul>
+    </div>
+    <div class="hs-card">
+      <h4>Fire Risk</h4>
+      <ul>
+        <li>Solvent vapours are highly flammable — never apply solvent-based finishes near open flames, sparks, or heat sources</li>
+        <li>Oil-soaked rags can self-ignite (spontaneous combustion) — soak in water and dispose of carefully in a metal bin</li>
+        <li>Keep lids on all finish containers when not in use to reduce vapour build-up</li>
+      </ul>
+    </div>
+    <div class="hs-card">
+      <h4>Personal Protective Equipment (PPE)</h4>
+      <ul>
+        <li>Wear chemical-resistant gloves when handling solvent-based finishes — solvents are absorbed through skin</li>
+        <li>Wear a respirator mask (not a dust mask) when applying spray finishes or solvent-based products</li>
+        <li>Wear goggles when spraying to prevent droplets reaching eyes</li>
+      </ul>
+    </div>
+    <div class="hs-card">
+      <h4>Timber Preparation Safety</h4>
+      <ul>
+        <li>MDF dust is extremely harmful — always wear a P3 dust mask when sanding MDF</li>
+        <li>Many tropical hardwood dusts are toxic — e.g. mahogany dust causes respiratory issues</li>
+        <li>Use dust extraction when machine sanding — never sand without extraction in a workshop</li>
+        <li>Wear safety goggles when using power sanders — dust particles can cause serious eye damage</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVITIES -->
+<div id="sec-activities" class="section">
+  <div class="sec-head"><h2>Revision Activities</h2><p>Gap fill, matching, and true/false testing the key vocabulary, finish properties, and application knowledge. Word bank is NOT in answer order.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Justify, Don't Just Name:</strong> After completing each activity, practise expanding your answers. For any finish you name, add one sentence: "I chose [finish] because it [property], which is important for this product because [consequence]." This three-part justification is the structure that earns full exam marks.</div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 1 — Gap Fill: Surface Finishes Vocabulary</h3><div class="act-badge">Fill in the blanks</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a word from the Word Bank, then click the correct blank. The bank is NOT in answer order.</div>
+      <div class="word-bank" id="wb1">
+        <span class="wchip" data-word="aesthetic">aesthetic</span>
+        <span class="wchip" data-word="wax">wax</span>
+        <span class="wchip" data-word="veneering">veneering</span>
+        <span class="wchip" data-word="painting">painting</span>
+        <span class="wchip" data-word="porous">porous</span>
+        <span class="wchip" data-word="functional">functional</span>
+        <span class="wchip" data-word="oil">oil</span>
+        <span class="wchip" data-word="staining">staining</span>
+        <span class="wchip" data-word="shellac">shellac</span>
+        <span class="wchip" data-word="varnish">varnish</span>
+      </div>
+      <div id="gf1">
+        <div class="gap-sent">1. Wood is <input type="text" class="gf" data-answer="porous"> — it has tiny holes in its surface that absorb water, grease, and dirt, which is why a surface finish is essential on all timber products.</div>
+        <div class="gap-sent">2. A <input type="text" class="gf" data-answer="functional"> finish is applied primarily to protect the timber — making it waterproof, durable, or easier to clean.</div>
+        <div class="gap-sent">3. An <input type="text" class="gf" data-answer="aesthetic"> finish is applied primarily to improve the appearance of the timber — changing its colour, adding shine, or revealing the grain pattern.</div>
+        <div class="gap-sent">4. <input type="text" class="gf" data-answer="painting"> involves applying a coloured pigment that dries as an opaque surface film — it is available in a wide range of colours but completely covers the natural wood grain.</div>
+        <div class="gap-sent">5. <input type="text" class="gf" data-answer="staining"> soaks into the wood surface and changes its colour while keeping the grain visible — it can make inexpensive pine appear to resemble more expensive oak or mahogany.</div>
+        <div class="gap-sent">6. <input type="text" class="gf" data-answer="varnish"> is a clear coating that dries to a hard, protective film — it shows the natural grain clearly and can be applied in high gloss, satin, or matt finish levels.</div>
+        <div class="gap-sent">7. <input type="text" class="gf" data-answer="wax"> is a soft solid rubbed into the surface with a cloth and buffed to a low sheen — it is easy to apply and gives a warm, natural appearance but needs to be reapplied regularly as it wears away.</div>
+        <div class="gap-sent">8. <input type="text" class="gf" data-answer="oil"> soaks into the timber and provides excellent waterproofing — vegetable oil is food-safe, making it the ideal finish for kitchen chopping boards and worktops.</div>
+        <div class="gap-sent">9. <input type="text" class="gf" data-answer="shellac"> is a liquid made from resin secreted by a beetle — many thin coats are applied and polished to create French polish, a deep, mirror-like gloss traditionally used on fine furniture. It is easily damaged by water and heat.</div>
+        <div class="gap-sent">10. <input type="text" class="gf" data-answer="veneering"> involves gluing a thin layer of decorative hardwood onto a cheaper base material — but the veneer is still porous and requires its own surface finish to be applied on top.</div>
+      </div>
+      <div><button class="check-btn" onclick="checkGF('gf1','sc1')">✓ Check Answers</button><button class="reset-btn" onclick="resetGF('gf1','sc1','wb1')">↺ Reset</button><div class="score-box" id="sc1"></div></div>
+    </div>
+  </div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 2 — Matching: Finish to Its Key Property</h3><div class="act-badge">Click to match</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a finish on the LEFT, then its correct key property or use on the RIGHT. Descriptions are NOT in the same order.</div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-lbl">🎨 Finish</div>
+          <div class="mi mw" data-id="1" onclick="sm(this,'w')">Painting</div>
+          <div class="mi mw" data-id="2" onclick="sm(this,'w')">Staining</div>
+          <div class="mi mw" data-id="3" onclick="sm(this,'w')">Varnishing</div>
+          <div class="mi mw" data-id="4" onclick="sm(this,'w')">Wax</div>
+          <div class="mi mw" data-id="5" onclick="sm(this,'w')">Oil</div>
+          <div class="mi mw" data-id="6" onclick="sm(this,'w')">Shellac</div>
+          <div class="mi mw" data-id="7" onclick="sm(this,'w')">Veneering</div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-lbl">🔑 Key property or use</div>
+          <div class="mi" data-id="5" onclick="sm(this,'d')">Soaks into wood fibres and waterproofs from within — vegetable type is food-safe and non-toxic, ideal for kitchen surfaces</div>
+          <div class="mi" data-id="3" onclick="sm(this,'d')">Clear hardwearing film that shows the grain — available in high gloss, satin, or matt; can chip exposing unprotected wood</div>
+          <div class="mi" data-id="6" onclick="sm(this,'d')">Made from beetle resin; many thin coats polished to create French polish; beautiful lustre but easily damaged by water and heat</div>
+          <div class="mi" data-id="2" onclick="sm(this,'d')">Soaks into the surface and changes colour while keeping the grain visible — makes pine appear like more expensive oak</div>
+          <div class="mi" data-id="1" onclick="sm(this,'d')">Opaque coloured film — wide colour range; protects from moisture; completely covers the natural wood grain</div>
+          <div class="mi" data-id="7" onclick="sm(this,'d')">A thin layer of decorative hardwood glued onto cheaper base material — still porous, so needs its own finish applied on top</div>
+          <div class="mi" data-id="4" onclick="sm(this,'d')">Soft solid rubbed in with a cloth and buffed — easy to apply and touch up; warm natural look; rubs away and needs reapplying</div>
+        </div>
+      </div>
+      <button class="reset-btn" style="margin-top:14px;" onclick="resetMatch()">↺ Reset</button>
+      <div id="mDone" style="display:none;margin-top:12px;font-size:14px;font-weight:600;color:var(--green);background:var(--green-l);padding:10px 16px;border-radius:8px;">🎉 All 7 matched — excellent knowledge of all surface finishes!</div>
+    </div>
+  </div>
+
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 3 — True or False?</h3><div class="act-badge">Test understanding</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 These statements test the most common exam misconceptions about surface finishes. Read each explanation carefully.</div>
+      <div class="tf-item"><div class="tf-stmt">1. Staining a piece of pine makes it look exactly like mahogany — after staining, no one can tell the difference.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,1)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,1)">False</button></div><div class="tf-fb" id="tf1">❌ <strong>False — and this is specifically noted in the textbook.</strong> Staining changes the colour of pine to be darker and closer to the tone of mahogany or oak, but it does not look exactly like another wood. The reason is that the stain soaks into the grain of the PINE — so the pine's distinctive grain pattern is still visible through the colour. A trained eye can always identify the original timber species from its grain structure, even after staining. This is the key disadvantage of staining compared to veneering (which actually uses the real wood on the surface).</div></div>
+      <div class="tf-item"><div class="tf-stmt">2. Varnish is a better choice than shellac (French polish) for a kitchen dining table because varnish is more hardwearing and resistant to water and heat.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,true,2)">True</button><button class="tf-btn fb" onclick="chkTF(this,true,2)">False</button></div><div class="tf-fb" id="tf2">✅ <strong>True.</strong> Shellac (French polish) is easily damaged by water (causing white ring marks from wet glasses) and heat (causing the finish to cloud and blister). A kitchen dining table is regularly exposed to both — hot dishes and glasses of cold drinks with condensation. Varnish forms a much harder, more resilient surface film that is more resistant to both. French polish is reserved for high-quality furniture kept in controlled conditions, not everyday dining tables.</div></div>
+      <div class="tf-item"><div class="tf-stmt">3. A veneered surface does not need any further finish applied to it because the veneer is real wood and already provides a complete surface.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,3)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,3)">False</button></div><div class="tf-fb" id="tf3">❌ <strong>False — this is explicitly stated as a disadvantage of veneering in the textbook.</strong> The veneer is a very thin slice of natural wood, and natural wood is porous. Without a surface finish, the veneer will absorb moisture, grease, and dirt just like any other piece of bare timber. A veneered surface still needs varnish, wax, oil, or shellac applied on top to protect it and complete the finish. The veneer only provides the aesthetic appearance of expensive timber — the protective finish must come from a separate coating.</div></div>
+      <div class="tf-item"><div class="tf-stmt">4. Oil is the most appropriate finish for a solid oak garden bench that will be left outdoors year-round.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,true,4)">True</button><button class="tf-btn fb" onclick="chkTF(this,true,4)">False</button></div><div class="tf-fb" id="tf4">✅ <strong>True — oil is one of the best finishes for outdoor timber.</strong> Outdoor furniture is constantly exposed to rain, frost, UV radiation, and temperature changes. Oil (teak oil or Danish oil) soaks deep into the wood fibres and waterproofs them from within — it does not form a surface film that can chip, crack, or peel like varnish or paint. When the oil eventually wears out, a new coat can simply be applied without any stripping or sanding back of the old finish. Paint is also acceptable, but once paint chips, moisture enters under the film. Oil is often preferred for quality outdoor hardwood furniture.</div></div>
+      <div class="tf-item"><div class="tf-stmt">5. You do not need to wear any personal protective equipment (PPE) when applying water-based paint or varnish because water-based products contain no harmful chemicals.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,5)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,5)">False</button></div><div class="tf-fb" id="tf5">❌ <strong>False — water-based finishes still require appropriate PPE.</strong> While water-based products produce fewer and less toxic fumes than solvent-based finishes, they are not completely harmless. They still contain biocides (to prevent mould growth in the can), pigments, and other additives that can irritate skin and eyes. Gloves should still be worn to prevent skin sensitisation with repeated exposure. Additionally, even water-based spray finishes require respiratory protection because fine droplets of any liquid, including water-based paint, can cause lung irritation if inhaled continuously. Good ventilation is always required regardless of the product type.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM LANGUAGE -->
+<div id="sec-exam" class="section">
+  <div class="sec-head"><h2>Exam Language &amp; Practice</h2><p>Surface finish questions almost always involve justifying a choice for a specific product context. The three-part answer structure — finish name + key property + why that property matters for THIS product — is essential for full marks.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Property → Consequence → Context:</strong> Before writing your answer, identify three things from the question: (1) what property does the product NEED (waterproof? colourful? shows grain? hardwearing?), (2) which finish PROVIDES that property, (3) WHY that property specifically matters for THAT product context. Write the answer in that order.</div>
+
+  <div class="frame-card"><div class="frame-type">Justifying a finish choice — 3 marks</div><div class="frame-body">
+    <div class="frame-tpl"><span class="blank">[Finish]</span> would be the most appropriate finish for <span class="blank">[product]</span> because <span class="blank">[key property]</span>. This is important because <span class="blank">[why that property is needed for this product]</span>. A disadvantage is that <span class="blank">[honest limitation]</span>.</div>
+    <div class="frame-ex">"<strong>Oil</strong> would be the most appropriate finish for a <strong>solid oak kitchen chopping board</strong> because <strong>it soaks into the wood fibres and provides waterproofing from within without forming a surface film</strong>. This is important because <strong>a chopping board is repeatedly exposed to water during washing, and oil's waterproofing prevents the timber swelling and cracking</strong>. Furthermore, vegetable oil is food-safe and non-toxic — essential for a surface that comes into direct contact with food. A disadvantage is that <strong>the surface retains a slightly oily feel even after drying</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Comparing two finishes for a product — 4 marks</div><div class="frame-body">
+    <div class="frame-tpl">While <span class="blank">[finish A]</span> would <span class="blank">[advantage of A]</span>, <span class="blank">[finish B]</span> would be more appropriate for this product because <span class="blank">[why B is better for this context]</span>. However, a disadvantage of <span class="blank">[B]</span> is that <span class="blank">[honest limitation]</span>.</div>
+    <div class="frame-ex">"While <strong>painting</strong> would <strong>provide good weather protection and a wide colour choice</strong>, <strong>oil</strong> would be more appropriate for this garden teak table because <strong>it soaks into the wood rather than forming a surface film that can chip and peel in outdoor conditions — once the film of paint breaks, moisture enters beneath and accelerates deterioration</strong>. However, a disadvantage of oil is that <strong>it requires reapplication every year or two, whereas paint lasts longer before needing maintenance if it remains intact</strong>."</div>
+  </div></div>
+
+  <div style="margin-top:26px;margin-bottom:14px;"><h2 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);">📝 Practice Questions</h2></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q1 · Choose a Finish · 4 marks</span><span class="eq-marks">4 marks</span></div><div class="eq-body">
+    <div class="eq-text">A designer has made a small side table from solid pine. The client wants the table to look like it is made from walnut, while still showing the wood grain. Identify the most appropriate surface treatment and explain two reasons why it is suitable.</div>
+    <div class="eq-hint">💡 The client wants: (1) colour change, (2) grain still visible. Which finish does both? Then two separate "because..." explanations, each earning 1 mark.</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>Finish: Staining</strong> (followed by a clear top coat such as varnish or wax).</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>Reason 1:</strong> Staining soaks into the wood surface and changes its colour to a darker, richer brown that resembles walnut — this directly achieves the client's desire for a more expensive-looking timber at significantly lower cost than solid walnut.</div></div>
+      <div class="mp"><div class="mpn">3</div><div><strong>Reason 2:</strong> Unlike paint, a stain does not cover the surface with an opaque film — the natural grain pattern of the pine remains visible through the stain, fulfilling the client's requirement that the grain should still show. The resulting appearance resembles a walnut-grained surface, even though the pine grain is still what is actually visible.</div></div>
+      <div style="margin-top:8px;font-size:13px;color:#555;">Note: a good answer would add that staining alone provides minimal protection and should be sealed with a varnish or wax top coat.</div>
+    </div>
+  </div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q2 · Functional vs Aesthetic · 3 marks</span><span class="eq-marks">3 marks</span></div><div class="eq-body">
+    <div class="eq-text">Explain the difference between a functional surface finish and an aesthetic surface finish, giving one example of each.</div>
+    <div class="eq-hint">💡 Define functional (what it DOES for the wood) and aesthetic (how it looks). Give one specific finish for each with a brief justification. Do not use the same finish for both.</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>Functional finish:</strong> A finish applied primarily to PROTECT the timber and improve its performance — making it waterproof, resistant to dirt, or more durable. Example: oil applied to a garden bench — it soaks into the wood fibres and waterproofs them from within, preventing rain damage and extending the product's lifespan.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>Aesthetic finish:</strong> A finish applied primarily to IMPROVE THE APPEARANCE of the timber — changing its colour, adding lustre, or revealing the grain pattern. Example: shellac (French polish) applied to a mahogany writing desk — the many layers build up to a deep, mirror-like gloss that enhances the beauty of the grain, making it a premium visual statement entirely for aesthetic effect.</div></div>
+      <div class="mp"><div class="mpn">3</div><div><strong>Important note:</strong> In practice, most finishes serve BOTH purposes simultaneously — varnish is both hardwearing (functional) and attractive (aesthetic). The distinction is about which purpose is PRIMARY for that application.</div></div>
+    </div>
+  </div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q3 · Health &amp; Safety · 3 marks</span><span class="eq-marks">3 marks</span></div><div class="eq-body">
+    <div class="eq-text">Identify three health and safety measures a student should take when applying a solvent-based varnish in a school workshop.</div>
+    <div class="eq-hint">💡 Three separate, specific measures — not vague ("be careful"). Think: fumes, fire, skin, eyes. Each measure should name the hazard AND the control.</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>Ventilation:</strong> Open all windows and doors in the workshop before beginning. Solvent-based varnish releases harmful vapours as it dries — without ventilation, these accumulate to a concentration that can cause dizziness, headaches, and respiratory damage.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>PPE — Gloves:</strong> Wear chemical-resistant (nitrile) gloves throughout. The solvents in varnish are absorbed through the skin with repeated contact, causing skin sensitisation and possible longer-term health effects.</div></div>
+      <div class="mp"><div class="mpn">3</div><div><strong>Fire precautions:</strong> Remove all ignition sources (lighters, Bunsen burners, power tools that create sparks) from the working area before opening the varnish. Solvent vapours are highly flammable — a spark or flame can cause a flash fire. Any oil-soaked rags must be stored in a sealed metal container or soaked in water — oil-soaked rags can self-ignite through spontaneous combustion.</div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ESL TOOLKIT -->
+<div id="sec-toolkit" class="section">
+  <div class="sec-head"><h2>ESL Language Toolkit</h2><p>Word roots, plain-English synonyms, exam phrases, and common mistakes specific to surface finishes vocabulary.</p></div>
+  <div class="tk-grid">
+    <div class="tk-card"><div class="tk-head tkh-a">🔤 Key Word Roots</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th>Root</th><th>Meaning</th><th>Examples in this topic</th></tr>
+        <tr><td class="pfx">por-</td><td>a hole/passage</td><td>porous, porosity, pore (a tiny hole)</td></tr>
+        <tr><td class="pfx">aesth-</td><td>feeling/perception</td><td>aesthetic, aesthetically, aesthetics</td></tr>
+        <tr><td class="pfx">func-</td><td>to perform/work</td><td>functional, function, functionally</td></tr>
+        <tr><td class="pfx">varn-</td><td>resin/glaze (French)</td><td>varnish, varnishing, varnished</td></tr>
+        <tr><td class="pfx">shellac</td><td>lac (resin) + shell</td><td>shellac, French polish</td></tr>
+        <tr><td class="pfx">solv-</td><td>to loosen/dissolve</td><td>solvent, dissolve, solution</td></tr>
+        <tr><td class="pfx">pig-</td><td>colour/paint</td><td>pigment, pigmented, pigmentation</td></tr>
+        <tr><td class="pfx">lustre</td><td>shine/glow (French)</td><td>lustre, lustrous (= having a beautiful shine)</td></tr>
+        <tr><td class="pfx">opaque</td><td>not transparent</td><td>opaque finish (= you cannot see through it — paint)</td></tr>
+        <tr><td class="pfx">transpar-</td><td>to show through</td><td>transparent (= see-through — varnish, shellac)</td></tr>
+      </table>
+    </div></div>
+    <div class="tk-card"><div class="tk-head tkh-b">🔄 Technical Term → Plain English</div><div class="tk-body">
+      <div class="syn-p"><span class="syn-c">Porous</span><span class="syn-a">→</span><span class="syn-s">Has tiny holes — absorbs liquids (like a sponge)</span></div>
+      <div class="syn-p"><span class="syn-c">Functional finish</span><span class="syn-a">→</span><span class="syn-s">Protects the wood — waterproof, durable, cleanable</span></div>
+      <div class="syn-p"><span class="syn-c">Aesthetic finish</span><span class="syn-a">→</span><span class="syn-s">Makes the wood look better — colour, shine, grain</span></div>
+      <div class="syn-p"><span class="syn-c">Lustre</span><span class="syn-a">→</span><span class="syn-s">A beautiful soft glow or shine on a surface</span></div>
+      <div class="syn-p"><span class="syn-c">Opaque</span><span class="syn-a">→</span><span class="syn-s">Cannot see through — paint covers grain completely</span></div>
+      <div class="syn-p"><span class="syn-c">Solvent</span><span class="syn-a">→</span><span class="syn-s">A liquid that dissolves another substance and carries it</span></div>
+      <div class="syn-p"><span class="syn-c">Knotting solution</span><span class="syn-a">→</span><span class="syn-s">A sealer painted on knots in softwood before finishing</span></div>
+      <div class="syn-p"><span class="syn-c">Grain filler</span><span class="syn-a">→</span><span class="syn-s">A paste that fills the open vessels in hardwood before painting</span></div>
+      <div class="syn-p"><span class="syn-c">French polish</span><span class="syn-a">→</span><span class="syn-s">Many thin coats of shellac rubbed on and polished — very shiny</span></div>
+      <div class="syn-p"><span class="syn-c">Hardwearing</span><span class="syn-a">→</span><span class="syn-s">Resists scratching, marks, and wear from daily use</span></div>
+    </div></div>
+    <div class="tk-card" style="grid-column:1/-1;"><div class="tk-head tkh-c">🚨 Common Exam Mistakes — Surface Finishes</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th style="width:30%">❌ Avoid writing this</th><th style="width:38%">✅ Write this instead</th><th>Why?</th></tr>
+        <tr><td>"Staining makes it look exactly like mahogany"</td><td>"Staining changes the colour of pine to resemble mahogany, <strong>but the pine grain pattern is still visible</strong> through the stain — a trained eye can identify the original timber species"</td><td>Staining does not fully replicate another wood — the original grain always shows</td></tr>
+        <tr><td>"Varnish is a type of paint"</td><td>"Varnish is a <strong>clear</strong> coating — it shows the natural grain. Paint is <strong>opaque</strong> — it covers the grain completely. They are different products with different effects."</td><td>Varnish ≠ paint. The key difference is transparency vs opacity</td></tr>
+        <tr><td>"Use shellac for the garden table"</td><td>"Shellac is not suitable for outdoor use — it is <strong>easily damaged by water and heat</strong>. Oil or exterior paint would be more appropriate for outdoor timber."</td><td>Shellac fails outdoors — this is one of the most common mistakes in finish selection</td></tr>
+        <tr><td>"Apply the finish directly to the wood without any preparation"</td><td>"Before applying any finish: <strong>sand progressively P80→P120→P240</strong>, apply <strong>knotting solution</strong> to knots in softwood, and use <strong>grain filler</strong> on open-grained hardwoods"</td><td>Preparation is a required step — forgetting to mention it loses marks on "describe the finishing process" questions</td></tr>
+        <tr><td>"Veneered furniture doesn't need a finish"</td><td>"The veneer is <strong>natural wood and therefore porous</strong> — it still requires a surface finish such as varnish, wax, or oil to be applied on top to protect it"</td><td>Veneer ≠ complete finish. This is explicitly stated in the spec and frequently tested</td></tr>
+        <tr><td>"Water-based paint is safe so no PPE is needed"</td><td>"Even water-based finishes require <strong>gloves</strong> to prevent skin sensitisation and <strong>ventilation</strong> — all finishes contain additives that can irritate skin and respiratory system with repeated exposure"</td><td>PPE is always required — the type varies, but never "no PPE at all"</td></tr>
+      </table>
+    </div></div>
+  </div>
+</div>
+
+</div>
+<footer><strong>Edexcel GCSE Design &amp; Technology</strong> · Topic 7.8 · Surface Treatments &amp; Finishes · Specialist Timbers Content<br>Cross-referenced with Pearson Edexcel Specification (Issue 4) and Timbers Textbook (pp. 304–305) · Section B · For educational use only</footer>
+
+<script>
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('sec-'+id).classList.add('active');event.currentTarget.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function fv(t,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.vc').forEach(c=>{c.style.display=(t==='all'||c.dataset.topic===t)?'block':'none';});}
+let selChip=null;
+document.querySelectorAll('.wchip').forEach(c=>{c.addEventListener('click',function(){document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));selChip=this.dataset.word;this.classList.add('sel');});});
+document.querySelectorAll('.gf').forEach(inp=>{inp.addEventListener('click',function(){if(selChip){this.value=selChip;selChip=null;document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));}});inp.addEventListener('input',function(){this.classList.remove('correct','incorrect');});});
+function checkGF(cid,sid){const ins=document.getElementById(cid).querySelectorAll('.gf');let ok=0;ins.forEach(i=>{const pass=i.value.toLowerCase().trim()===i.dataset.answer.toLowerCase().trim();i.classList.toggle('correct',pass);i.classList.toggle('incorrect',!pass);if(pass)ok++;});const s=document.getElementById(sid);const p=ok/ins.length;s.className='score-box show '+(p>=.85?'good':p>=.5?'ok':'low');s.style.display='inline-flex';s.innerHTML=(p>=.85?'🎉':p>=.5?'👍':'📚')+` Score: ${ok}/${ins.length}`+(p>=.85?' — Excellent!':p>=.5?' — Good effort!':" — Keep revising!");}
+function resetGF(cid,sid,wid){document.getElementById(cid).querySelectorAll('.gf').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});const s=document.getElementById(sid);s.className='score-box';s.style.display='none';if(wid)document.getElementById(wid).querySelectorAll('.wchip').forEach(c=>c.classList.remove('sel'));selChip=null;}
+let mSel={w:null,d:null},mCnt=0;
+function sm(el,t){if(el.classList.contains('matched'))return;if(mSel[t])mSel[t].classList.remove('sel');mSel[t]=el;el.classList.add('sel');if(mSel.w&&mSel.d){if(mSel.w.dataset.id===mSel.d.dataset.id){[mSel.w,mSel.d].forEach(e=>{e.classList.add('matched');e.classList.remove('sel');});mCnt++;if(mCnt===7)document.getElementById('mDone').style.display='block';}else{[mSel.w,mSel.d].forEach(e=>{e.classList.add('wrong');setTimeout(()=>{e.classList.remove('wrong','sel');},600);});setTimeout(()=>{mSel={w:null,d:null};},600);return;}mSel={w:null,d:null};}}
+function resetMatch(){document.querySelectorAll('.mi').forEach(e=>e.classList.remove('matched','sel','wrong'));mSel={w:null,d:null};mCnt=0;document.getElementById('mDone').style.display='none';}
+function chkTF(btn,correct,n){const isT=btn.classList.contains('tb');const pass=(isT===correct);const parent=btn.closest('.tf-item');parent.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);btn.classList.add(pass?'ca':'wa');if(!pass){const cb=correct?parent.querySelector('.tb'):parent.querySelector('.fb');cb.classList.add('ca');}const fb=document.getElementById('tf'+n);fb.className='tf-fb show '+(pass?'ok':'no');}
+function togAns(btn){const a=btn.nextElementSibling;if(a.classList.contains('show')){a.classList.remove('show');btn.textContent='👁 Show Model Answer';}else{a.classList.add('show');btn.textContent='🙈 Hide Model Answer';}}
+</script>
+</body>
+</html>

@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topics 7.4 & 7.5 — Forces, Strengthening & Stock Forms · GCSE D&T Timbers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0f4fb;--navy:#0a1628;--blue:#1e40af;--blue-l:#dbeafe;--blue-m:#60a5fa;
+  --teal:#0e7490;--teal-l:#e0f5f9;--green:#166534;--green-l:#dcfce7;
+  --red:#991b1b;--red-l:#fee2e2;--amber:#d97706;--amber-l:#fef3c7;
+  --purple:#5b21b6;--muted:#64748b;--border:#e2e8f4;--card:#fff;--text:#0f172a;
+  --shadow:0 2px 16px rgba(10,22,40,.09);--shadow-h:0 6px 28px rgba(10,22,40,.17);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;}
+
+.hero{background:linear-gradient(135deg,#0a1628 0%,#1e3a8a 55%,#0e4a2a 100%);color:#fff;padding:52px 40px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(30,64,175,.3) 0%,transparent 55%);}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.hero-badge{display:inline-block;background:var(--blue);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);font-weight:900;line-height:1.08;margin-bottom:8px;}
+.hero h1 .ac{color:var(--blue-m);}
+.hero-spec{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:14px;text-transform:uppercase;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.72);max-width:620px;line-height:1.65;margin-bottom:26px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.hero-tag{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);font-size:12px;padding:5px 13px;border-radius:20px;}
+
+.nav-bar{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 20px;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:15px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-2px;}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--blue);font-weight:600;}
+
+.main{max-width:1100px;margin:0 auto;padding:38px 20px 80px;}
+.section{display:none;}
+.section.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.sec-head{margin-bottom:26px;}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+.sec-head p{color:var(--muted);font-size:15px;line-height:1.65;max-width:700px;}
+.esl-tip{background:linear-gradient(135deg,#eff6ff,var(--blue-l));border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:26px;font-size:13.5px;color:#1e3a8a;line-height:1.6;}
+.insight-box{border-left:4px solid var(--blue);background:var(--blue-l);padding:11px 15px;border-radius:0 8px 8px 0;font-size:13.5px;color:#1e3a8a;margin:14px 0;}
+
+/* SPEC */
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;}
+.spec-card{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.spec-head{padding:14px 18px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;}
+.sh-f{background:linear-gradient(135deg,#1e3a8a,#1e40af);}
+.sh-r{background:linear-gradient(135deg,#166534,#15803d);}
+.sh-s{background:linear-gradient(135deg,#5b21b6,#7c3aed);}
+.sh-z{background:linear-gradient(135deg,#0e7490,#0891b2);}
+.spec-body{padding:12px 18px;}
+.spec-item{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:1px solid #f0f4fb;font-size:13.5px;line-height:1.5;}
+.spec-item:last-child{border-bottom:none;}
+.spec-item input[type=checkbox]{margin-top:3px;accent-color:var(--blue);flex-shrink:0;width:15px;height:15px;}
+
+/* VOCAB */
+.filter-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px;align-items:center;}
+.filter-btn{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--muted);}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;align-items:start;}
+.vc{background:var(--card);border-radius:14px;border:1.5px solid var(--border);box-shadow:var(--shadow);display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;transition:transform .2s;}
+.vc:hover{transform:translateY(-2px);}
+.vc-top{padding:15px 18px 12px;border-bottom:1px solid var(--border);display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:10px;writing-mode:horizontal-tb;}
+.vc-word{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--navy);writing-mode:horizontal-tb;flex:1;min-width:0;word-break:break-word;overflow-wrap:anywhere;}
+.vc-tag{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px;flex-shrink:0;writing-mode:horizontal-tb;white-space:nowrap;margin-top:3px;}
+.t-f{background:var(--blue-l);color:var(--blue);}
+.t-r{background:var(--green-l);color:var(--green);}
+.t-s{background:var(--purple-l,#ede9fe);color:var(--purple);}
+.t-z{background:var(--teal-l);color:var(--teal);}
+.vc-body{padding:14px 18px;display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;}
+.def-lbl{display:none;}
+.vc-def{font-size:14px;color:var(--text);line-height:1.65;margin-bottom:12px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex{background:#f0f4fb;border-left:3px solid var(--blue);padding:9px 12px;border-radius:0 8px 8px 0;font-size:13px;color:#444;font-style:italic;line-height:1.55;margin-bottom:11px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex em{font-style:normal;background:var(--blue-l);padding:1px 3px;border-radius:2px;}
+.vc-mem{background:var(--green-l);border:1px solid #bbf7d0;padding:9px 12px;border-radius:8px;font-size:12.5px;color:#14532d;line-height:1.6;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+
+/* TOPIC PANELS */
+.topic-nav{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px;}
+.tp-btn{padding:9px 18px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;opacity:.55;font-family:'DM Sans',sans-serif;}
+.tp-btn.active{opacity:1;transform:scale(1.04);box-shadow:var(--shadow);}
+.tp-f{background:var(--blue);color:#fff;}
+.tp-r{background:var(--green);color:#fff;}
+.tp-s{background:var(--purple);color:#fff;}
+.tp-z{background:var(--teal);color:#fff;}
+.topic-panel{display:none;}
+.topic-panel.active{display:block;animation:fadeUp .3s ease;}
+.tp-header{border-radius:14px 14px 0 0;padding:22px 26px;color:#fff;}
+.tph-f{background:linear-gradient(135deg,#1e3a8a,#1e40af);}
+.tph-r{background:linear-gradient(135deg,#0c2714,#166534);}
+.tph-s{background:linear-gradient(135deg,#2d1060,#5b21b6);}
+.tph-z{background:linear-gradient(135deg,#063550,#0e7490);}
+.tp-header h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:4px;}
+.tp-header p{font-size:13.5px;opacity:.82;}
+.tp-body{background:var(--card);border-radius:0 0 14px 14px;border:1.5px solid var(--border);border-top:none;padding:26px 28px;margin-bottom:22px;box-shadow:var(--shadow);}
+
+/* CSS FORCE DIAGRAMS */
+.force-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;}
+.force-card{border-radius:12px;overflow:hidden;border:1.5px solid var(--border);box-shadow:var(--shadow);}
+.force-head{padding:12px 16px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;text-align:center;}
+.fh-c{background:linear-gradient(135deg,#991b1b,#dc2626);}
+.fh-t{background:linear-gradient(135deg,#1e3a8a,#1e40af);}
+.fh-s{background:linear-gradient(135deg,#5b21b6,#7c3aed);}
+.force-diagram{height:90px;display:flex;align-items:center;justify-content:center;position:relative;background:#f8fafc;overflow:hidden;}
+.beam{width:110px;height:24px;border-radius:4px;background:linear-gradient(180deg,#d4a76a,#a0784a);z-index:2;box-shadow:0 2px 6px rgba(0,0,0,.15);}
+.arr{position:absolute;font-size:22px;z-index:3;}
+.arr-cl{left:8px;top:50%;transform:translateY(-50%);animation:pR 1.2s ease-in-out infinite alternate;}
+.arr-cr{right:8px;top:50%;transform:translateY(-50%);animation:pL 1.2s ease-in-out infinite alternate;}
+@keyframes pR{from{left:8px}to{left:16px}}
+@keyframes pL{from{right:8px}to{right:16px}}
+.arr-tl{left:6px;top:50%;transform:translateY(-50%);animation:plL 1.2s ease-in-out infinite alternate;}
+.arr-tr{right:6px;top:50%;transform:translateY(-50%);animation:plR 1.2s ease-in-out infinite alternate;}
+@keyframes plL{from{left:6px}to{left:0px}}
+@keyframes plR{from{right:6px}to{right:0px}}
+.arr-st{top:6px;left:50%;transform:translateX(-50%);animation:sU 1.2s ease-in-out infinite alternate;}
+.arr-sb{bottom:6px;left:50%;transform:translateX(-50%);animation:sD 1.2s ease-in-out infinite alternate;}
+@keyframes sU{from{top:6px}to{top:2px}}
+@keyframes sD{from{bottom:6px}to{bottom:2px}}
+.force-body{padding:12px 14px;background:var(--card);}
+.force-def{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:6px;}
+.force-eg{font-size:12px;background:#f0f4fb;padding:6px 9px;border-radius:6px;color:#334155;line-height:1.5;}
+
+/* natural/prestress cards */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}
+.info-card{background:#f8fafc;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;}
+.ic-head{padding:10px 14px;font-weight:700;font-size:13.5px;color:#fff;}
+.ic-blue{background:linear-gradient(135deg,#063550,#0e7490);}
+.ic-green{background:linear-gradient(135deg,#0c2714,#166534);}
+.ic-body{padding:12px 14px;font-size:13px;color:var(--muted);line-height:1.6;}
+.ic-body strong{color:var(--navy);}
+
+/* FRAME DEMO SVG */
+.frame-demo{display:flex;gap:20px;align-items:center;justify-content:center;padding:18px;background:#f8fafc;border-radius:12px;margin:16px 0;flex-wrap:wrap;}
+.frame-box{text-align:center;}
+.frame-box p{font-size:11px;color:var(--muted);margin-top:6px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;}
+.frame-arrow{font-size:20px;color:var(--muted);}
+
+/* REINFORCEMENT cards */
+.reinf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:14px;}
+.reinf-card{border-radius:12px;overflow:hidden;border:1.5px solid var(--border);box-shadow:var(--shadow);}
+.rh{padding:11px 14px;font-weight:700;font-size:13.5px;color:#fff;}
+.rh1{background:linear-gradient(135deg,#1e3a8a,#2563eb);}
+.rh2{background:linear-gradient(135deg,#166534,#15803d);}
+.rh3{background:linear-gradient(135deg,#5b21b6,#7c3aed);}
+.rh4{background:linear-gradient(135deg,#0e7490,#0891b2);}
+.rh5{background:linear-gradient(135deg,#991b1b,#dc2626);}
+.rb{padding:12px 14px;background:var(--card);font-size:13px;color:var(--muted);line-height:1.6;}
+.rb strong{color:var(--navy);}
+.rb-key{margin-top:8px;background:#f0f4fb;padding:7px 10px;border-radius:7px;font-size:12.5px;color:#334155;line-height:1.6;}
+
+/* STOCK TABLE */
+.stock-tbl{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0;}
+.stock-tbl th{padding:9px 12px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;}
+.stock-tbl th.h1{background:var(--navy);color:#fff;border-radius:8px 0 0 0;width:120px;}
+.stock-tbl th.h2{background:#2c3e50;color:#fff;}
+.stock-tbl th.h3{background:var(--green);color:#fff;}
+.stock-tbl th.h4{background:var(--teal);color:#fff;border-radius:0 8px 0 0;}
+.stock-tbl td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.stock-tbl tr:last-child td{border-bottom:none;}
+.stock-tbl tr:nth-child(even) td{background:#f8fafc;}
+.stock-tbl .tn{font-weight:700;color:var(--navy);}
+
+/* PAR/PSE */
+.par-pse{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0;}
+.par-card{border-radius:10px;padding:16px;border:1.5px solid var(--border);}
+.par-card h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.par-card ul{list-style:none;padding:0;}
+.par-card ul li{font-size:13px;color:var(--muted);padding:4px 0;display:flex;gap:8px;align-items:flex-start;line-height:1.45;}
+.par-card ul li::before{content:"→";color:var(--blue);font-weight:700;flex-shrink:0;}
+
+/* SIZES */
+.size-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.size-card{background:#f8fafc;border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;}
+.size-card h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:9px;padding-bottom:7px;border-bottom:2px solid var(--border);}
+.sz-list{list-style:none;padding:0;font-size:13px;color:var(--muted);line-height:1.9;}
+.sz-list li{display:flex;gap:8px;}
+.sz-list li::before{content:"•";color:var(--blue);font-weight:700;}
+
+/* MATHS */
+.maths-box{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #93c5fd;border-radius:14px;padding:22px 26px;margin:18px 0;}
+.maths-box h3{font-family:'Playfair Display',serif;font-size:19px;color:#1e3a8a;margin-bottom:12px;}
+.formula{background:#fff;border:2px solid #93c5fd;border-radius:10px;padding:12px 20px;font-family:'DM Mono',monospace;font-size:16px;color:#1e3a8a;text-align:center;margin:10px 0;letter-spacing:.04em;}
+.worked{background:#fff;border-radius:10px;padding:14px 18px;margin-top:12px;font-size:13.5px;line-height:1.7;}
+.step{display:flex;gap:10px;margin-bottom:5px;align-items:flex-start;}
+.sn{background:var(--blue);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.warn{margin-top:8px;padding:8px 12px;background:#dbeafe;border-radius:7px;font-size:13px;color:#1e3a8a;}
+
+/* ACTIVITIES */
+.act-block{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;margin-bottom:26px;box-shadow:var(--shadow);}
+.act-head{background:var(--navy);padding:16px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.act-head h3{color:#fff;font-family:'Playfair Display',serif;font-size:18px;}
+.act-badge{background:var(--blue);color:#fff;font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:4px;}
+.act-body{padding:22px;}
+.act-instr{background:#f0f4fb;border-radius:8px;padding:11px 15px;font-size:13.5px;color:var(--muted);margin-bottom:18px;line-height:1.55;}
+.gap-sent{font-size:14.5px;line-height:2.5;margin-bottom:4px;color:var(--text);writing-mode:horizontal-tb;display:block;}
+.gf{border:none;border-bottom:2.5px solid var(--blue);background:var(--blue-l);width:185px;padding:3px 8px;font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--navy);border-radius:4px 4px 0 0;outline:none;writing-mode:horizontal-tb;}
+.gf.correct{background:var(--green-l);border-bottom-color:var(--green);}
+.gf.incorrect{background:var(--red-l);border-bottom-color:var(--red);}
+.word-bank{display:flex;flex-wrap:wrap;gap:8px;padding:13px;background:#f0f4fb;border-radius:10px;margin-bottom:16px;}
+.wchip{background:var(--card);border:1.5px solid var(--border);border-radius:6px;padding:5px 11px;font-size:13px;font-weight:500;color:var(--navy);cursor:pointer;transition:all .15s;user-select:none;writing-mode:horizontal-tb;}
+.wchip:hover,.wchip.sel{border-color:var(--blue);background:var(--blue-l);}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;}
+.reset-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:9px 18px;font-family:'DM Sans',sans-serif;font-size:13.5px;cursor:pointer;margin-left:10px;margin-top:12px;color:var(--muted);}
+.score-box{display:none;align-items:center;gap:10px;margin-top:12px;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:600;}
+.score-box.show{display:inline-flex;}
+.score-box.good{background:var(--green-l);color:var(--green);}
+.score-box.ok{background:var(--amber-l);color:#92400e;}
+.score-box.low{background:var(--red-l);color:var(--red);}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.match-col{display:flex;flex-direction:column;gap:8px;}
+.match-col-lbl{font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:3px;}
+.mi{background:var(--card);border:2px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.4;}
+.mi.mw{font-weight:700;color:var(--navy);}
+.mi:hover,.mi.sel{border-color:var(--blue);background:var(--blue-l);}
+.mi.matched{border-color:var(--green);background:var(--green-l);color:var(--green);pointer-events:none;font-weight:600;}
+.mi.wrong{border-color:var(--red);background:var(--red-l);animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.tf-item{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:15px 18px;margin-bottom:11px;}
+.tf-stmt{font-size:14px;color:var(--text);margin-bottom:11px;line-height:1.55;font-weight:500;}
+.tf-btns{display:flex;gap:10px;}
+.tf-btn{padding:7px 20px;border-radius:7px;border:1.5px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;background:var(--card);}
+.tf-btn.tb:hover{background:var(--green-l);border-color:var(--green);color:var(--green);}
+.tf-btn.fb:hover{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-btn.ca{background:var(--green-l);border-color:var(--green);color:var(--green);pointer-events:none;}
+.tf-btn.wa{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-fb{font-size:13px;margin-top:9px;padding:8px 12px;border-radius:7px;display:none;line-height:1.5;}
+.tf-fb.show{display:block;}
+.tf-fb.ok{background:var(--green-l);color:var(--green);}
+.tf-fb.no{background:var(--red-l);color:var(--red);}
+.maths-q{background:#eff6ff;border:2px solid #93c5fd;border-radius:12px;padding:18px 22px;margin-bottom:14px;}
+.maths-q h4{font-family:'Playfair Display',serif;font-size:16px;color:#1e3a8a;margin-bottom:10px;}
+.maths-q p{font-size:14px;color:var(--text);margin-bottom:12px;line-height:1.55;}
+.maths-hint{font-size:13px;color:var(--muted);margin-bottom:10px;padding:7px 10px;background:#dbeafe;border-radius:6px;}
+.maths-input{border:2px solid #93c5fd;border-radius:8px;padding:8px 14px;font-family:'DM Mono',monospace;font-size:16px;color:#1e3a8a;width:140px;outline:none;background:#fff;}
+.maths-unit{font-family:'DM Mono',monospace;font-size:14px;color:var(--muted);margin-left:6px;}
+.maths-check{background:var(--blue);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;margin-left:10px;font-family:'DM Sans',sans-serif;}
+.maths-fb{margin-top:10px;font-size:13.5px;padding:8px 12px;border-radius:7px;display:none;}
+.maths-fb.ok{display:block;background:var(--green-l);color:var(--green);}
+.maths-fb.no{display:block;background:var(--red-l);color:var(--red);}
+
+/* EXAM */
+.cmd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:14px;margin-bottom:26px;}
+.cmd-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow);}
+.cmd-word{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.cmd-means{font-size:13px;color:var(--muted);margin-bottom:9px;line-height:1.5;}
+.cmd-marks{display:inline-block;background:var(--blue-l);color:#1e3a8a;font-size:11px;font-family:'DM Mono',monospace;padding:2px 8px;border-radius:4px;font-weight:500;}
+.frame-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:12px;}
+.frame-type{background:#f0f4fb;padding:7px 16px;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);}
+.frame-body{padding:13px 16px;}
+.frame-tpl{font-size:14px;color:var(--text);line-height:1.8;margin-bottom:7px;}
+.blank{background:var(--blue-l);padding:2px 7px;border-radius:4px;font-style:italic;color:#1e3a8a;font-size:13px;}
+.frame-ex{font-size:13px;color:var(--muted);font-style:italic;border-left:3px solid var(--teal);padding-left:11px;margin-top:7px;line-height:1.55;}
+.eq-block{background:var(--card);border:1.5px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow);}
+.eq-head{background:#f0f4fb;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;}
+.eq-head span{font-size:12px;font-family:'DM Mono',monospace;color:var(--muted);text-transform:uppercase;}
+.eq-marks{background:var(--navy);color:#fff;font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:4px;}
+.eq-body{padding:15px 18px;}
+.eq-text{font-size:15px;color:var(--navy);margin-bottom:11px;font-weight:500;line-height:1.5;}
+.eq-hint{background:var(--teal-l);padding:9px 13px;border-radius:8px;font-size:12.5px;color:#064e4a;line-height:1.5;}
+.show-ans-btn{background:none;border:1.5px solid var(--teal);border-radius:6px;padding:6px 13px;font-size:12.5px;color:var(--teal);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:11px;transition:all .2s;}
+.show-ans-btn:hover{background:var(--teal);color:#fff;}
+.model-ans{display:none;background:#f0fef9;border:1px solid #a7f3d0;border-radius:8px;padding:13px;margin-top:11px;font-size:13.5px;line-height:1.65;color:#134e2a;}
+.model-ans.show{display:block;}
+.mp{display:flex;gap:9px;margin-bottom:6px;}
+.mpn{background:var(--green);color:#fff;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* TOOLKIT */
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;}
+.tk-card{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.tk-head{padding:14px 18px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;}
+.tkh-a{background:var(--navy);color:#fff;}
+.tkh-b{background:var(--blue);color:#fff;}
+.tkh-c{background:#0e7490;color:#fff;}
+.tk-body{padding:14px 18px;}
+.pre-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.pre-tbl th{background:#f0f4fb;padding:8px 11px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+.pre-tbl td{padding:7px 11px;border-bottom:1px solid var(--border);line-height:1.5;}
+.pre-tbl tr:last-child td{border-bottom:none;}
+.pfx{font-weight:700;color:var(--navy);}
+.syn-p{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:13.5px;}
+.syn-p:last-child{border-bottom:none;}
+.syn-c{font-weight:600;color:var(--navy);min-width:130px;line-height:1.45;}
+.syn-a{color:var(--blue);font-size:16px;flex-shrink:0;margin-top:2px;}
+.syn-s{color:var(--muted);font-style:italic;font-size:13px;line-height:1.45;}
+.con-list{list-style:none;}
+.con-list li{padding:6px 0;border-bottom:1px solid var(--border);font-size:13.5px;display:flex;gap:9px;align-items:flex-start;line-height:1.5;}
+.con-list li:last-child{border-bottom:none;}
+.con-chip{background:var(--blue-l);color:#1e3a8a;padding:2px 8px;border-radius:4px;font-weight:600;font-size:12.5px;white-space:nowrap;flex-shrink:0;}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:12px;margin-top:60px;}
+footer strong{color:var(--blue-m);}
+@media(max-width:600px){.hero{padding:34px 18px 30px}.main{padding:20px 14px 60px}.force-grid,.match-grid,.two-col,.par-pse,.size-grid,.reinf-grid{grid-template-columns:1fr}.tp-body{padding:16px}.frame-demo{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="hero-inner">
+  <div class="hero-badge">Edexcel GCSE D&T · Topics 7.4 & 7.5 · Timbers Specialist · Revision Pack</div>
+  <h1>Forces, Strengthening &amp;<br><span class="ac">Stock Forms</span> of Timber</h1>
+  <div class="hero-spec">Spec Ref: 7.4.1–7.4.2 · 7.5.1–7.5.2 &nbsp;|&nbsp; Textbook pp. 288–291 &nbsp;|&nbsp; Section B — 60 marks</div>
+  <p class="hero-sub">A complete ESL-focused revision guide covering all forces acting on timber (with animated diagrams), five reinforcement and strengthening techniques, all stock forms, PAR and PSE sizes, standard dimensions, and cross-sectional area calculations — with sentence frames and model answers.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📋 Spec Checklist</span><span class="hero-tag">💨 Animated Force Diagrams</span>
+    <span class="hero-tag">🏗️ 5 Strengthening Techniques</span><span class="hero-tag">📦 Stock Forms</span>
+    <span class="hero-tag">📐 PAR / PSE / Sizes</span><span class="hero-tag">🔢 Maths Corner</span><span class="hero-tag">✏️ Activities</span>
+  </div>
+</div></div>
+
+<div class="nav-bar"><div class="nav-inner">
+  <button class="tab-btn active" onclick="showTab('spec')">📋 Spec Checklist</button>
+  <button class="tab-btn" onclick="showTab('vocab')">📖 Key Vocabulary</button>
+  <button class="tab-btn" onclick="showTab('topics')">🗂️ Topic Summaries</button>
+  <button class="tab-btn" onclick="showTab('activities')">✏️ Activities</button>
+  <button class="tab-btn" onclick="showTab('exam')">📝 Exam Language</button>
+  <button class="tab-btn" onclick="showTab('toolkit')">💬 ESL Toolkit</button>
+</div></div>
+
+<div class="main">
+
+<!-- SPEC CHECKLIST -->
+<div id="sec-spec" class="section active">
+  <div class="sec-head"><h2>Specification Checklist</h2><p>Topics 7.4 and 7.5 test both written explanation (forces, reinforcement) and calculation (cross-sectional area). Tick each point only when you can write a full exam answer on it — not just when you have read it.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Draw to Understand:</strong> For every force type, draw a simple beam on paper and add arrows showing the direction. Use red for compression (→ ←), blue for tension (← →), and purple for shear (↑ ↓). Drawing forces by hand is far more effective than reading about them — your hand movement helps your brain remember the direction.</div>
+  <div class="spec-grid">
+    <div class="spec-card"><div class="spec-head sh-f">💨 7.4.1 — Forces and Stresses</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Compression — squashing force, arrows point INWARD → ←</div>
+      <div class="spec-item"><input type="checkbox"> Tension — pulling force, arrows point OUTWARD ← →</div>
+      <div class="spec-item"><input type="checkbox"> Shear — opposite parallel forces, like scissors cutting</div>
+      <div class="spec-item"><input type="checkbox"> Natural forces in growing timber — released when sawn, causes warping</div>
+      <div class="spec-item"><input type="checkbox"> Pre-stressed beams — bottom rail tensioned during manufacture, beam resists bending better</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-r">🏗️ 7.4.2 — Reinforcement Techniques</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Frame structures — rectangles are weak; diagonal brace creates triangles which are rigid</div>
+      <div class="spec-item"><input type="checkbox"> Lamination — thin strips glued in a former; Glulam and LVL for structural beams; makes curves</div>
+      <div class="spec-item"><input type="checkbox"> Braces — diagonal bar in COMPRESSION holding frame against racking</div>
+      <div class="spec-item"><input type="checkbox"> Tie bars — steel rod in TENSION holding frame corners square</div>
+      <div class="spec-item"><input type="checkbox"> Embedding composites — GRP shell, steel strips, CFRW (carbon fibre reinforced wood)</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-s">📦 7.5.1 — Stock Forms</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> Regular sections — standard cross-sections from sawmill; designers use standard sizes to reduce waste</div>
+      <div class="spec-item"><input type="checkbox"> Mouldings — decorative profiles (skirting boards, architrave); saves time but more expensive</div>
+      <div class="spec-item"><input type="checkbox"> Dowels — round rods; used in dowel joints; needs accurate drilling; 4–25 mm diameter</div>
+      <div class="spec-item"><input type="checkbox"> Sheets — manufactured boards; 2440 × 1220 mm full; 1220 × 610 mm half sheet</div>
+    </div></div>
+    <div class="spec-card"><div class="spec-head sh-z">📐 7.5.2 — Sizes and Calculations</div><div class="spec-body">
+      <div class="spec-item"><input type="checkbox"> PAR = Planed All Round — all 4 faces smooth, ROUNDED edges, hidden structural use</div>
+      <div class="spec-item"><input type="checkbox"> PSE = Planed Square Edge — all 4 faces smooth, SQUARE edges, visible joinery</div>
+      <div class="spec-item"><input type="checkbox"> Sizes increase in 25 mm steps; planed actual size is ~4 mm less than sawn size</div>
+      <div class="spec-item"><input type="checkbox"> Cross-sectional area = width (mm) × thickness (mm) — answer always in mm²</div>
+      <div class="spec-item"><input type="checkbox"> Board thicknesses: 3, 6, 9, 12, 15, 18, 25 mm (plywood/MDF); chipboard 15 or 18 mm</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- VOCAB -->
+<div id="sec-vocab" class="section">
+  <div class="sec-head"><h2>Key Vocabulary</h2><p>14 key terms for Topics 7.4 and 7.5. The forces vocabulary (compression, tension, shear) also appears in physics — learning it precisely here pays off in multiple subjects.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Opposite Pairs:</strong> Compression and tension are opposites; braces and tie bars are opposites; PAR and PSE are related but different. Study opposite pairs together by writing one sentence that uses BOTH words and explains the difference. This precision is exactly what the exam tests.</div>
+  <div class="filter-row">
+    <span style="font-size:13px;color:var(--muted);font-weight:500;">Filter:</span>
+    <button class="filter-btn active" onclick="fv('all',this)">All</button>
+    <button class="filter-btn" onclick="fv('f',this)">💨 Forces</button>
+    <button class="filter-btn" onclick="fv('r',this)">🏗️ Strengthening</button>
+    <button class="filter-btn" onclick="fv('s',this)">📦 Stock Forms</button>
+    <button class="filter-btn" onclick="fv('z',this)">📐 Sizes</button>
+  </div>
+  <div class="vocab-grid" id="vg">
+
+    <div class="vc" data-topic="f"><div class="vc-top"><div class="vc-word">Compression</div><div class="vc-tag t-f">Forces</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>squashing or pushing force</strong> — forces push INWARD from both ends, trying to shorten and crush the material. Diagram arrows always point inward: ➡ beam ⬅</div>
+      <div class="vc-ex">"Table legs are under <em>compression</em> — the weight of the table top and anything placed on it pushes down, trying to crush and shorten the legs."</div>
+      <div class="vc-mem">💡 Compress = squeeze together. Arrows → ← point INWARD. Examples in timber: table legs, chair legs, columns, posts, the top face of a beam that is bending under load.</div>
+    </div></div>
+
+    <div class="vc" data-topic="f"><div class="vc-top"><div class="vc-word">Tension</div><div class="vc-tag t-f">Forces</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>stretching or pulling force</strong> — forces pull OUTWARD from both ends, trying to lengthen and tear the material apart. Timber's tensile strength is 3–4× greater than its compressive strength along the grain.</div>
+      <div class="vc-ex">"The bottom face of a shelf under heavy load is in <em>tension</em> — as the shelf bends, the lower fibres are being stretched and pulled apart."</div>
+      <div class="vc-mem">💡 Tension = stretching. Arrows ← → point OUTWARD. Timber is stronger in tension than compression. Examples: the underside of a bending beam, tie bars, ropes, a stretched guitar string.</div>
+    </div></div>
+
+    <div class="vc" data-topic="f"><div class="vc-top"><div class="vc-word">Shear</div><div class="vc-tag t-f">Forces</div></div><div class="vc-body">
+      <div class="vc-def">Forces acting in <strong>opposite parallel directions</strong>, trying to slide adjacent layers of material apart — like the cutting action of scissors. Common at joints and when cutting across the grain.</div>
+      <div class="vc-ex">"When a chisel is struck across the grain, it applies a <em>shear</em> force — pushing one layer of wood fibres sideways relative to the next layer until they separate."</div>
+      <div class="vc-mem">💡 Shear = sliding apart. Arrows ↑ on one side, ↓ on the other. Think of scissors — two blades moving in opposite directions. Timber joints are often most vulnerable to shear forces.</div>
+    </div></div>
+
+    <div class="vc" data-topic="r"><div class="vc-top"><div class="vc-word">Lamination</div><div class="vc-tag t-r">Strengthening</div></div><div class="vc-body">
+      <div class="vc-def">Bonding <strong>several thin strips of timber together</strong> using adhesive, bent into shape inside a former (mould). When the glue sets, the curve is permanent. Used to produce curved furniture components and large structural beams (Glulam, LVL).</div>
+      <div class="vc-ex">"The curved chair back was made by <em>lamination</em> — thin beech strips were coated with PVA, placed in a shaped former and clamped overnight. When released, they held the curve permanently."</div>
+      <div class="vc-mem">💡 Laminate = to layer. Many thin strips → each bends easily → glued in a mould → permanent shape. Glulam = Glued Laminated Timber (structural beams). LVL = Laminated Veneer Lumber. Both are stronger than solid timber of the same cross-section.</div>
+    </div></div>
+
+    <div class="vc" data-topic="r"><div class="vc-top"><div class="vc-word">Triangulation</div><div class="vc-tag t-r">Strengthening</div></div><div class="vc-body">
+      <div class="vc-def">Adding <strong>diagonal members to a rectangular frame</strong> to create triangles. Triangles are rigid — their internal angles cannot change without a member breaking. Rectangles are not rigid — they rack (distort into a parallelogram) under sideways force.</div>
+      <div class="vc-ex">"The bookcase frame was strengthened by <em>triangulation</em> — a diagonal brace from the top-left corner to the bottom-right corner created two rigid triangles, preventing the frame from racking sideways."</div>
+      <div class="vc-mem">💡 Rule: TRIANGLES are rigid. RECTANGLES are NOT. One diagonal brace = two triangles. A triangle's angles cannot change without breaking a side — this is why bridges, roof trusses, and strong furniture frames all use triangulated structures.</div>
+    </div></div>
+
+    <div class="vc" data-topic="r"><div class="vc-top"><div class="vc-word">Brace / Tie Bar</div><div class="vc-tag t-r">Strengthening</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>brace</strong> is a diagonal bar working in COMPRESSION — it pushes back against racking. A <strong>tie bar</strong> (usually steel rod) works in TENSION — it cannot stretch, so it holds corners square. Both are diagonal across a rectangular frame.</div>
+      <div class="vc-ex">"Steel <em>tie bars</em> are used in old brick buildings to hold the walls from spreading outward — the rod is in tension, pulling both walls back toward the centre."</div>
+      <div class="vc-mem">💡 Brace = compression (pushes). Tie bar = tension (pulls). Steel is often used for tie bars because steel has extremely high tensile strength. Key question: is the diagonal member being pushed or pulled? That tells you which type it is.</div>
+    </div></div>
+
+    <div class="vc" data-topic="s"><div class="vc-top"><div class="vc-word">Moulding</div><div class="vc-tag t-s">Stock Forms</div></div><div class="vc-body">
+      <div class="vc-def">A length of timber that has been <strong>machine-cut into a specific decorative cross-sectional profile</strong> along its whole length — skirting board, architrave, coving, dado rail, decorative edging. Sold in lengths and cut to size on site.</div>
+      <div class="vc-ex">"Instead of routing a decorative edge on each shelf individually, the designer specified a ready-made hardwood <em>moulding</em> — saving significant time while ensuring a consistent, professional profile on every piece."</div>
+      <div class="vc-mem">💡 A moulding = a decorative profile in a ready-made length. You cut it to size on site — no machining needed. Advantage: saves time. Disadvantage: more expensive per metre. Common types: skirting board (along walls at floor level), architrave (around door frames), coving (at wall-ceiling joint).</div>
+    </div></div>
+
+    <div class="vc" data-topic="s"><div class="vc-top"><div class="vc-word">Dowel</div><div class="vc-tag t-s">Stock Forms</div></div><div class="vc-body">
+      <div class="vc-def">A <strong>cylindrical wooden rod</strong> available in standard diameters (4–25 mm). Short lengths are pressed into precisely drilled holes in both pieces of timber to create a hidden, aligned joint. Longer lengths are used as handles, rails, and model-making rods.</div>
+      <div class="vc-ex">"The flat-pack bookcase used <em>dowel</em> joints — 8 mm wooden rods pressed into pre-drilled holes in both the shelf and the side panel, allowing accurate self-alignment without visible screws."</div>
+      <div class="vc-mem">💡 Dowels = round wooden pegs. Common exam question: give one advantage and one disadvantage of a dowel joint. Advantage: machines can drill holes quickly and accurately. Disadvantage: very difficult to align holes accurately by hand — requires a dowelling jig.</div>
+    </div></div>
+
+    <div class="vc" data-topic="z"><div class="vc-top"><div class="vc-word">PAR — Planed All Round</div><div class="vc-tag t-z">Sizes</div></div><div class="vc-body">
+      <div class="vc-def">Timber with <strong>all four faces machine-planed smooth and edges slightly rounded</strong>. Used mainly for hidden structural timber (studwork, joists, floor framing) where the appearance of the timber itself does not matter. Actual size is approximately 4 mm less than the stated nominal size.</div>
+      <div class="vc-ex">"The stud wall was framed with <em>PAR</em> 100 × 50 mm — the rounded edges made it safer to handle on site, even though it actually measured only 96 × 47 mm after planing."</div>
+      <div class="vc-mem">💡 PAR = Planed ALL Round = smooth all 4 faces + ROUNDED edges. Used for HIDDEN structure. Actual size is always smaller than the nominal size: 100 × 50 PAR ≈ 96 × 47 mm actual. Rounded edges = PAR. Do not confuse with PSE.</div>
+    </div></div>
+
+    <div class="vc" data-topic="z"><div class="vc-top"><div class="vc-word">PSE — Planed Square Edge</div><div class="vc-tag t-z">Sizes</div></div><div class="vc-body">
+      <div class="vc-def">Timber with <strong>all four faces machine-planed smooth and edges left sharp and square</strong>. Used for visible joinery — window frames, door linings, skirting boards, and furniture — where a precise, clean edge is essential for neat joints and a good painted or varnished finish.</div>
+      <div class="vc-ex">"The window frame was made from <em>PSE</em> softwood — the sharp square edges gave clean 90° corner joints and a smooth surface ready for painting without any additional preparation."</div>
+      <div class="vc-mem">💡 PSE = Planed SQUARE Edge = smooth all 4 faces + SQUARE (sharp) edges. Used for VISIBLE joinery. Key difference from PAR: PSE has SQUARE edges; PAR has ROUNDED edges. PSE costs more — only specify it where timber will be seen.</div>
+    </div></div>
+
+  </div>
+</div>
+
+<!-- TOPIC SUMMARIES -->
+<div id="sec-topics" class="section">
+  <div class="sec-head"><h2>Topic Summaries</h2><p>Select a panel. The force diagrams are animated — watch the direction of the arrows. The frame diagrams use SVG — no images needed.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Predict Before Reading:</strong> Before selecting each panel, look at the panel title and write down (in your own words) what you think it will contain. Then compare your prediction to the actual content. The gaps between your prediction and the content are exactly what you need to revise.</div>
+
+  <div class="topic-nav">
+    <button class="tp-btn tp-f active" onclick="showTopic('f',this)">💨 Forces (7.4.1)</button>
+    <button class="tp-btn tp-r"       onclick="showTopic('r',this)">🏗️ Strengthening (7.4.2)</button>
+    <button class="tp-btn tp-s"       onclick="showTopic('s',this)">📦 Stock Forms (7.5.1)</button>
+    <button class="tp-btn tp-z"       onclick="showTopic('z',this)">📐 Sizes &amp; Maths (7.5.2)</button>
+  </div>
+
+  <!-- FORCES -->
+  <div class="topic-panel active" id="tp-f">
+    <div class="tp-header tph-f"><h3>💨 Forces and Stresses Acting on Timber (7.4.1)</h3><p>You must name, define, and draw force diagrams for all three types. The animated arrows show the direction each force acts.</p></div>
+    <div class="tp-body">
+      <div class="force-grid">
+        <div class="force-card">
+          <div class="force-head fh-c">Compression → ←</div>
+          <div class="force-diagram">
+            <span class="arr arr-cl">➡️</span><div class="beam"></div><span class="arr arr-cr">⬅️</span>
+          </div>
+          <div class="force-body">
+            <div class="force-def"><strong>Squashing force</strong> — pushes INWARD from both ends, trying to shorten and crush the material.</div>
+            <div class="force-eg">📌 Examples: table legs, chair legs, structural columns and posts, top face of a bending beam.</div>
+          </div>
+        </div>
+        <div class="force-card">
+          <div class="force-head fh-t">Tension ← →</div>
+          <div class="force-diagram">
+            <span class="arr arr-tl">⬅️</span><div class="beam"></div><span class="arr arr-tr">➡️</span>
+          </div>
+          <div class="force-body">
+            <div class="force-def"><strong>Stretching force</strong> — pulls OUTWARD from both ends. Timber resists tension 3–4× better than compression along the grain.</div>
+            <div class="force-eg">📌 Examples: the underside of a bending beam, tie bars, rope under load, guitar strings.</div>
+          </div>
+        </div>
+        <div class="force-card">
+          <div class="force-head fh-s">Shear ↑↓</div>
+          <div class="force-diagram" style="flex-direction:column;">
+            <span class="arr arr-st" style="font-size:22px;">⬆️</span>
+            <div class="beam" style="width:100px;"></div>
+            <span class="arr arr-sb" style="font-size:22px;">⬇️</span>
+          </div>
+          <div class="force-body">
+            <div class="force-def"><strong>Sliding force</strong> — opposite parallel forces try to slide adjacent layers of material apart.</div>
+            <div class="force-eg">📌 Examples: scissors cutting, chisel struck across grain, stress at timber joints, wood splitting along grain.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:18px;">
+        <div class="info-card">
+          <div class="ic-head ic-green">🌳 Natural Forces in Growing Timber</div>
+          <div class="ic-body">As a tree grows, wind loading, the weight of branches, and the tree's own mass create internal stresses within the wood. When the tree is felled and sawn into planks, these stresses are suddenly released — the plank can bend, twist, crack, or bow as it dries. <strong>This is why freshly sawn green timber must be seasoned before use</strong> — not only to remove moisture, but to allow internal stresses to stabilise before the wood is cut to final dimensions.</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-head ic-blue">⚡ Pre-Stressed Construction Beams</div>
+          <div class="ic-body">During manufacture, the bottom rail of a structural beam is deliberately placed in <strong>tension</strong> — stretched before the beam is assembled. When a load is placed on the beam in use, the bottom naturally goes into tension from bending. The pre-existing tension partly cancels this additional tension, so the beam bends less and carries more load for the same amount of timber. <strong>This is widely used in floor joists, glulam beams, and bridge girders</strong>.</div>
+        </div>
+      </div>
+      <div class="insight-box" style="margin-top:4px;">💡 <strong>Bending beam key point:</strong> When a beam bends under load, the TOP face is in COMPRESSION (being squashed) and the BOTTOM face is in TENSION (being stretched). This is why pre-stressing puts tension into the bottom — it is the tension side that needs to be strengthened.</div>
+    </div>
+  </div>
+
+  <!-- STRENGTHENING -->
+  <div class="topic-panel" id="tp-r">
+    <div class="tp-header tph-r"><h3>🏗️ Reinforcement &amp; Strengthening Techniques (7.4.2)</h3><p>Five methods for making timber structures stronger. The most commonly examined: triangulation of frames and lamination for curved components.</p></div>
+    <div class="tp-body">
+      <h3 style="font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:12px;">Why Rectangles Are Weak — and How Triangulation Fixes Them</h3>
+      <div class="frame-demo">
+        <div class="frame-box">
+          <svg width="85" height="85" viewBox="0 0 85 85" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="7" width="71" height="71" fill="none" stroke="#92400e" stroke-width="5" rx="2"/>
+            <text x="42" y="48" text-anchor="middle" font-size="10" fill="#666" font-family="DM Sans,sans-serif">RECTANGLE</text>
+          </svg>
+          <p>Weak — racks</p>
+        </div>
+        <div class="frame-arrow">→</div>
+        <div class="frame-box">
+          <svg width="85" height="85" viewBox="0 0 85 85" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="7,7 78,22 78,78 7,78" fill="none" stroke="#991b1b" stroke-width="4"/>
+            <text x="42" y="55" text-anchor="middle" font-size="10" fill="#991b1b" font-family="DM Sans,sans-serif" font-weight="bold">RACKS!</text>
+          </svg>
+          <p>Under force</p>
+        </div>
+        <div class="frame-arrow">→ fix →</div>
+        <div class="frame-box">
+          <svg width="85" height="85" viewBox="0 0 85 85" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="7" width="71" height="71" fill="none" stroke="#92400e" stroke-width="5" rx="2"/>
+            <line x1="7" y1="78" x2="78" y2="7" stroke="#166534" stroke-width="4" stroke-dasharray="6,3"/>
+            <text x="42" y="52" text-anchor="middle" font-size="10" fill="#166534" font-family="DM Sans,sans-serif">2 triangles ✓</text>
+          </svg>
+          <p>Diagonal brace</p>
+        </div>
+        <div class="frame-arrow">or</div>
+        <div class="frame-box">
+          <svg width="85" height="85" viewBox="0 0 85 85" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="7" width="71" height="71" fill="#dbeafe" stroke="#92400e" stroke-width="5" rx="2"/>
+            <text x="42" y="48" text-anchor="middle" font-size="10" fill="#1e3a8a" font-family="DM Sans,sans-serif" font-weight="bold">Panel ✓</text>
+          </svg>
+          <p>Panel infill</p>
+        </div>
+      </div>
+
+      <div class="reinf-grid">
+        <div class="reinf-card"><div class="rh rh1">🔺 Frame Structures &amp; Triangulation</div><div class="rb">A square or rectangular frame can distort under sideways force (racking). Solutions: (1) thin panel inside the frame, (2) diagonal strut across one corner, (3) diagonal corner-to-corner creating two triangles.<div class="rb-key"><strong>Rule:</strong> Triangles are rigid. Rectangles are not. One diagonal converts a rectangle into two rigid triangles that cannot change shape without a member breaking.</div></div></div>
+        <div class="reinf-card"><div class="rh rh2">🌀 Lamination</div><div class="rb">Thin timber strips are coated with adhesive, placed in a shaped former (mould) and clamped until set. The curved shape is held permanently. Also greatly increases strength compared to solid timber of the same size.<div class="rb-key"><strong>Glulam</strong> = Glued Laminated Timber — large structural beams for buildings<br><strong>LVL</strong> = Laminated Veneer Lumber — precision engineered beams</div></div></div>
+        <div class="reinf-card"><div class="rh rh3">↗️ Braces &amp; Tie Bars</div><div class="rb">Both are diagonal members added to rectangular frames to prevent racking:<div class="rb-key"><strong>Brace</strong> = diagonal bar working in COMPRESSION — it pushes back<br><strong>Tie bar</strong> = diagonal rod (often steel) working in TENSION — it cannot stretch, so it holds corners square<br>Steel tie bars are common because steel has very high tensile strength.</div></div></div>
+        <div class="reinf-card"><div class="rh rh4">⚙️ Fabrication &amp; Joint Selection</div><div class="rb">The right joint type for the expected force direction significantly affects structural strength. Strong joints for load-bearing: mortise and tenon, dovetail, housing joint. Weaker joints: butt joint, mitre joint.<div class="rb-key">→ Full detail on joints covered in Topic 7.7</div></div></div>
+        <div class="reinf-card"><div class="rh rh5">🔬 Embedding Composite Materials</div><div class="rb">Adding other materials into or around timber to improve specific properties:<div class="rb-key"><strong>GRP</strong> (Glass Reinforced Plastic / fibreglass): waterproof, hardwearing shell around a beam<br><strong>Steel strips</strong>: very high tensile strength, can be bonded along the tension face<br><strong>CFRW</strong>: Carbon Fibre Reinforced Wood — lighter and stronger, allows smaller beam cross-section</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STOCK FORMS -->
+  <div class="topic-panel" id="tp-s">
+    <div class="tp-header tph-s"><h3>📦 Stock Forms and Types (7.5.1)</h3><p>Four standard forms in which timber is commercially supplied. Designers use standard sizes wherever possible to reduce waste, cost, and cutting time.</p></div>
+    <div class="tp-body">
+      <div class="insight-box">💡 <strong>Exam technique:</strong> Questions on stock forms often ask "give one advantage and one disadvantage." Always match your answer to the product context given. For example: "Mouldings save time because the decorative profile is already machine-cut along the full length, but they are more expensive per metre than plain sections."</div>
+      <table class="stock-tbl">
+        <tr><th class="h1">Stock Form</th><th class="h2">Description &amp; Availability</th><th class="h3">✓ Advantages</th><th class="h4">✗ Disadvantages</th></tr>
+        <tr>
+          <td class="tn">Regular Sections</td>
+          <td>Timber sawn to standard rectangular cross-sections at the sawmill. A limited range of widths and thicknesses. Sold in standard lengths.</td>
+          <td>Cheap and widely available; no extra machining; easy to specify and order; reduces waste when designers work to standard sizes</td>
+          <td>Rough sawn surface needs further planing; limited range of sizes; may be warped or twisted — always check before buying</td>
+        </tr>
+        <tr>
+          <td class="tn">Mouldings</td>
+          <td>Lengths of timber machine-cut to a specific decorative profile. Profiles include skirting board, architrave, coving, dado rail, and decorative edge strips. Cut to length on site.</td>
+          <td>Saves workshop time — profile is ready-made; consistent decorative profile along the entire length; many profiles available off the shelf</td>
+          <td>More expensive per metre than plain sections; limited to available profiles — custom shapes need specialist routing</td>
+        </tr>
+        <tr>
+          <td class="tn">Dowels</td>
+          <td>Round cross-section wooden rods in standard diameters (4, 5, 6, 8, 10, 12, 25 mm). Used as hidden joint reinforcement or as structural rods, handles, and rails.</td>
+          <td>Creates hidden, neat fixings with no visible screws; automated drilling is fast and accurate; can self-align two pieces being joined</td>
+          <td>Extremely difficult to align holes accurately by hand — a dowelling jig is essential; can split timber if drilled too close to an edge</td>
+        </tr>
+        <tr>
+          <td class="tn">Sheets</td>
+          <td>Manufactured boards (plywood, MDF, chipboard) in standard sheet sizes. Full sheet: 2440 × 1220 mm. Half sheet: 1220 × 610 mm. Range of thicknesses from 3 to 25 mm.</td>
+          <td>Large flat panels in a single piece; no knots or grain direction weaknesses; consistent thickness throughout; strong in all directions (especially plywood)</td>
+          <td>Heavy and awkward to handle alone; edges can splinter when cut; some types (MDF, chipboard) are sensitive to moisture and swell badly</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SIZES & MATHS -->
+  <div class="topic-panel" id="tp-z">
+    <div class="tp-header tph-z"><h3>📐 Sizes, PAR, PSE &amp; Calculations (7.5.2)</h3><p>This section includes calculation marks worth up to 5 marks in Section B. Always show your working and always include the unit: mm².</p></div>
+    <div class="tp-body">
+      <h3 style="font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:12px;">PAR vs PSE — The Essential Distinction</h3>
+      <div class="par-pse">
+        <div class="par-card" style="border-top:4px solid var(--blue);">
+          <h4>PAR — Planed All Round</h4>
+          <ul>
+            <li>All four faces machine-planed smooth</li>
+            <li>Edges are ROUNDED for safer handling</li>
+            <li>Used for HIDDEN structural timber</li>
+            <li>Studwork, floor joists, noggins, roof rafters</li>
+            <li>Actual size ~4 mm less than nominal stated size</li>
+            <li>100 × 50 mm PAR → actual ~96 × 47 mm</li>
+          </ul>
+        </div>
+        <div class="par-card" style="border-top:4px solid var(--teal);">
+          <h4>PSE — Planed Square Edge</h4>
+          <ul>
+            <li>All four faces machine-planed smooth</li>
+            <li>Edges are SQUARE (sharp) for neat joints</li>
+            <li>Used for VISIBLE joinery work</li>
+            <li>Door frames, window linings, skirting boards, furniture</li>
+            <li>Sold in 1.8 m lengths — check for warp before use</li>
+            <li>More expensive than PAR — only specify when seen</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin:20px 0 12px;">Standard Timber Sizes</h3>
+      <div class="size-grid">
+        <div class="size-card">
+          <h4>Common Section Sizes (width × thickness)</h4>
+          <ul class="sz-list">
+            <li>15 mm × 75 mm</li>
+            <li>15 mm × 100 mm</li>
+            <li>15 mm × 150 mm</li>
+            <li>50 mm × 50 mm</li>
+            <li>50 mm × 100 mm (the old "2 × 4")</li>
+            <li>75 mm × 75 mm</li>
+            <li>100 mm × 100 mm</li>
+          </ul>
+          <div style="font-size:12px;color:var(--muted);margin-top:10px;padding:7px 10px;background:#f8fafc;border-radius:6px;">📌 Sizes increase in 25 mm steps — derived from imperial inches (1 inch ≈ 25 mm). Planed size is always ~3–4 mm smaller than the stated sawn size.</div>
+        </div>
+        <div class="size-card">
+          <h4>Board &amp; Dowel Sizes</h4>
+          <ul class="sz-list">
+            <li><strong>Full sheet:</strong> 2440 × 1220 mm (8 × 4 ft imperial)</li>
+            <li><strong>Half sheet:</strong> 1220 × 610 mm (4 × 2 ft)</li>
+            <li><strong>Thicknesses:</strong> 3, 6, 9, 12, 15, 18, 25 mm</li>
+            <li><strong>Chipboard:</strong> usually 15 or 18 mm only</li>
+          </ul>
+          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-top:10px;margin-bottom:5px;">Dowel diameters (mm):</div>
+          <ul class="sz-list">
+            <li>4, 5, 6, 8, 10, 12, 25 mm are the standard sizes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="maths-box">
+        <h3>🔢 Maths Corner — Cross-Sectional Area</h3>
+        <p style="font-size:13.5px;color:#1e3a8a;margin-bottom:10px;">Section B includes <strong>5 calculation marks</strong>. Cross-sectional area is one of the most likely calculations. Always show your working — partial marks are awarded even if your final answer is wrong.</p>
+        <div class="formula">Cross-Sectional Area (mm²) = Width (mm) × Thickness (mm)</div>
+        <div class="worked">
+          <strong>Worked Example:</strong> Cross-sectional area of a 100 mm × 50 mm timber section.
+          <div class="step"><div class="sn">1</div><div>Write the formula: Area = Width × Thickness</div></div>
+          <div class="step"><div class="sn">2</div><div>Substitute the values: Area = 100 × 50</div></div>
+          <div class="step"><div class="sn">3</div><div>Calculate: Area = <strong>5,000 mm²</strong></div></div>
+          <div class="warn">⚠️ Always write mm² — the squared unit. Writing "5000" or "5000 mm" is wrong and costs marks. The common mistake is ADDING instead of MULTIPLYING: 100 + 50 = 150 is perimeter (not area).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVITIES -->
+<div id="sec-activities" class="section">
+  <div class="sec-head"><h2>Revision Activities</h2><p>Gap fill, matching, maths calculations, and true/false — covering both Topics 7.4 and 7.5. Word bank is NOT in answer order.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Attempt First:</strong> Try every question without looking at your notes. Wrong answers are not failures — when you discover the correct answer after getting it wrong, your brain encodes it much more strongly. Only check your notes after completing each activity.</div>
+
+  <!-- GAP FILL -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 1 — Gap Fill: Forces &amp; Stock Forms</h3><div class="act-badge">Fill in the blanks</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a word from the Word Bank to select it, then click a blank to place it. The bank is NOT in answer order.</div>
+      <div class="word-bank" id="wb1">
+        <span class="wchip" data-word="compression">compression</span>
+        <span class="wchip" data-word="dowel">dowel</span>
+        <span class="wchip" data-word="PSE">PSE</span>
+        <span class="wchip" data-word="lamination">lamination</span>
+        <span class="wchip" data-word="tie bar">tie bar</span>
+        <span class="wchip" data-word="moulding">moulding</span>
+        <span class="wchip" data-word="triangulation">triangulation</span>
+        <span class="wchip" data-word="PAR">PAR</span>
+        <span class="wchip" data-word="shear">shear</span>
+        <span class="wchip" data-word="tension">tension</span>
+      </div>
+      <div id="gf1">
+        <div class="gap-sent">1. A squashing force that pushes inward from both ends of a material is called <input type="text" class="gf" data-answer="compression">. Table legs experience this type of force when a load is placed on the table.</div>
+        <div class="gap-sent">2. A pulling force that stretches a material outward from both ends is called <input type="text" class="gf" data-answer="tension">. Timber resists this force 3–4 times better than it resists squashing along the grain.</div>
+        <div class="gap-sent">3. When two forces act in opposite parallel directions — like the blades of scissors — the result is a <input type="text" class="gf" data-answer="shear"> force that tries to slide adjacent layers of material apart.</div>
+        <div class="gap-sent">4. The most effective method of stiffening a rectangular timber frame is <input type="text" class="gf" data-answer="triangulation"> — adding a diagonal member converts the rectangle into two rigid triangles that cannot change shape without breaking.</div>
+        <div class="gap-sent">5. A <input type="text" class="gf" data-answer="tie bar"> is typically a steel rod placed diagonally across a frame — working in tension, it holds the corners square and prevents the frame from racking.</div>
+        <div class="gap-sent">6. <input type="text" class="gf" data-answer="lamination"> involves gluing thin strips of timber in a shaped former — when the adhesive sets, the curve is permanent. Glulam beams are made this way.</div>
+        <div class="gap-sent">7. A <input type="text" class="gf" data-answer="moulding"> is a length of timber machine-cut to a decorative profile along its full length — skirting boards and door architraves are common examples.</div>
+        <div class="gap-sent">8. A <input type="text" class="gf" data-answer="dowel"> is a cylindrical wooden rod — short lengths are pressed into precisely drilled holes in both pieces of timber to create a hidden, aligned joint.</div>
+        <div class="gap-sent">9. <input type="text" class="gf" data-answer="PAR"> (Planed All Round) has all four faces smooth with rounded edges — it is used for hidden structural timber such as stud wall framing where appearance is not important.</div>
+        <div class="gap-sent">10. <input type="text" class="gf" data-answer="PSE"> (Planed Square Edge) has all four faces smooth with sharp square edges — essential for visible joinery such as door frames and window surrounds where neat joints are needed.</div>
+      </div>
+      <div><button class="check-btn" onclick="checkGF('gf1','sc1')">✓ Check Answers</button><button class="reset-btn" onclick="resetGF('gf1','sc1','wb1')">↺ Reset</button><div class="score-box" id="sc1"></div></div>
+    </div>
+  </div>
+
+  <!-- MATCHING -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 2 — Matching: Term to Correct Description</h3><div class="act-badge">Click to match</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a term on the LEFT, then its correct description on the RIGHT. Green = correct, Red = wrong. Descriptions are NOT in the same order as terms.</div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-lbl">📋 Term</div>
+          <div class="mi mw" data-id="1" onclick="sm(this,'w')">Compression</div>
+          <div class="mi mw" data-id="2" onclick="sm(this,'w')">Shear</div>
+          <div class="mi mw" data-id="3" onclick="sm(this,'w')">Lamination</div>
+          <div class="mi mw" data-id="4" onclick="sm(this,'w')">Pre-stressed beam</div>
+          <div class="mi mw" data-id="5" onclick="sm(this,'w')">Moulding</div>
+          <div class="mi mw" data-id="6" onclick="sm(this,'w')">PAR timber</div>
+          <div class="mi mw" data-id="7" onclick="sm(this,'w')">Regular sections</div>
+          <div class="mi mw" data-id="8" onclick="sm(this,'w')">GRP</div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-lbl">📋 Description</div>
+          <div class="mi" data-id="3" onclick="sm(this,'d')">Thin strips of timber glued in a shaped mould to produce permanent curves and strong engineered beams such as Glulam and LVL</div>
+          <div class="mi" data-id="6" onclick="sm(this,'d')">All four faces planed with rounded edges — used for hidden structural timber in walls and floors, with actual size about 4 mm smaller than stated</div>
+          <div class="mi" data-id="4" onclick="sm(this,'d')">A structural beam where the bottom rail is placed in tension during manufacture to resist bending forces when a load is applied</div>
+          <div class="mi" data-id="1" onclick="sm(this,'d')">A squashing force that pushes inward — acting on table legs, structural columns and posts under load</div>
+          <div class="mi" data-id="8" onclick="sm(this,'d')">Glass Reinforced Plastic — a composite material used as a waterproof, hardwearing shell bonded around a wooden beam to strengthen it</div>
+          <div class="mi" data-id="7" onclick="sm(this,'d')">Timber sawn to standard cross-sectional shapes and sizes by sawmills — designers use these to reduce waste and avoid unnecessary cutting</div>
+          <div class="mi" data-id="5" onclick="sm(this,'d')">A length of timber machine-cut to a decorative cross-sectional profile — skirting boards and door architraves are examples</div>
+          <div class="mi" data-id="2" onclick="sm(this,'d')">Two forces acting in opposite parallel directions — like scissors cutting — trying to slide adjacent layers of material apart</div>
+        </div>
+      </div>
+      <button class="reset-btn" style="margin-top:14px;" onclick="resetMatch()">↺ Reset</button>
+      <div id="mDone" style="display:none;margin-top:12px;font-size:14px;font-weight:600;color:var(--green);background:var(--green-l);padding:10px 16px;border-radius:8px;">🎉 All 8 matched correctly — excellent understanding of forces and stock forms!</div>
+    </div>
+  </div>
+
+  <!-- MATHS -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 3 — Maths: Cross-Sectional Area</h3><div class="act-badge">Calculation practice</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Calculate the cross-sectional area for each question. Show your working on paper first. Always include mm² as the unit — forgetting it costs a mark.</div>
+      <div class="maths-q">
+        <h4>Q1 — Basic</h4>
+        <p>A timber section is <strong>50 mm wide × 100 mm thick</strong>. Calculate its cross-sectional area.</p>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;">
+          <input type="number" class="maths-input" id="ma1" placeholder="Answer">
+          <span class="maths-unit">mm²</span>
+          <button class="maths-check" onclick="chkM('ma1',5000,'m1','50 × 100 = 5,000 mm²')">Check</button>
+        </div>
+        <div class="maths-fb" id="m1"></div>
+      </div>
+      <div class="maths-q">
+        <h4>Q2 — Square section</h4>
+        <p>A PAR timber section is described as <strong>75 mm × 75 mm</strong>. What is its cross-sectional area?</p>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;">
+          <input type="number" class="maths-input" id="ma2" placeholder="Answer">
+          <span class="maths-unit">mm²</span>
+          <button class="maths-check" onclick="chkM('ma2',5625,'m2','75 × 75 = 5,625 mm²')">Check</button>
+        </div>
+        <div class="maths-fb" id="m2"></div>
+      </div>
+      <div class="maths-q">
+        <h4>Q3 — Planed size calculation</h4>
+        <p>A <strong>100 mm × 50 mm PAR</strong> timber has 4 mm removed from both the width and the thickness during planing. Calculate the <strong>actual</strong> cross-sectional area after planing.</p>
+        <div class="maths-hint">💡 Hint: subtract 4 mm from each dimension first, then calculate. Write out both steps.</div>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;">
+          <input type="number" class="maths-input" id="ma3" placeholder="Answer">
+          <span class="maths-unit">mm²</span>
+          <button class="maths-check" onclick="chkM('ma3',4416,'m3','(100−4) × (50−4) = 96 × 46 = 4,416 mm²')">Check</button>
+        </div>
+        <div class="maths-fb" id="m3"></div>
+      </div>
+      <div class="maths-q">
+        <h4>Q4 — Application</h4>
+        <p>A designer uses a timber section measuring <strong>15 mm × 150 mm</strong>. What is its cross-sectional area? Then: if the designer switches to a section measuring <strong>50 mm × 50 mm</strong>, which section has the larger cross-sectional area?</p>
+        <div class="maths-hint">💡 Hint: calculate both areas separately, then compare.</div>
+        <p style="font-size:13.5px;margin-bottom:8px;">Cross-sectional area of <strong>15 × 150 mm</strong>:</p>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;">
+          <input type="number" class="maths-input" id="ma4" placeholder="Area mm²">
+          <span class="maths-unit">mm²</span>
+          <button class="maths-check" onclick="chkM('ma4',2250,'m4','15 × 150 = 2,250 mm². The 50 × 50 section = 2,500 mm² — so the square section is larger despite looking smaller!')">Check</button>
+        </div>
+        <div class="maths-fb" id="m4"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUE/FALSE -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 4 — True or False?</h3><div class="act-badge">Test understanding</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 These statements test the most common misconceptions in Topics 7.4 and 7.5. Read the explanation carefully after each question.</div>
+      <div class="tf-item"><div class="tf-stmt">1. A rectangular timber frame is structurally strong because all four sides support each other against forces acting from any direction.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,1)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,1)">False</button></div><div class="tf-fb" id="tf1">❌ <strong>False.</strong> A rectangular frame is inherently weak — it racks (distorts into a parallelogram) under sideways force because the corner angles are free to change. The only way to fix this is triangulation: adding a diagonal brace converts the rectangle into two triangles, and triangles cannot change their internal angles without a member breaking. This is why all strong frames (bridge trusses, roof trusses, braced furniture) use triangulation.</div></div>
+      <div class="tf-item"><div class="tf-stmt">2. Lamination can produce curved timber shapes that would be impossible to achieve from a single solid piece, and also produces a stronger result than solid timber.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,true,2)">True</button><button class="tf-btn fb" onclick="chkTF(this,true,2)">False</button></div><div class="tf-fb" id="tf2">✅ <strong>True — both claims are correct.</strong> A thick solid piece of timber is too stiff to bend into a curve without breaking. Lamination solves this because each individual thin strip bends easily — they are then glued together in a mould (former) and held until the glue sets permanently. Additionally, the resulting laminated component is generally stronger than solid timber of the same cross-section because the alternating grain directions in the strips mutually reinforce each other, similar to the way plywood works.</div></div>
+      <div class="tf-item"><div class="tf-stmt">3. PSE timber should be specified for hidden structural work such as stud wall framing, because its sharp square edges make it easier to nail pieces together at accurate right angles.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,3)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,3)">False</button></div><div class="tf-fb" id="tf3">❌ <strong>False — this confuses PAR and PSE.</strong> PAR (Planed All Round) is the correct specification for hidden structural timber. Its rounded edges make it safer to handle on site. PSE (Planed Square Edge) is for VISIBLE joinery — window frames, door linings, skirting boards — where a precise, sharp edge is needed for neat joints and a clean painted finish. Specifying PSE for stud wall framing would waste money unnecessarily on a premium timber finish that will never be seen.</div></div>
+      <div class="tf-item"><div class="tf-stmt">4. The cross-sectional area of a 50 mm × 75 mm timber section is 125 mm².</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,4)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,4)">False</button></div><div class="tf-fb" id="tf4">❌ <strong>False — 125 mm is the result of adding instead of multiplying.</strong> Cross-sectional AREA = 50 × 75 = <strong>3,750 mm²</strong>. Adding 50 + 75 = 125 gives you the sum of two sides — not area. Remember: Area = width × thickness (MULTIPLY). The unit is always mm² (millimetres squared). This is one of the most common calculation mistakes in the exam.</div></div>
+      <div class="tf-item"><div class="tf-stmt">5. In a pre-stressed construction beam, the top face of the beam is deliberately tensioned during manufacture because this is where the greatest bending force acts.</div><div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,5)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,5)">False</button></div><div class="tf-fb" id="tf5">❌ <strong>False — it is the BOTTOM face (bottom rail), not the top.</strong> When a beam bends under load, the top face is in COMPRESSION (being squashed) and the bottom face is in TENSION (being stretched). It is the bottom face that needs to be pre-tensioned — because pre-existing tension in the bottom rail partly cancels the additional tension caused by bending, meaning the beam bends less and carries more load. The top face is already under compression from the load, so pre-tensioning the top would actually make it worse.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM LANGUAGE -->
+<div id="sec-exam" class="section">
+  <div class="sec-head"><h2>Exam Language &amp; Practice</h2><p>Forces and reinforcement questions are typically 2–4 marks. The calculation questions are typically 3 marks. The structure of a good answer is: name the force/technique → define it precisely → give a specific product example.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — 4-Part Answer Structure:</strong> For any force or reinforcement question, use: (1) Name it, (2) Define it, (3) Explain HOW it works, (4) Give a specific product EXAMPLE. This four-part structure guarantees you cover everything the examiner is looking for and prevents vague one-sentence answers that score zero.</div>
+
+  <div class="cmd-grid">
+    <div class="cmd-card"><div class="cmd-word">State / Give</div><div class="cmd-means">One word or short phrase only. No explanation required. Each correct item scores 1 mark.</div><span class="cmd-marks">1 mark each</span></div>
+    <div class="cmd-card"><div class="cmd-word">Describe</div><div class="cmd-means">Say what something is or what it looks like. Give specific features — not just "strong" but "strong in tension with alternating grain directions."</div><span class="cmd-marks">1–2 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Explain</div><div class="cmd-means">State a property AND give the reason WHY it produces that effect. Use: "because… this means that…" The reason is what earns the mark.</div><span class="cmd-marks">2–4 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Calculate</div><div class="cmd-means">Show all working, state the formula, substitute values, give the answer with the correct unit (mm²). Partial marks for correct working even if final answer is wrong.</div><span class="cmd-marks">2–3 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Justify</div><div class="cmd-means">Give specific reasons WHY a choice is the most appropriate. Link the property to the exact requirement of the product context given.</div><span class="cmd-marks">3–4 marks</span></div>
+  </div>
+
+  <div class="frame-card"><div class="frame-type">Defining and applying a force type — 2 marks</div><div class="frame-body">
+    <div class="frame-tpl"><span class="blank">[Force name]</span> is a <span class="blank">[squashing/stretching/sliding]</span> force. It acts <span class="blank">[direction]</span>, trying to <span class="blank">[effect on material]</span>. An example in timber is <span class="blank">[specific product example]</span>.</div>
+    <div class="frame-ex">"<strong>Compression</strong> is a <strong>squashing</strong> force. It acts <strong>inward from both ends</strong>, trying to <strong>shorten and crush the material</strong>. An example in timber is <strong>the legs of a chair — the weight of the person sitting on it pushes downward, compressing the legs</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Explaining a reinforcement technique — 3 marks</div><div class="frame-body">
+    <div class="frame-tpl">To strengthen a <span class="blank">[structure]</span>, a designer could use <span class="blank">[technique]</span>. This works by <span class="blank">[mechanism]</span>, which prevents <span class="blank">[failure mode]</span>.</div>
+    <div class="frame-ex">"To strengthen a <strong>rectangular timber cabinet frame</strong>, a designer could use <strong>triangulation — adding a diagonal brace across one corner</strong>. This works by <strong>dividing the rectangle into two triangles, whose internal angles cannot change without a member breaking</strong>, which prevents <strong>the frame from racking (twisting sideways into a parallelogram) when subjected to sideways forces</strong>."</div>
+  </div></div>
+
+  <div class="frame-card"><div class="frame-type">Calculation question — showing working — 3 marks</div><div class="frame-body">
+    <div class="frame-tpl">Formula: <span class="blank">Area = width × thickness</span><br>Substitute: <span class="blank">Area = [width] mm × [thickness] mm</span><br>Answer: <span class="blank">Area = [result] mm²</span></div>
+    <div class="frame-ex">"Formula: Area = width × thickness. Substitute: Area = 100 mm × 50 mm. Answer: Area = <strong>5,000 mm²</strong>."<br>Tip: Write all three lines even for simple calculations — each line can score a mark independently if your final answer is wrong.</div>
+  </div></div>
+
+  <div style="margin-top:26px;margin-bottom:14px;"><h2 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);">📝 Practice Questions</h2></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q1 · Forces · 4 marks</span><span class="eq-marks">4 marks</span></div><div class="eq-body">
+    <div class="eq-text">Describe the forces of compression and tension. For each force, give one example of where it acts in a timber furniture product.</div>
+    <div class="eq-hint">💡 Two marks per force: 1 mark for a correct definition + 1 mark for a specific named product example. Use different products for each force.</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>Compression:</strong> A squashing force that pushes inward from both ends, trying to shorten and crush the material. Example: the legs of a dining table are under compression — the weight of the table top and anything placed on it acts downward, compressing the legs.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>Tension:</strong> A stretching force that pulls outward from both ends, trying to lengthen and tear the material apart. Example: the bottom rail of a shelf unit is under tension — the weight of books on the shelf causes the shelf to bow slightly, which stretches the lower fibres of the timber apart.</div></div>
+    </div>
+  </div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q2 · Reinforcement · 3 marks</span><span class="eq-marks">3 marks</span></div><div class="eq-body">
+    <div class="eq-text">Explain how lamination can be used to produce a curved component for a chair back, and give one advantage of lamination compared to cutting the same curve from a solid piece of timber.</div>
+    <div class="eq-hint">💡 Explain the process (thin strips → glue → former → clamp → set) for 2 marks, then one specific advantage for 1 mark.</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div><strong>Process:</strong> Thin strips of timber (2–3 mm thick) are coated with adhesive on each face. The strips are stacked together and placed in a shaped former (mould). Clamps hold the strips in the curved shape until the adhesive has fully cured. When released from the former, the laminated strips permanently hold the curve.</div></div>
+      <div class="mp"><div class="mpn">2</div><div><strong>Advantage:</strong> The laminated curved component is stronger than one cut from solid timber — cutting a curve from solid timber cuts across the grain at the curved sections, creating a short-grain weakness. The laminated version maintains grain direction throughout, producing a much stronger, more reliable component with no weak short-grain sections.</div></div>
+    </div>
+  </div></div>
+
+  <div class="eq-block"><div class="eq-head"><span>Q3 · Calculation · 3 marks</span><span class="eq-marks">3 marks</span></div><div class="eq-body">
+    <div class="eq-text">A designer is making a bookcase using 15 mm × 150 mm PAR pine. The planing process removes 4 mm from both the width and the thickness. Calculate the actual cross-sectional area of the timber after planing. Show your working.</div>
+    <div class="eq-hint">💡 Three marks: 1 for correctly subtracting 4 mm from each dimension, 1 for correct multiplication, 1 for correct unit (mm²). Show all three steps.</div>
+    <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+    <div class="model-ans">
+      <div class="mp"><div class="mpn">1</div><div>Actual width after planing: 15 − 4 = <strong>11 mm</strong></div></div>
+      <div class="mp"><div class="mpn">2</div><div>Actual thickness after planing: 150 − 4 = <strong>146 mm</strong></div></div>
+      <div class="mp"><div class="mpn">3</div><div>Cross-sectional area = 11 × 146 = <strong>1,606 mm²</strong></div></div>
+      <div style="margin-top:8px;font-size:13px;color:#555;">⚠️ Common mistakes: forgetting to subtract from BOTH dimensions; forgetting the mm² unit; calculating perimeter (11 + 146 + 11 + 146 = 314 mm) instead of area.</div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ESL TOOLKIT -->
+<div id="sec-toolkit" class="section">
+  <div class="sec-head"><h2>ESL Language Toolkit</h2><p>Word roots, plain-English synonyms, exam phrases, and common mistakes — specific to forces and stock forms vocabulary.</p></div>
+  <div class="tk-grid">
+    <div class="tk-card"><div class="tk-head tkh-a">🔤 Key Word Roots</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th>Root</th><th>Meaning</th><th>Examples</th></tr>
+        <tr><td class="pfx">compress-</td><td>press together</td><td>compression, compressed, compressive strength</td></tr>
+        <tr><td class="pfx">tens-</td><td>to stretch</td><td>tension, tensile, tensile strength</td></tr>
+        <tr><td class="pfx">shear-</td><td>to cut/slide</td><td>shear force, shearing, shear strength</td></tr>
+        <tr><td class="pfx">lamin-</td><td>a thin layer</td><td>lamination, laminate, laminated</td></tr>
+        <tr><td class="pfx">tri-</td><td>three</td><td>triangle, triangulation, triangular</td></tr>
+        <tr><td class="pfx">pre-</td><td>before</td><td>pre-stressed, pre-tensioned, pre-drilled</td></tr>
+        <tr><td class="pfx">nom-</td><td>name/stated</td><td>nominal size (the stated size, not the actual planed size)</td></tr>
+        <tr><td class="pfx">sect-</td><td>cut/slice</td><td>cross-section, sectional area</td></tr>
+      </table>
+    </div></div>
+    <div class="tk-card"><div class="tk-head tkh-b">🔄 Technical Term → Plain English</div><div class="tk-body">
+      <div class="syn-p"><span class="syn-c">Compression</span><span class="syn-a">→</span><span class="syn-s">A squashing force — pushes inward from both ends</span></div>
+      <div class="syn-p"><span class="syn-c">Tension</span><span class="syn-a">→</span><span class="syn-s">A pulling/stretching force — pulls outward from both ends</span></div>
+      <div class="syn-p"><span class="syn-c">Shear</span><span class="syn-a">→</span><span class="syn-s">A sliding force in opposite parallel directions — like scissors</span></div>
+      <div class="syn-p"><span class="syn-c">Triangulation</span><span class="syn-a">→</span><span class="syn-s">Adding diagonals to make triangles — rigid, cannot rack</span></div>
+      <div class="syn-p"><span class="syn-c">Lamination</span><span class="syn-a">→</span><span class="syn-s">Gluing thin layers together in a mould to make a curved, strong piece</span></div>
+      <div class="syn-p"><span class="syn-c">Racking</span><span class="syn-a">→</span><span class="syn-s">When a rectangular frame twists sideways into a diamond/parallelogram shape</span></div>
+      <div class="syn-p"><span class="syn-c">PAR</span><span class="syn-a">→</span><span class="syn-s">Planed All Round — smooth 4 faces, rounded edges, hidden structural use</span></div>
+      <div class="syn-p"><span class="syn-c">PSE</span><span class="syn-a">→</span><span class="syn-s">Planed Square Edge — smooth 4 faces, sharp square edges, visible joinery</span></div>
+      <div class="syn-p"><span class="syn-c">Nominal size</span><span class="syn-a">→</span><span class="syn-s">The stated (named) size — actual planed size is a few mm smaller</span></div>
+      <div class="syn-p"><span class="syn-c">Cross-sectional area</span><span class="syn-a">→</span><span class="syn-s">The area of the cut end = width × thickness, in mm²</span></div>
+    </div></div>
+    <div class="tk-card" style="grid-column:1/-1;"><div class="tk-head tkh-c">🚨 Common Exam Mistakes — Forces &amp; Stock Forms</div><div class="tk-body">
+      <table class="pre-tbl">
+        <tr><th style="width:30%">❌ Avoid writing this</th><th style="width:38%">✅ Write this instead</th><th>Why?</th></tr>
+        <tr><td>"The force squeezes the wood"</td><td>"<strong>Compression</strong> is a squashing force acting <strong>inward from both ends</strong>, trying to shorten and crush the material"</td><td>Always name the force type and state the direction of action</td></tr>
+        <tr><td>"Area = 50 + 100 = 150 mm"</td><td>"Area = 50 × 100 = <strong>5,000 mm²</strong>"</td><td>Area = MULTIPLY. Adding gives perimeter. Unit MUST be mm² not mm</td></tr>
+        <tr><td>"Use PSE timber for the stud wall"</td><td>"Use <strong>PAR</strong> for hidden structural work (studwork). PSE is for visible joinery only."</td><td>PSE = visible joinery. PAR = hidden structure. This distinction is worth 1 mark.</td></tr>
+        <tr><td>"Lamination makes wood stronger by adding layers"</td><td>"Lamination bonds thin strips in a former to create <strong>permanent curves</strong> and produces beams with <strong>higher strength than solid timber</strong> of the same cross-section"</td><td>Name both advantages — curved shapes AND increased strength</td></tr>
+        <tr><td>"A tie bar and a brace are the same thing"</td><td>"A <strong>brace</strong> resists <strong>compression</strong>; a <strong>tie bar</strong> (usually steel rod) resists <strong>tension</strong> — they work differently"</td><td>Different force directions — this distinction is frequently examined</td></tr>
+        <tr><td>"Rectangles are strong structures"</td><td>"Rectangles are inherently <strong>weak — they rack under sideways force</strong>. Triangulation must be added to make them rigid."</td><td>A very common misconception — rectangles look stable but are not</td></tr>
+      </table>
+    </div></div>
+  </div>
+</div>
+
+</div>
+<footer><strong>Edexcel GCSE Design &amp; Technology</strong> · Topics 7.4 &amp; 7.5 · Forces, Strengthening &amp; Stock Forms · Specialist Timbers Content<br>Cross-referenced with Pearson Edexcel Specification (Issue 4) and Timbers Textbook (pp. 288–291) · Section B · For educational use only</footer>
+
+<script>
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('sec-'+id).classList.add('active');event.currentTarget.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function fv(t,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.vc').forEach(c=>{c.style.display=(t==='all'||c.dataset.topic===t)?'block':'none';});}
+function showTopic(id,btn){document.querySelectorAll('.topic-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tp-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tp-'+id).classList.add('active');btn.classList.add('active');}
+let selChip=null;
+document.querySelectorAll('.wchip').forEach(c=>{c.addEventListener('click',function(){document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));selChip=this.dataset.word;this.classList.add('sel');});});
+document.querySelectorAll('.gf').forEach(inp=>{inp.addEventListener('click',function(){if(selChip){this.value=selChip;selChip=null;document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));}});inp.addEventListener('input',function(){this.classList.remove('correct','incorrect');});});
+function checkGF(cid,sid){const ins=document.getElementById(cid).querySelectorAll('.gf');let ok=0;ins.forEach(i=>{const pass=i.value.toLowerCase().trim()===i.dataset.answer.toLowerCase().trim();i.classList.toggle('correct',pass);i.classList.toggle('incorrect',!pass);if(pass)ok++;});const s=document.getElementById(sid);const p=ok/ins.length;s.className='score-box show '+(p>=.85?'good':p>=.5?'ok':'low');s.style.display='inline-flex';s.innerHTML=(p>=.85?'🎉':p>=.5?'👍':'📚')+` Score: ${ok}/${ins.length}`+(p>=.85?' — Excellent!':p>=.5?' — Good effort!':" — Keep revising!");}
+function resetGF(cid,sid,wid){document.getElementById(cid).querySelectorAll('.gf').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});const s=document.getElementById(sid);s.className='score-box';s.style.display='none';if(wid)document.getElementById(wid).querySelectorAll('.wchip').forEach(c=>c.classList.remove('sel'));selChip=null;}
+let mSel={w:null,d:null},mCnt=0;
+function sm(el,t){if(el.classList.contains('matched'))return;if(mSel[t])mSel[t].classList.remove('sel');mSel[t]=el;el.classList.add('sel');if(mSel.w&&mSel.d){if(mSel.w.dataset.id===mSel.d.dataset.id){[mSel.w,mSel.d].forEach(e=>{e.classList.add('matched');e.classList.remove('sel');});mCnt++;if(mCnt===8)document.getElementById('mDone').style.display='block';}else{[mSel.w,mSel.d].forEach(e=>{e.classList.add('wrong');setTimeout(()=>{e.classList.remove('wrong','sel');},600);});setTimeout(()=>{mSel={w:null,d:null};},600);return;}mSel={w:null,d:null};}}
+function resetMatch(){document.querySelectorAll('.mi').forEach(e=>e.classList.remove('matched','sel','wrong'));mSel={w:null,d:null};mCnt=0;document.getElementById('mDone').style.display='none';}
+function chkTF(btn,correct,n){const isT=btn.classList.contains('tb');const pass=(isT===correct);const parent=btn.closest('.tf-item');parent.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);btn.classList.add(pass?'ca':'wa');if(!pass){const cb=correct?parent.querySelector('.tb'):parent.querySelector('.fb');cb.classList.add('ca');}const fb=document.getElementById('tf'+n);fb.className='tf-fb show '+(pass?'ok':'no');}
+function togAns(btn){const a=btn.nextElementSibling;if(a.classList.contains('show')){a.classList.remove('show');btn.textContent='👁 Show Model Answer';}else{a.classList.add('show');btn.textContent='🙈 Hide Model Answer';}}
+function chkM(inputId,correct,fbId,solution){
+  const val=parseFloat(document.getElementById(inputId).value);
+  const fb=document.getElementById(fbId);
+  if(val===correct){fb.className='maths-fb ok';fb.textContent='✅ Correct! '+solution;}
+  else{fb.className='maths-fb no';fb.textContent='❌ Not quite. Working: '+solution+'.';}
+}
+</script>
+</body>
+</html>

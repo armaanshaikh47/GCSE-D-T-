@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topics 7.2 & 7.3 — Sources, Properties & Selection of Timbers · GCSE D&T</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f1ec;
+  --navy:#1a1108;
+  --brown:#92400e;       /* Topic 7 timber accent */
+  --brown-l:#fef3c7;
+  --brown-m:#fbbf24;
+  --teal:#0e7490;        /* Timbers textbook teal */
+  --teal-l:#e0f5f9;
+  --green:#166534;
+  --green-l:#dcfce7;
+  --red:#991b1b;
+  --red-l:#fee2e2;
+  --amber:#d97706;
+  --amber-l:#fef3c7;
+  --purple:#5b21b6;
+  --purple-l:#ede9fe;
+  --slate:#44322a;
+  --muted:#78716c;
+  --border:#e7e0d8;
+  --card:#fff;
+  --text:#1c1208;
+  --shadow:0 2px 16px rgba(26,17,8,.09);
+  --shadow-h:0 6px 28px rgba(26,17,8,.17);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#1a1108 0%,#3d1f00 50%,#0c2714 100%);color:#fff;padding:52px 40px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(146,64,14,.28) 0%,transparent 55%),radial-gradient(ellipse at 15% 75%,rgba(14,116,144,.12) 0%,transparent 50%);}
+.hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 48px,rgba(255,255,255,.018) 48px,rgba(255,255,255,.018) 49px);}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.hero-badge{display:inline-block;background:var(--brown);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,52px);font-weight:900;line-height:1.08;margin-bottom:8px;letter-spacing:-.02em;}
+.hero h1 .ac{color:var(--brown-m);}
+.hero-spec{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:14px;text-transform:uppercase;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.72);max-width:620px;line-height:1.65;margin-bottom:26px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.hero-tag{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88);font-size:12px;padding:5px 13px;border-radius:20px;}
+
+/* ── NAV ── */
+.nav-bar{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 20px;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:15px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-2px;}
+.tab-btn:hover{color:var(--navy);}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--brown);font-weight:600;}
+
+/* ── LAYOUT ── */
+.main{max-width:1100px;margin:0 auto;padding:38px 20px 80px;}
+.section{display:none;}
+.section.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SHARED ── */
+.sec-head{margin-bottom:26px;}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--navy);margin-bottom:7px;letter-spacing:-.02em;}
+.sec-head p{color:var(--muted);font-size:15px;line-height:1.65;max-width:700px;}
+.esl-tip{background:linear-gradient(135deg,#fffbf0,#fef3c7);border-left:4px solid var(--brown);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:26px;font-size:13.5px;color:#5c2a00;line-height:1.6;}
+.esl-tip strong{color:#3d1a00;}
+.insight-box{margin-top:14px;border-left:4px solid var(--brown);background:var(--brown-l);padding:11px 15px;border-radius:0 8px 8px 0;font-size:13.5px;color:#5c2a00;}
+.divider{border:none;border-top:2px solid var(--border);margin:28px 0;}
+
+/* ── IMAGE SLOTS ── */
+.img-slot{border:2.5px dashed #a8a29e;border-radius:14px;background:#faf9f7;overflow:hidden;margin:16px 0;min-height:150px;display:flex;flex-direction:column;}
+.img-slot img.slot-img{width:100%;max-height:240px;object-fit:cover;display:block;border-radius:11px 11px 0 0;}
+.img-slot img.slot-img[src=""]{display:none;}
+.img-slot img.slot-img[src=""]~.slot-ph{display:flex;}
+.img-slot img.slot-img:not([src=""])~.slot-ph{display:none;}
+.slot-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:8px;text-align:center;flex:1;}
+.slot-icon{font-size:30px;}
+.slot-badge{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.09em;padding:3px 10px;border-radius:4px;font-weight:500;background:var(--brown-l);color:var(--brown);}
+.slot-badge-gif{background:var(--teal-l);color:var(--teal);}
+.slot-title{font-weight:700;font-size:13.5px;color:var(--slate);}
+.slot-desc{font-size:12.5px;color:var(--muted);max-width:320px;line-height:1.55;}
+.slot-search{font-size:11.5px;color:var(--teal);background:var(--teal-l);padding:3px 10px;border-radius:6px;margin-top:2px;}
+.img-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.img-row .img-slot{margin:0;}
+.img-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:14px 0;}
+.img-row-3 .img-slot{margin:0;}
+
+/* ── SPEC CHECKLIST ── */
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:18px;}
+.spec-card{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;}
+.spec-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h);}
+.spec-head{padding:14px 18px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;}
+.sh-sources{background:linear-gradient(135deg,#3d1f00,#92400e);}
+.sh-props  {background:linear-gradient(135deg,#0c2714,#166534);}
+.sh-select {background:linear-gradient(135deg,#063550,#0e7490);}
+.sh-env    {background:linear-gradient(135deg,#1a3300,#2d6a4f);}
+.spec-body{padding:12px 18px;}
+.spec-item{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:1px solid #f0ede8;font-size:13.5px;line-height:1.5;}
+.spec-item:last-child{border-bottom:none;}
+.spec-item input[type=checkbox]{margin-top:2px;accent-color:var(--brown);flex-shrink:0;width:15px;height:15px;}
+
+/* ── VOCAB CARDS — FULLY FIXED ── */
+.filter-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px;align-items:center;}
+.filter-btn{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--muted);}
+.filter-btn:hover,.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;align-items:start;}
+.vc{background:var(--card);border-radius:14px;border:1.5px solid var(--border);box-shadow:var(--shadow);display:block;height:auto;overflow:visible;transition:transform .2s,box-shadow .2s;writing-mode:horizontal-tb;}
+.vc:hover{transform:translateY(-2px);box-shadow:var(--shadow-h);}
+.vc-top{padding:15px 18px 12px;border-bottom:1px solid var(--border);display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:10px;writing-mode:horizontal-tb;}
+.vc-word{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--navy);line-height:1.35;writing-mode:horizontal-tb;flex:1;min-width:0;word-break:break-word;overflow-wrap:anywhere;}
+.vc-tag{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px;flex-shrink:0;writing-mode:horizontal-tb;white-space:nowrap;margin-top:3px;}
+.t-hw{background:#fef3c7;color:#92400e;}
+.t-sw{background:var(--green-l);color:var(--green);}
+.t-mf{background:var(--teal-l);color:var(--teal);}
+.t-pr{background:var(--purple-l);color:var(--purple);}
+.t-ec{background:#dcfce7;color:#15803d;}
+.vc-body{padding:14px 18px;display:block;height:auto;overflow:visible;writing-mode:horizontal-tb;}
+.def-lbl{display:none;}
+.vc-def{font-size:14px;color:var(--text);line-height:1.65;margin-bottom:12px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex{background:#f9f6f0;border-left:3px solid var(--brown);padding:9px 12px;border-radius:0 8px 8px 0;font-size:13px;color:#444;font-style:italic;line-height:1.55;margin-bottom:11px;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+.vc-ex em{font-style:normal;background:var(--brown-l);padding:1px 3px;border-radius:2px;}
+.vc-mem{background:var(--green-l);border:1px solid #bbf7d0;padding:9px 12px;border-radius:8px;font-size:12.5px;color:#14532d;line-height:1.6;writing-mode:horizontal-tb;display:block;word-break:break-word;}
+
+/* ── TOPIC PANELS ── */
+.topic-nav{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px;}
+.tp-btn{padding:9px 18px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;opacity:.55;font-family:'DM Sans',sans-serif;}
+.tp-btn.active{opacity:1;transform:scale(1.04);box-shadow:var(--shadow);}
+.tp-hw{background:#92400e;color:#fff;}
+.tp-sw{background:#166534;color:#fff;}
+.tp-mf{background:#0e7490;color:#fff;}
+.tp-props{background:#5b21b6;color:#fff;}
+.tp-eco{background:#1a5e3a;color:#fff;}
+.tp-sel{background:#0c3d6b;color:#fff;}
+.topic-panel{display:none;}
+.topic-panel.active{display:block;animation:fadeUp .3s ease;}
+.tp-header{border-radius:14px 14px 0 0;padding:24px 28px;color:#fff;}
+.tph-hw  {background:linear-gradient(135deg,#3d1f00,#92400e);}
+.tph-sw  {background:linear-gradient(135deg,#0c2714,#166534);}
+.tph-mf  {background:linear-gradient(135deg,#063550,#0e7490);}
+.tph-props{background:linear-gradient(135deg,#2d1060,#5b21b6);}
+.tph-eco {background:linear-gradient(135deg,#0a2a1a,#1a5e3a);}
+.tph-sel {background:linear-gradient(135deg,#0a1f3a,#0c3d6b);}
+.tp-header h3{font-family:'Playfair Display',serif;font-size:23px;font-weight:700;margin-bottom:5px;letter-spacing:-.01em;}
+.tp-header p{font-size:13.5px;opacity:.82;}
+.tp-body{background:var(--card);border-radius:0 0 14px 14px;border:1.5px solid var(--border);border-top:none;padding:26px 28px;margin-bottom:22px;box-shadow:var(--shadow);}
+
+/* Timber comparison table */
+.timber-tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:14px;}
+.timber-tbl th{padding:9px 12px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;vertical-align:bottom;}
+.timber-tbl th.h-type{background:var(--navy);color:#fff;border-radius:8px 0 0 0;width:110px;}
+.timber-tbl th.h-app {background:#44322a;color:#fff;}
+.timber-tbl th.h-adv {background:var(--green);color:#fff;}
+.timber-tbl th.h-dis {background:var(--red);color:#fff;}
+.timber-tbl th.h-use {background:var(--teal);color:#fff;border-radius:0 8px 0 0;}
+.timber-tbl td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.timber-tbl tr:last-child td{border-bottom:none;}
+.timber-tbl tr:nth-child(even) td{background:#faf8f5;}
+.timber-tbl .tn{font-weight:700;color:var(--navy);font-family:'Playfair Display',serif;}
+.timber-tbl .origin{font-size:11px;color:var(--muted);display:block;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+.timber-tbl td ul{padding-left:14px;}
+.timber-tbl td ul li{margin-bottom:3px;}
+
+/* Colour swatch */
+.wood-swatch{display:inline-block;width:28px;height:28px;border-radius:5px;border:1px solid rgba(0,0,0,.15);vertical-align:middle;margin-right:8px;flex-shrink:0;}
+
+/* Properties grid */
+.prop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:16px;}
+.prop-card{background:#faf8f5;border:1.5px solid var(--border);border-radius:10px;padding:14px;}
+.prop-card h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:5px;display:flex;align-items:center;gap:7px;}
+.prop-card p{font-size:13px;color:var(--muted);line-height:1.55;}
+.prop-scale{height:8px;border-radius:4px;margin-top:7px;background:var(--border);overflow:hidden;}
+.prop-fill{height:100%;border-radius:4px;}
+.scale-brown{background:linear-gradient(90deg,#92400e,#d97706);}
+.scale-green{background:linear-gradient(90deg,#166534,#4ade80);}
+.scale-blue {background:linear-gradient(90deg,#1d4ed8,#60a5fa);}
+
+/* World map region cards */
+.region-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
+.region-card{border-radius:12px;overflow:hidden;border:1.5px solid var(--border);box-shadow:var(--shadow);}
+.region-head{padding:13px 16px;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;}
+.rh-cold{background:linear-gradient(135deg,#1e3a8a,#3b82f6);}
+.rh-temp{background:linear-gradient(135deg,#166534,#22c55e);}
+.rh-trop{background:linear-gradient(135deg,#92400e,#d97706);}
+.region-body{padding:12px 16px;background:var(--card);}
+.region-body p{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:8px;}
+.region-timbers{display:flex;flex-wrap:wrap;gap:5px;}
+.rchip{font-size:12px;padding:3px 9px;border-radius:20px;font-weight:600;}
+.rc-hw{background:#fef3c7;color:#92400e;}
+.rc-sw{background:var(--green-l);color:var(--green);}
+.rc-mf{background:var(--teal-l);color:var(--teal);}
+
+/* Selection factors */
+.factor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:14px;}
+.factor-card{background:var(--card);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.factor-head{padding:12px 16px;font-weight:700;font-size:14px;color:#fff;display:flex;align-items:center;gap:8px;}
+.fh-aes{background:linear-gradient(135deg,#92400e,#d97706);}
+.fh-env{background:linear-gradient(135deg,#166534,#15803d);}
+.fh-avl{background:linear-gradient(135deg,#0e7490,#0891b2);}
+.fh-cost{background:linear-gradient(135deg,#5b21b6,#7c3aed);}
+.fh-soc{background:linear-gradient(135deg,#0c3d6b,#1d4ed8);}
+.fh-eth{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.factor-body{padding:14px 16px;}
+.factor-body ul{list-style:none;padding:0;}
+.factor-body li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13.5px;display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+.factor-body li:last-child{border-bottom:none;}
+.factor-body li::before{content:"→";color:var(--brown);font-weight:700;flex-shrink:0;}
+
+/* ── ACTIVITIES ── */
+.act-block{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;margin-bottom:26px;box-shadow:var(--shadow);}
+.act-head{background:var(--navy);padding:16px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.act-head h3{color:#fff;font-family:'Playfair Display',serif;font-size:18px;}
+.act-badge{background:var(--brown);color:#fff;font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:4px;font-weight:500;}
+.act-body{padding:22px;}
+.act-instr{background:#f9f6f0;border-radius:8px;padding:11px 15px;font-size:13.5px;color:var(--muted);margin-bottom:18px;line-height:1.55;}
+.gap-sent{font-size:14.5px;line-height:2.5;margin-bottom:4px;color:var(--text);writing-mode:horizontal-tb;display:block;}
+.gf{border:none;border-bottom:2.5px solid var(--brown);background:var(--brown-l);width:190px;padding:3px 8px;font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--navy);border-radius:4px 4px 0 0;outline:none;transition:background .2s;writing-mode:horizontal-tb;}
+.gf:focus{background:#fde68a;}
+.gf.correct{background:#bbf7d0;border-bottom-color:var(--green);}
+.gf.incorrect{background:var(--red-l);border-bottom-color:var(--red);}
+.word-bank{display:flex;flex-wrap:wrap;gap:8px;padding:13px;background:#f9f6f0;border-radius:10px;margin-bottom:16px;}
+.wchip{background:var(--card);border:1.5px solid var(--border);border-radius:6px;padding:5px 11px;font-size:13px;font-weight:500;color:var(--navy);cursor:pointer;transition:all .15s;user-select:none;writing-mode:horizontal-tb;}
+.wchip:hover{border-color:var(--brown);background:var(--brown-l);}
+.wchip.sel{outline:2.5px solid var(--brown);background:var(--brown-l);}
+.check-btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;transition:background .2s;}
+.check-btn:hover{background:#3d1f00;}
+.reset-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:9px 18px;font-family:'DM Sans',sans-serif;font-size:13.5px;cursor:pointer;margin-left:10px;margin-top:12px;color:var(--muted);transition:all .2s;}
+.reset-btn:hover{border-color:var(--navy);color:var(--navy);}
+.score-box{display:none;align-items:center;gap:10px;margin-top:12px;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:600;}
+.score-box.show{display:inline-flex;}
+.score-box.good{background:var(--green-l);color:var(--green);}
+.score-box.ok{background:var(--brown-l);color:#5c2a00;}
+.score-box.low{background:var(--red-l);color:var(--red);}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.match-col{display:flex;flex-direction:column;gap:8px;}
+.match-col-lbl{font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:3px;}
+.mi{background:var(--card);border:2px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.4;}
+.mi.mw{font-weight:700;color:var(--navy);}
+.mi:hover{border-color:var(--brown);background:var(--brown-l);}
+.mi.sel{border-color:var(--brown);background:var(--brown-l);}
+.mi.matched{border-color:var(--green);background:var(--green-l);color:var(--green);pointer-events:none;font-weight:600;}
+.mi.wrong{border-color:var(--red);background:var(--red-l);animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.tf-item{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:15px 18px;margin-bottom:11px;}
+.tf-stmt{font-size:14px;color:var(--text);margin-bottom:11px;line-height:1.55;font-weight:500;}
+.tf-btns{display:flex;gap:10px;}
+.tf-btn{padding:7px 20px;border-radius:7px;border:1.5px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;background:var(--card);}
+.tf-btn.tb:hover{background:var(--green-l);border-color:var(--green);color:var(--green);}
+.tf-btn.fb:hover{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-btn.ca{background:var(--green-l);border-color:var(--green);color:var(--green);pointer-events:none;}
+.tf-btn.wa{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.tf-fb{font-size:13px;margin-top:9px;padding:8px 12px;border-radius:7px;display:none;line-height:1.5;}
+.tf-fb.show{display:block;}
+.tf-fb.ok{background:var(--green-l);color:var(--green);}
+.tf-fb.no{background:var(--red-l);color:var(--red);}
+
+/* ── EXAM ── */
+.cmd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:28px;}
+.cmd-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow);}
+.cmd-word{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.cmd-means{font-size:13px;color:var(--muted);margin-bottom:9px;line-height:1.5;}
+.cmd-marks{display:inline-block;background:var(--brown-l);color:#5c2a00;font-size:11px;font-family:'DM Mono',monospace;padding:2px 8px;border-radius:4px;font-weight:500;}
+.frame-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+.frame-type{background:#f5f0e8;padding:7px 16px;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:500;}
+.frame-body{padding:13px 16px;}
+.frame-tpl{font-size:14px;color:var(--text);line-height:1.8;margin-bottom:7px;}
+.blank{background:var(--brown-l);padding:2px 7px;border-radius:4px;font-style:italic;color:#5c2a00;font-size:13px;}
+.frame-ex{font-size:13px;color:var(--muted);font-style:italic;border-left:3px solid var(--teal);padding-left:11px;margin-top:7px;line-height:1.55;}
+.eq-block{background:var(--card);border:1.5px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow);}
+.eq-head{background:#f5f0e8;padding:11px 18px;display:flex;justify-content:space-between;align-items:center;}
+.eq-head span{font-size:12px;font-family:'DM Mono',monospace;color:var(--muted);text-transform:uppercase;}
+.eq-marks{background:var(--navy);color:#fff;font-size:11px;font-family:'DM Mono',monospace;padding:3px 10px;border-radius:4px;}
+.eq-body{padding:15px 18px;}
+.eq-text{font-size:15px;color:var(--navy);margin-bottom:11px;font-weight:500;line-height:1.5;}
+.eq-hint{background:var(--teal-l);padding:9px 13px;border-radius:8px;font-size:12.5px;color:#064e4a;line-height:1.5;}
+.show-ans-btn{background:none;border:1.5px solid var(--teal);border-radius:6px;padding:6px 13px;font-size:12.5px;color:var(--teal);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:11px;transition:all .2s;}
+.show-ans-btn:hover{background:var(--teal);color:#fff;}
+.model-ans{display:none;background:#f0fef9;border:1px solid #a7f3d0;border-radius:8px;padding:13px;margin-top:11px;font-size:13.5px;line-height:1.65;color:#134e2a;}
+.model-ans.show{display:block;}
+.mp{display:flex;gap:9px;margin-bottom:6px;}
+.mpn{background:var(--green);color:#fff;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* ── TOOLKIT ── */
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;}
+.tk-card{background:var(--card);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.tk-head{padding:14px 18px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;}
+.tkh-navy{background:var(--navy);color:#fff;}
+.tkh-brown{background:var(--brown);color:#fff;}
+.tkh-green{background:#166534;color:#fff;}
+.tkh-teal{background:#0e7490;color:#fff;}
+.tk-body{padding:14px 18px;}
+.pre-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.pre-tbl th{background:#f5f0e8;padding:8px 11px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+.pre-tbl td{padding:7px 11px;border-bottom:1px solid var(--border);line-height:1.5;}
+.pre-tbl tr:last-child td{border-bottom:none;}
+.pfx{font-weight:700;color:var(--navy);}
+.syn-p{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:13.5px;}
+.syn-p:last-child{border-bottom:none;}
+.syn-c{font-weight:600;color:var(--navy);min-width:130px;line-height:1.45;}
+.syn-a{color:var(--brown);font-size:16px;flex-shrink:0;margin-top:2px;}
+.syn-s{color:var(--muted);font-style:italic;font-size:13px;line-height:1.45;}
+.con-list{list-style:none;}
+.con-list li{padding:6px 0;border-bottom:1px solid var(--border);font-size:13.5px;display:flex;gap:9px;align-items:flex-start;line-height:1.5;}
+.con-list li:last-child{border-bottom:none;}
+.con-chip{background:var(--brown-l);color:#5c2a00;padding:2px 8px;border-radius:4px;font-weight:600;font-size:12.5px;white-space:nowrap;flex-shrink:0;}
+
+/* ── IMAGE GUIDE ── */
+.ig-tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px;}
+.ig-tbl th{background:var(--navy);color:#fff;padding:9px 12px;text-align:left;font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em;}
+.ig-tbl td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ig-tbl tr:nth-child(even) td{background:#faf8f5;}
+.ig-tbl tr:last-child td{border-bottom:none;}
+.islot{display:inline-block;background:var(--brown);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap;}
+.islot-gif{background:var(--teal);color:#fff;}
+.islot-star{background:var(--amber);color:var(--navy);}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:22px;font-size:12px;margin-top:60px;}
+footer strong{color:var(--brown-m);}
+@media(max-width:600px){.hero{padding:34px 18px 30px}.main{padding:20px 14px 60px}.match-grid,.img-row,.img-row-3,.region-grid{grid-template-columns:1fr}.tp-body{padding:16px}}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Edexcel GCSE D&T · Topics 7.2 & 7.3 · Timbers Specialist · Revision Pack</div>
+    <h1>Sources, Properties &amp;<br><span class="ac">Selection</span> of Timbers</h1>
+    <div class="hero-spec">Spec Ref: 7.2.1–7.2.8 · 7.3.1–7.3.6 &nbsp;|&nbsp; Textbook pp. 277–287 &nbsp;|&nbsp; Section B — 60 marks</div>
+    <p class="hero-sub">A complete ESL-focused revision guide covering all hardwoods, softwoods, manufactured boards, their sources and origins, physical properties, ecological footprint, and all six selection factors — the most heavily examined topics in Section B.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">📋 Spec Checklist</span>
+      <span class="hero-tag">🌲 All 10 Timber Types</span>
+      <span class="hero-tag">🗺️ World Origins Map</span>
+      <span class="hero-tag">⚖️ 6 Selection Factors</span>
+      <span class="hero-tag">🖼️ 14 Image Slots</span>
+      <span class="hero-tag">✏️ 3 Activities</span>
+      <span class="hero-tag">📝 Exam Frames</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="showTab('spec')">📋 Spec Checklist</button>
+    <button class="tab-btn" onclick="showTab('vocab')">📖 Key Vocabulary</button>
+    <button class="tab-btn" onclick="showTab('topics')">🗂️ Topic Summaries</button>
+    <button class="tab-btn" onclick="showTab('activities')">✏️ Activities</button>
+    <button class="tab-btn" onclick="showTab('exam')">📝 Exam Language</button>
+    <button class="tab-btn" onclick="showTab('toolkit')">💬 ESL Toolkit</button>
+    <button class="tab-btn" onclick="showTab('imgguide')">🖼️ Image Guide</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ══════════ 1. SPEC CHECKLIST ══════════ -->
+<div id="sec-spec" class="section active">
+  <div class="sec-head"><h2>Specification Checklist</h2><p>Topics 7.2 and 7.3 are the highest-value topics in Section B. Together they can account for 20–30 marks. Tick each point only when you can answer an exam question on it — not just when you have read it.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Traffic Light + Pair Check:</strong> Go through this list alone first, using Green/Amber/Red. Then pair with a classmate and test each other on any Red or Amber items. Use the sentence frame: <em>"Can you tell me the difference between [hardwood] and [softwood]?"</em> Hearing and saying the correct answer out loud is more effective than reading it.</div>
+  <div class="spec-grid">
+    <div class="spec-card">
+      <div class="spec-head sh-sources">🌲 7.2.1–7.2.3 — Types of Timber</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Hardwoods — definition, examples, advantages, uses</div>
+        <div class="spec-item"><input type="checkbox"> Oak — properties, uses, advantages/disadvantages</div>
+        <div class="spec-item"><input type="checkbox"> Mahogany — properties, uses, advantages/disadvantages</div>
+        <div class="spec-item"><input type="checkbox"> Beech — properties, uses, advantages/disadvantages</div>
+        <div class="spec-item"><input type="checkbox"> Balsa — properties, uses, advantages/disadvantages</div>
+        <div class="spec-item"><input type="checkbox"> Jelutong, Birch, Ash — properties, uses</div>
+        <div class="spec-item"><input type="checkbox"> Softwoods — definition, examples, advantages, uses</div>
+        <div class="spec-item"><input type="checkbox"> Pine, Cedar — properties, uses</div>
+        <div class="spec-item"><input type="checkbox"> Larch — tough, water-resistant, exterior use</div>
+        <div class="spec-item"><input type="checkbox"> Manufactured boards — plywood, MDF, chipboard</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-head sh-props">🗺️ 7.2.4–7.2.8 — Properties &amp; Footprint</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Origins — Alpine (softwoods), European (hardwoods), Amazonian (tropical hardwoods)</div>
+        <div class="spec-item"><input type="checkbox"> Knots — definition, effect on cutting and appearance</div>
+        <div class="spec-item"><input type="checkbox"> Grain structure — open vs close grained, hardwood vs softwood</div>
+        <div class="spec-item"><input type="checkbox"> Density — definition, how it varies between timbers</div>
+        <div class="spec-item"><input type="checkbox"> Working properties: hardness, toughness, durability, elasticity, tensile, compressive strength</div>
+        <div class="spec-item"><input type="checkbox"> Social footprint — trend forecasting, logging impact on communities, recycling and disposal</div>
+        <div class="spec-item"><input type="checkbox"> Ecological footprint — deforestation, habitat destruction, FSC certification, sustainability</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-head sh-select">⚖️ 7.3.1–7.3.4 — Selection Factors</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Aesthetic factors — form, colour, texture</div>
+        <div class="spec-item"><input type="checkbox"> Environmental factors — sustainability, genetic engineering, seasoning, upcycling</div>
+        <div class="spec-item"><input type="checkbox"> Availability factors — stock sizes, specialist materials, hurricanes/disease</div>
+        <div class="spec-item"><input type="checkbox"> Cost factors — quality grades (constructional vs joinery), manufacturing processes</div>
+        <div class="spec-item"><input type="checkbox"> Seasoning — air seasoning vs kiln drying, why it is done (reduces moisture to 10–18%)</div>
+        <div class="spec-item"><input type="checkbox"> Tanalith E / tanalised timber — pressure treatment for outdoor rot resistance</div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-head sh-env">🤝 7.3.5–7.3.6 — Social &amp; Cultural Factors</div>
+      <div class="spec-body">
+        <div class="spec-item"><input type="checkbox"> Social factors — use for different social groups, trends/fashion, popularity</div>
+        <div class="spec-item"><input type="checkbox"> Cultural and ethical factors — avoiding offence, suitability for market</div>
+        <div class="spec-item"><input type="checkbox"> Consumer society — mass production, chipboard replacing solid timber</div>
+        <div class="spec-item"><input type="checkbox"> Built-in product obsolescence — definition, environmental impact</div>
+        <div class="spec-item"><input type="checkbox"> Mass production — fewer low-skilled jobs, automated factories, cheaper products</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 2. KEY VOCABULARY ══════════ -->
+<div id="sec-vocab" class="section">
+  <div class="sec-head"><h2>Key Vocabulary</h2><p>28 key terms for Topics 7.2 and 7.3. Many timber names come from specific languages or places — the memory tips explain their origins to help you remember them. Filter by category.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Vocabulary Notebook:</strong> For each timber type, write the name in English, a Chinese translation or description (e.g. 橡木 = oak), and one sentence using it in a design context. This dual-language encoding helps ESL learners retain specialist vocabulary far more effectively than English-only notes.</div>
+  <div class="filter-row">
+    <span style="font-size:13px;color:var(--muted);font-weight:500;">Filter:</span>
+    <button class="filter-btn active" onclick="fv('all',this)">All</button>
+    <button class="filter-btn" onclick="fv('hw',this)">🌳 Hardwoods</button>
+    <button class="filter-btn" onclick="fv('sw',this)">🌲 Softwoods</button>
+    <button class="filter-btn" onclick="fv('mf',this)">🪵 Manufactured</button>
+    <button class="filter-btn" onclick="fv('pr',this)">⚙️ Properties</button>
+    <button class="filter-btn" onclick="fv('ec',this)">🌍 Ecology</button>
+  </div>
+  <div class="vocab-grid" id="vg">
+
+    <!-- HARDWOODS -->
+    <div class="vc" data-topic="hw">
+      <div class="vc-top"><div class="vc-word">Hardwood</div><div class="vc-tag t-hw">Hardwoods</div></div>
+      <div class="vc-body">
+        <div class="vc-def">Timber from a <strong>deciduous tree</strong> — a tree with broad leaves that loses its leaves in winter (or from tropical trees with large leaves). Hardwood trees grow slowly (100+ years) and produce dense, durable timber. Generally more expensive than softwood.</div>
+        <div class="vc-ex">"<em>Hardwood</em> such as oak is chosen for high-quality furniture because its density and grain make it durable and attractive."</div>
+        <div class="vc-mem">💡 Confusingly, <em>hardwood</em> does NOT always mean hard! Balsa is a hardwood but it is extremely soft. The name refers to the TYPE of tree (deciduous/broad-leaved), not the hardness. Balsa is a hardwood because it comes from a broad-leaved tree.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="hw">
+      <div class="vc-top"><div class="vc-word">Oak</div><div class="vc-tag t-hw">Hardwood · European</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A <strong>strong, hard, durable</strong> hardwood with a distinctive grain. It is resistant to moisture and insects, making it suitable for interior and exterior use. One of the most commercially important European hardwoods.</div>
+        <div class="vc-ex">"<em>Oak</em> is commonly used for high-quality furniture, flooring, and wine barrels because of its strength, attractive grain, and natural resistance to moisture."</div>
+        <div class="vc-mem">💡 Oak key facts: very strong and durable, distinctive grain, resistant to insects and moisture, heavy and expensive. Origin: European forests (also North American). Used for: furniture, flooring, doors, barrels.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="hw">
+      <div class="vc-top"><div class="vc-word">Mahogany</div><div class="vc-tag t-hw">Hardwood · Tropical</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A <strong>reddish-brown tropical hardwood</strong> with a fine, straight grain. It is easy to work and takes a high finish. However, it comes from tropical rainforests (South America, Africa, Indonesia) and its use raises serious sustainability concerns.</div>
+        <div class="vc-ex">"<em>Mahogany</em> was historically popular for fine furniture, but designers now use FSC-certified sources or alternatives to avoid contributing to rainforest deforestation."</div>
+        <div class="vc-mem">💡 Mahogany key facts: reddish-brown, fine grain, easy to work, good finish. BUT — sustainability concern! It comes from tropical rainforests. Always mention FSC certification when discussing mahogany in an exam.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="hw">
+      <div class="vc-top"><div class="vc-word">Beech</div><div class="vc-tag t-hw">Hardwood · European</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A <strong>hard, straight-grained</strong> hardwood with a pale pinkish-brown colour. It is tough and easy to work, making it popular for furniture and tool handles. It does not resist rot well outdoors.</div>
+        <div class="vc-ex">"<em>Beech</em> is commonly used for school chairs and workbenches because it is hard, tough, and resists wear — ideal for products that experience heavy use."</div>
+        <div class="vc-mem">💡 Beech key facts: pale pinkish-brown, hard, tough, good finish, NOT good outdoors (rots). Used for: chairs, workbenches, tool handles, toys. Origin: European forests.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="hw">
+      <div class="vc-top"><div class="vc-word">Balsa</div><div class="vc-tag t-hw">Hardwood · Tropical</div></div>
+      <div class="vc-body">
+        <div class="vc-def">The <strong>lightest commercially available timber</strong> — despite being classified as a hardwood. It is extremely soft, very easy to cut and shape, but not strong enough for structural uses. Grown in tropical South America.</div>
+        <div class="vc-ex">"<em>Balsa</em> wood is ideal for model aircraft and prototype structures — its extremely low density makes it lightweight, allowing designers to test forms without adding significant weight."</div>
+        <div class="vc-mem">💡 Balsa key exam trap: it is a HARDWOOD (broad-leaved tree) but feels SOFT. Its main property is being extremely LIGHT (low density). Uses: model making, insulation, packaging. NOT for structural or outdoor use.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="hw">
+      <div class="vc-top"><div class="vc-word">Ash</div><div class="vc-tag t-hw">Hardwood · European</div></div>
+      <div class="vc-body">
+        <div class="vc-def">A <strong>strong, tough, flexible</strong> hardwood with a pale brown colour and open grain. It is one of the best timbers for absorbing shock and can be bent when steamed, making it ideal for sports equipment and tool handles.</div>
+        <div class="vc-ex">"Cricket bats and hockey sticks are made from <em>ash</em> because the timber is tough enough to absorb the repeated shock of impact without cracking."</div>
+        <div class="vc-mem">💡 Ash key facts: strong, tough, FLEXIBLE (can absorb shock), open grain. Uses: tool handles, sports equipment (cricket bats, hockey sticks), ladders. Note: ash trees are threatened by ash dieback disease in Britain.</div>
+      </div>
+    </div>
+
+    <!-- SOFTWOODS -->
+    <div class="vc" data-topic="sw">
+      <div class="vc-top"><div class="vc-word">Softwood</div><div class="vc-tag t-sw">Softwoods</div></div>
+      <div class="vc-body">
+        <div class="vc-def">Timber from a <strong>coniferous (evergreen) tree</strong> — a tree with needle-like leaves and seeds in a cone. Softwood trees grow quickly (30 years) and can be commercially farmed, making softwood much cheaper than hardwood.</div>
+        <div class="vc-ex">"Most construction timber is <em>softwood</em> — pine and larch are used for roof structures and floor joists because they are strong enough for the purpose and much cheaper than hardwood."</div>
+        <div class="vc-mem">💡 Softwood = conifer = needle leaves + cones = grows fast = cheaper. Most forests planted for timber are softwood forests. Majority of timber used in construction is softwood. Larch is unusual — it is a softwood that DOES lose its leaves in winter.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="sw">
+      <div class="vc-top"><div class="vc-word">Pine</div><div class="vc-tag t-sw">Softwood · Alpine</div></div>
+      <div class="vc-body">
+        <div class="vc-def">The most widely used softwood — <strong>light, easy to work</strong>, and relatively cheap. It has a pale yellow colour with distinct knots. It is not naturally durable outdoors but can be treated for external use.</div>
+        <div class="vc-ex">"<em>Pine</em> is used for internal joinery (skirting boards, door frames) and furniture because it is affordable and easy to cut, shape, and paint."</div>
+        <div class="vc-mem">💡 Pine key facts: pale yellow, knotty, cheap, easy to work, NOT naturally weather-resistant (must be treated for outdoor use). Most common softwood. Origin: Alpine/cold climate forests. Uses: construction, furniture, floorboards.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="sw">
+      <div class="vc-top"><div class="vc-word">Larch</div><div class="vc-tag t-sw">Softwood · Alpine</div></div>
+      <div class="vc-body">
+        <div class="vc-def">An unusual softwood that loses its leaves in winter (unlike other softwoods). It is <strong>tough, durable and naturally resistant to water</strong> — making it suitable for outdoor use without chemical treatment. More expensive than most softwoods.</div>
+        <div class="vc-ex">"Exterior cladding on contemporary buildings is often made from <em>larch</em> — it weathers to an attractive silvery grey over time and does not rot outdoors, making it a sustainable finish."</div>
+        <div class="vc-mem">💡 Larch key exam point: it is the ONLY common softwood that naturally resists water and can be used UNTREATED outdoors. It fades to silvery grey — this is not damage, it is natural weathering. Uses: exterior cladding, small boats, yachts.</div>
+      </div>
+    </div>
+
+    <!-- MANUFACTURED -->
+    <div class="vc" data-topic="mf">
+      <div class="vc-top"><div class="vc-word">Chipboard</div><div class="vc-tag t-mf">Manufactured Board</div></div>
+      <div class="vc-body">
+        <div class="vc-def">Made from <strong>wood chips and sawdust mixed with resin glue and compressed into flat sheets</strong>. It uses waste materials, making it cheap to produce. However, it has poor structural strength (especially when damp) and must usually be surface-coated.</div>
+        <div class="vc-ex">"Flat-pack kitchen units are typically made from <em>chipboard</em> coated with a plastic laminate — the low cost keeps furniture affordable, though it will not survive prolonged exposure to moisture."</div>
+        <div class="vc-mem">💡 Chipboard = waste wood + glue → cheap, flat sheets. Key weakness: weak when damp — edges absorb water and swell. Surface is rough so usually needs laminate or veneer. Used for: flat-pack furniture, kitchen worktops, flooring base.</div>
+      </div>
+    </div>
+
+    <!-- PROPERTIES -->
+    <div class="vc" data-topic="pr">
+      <div class="vc-top"><div class="vc-word">Seasoning</div><div class="vc-tag t-pr">Properties</div></div>
+      <div class="vc-body">
+        <div class="vc-def">The process of <strong>drying timber to reduce its moisture content</strong> to 10–18% before use. Freshly cut timber is about 85% water. Unseasoned timber shrinks, warps, and cracks as it dries. Two methods: air seasoning (slow, years) and kiln drying (fast, weeks).</div>
+        <div class="vc-ex">"The furniture manufacturer specified kiln-dried <em>seasoned</em> oak for the dining table — unseasoned timber would warp as it dried in the heated interior of a home."</div>
+        <div class="vc-mem">💡 Why season? Wet timber = weak, warps, cracks, and is hard to work. Dry timber = stable, strong, and can be finished well. Kiln drying is faster and dries to 10% (for interior use). Air drying takes years and only reaches ~18%.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="pr">
+      <div class="vc-top"><div class="vc-word">Grain</div><div class="vc-tag t-pr">Properties</div></div>
+      <div class="vc-body">
+        <div class="vc-def">The <strong>fibres that run the length of a tree trunk</strong>, giving timber its strength and creating the distinctive pattern you see on the surface. Timber is stronger along the grain than across it. Fine grain = small, even fibres. Open/coarse grain = large, visible vessels.</div>
+        <div class="vc-ex">"Oak has a distinctive open-<em>grain</em> pattern that is highly valued for its aesthetic appearance — the large vessels create a clearly visible texture that looks attractive when varnished."</div>
+        <div class="vc-mem">💡 Grain = fibres running lengthways. Strong WITH grain (along it), weaker ACROSS grain. Open grain (oak, ash) = large vessels visible. Close grain (birch, beech) = small, tight fibres, smooth surface. Affects: strength, finish, and cutting direction.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="pr">
+      <div class="vc-top"><div class="vc-word">Tensile Strength</div><div class="vc-tag t-pr">Properties</div></div>
+      <div class="vc-body">
+        <div class="vc-def">The ability of a material to <strong>resist being pulled apart or stretched</strong>. Timber has moderate tensile strength along the grain but poor tensile strength across the grain. Ash and oak have particularly high tensile strength.</div>
+        <div class="vc-ex">"The tensile strength of timber is 3–4 times greater than its compressive strength — this is why timber beams are excellent for spanning distances where bending forces create tension in the lower surface."</div>
+        <div class="vc-mem">💡 Tensile = pulling/stretching force. Timber is stronger in TENSION than in COMPRESSION (3–4× more). This is why engineered timber beams (like I-beams) put most material at the top and bottom where bending creates maximum tension and compression.</div>
+      </div>
+    </div>
+
+    <!-- ECOLOGY -->
+    <div class="vc" data-topic="ec">
+      <div class="vc-top"><div class="vc-word">Deforestation</div><div class="vc-tag t-ec">Ecology</div></div>
+      <div class="vc-body">
+        <div class="vc-def">The large-scale cutting down of trees without replanting. A global problem — about <strong>46,000–58,000 square miles of forest are lost each year</strong> (equivalent to 48 football fields every minute). Causes: soil erosion, habitat loss, increased CO₂, climate change.</div>
+        <div class="vc-ex">"<em>Deforestation</em> in Nepal has caused serious landslide problems — removing trees means that rainwater can no longer be absorbed by roots, so it rushes down hillsides taking soil with it."</div>
+        <div class="vc-mem">💡 De- = removal of. Deforestation = removal of forests. Consequences: habitat loss, soil erosion, more CO₂ in atmosphere (trees absorb CO₂ when living), climate change, loss of indigenous communities' homes. Solution: FSC-certified sustainable forestry.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="ec">
+      <div class="vc-top"><div class="vc-word">FSC Certification</div><div class="vc-tag t-ec">Ecology</div></div>
+      <div class="vc-body">
+        <div class="vc-def">The <strong>Forest Stewardship Council</strong> logo on timber products certifies that the wood comes from <strong>sustainably managed forests</strong> — where trees are replanted as they are cut down and the ecosystem is protected. Allows consumers to make ethical choices.</div>
+        <div class="vc-ex">"By specifying <em>FSC-certified</em> oak, the architect ensured that the timber came from forests where replanting keeps the supply sustainable and habitat destruction is minimised."</div>
+        <div class="vc-mem">💡 FSC = Forest Stewardship Council. Look for their green tree logo. It means: for every tree cut down, another is planted. Sustainable forestry = timber supply continues indefinitely without damaging ecosystems. Key exam use: always mention FSC when evaluating timber selection.</div>
+      </div>
+    </div>
+
+    <div class="vc" data-topic="ec">
+      <div class="vc-top"><div class="vc-word">Built-in Obsolescence</div><div class="vc-tag t-ec">Ecology</div></div>
+      <div class="vc-body">
+        <div class="vc-def">Deliberately designing products with a <strong>short lifespan so consumers must buy replacements sooner</strong>. In timber products, this is achieved by using cheap chipboard instead of solid hardwood — chipboard furniture fails faster, generating more waste and more sales.</div>
+        <div class="vc-ex">"Flat-pack furniture made from <em>chipboard</em> exemplifies built-in obsolescence — it will delaminate or break within a few years, encouraging replacement, unlike solid oak furniture that can last generations."</div>
+        <div class="vc-mem">💡 Obsolescence = becoming out of date or worn out. Built-IN = the manufacturer put it there on purpose. Environmentally harmful: creates more waste, uses more resources. Opposite: heirloom design (built to last).</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ 3. TOPIC SUMMARIES ══════════ -->
+<div id="sec-topics" class="section">
+  <div class="sec-head"><h2>Topic Summaries</h2><p>Select a panel below. Each section covers the textbook content from pp. 277–287, cross-referenced with the spec. Image slots show where to add photographs for visual reinforcement.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Read–Cover–Write–Check:</strong> For the timber property tables, read one row carefully, cover it, write out the key properties from memory, then check. Repeat for each timber. This method works much better than reading the table repeatedly, especially for memorising multiple similar items.</div>
+
+  <div class="topic-nav">
+    <button class="tp-btn tp-hw active" onclick="showTopic('hw',this)">🌳 Hardwoods</button>
+    <button class="tp-btn tp-sw"        onclick="showTopic('sw',this)">🌲 Softwoods</button>
+    <button class="tp-btn tp-mf"        onclick="showTopic('mf',this)">🪵 Manufactured</button>
+    <button class="tp-btn tp-props"     onclick="showTopic('props',this)">⚙️ Properties</button>
+    <button class="tp-btn tp-eco"       onclick="showTopic('eco',this)">🌍 Origins &amp; Footprint</button>
+    <button class="tp-btn tp-sel"       onclick="showTopic('sel',this)">⚖️ Selection (7.3)</button>
+  </div>
+
+  <!-- HARDWOODS -->
+  <div class="topic-panel active" id="tp-hw">
+    <div class="tp-header tph-hw"><h3>🌳 Hardwoods — Sources &amp; Properties (7.2.1)</h3><p>Spec ref: 7.2.1 | All hardwoods come from deciduous trees with broad leaves. They grow slowly (100+ years) and are generally more expensive than softwoods.</p></div>
+    <div class="tp-body">
+      <div style="background:#fef9ee;border-left:4px solid var(--brown);padding:11px 15px;border-radius:0 8px 8px 0;font-size:13.5px;color:#5c2a00;margin-bottom:16px;">⚠️ <strong>Common misconception:</strong> The name "hardwood" refers to the <em>type of tree</em> (deciduous/broad-leaved), NOT the hardness of the wood. <strong>Balsa is a hardwood</strong> despite being the softest commercial timber. This distinction is worth 1 mark in the exam.</div>
+
+      <!-- IMAGE SLOT 1 — World map of timber origins -->
+      <div class="img-slot">
+        <img src="" alt="World map showing timber origins - alpine softwood forests, European temperate hardwoods, tropical Amazonian hardwoods" class="slot-img">
+        <div class="slot-ph">
+          <div class="slot-icon">🗺️</div>
+          <div class="slot-badge islot-star">Image Slot 1 ⭐</div>
+          <div class="slot-title">World map of timber origins</div>
+          <div class="slot-desc">Textbook p.279 has an excellent colour-coded world map (Figure 7.2.1) showing cold/Alpine (blue), temperate European (green), and tropical Amazonian (yellow/orange) forest regions. Scan or photograph it.</div>
+          <div class="slot-search">🔍 Use textbook p.279 Figure 7.2.1, OR search: "world map timber regions softwood hardwood"</div>
+        </div>
+      </div>
+
+      <!-- Regions summary -->
+      <div class="region-grid">
+        <div class="region-card">
+          <div class="region-head rh-cold">❄️ Cold / Alpine Forests</div>
+          <div class="region-body">
+            <p>Cold climates such as the Alpine region produce fast-growing softwoods for commercial forestry.</p>
+            <div class="region-timbers">
+              <span class="rchip rc-sw">Pine 🌲</span>
+              <span class="rchip rc-sw">Cedar 🌲</span>
+              <span class="rchip rc-sw">Larch 🌲</span>
+            </div>
+          </div>
+        </div>
+        <div class="region-card">
+          <div class="region-head rh-temp">🌿 Temperate European Forests</div>
+          <div class="region-body">
+            <p>Temperate climates produce a mix of softwoods and the most common European hardwoods.</p>
+            <div class="region-timbers">
+              <span class="rchip rc-hw">Oak 🌳</span>
+              <span class="rchip rc-hw">Beech 🌳</span>
+              <span class="rchip rc-hw">Ash 🌳</span>
+              <span class="rchip rc-hw">Birch 🌳</span>
+            </div>
+          </div>
+        </div>
+        <div class="region-card">
+          <div class="region-head rh-trop">🌴 Tropical / Amazonian Forests</div>
+          <div class="region-body">
+            <p>Tropical rainforests produce dense, fine-grained hardwoods — but logging raises sustainability concerns.</p>
+            <div class="region-timbers">
+              <span class="rchip rc-hw">Mahogany 🌳</span>
+              <span class="rchip rc-hw">Jelutong 🌳</span>
+              <span class="rchip rc-hw">Balsa 🌳</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table class="timber-tbl" style="margin-top:20px;">
+        <tr><th class="h-type">Timber</th><th class="h-app">Properties &amp; Description</th><th class="h-adv">✓ Advantages</th><th class="h-dis">✗ Disadvantages</th><th class="h-use">Common Uses</th></tr>
+        <tr>
+          <td><span class="tn">Oak</span><span class="origin">European Hardwood</span></td>
+          <td>Very hard, strong, heavy. Distinctive open grain. Warm golden-brown. High tannin content resists insects and fungi.</td>
+          <td><ul><li>Very durable</li><li>Attractive grain</li><li>Resistant to moisture</li><li>Lasts for centuries</li></ul></td>
+          <td><ul><li>Heavy to work with</li><li>Expensive</li><li>Reacts with iron (stains)</li></ul></td>
+          <td>Furniture, flooring, doors, wine barrels, veneer</td>
+        </tr>
+        <tr>
+          <td><span class="tn">Mahogany</span><span class="origin">Tropical Hardwood</span></td>
+          <td>Medium hardness, fine straight grain, reddish-brown, easy to work, takes a high polish. Interlocking grain on some varieties.</td>
+          <td><ul><li>Easy to work and shape</li><li>Excellent finish</li><li>Good stability</li></ul></td>
+          <td><ul><li>Sustainability concern</li><li>Expensive (tropical sourcing)</li><li>FSC certification essential</li></ul></td>
+          <td>Fine furniture, cabinets, musical instruments, boat building</td>
+        </tr>
+        <tr>
+          <td><span class="tn">Beech</span><span class="origin">European Hardwood</span></td>
+          <td>Hard, tough, close-grained, pale pinkish-brown. Works cleanly, takes a good finish. Poor outdoor durability.</td>
+          <td><ul><li>Hard and tough</li><li>Smooth close grain</li><li>Resists wear</li></ul></td>
+          <td><ul><li>Poor rot resistance outdoors</li><li>Can warp if not seasoned well</li></ul></td>
+          <td>Chairs, workbenches, tool handles, children's toys, wooden utensils</td>
+        </tr>
+        <tr>
+          <td><span class="tn">Balsa</span><span class="origin">Tropical Hardwood</span></td>
+          <td>Extremely lightweight (lightest commercial timber), very soft, pale cream colour, straight even grain. Easy to cut with any tool.</td>
+          <td><ul><li>Extremely lightweight</li><li>Very easy to cut/shape</li><li>Good for quick prototyping</li></ul></td>
+          <td><ul><li>Very weak structurally</li><li>Compresses easily</li><li>Not suitable for outdoor use</li></ul></td>
+          <td>Model making, aircraft models, prototype structures, insulation</td>
+        </tr>
+        <tr>
+          <td><span class="tn">Jelutong</span><span class="origin">Tropical Hardwood</span></td>
+          <td>Even, close grain, easy to cut and shape, pale straw colour, soft texture.</td>
+          <td><ul><li>Easy to work</li><li>Takes fine detail well</li></ul></td>
+          <td><ul><li>Soft — not good for structural use</li><li>Sustainability concern</li></ul></td>
+          <td>Model making, moulds for casting, vacuum forming formers</td>
+        </tr>
+        <tr>
+          <td><span class="tn">Birch</span><span class="origin">European Hardwood</span></td>
+          <td>Regular, even, close grain. Pale yellow-white. Easy to work. Used for high-quality plywood veneers.</td>
+          <td><ul><li>Even grain — easy to work</li><li>Good for veneers</li></ul></td>
+          <td><ul><li>Low resistance to rot and insect attack</li><li>Not suitable for outdoor use</li></ul></td>
+          <td>Veneers, plywood, interior doors and furniture surfaces</td>
+        </tr>
+        <tr>
+          <td><span class="tn">Ash</span><span class="origin">European Hardwood</span></td>
+          <td>Strong, tough, flexible, open grain, pale brown with dark streaks. Excellent shock absorption. Can be bent when steamed.</td>
+          <td><ul><li>Strong and tough</li><li>Excellent flexibility</li><li>Absorbs shock well</li><li>Can be steam-bent</li></ul></td>
+          <td><ul><li>Low resistance to rot and insects</li><li>Threatened by ash dieback disease in UK</li></ul></td>
+          <td>Tool handles, sports equipment (cricket bats, hockey sticks), ladders, chair legs</td>
+        </tr>
+      </table>
+
+      <!-- IMAGE SLOTS 2-3 -->
+      <div class="img-row" style="margin-top:18px;">
+        <div class="img-slot">
+          <img src="" alt="Oak timber grain close up showing distinctive open grain pattern" class="slot-img">
+          <div class="slot-ph">
+            <div class="slot-icon">📸</div>
+            <div class="slot-badge">Image Slot 2</div>
+            <div class="slot-title">Oak grain close-up</div>
+            <div class="slot-desc">Close-up photograph of oak's distinctive open grain pattern — showing the large visible vessels that give oak its characteristic look</div>
+            <div class="slot-search">🔍 Search: "oak timber grain close up" or "oak wood grain texture"</div>
+          </div>
+        </div>
+        <div class="img-slot">
+          <img src="" alt="Balsa wood model making lightweight prototype" class="slot-img">
+          <div class="slot-ph">
+            <div class="slot-icon">📸</div>
+            <div class="slot-badge">Image Slot 3</div>
+            <div class="slot-title">Balsa in use — model making</div>
+            <div class="slot-desc">Balsa wood being used for model aircraft or architectural prototype — showing how easily it can be cut and shaped</div>
+            <div class="slot-search">🔍 Search: "balsa wood model aircraft" or "balsa model making lightweight"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOFTWOODS -->
+  <div class="topic-panel" id="tp-sw">
+    <div class="tp-header tph-sw"><h3>🌲 Softwoods (7.2.2)</h3><p>Spec ref: 7.2.2 | Softwoods come from coniferous (evergreen) trees with needle-like leaves and cones. They grow quickly — commercially ready in ~30 years — making them much cheaper than hardwoods.</p></div>
+    <div class="tp-body">
+      <div class="insight-box" style="margin-bottom:16px;">💡 <strong>Key fact for the exam:</strong> Most of the timber used in construction is softwood — it is cheap, widely available, and strong enough for most structural uses. Most forests planted specifically for commercial timber are softwood forests because of the fast growth rate.</div>
+
+      <table class="timber-tbl">
+        <tr><th class="h-type">Timber</th><th class="h-app">Properties &amp; Description</th><th class="h-adv">✓ Advantages</th><th class="h-dis">✗ Disadvantages</th><th class="h-use">Common Uses</th></tr>
+        <tr>
+          <td><span class="tn">Pine</span><span class="origin">Softwood · Alpine</span></td>
+          <td>Pale yellow with reddish-brown grain, distinct knots, straight grain, lightweight and easy to work. Resinous — smells of resin when cut.</td>
+          <td><ul><li>Cheap and widely available</li><li>Easy to cut and shape</li><li>Takes screws and nails well</li></ul></td>
+          <td><ul><li>Not naturally weather-resistant</li><li>Knots can fall out</li><li>Softer than hardwoods</li></ul></td>
+          <td>Construction timber, flooring, skirting boards, door frames, furniture, shelving</td>
+        </tr>
+        <tr>
+          <td><span class="tn">Cedar</span><span class="origin">Softwood · Alpine</span></td>
+          <td>Reddish-brown, aromatic (pleasant smell), straight grain, lightweight and durable. Naturally resistant to insects and decay.</td>
+          <td><ul><li>Naturally resistant to rot and insects</li><li>Lightweight</li><li>Pleasant aromatic smell repels moths</li></ul></td>
+          <td><ul><li>More expensive than pine</li><li>Can be brittle</li></ul></td>
+          <td>Outdoor cladding, garden furniture, pencils, chests (moths avoid the smell), roof shingles</td>
+        </tr>
+        <tr>
+          <td><span class="tn">Larch</span><span class="origin">Softwood · Alpine</span></td>
+          <td>Pale reddish-brown, tough, durable, water-resistant. Unusual among softwoods: loses leaves in winter. Weathers to silvery grey outdoors — this is natural, not damage.</td>
+          <td><ul><li>Tough and durable</li><li>Naturally water-resistant</li><li>Can be used UNTREATED outdoors</li></ul></td>
+          <td><ul><li>More expensive than pine</li><li>Heavy for a softwood</li></ul></td>
+          <td>Exterior cladding, small boats, yachts, fencing, garden buildings, outdoor furniture</td>
+        </tr>
+      </table>
+
+      <!-- IMAGE SLOT 4 -->
+      <div class="img-slot" style="margin-top:16px;">
+        <img src="" alt="Larch exterior timber cladding on building weathering to silvery grey" class="slot-img">
+        <div class="slot-ph">
+          <div class="slot-icon">📸</div>
+          <div class="slot-badge">Image Slot 4</div>
+          <div class="slot-title">Larch cladding — exterior use</div>
+          <div class="slot-desc">Larch timber cladding on a modern building, showing its natural weathering to silver-grey — ideal to show students why larch is the only softwood that works untreated outdoors</div>
+          <div class="slot-search">🔍 Search: "larch timber cladding exterior building" or "larch weathered silver grey cladding"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANUFACTURED BOARDS -->
+  <div class="topic-panel" id="tp-mf">
+    <div class="tp-header tph-mf"><h3>🪵 Manufactured Boards (7.2.3)</h3><p>Spec ref: 7.2.3 | Manufactured boards use timber in an engineered form to overcome the limitations of natural timber — limited width, directional strength, and knots.</p></div>
+    <div class="tp-body">
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:14px;">Natural timber is only available in the width of the tree trunk, and its grain only runs in one direction (so it is weaker across the grain). Manufactured boards solve both problems — they come in large sheets and are strong in all directions.</p>
+
+      <table class="timber-tbl">
+        <tr><th class="h-type">Board</th><th class="h-app">Description &amp; Construction</th><th class="h-adv">✓ Advantages</th><th class="h-dis">✗ Disadvantages</th><th class="h-use">Common Uses</th></tr>
+        <tr>
+          <td><span class="tn">Plywood</span></td>
+          <td>Thin wood veneers (layers) bonded with glue. Always an ODD number of layers (3, 5, 7...) at 90° to each other. This cross-ply structure gives strength in all directions. Standard sheet size 2440 × 1220 mm.</td>
+          <td><ul><li>Strong in all directions</li><li>High strength-to-weight ratio</li><li>Large sheets available</li><li>Both interior and exterior grades</li></ul></td>
+          <td><ul><li>Some grades delaminate when wet</li><li>Edges are rough and unattractive</li><li>More expensive than MDF or chipboard</li></ul></td>
+          <td>Furniture, flooring, cladding, flat-pack construction, sheds, boat building (marine grade)</td>
+        </tr>
+        <tr>
+          <td><span class="tn">MDF</span><br><span style="font-size:11px;color:var(--muted);">Medium Density Fibreboard</span></td>
+          <td>Wood fibres mixed with resin glue and pressed under heat and pressure into a flat, dense, smooth sheet. Very uniform — no grain, no knots. Standard sheet size 2440 × 1220 mm.</td>
+          <td><ul><li>Smooth, uniform surface — ideal for painting</li><li>No grain direction — equal strength all ways</li><li>Easy to cut precise edges</li><li>Cheap</li></ul></td>
+          <td><ul><li>Very heavy</li><li>Absorbs moisture — swells and crumbles</li><li>Dust is harmful to lungs</li><li>Poor screw-holding at edges</li></ul></td>
+          <td>Painted furniture, kitchen cabinet carcasses, skirting boards, speaker cabinets, shelving</td>
+        </tr>
+        <tr>
+          <td><span class="tn">Chipboard</span></td>
+          <td>Wood chips and sawdust mixed with urea-formaldehyde resin and compressed. Uses waste timber. Rough surface usually needs laminate or veneer covering.</td>
+          <td><ul><li>Cheap — uses waste timber</li><li>Flat, consistent sheet</li><li>Available in large sheets</li></ul></td>
+          <td><ul><li>Not much structural strength</li><li>Very poor when damp — edges swell badly</li><li>Usually needs surface coating</li></ul></td>
+          <td>Flat-pack furniture, kitchen worktops (laminated), flooring base, shelving (for budget products)</td>
+        </tr>
+      </table>
+
+      <!-- IMAGE SLOTS 5-6 -->
+      <div class="img-row" style="margin-top:18px;">
+        <div class="img-slot">
+          <img src="" alt="Plywood cross section showing alternating veneer layers at 90 degrees" class="slot-img">
+          <div class="slot-ph">
+            <div class="slot-icon">📸</div>
+            <div class="slot-badge islot-star">Image Slot 5 ⭐</div>
+            <div class="slot-title">Plywood cross-section</div>
+            <div class="slot-desc">Clear cross-section photograph showing the alternating veneer layers of plywood with grain directions visible at 90° to each other — the key structural feature</div>
+            <div class="slot-search">🔍 Search: "plywood cross section veneer layers 90 degrees" or "plywood edge grain direction"</div>
+          </div>
+        </div>
+        <div class="img-slot">
+          <img src="" alt="MDF versus chipboard comparison showing surface texture difference" class="slot-img">
+          <div class="slot-ph">
+            <div class="slot-icon">📸</div>
+            <div class="slot-badge">Image Slot 6</div>
+            <div class="slot-title">MDF vs chipboard edge comparison</div>
+            <div class="slot-desc">Side-by-side comparison of MDF edge (smooth, fine fibres) and chipboard edge (rough, visible chips) to show students the structural difference</div>
+            <div class="slot-search">🔍 Search: "MDF chipboard comparison edge" or "medium density fibreboard versus particleboard"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPERTIES -->
+  <div class="topic-panel" id="tp-props">
+    <div class="tp-header tph-props"><h3>⚙️ Physical Characteristics &amp; Working Properties (7.2.5–7.2.6)</h3><p>Spec ref: 7.2.5 and 7.2.6 | You must know what each property means AND be able to compare timbers using these properties.</p></div>
+    <div class="tp-body">
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:14px;">Physical Characteristics of Timber</h3>
+      <div class="prop-grid">
+        <div class="prop-card"><div style="font-size:22px;margin-bottom:7px;">⚫</div><h4>Knots</h4><p>Where a branch grew out of the trunk. Swirling grain around a knot makes it harder to cut and plane. Knots can fall out of unseasoned timber, leaving holes. Knotty timber can be aesthetically appealing for rustic designs but is weaker at knot points.</p></div>
+        <div class="prop-card"><div style="font-size:22px;margin-bottom:7px;">🎨</div><h4>Colour</h4><p>Ranges from pale cream (balsa, pine) to rich dark brown (mahogany, walnut). Colour can vary even within a single species, and between the heartwood (darker centre) and sapwood (paler outer). Staining can change colour but cannot easily change texture.</p></div>
+        <div class="prop-card"><div style="font-size:22px;margin-bottom:7px;">〰️</div><h4>Grain Structure</h4><p>The fibres running lengthways through the trunk. <strong>Open grain</strong> (oak, ash): large vessels visible on the surface, coarser texture. <strong>Close grain</strong> (beech, birch): small tight fibres, smoother surface. Grain direction affects strength and how the surface is finished.</p></div>
+        <div class="prop-card"><div style="font-size:22px;margin-bottom:7px;">⚖️</div><h4>Density</h4><p>The weight per unit volume (g/cm³ or kg/m³). Balsa = 60 kg/m³ (very light). Oak = 750 kg/m³ (heavy). Higher density generally means harder, stronger timber. Wood has a high strength-to-weight ratio compared to metals because of its low density.</p></div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin:22px 0 14px;">Working Properties</h3>
+      <table class="timber-tbl">
+        <tr><th class="h-type">Property</th><th class="h-app">Definition</th><th class="h-adv">Best timber examples</th><th class="h-dis">Poor timber examples</th><th class="h-use">Why it matters</th></tr>
+        <tr><td class="tn">Hardness</td><td>Resistance to denting, scratching, and surface wear</td><td>Oak, beech, ash — very hard</td><td>Balsa, pine — soft surfaces</td><td>Flooring, workbenches, worktops that will be worn</td></tr>
+        <tr><td class="tn">Toughness</td><td>Ability to resist sudden impact or shock without breaking or cracking</td><td>Ash — excellent shock resistance</td><td>Beech, pine — less tough</td><td>Sports equipment, tool handles, structures subject to vibration</td></tr>
+        <tr><td class="tn">Durability</td><td>Resistance to decay, rot, moisture, and insect attack over time</td><td>Oak, cedar, teak</td><td>Beech, pine, birch — low natural durability</td><td>Outdoor furniture, fencing, boat building, flooring</td></tr>
+        <tr><td class="tn">Elasticity</td><td>Ability to bend and return to original shape when force is removed</td><td>Ash — can be steam-bent</td><td>Oak, beech — relatively rigid</td><td>Curved furniture, sports equipment, flexible components</td></tr>
+        <tr><td class="tn">Tensile Strength</td><td>Resistance to being pulled apart (3–4× compressive strength for most timbers)</td><td>Oak, ash</td><td>Balsa, chipboard</td><td>Structural beams, joints under tension</td></tr>
+        <tr><td class="tn">Compressive Strength</td><td>Resistance to being squashed under a load</td><td>Denser hardwoods generally</td><td>Balsa, chipboard across grain</td><td>Columns, posts, bearing surfaces</td></tr>
+      </table>
+
+      <!-- IMAGE SLOT 7 -->
+      <div class="img-slot" style="margin-top:16px;">
+        <img src="" alt="Knots in timber pine board showing grain swirling around knot" class="slot-img">
+        <div class="slot-ph">
+          <div class="slot-icon">📸</div>
+          <div class="slot-badge">Image Slot 7</div>
+          <div class="slot-title">Knots in timber</div>
+          <div class="slot-desc">Close-up of a pine board showing knots — the grain visibly swirling around the knot point. This image appears in the textbook (p.280). Scan/photograph p.280 or find a similar photo.</div>
+          <div class="slot-search">🔍 Use textbook p.280 image, OR search: "knot in pine timber wood grain swirl"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ECOLOGICAL FOOTPRINT -->
+  <div class="topic-panel" id="tp-eco">
+    <div class="tp-header tph-eco"><h3>🌍 Origins, Social &amp; Ecological Footprint (7.2.4, 7.2.7, 7.2.8)</h3><p>Spec ref: 7.2.4–7.2.8 | Timber's environmental and social impact is a frequently examined topic. Always link to FSC certification and sustainable management in your answers.</p></div>
+    <div class="tp-body">
+      <!-- IMAGE SLOT 8 -->
+      <div class="img-row">
+        <div class="img-slot">
+          <img src="" alt="Deforestation aerial photograph showing large area of cleared rainforest" class="slot-img">
+          <div class="slot-ph">
+            <div class="slot-icon">📸</div>
+            <div class="slot-badge">Image Slot 8</div>
+            <div class="slot-title">Deforestation — cleared rainforest</div>
+            <div class="slot-desc">Aerial view of a cleared area of rainforest next to intact forest — showing the scale of the problem. The textbook (p.282) has an excellent photograph of this.</div>
+            <div class="slot-search">🔍 Use textbook p.282 image, OR search: "aerial deforestation rainforest cleared land"</div>
+          </div>
+        </div>
+        <div class="img-slot">
+          <img src="" alt="FSC Forest Stewardship Council logo on timber product" class="slot-img">
+          <div class="slot-ph">
+            <div class="slot-icon">📸</div>
+            <div class="slot-badge">Image Slot 9</div>
+            <div class="slot-title">FSC certification logo</div>
+            <div class="slot-desc">The FSC green tree logo (Forest Stewardship Council) on a timber product or packaging — students need to recognise this symbol in exam questions</div>
+            <div class="slot-search">🔍 Search: "FSC Forest Stewardship Council logo timber" — also appears in textbook p.281</div>
+          </div>
+        </div>
+      </div>
+
+      <table class="timber-tbl" style="margin-top:16px;">
+        <tr><th class="h-type" style="width:130px;">Issue</th><th class="h-app">What it means</th><th class="h-adv">Impact</th><th class="h-dis" colspan="2">Solution / Mitigation</th></tr>
+        <tr><td class="tn">Deforestation</td><td>Cutting trees faster than they grow back. 46,000–58,000 square miles lost per year globally.</td><td>Soil erosion, habitat loss, increased CO₂, climate change, loss of indigenous communities</td><td colspan="2">FSC-certified sustainable forestry; replanting programmes; using manufactured boards instead of solid hardwood</td></tr>
+        <tr><td class="tn">Habitat Destruction</td><td>Animals lose their homes when forests are cleared. Tigers, gorillas, orangutans, elephants affected.</td><td>Species extinction, biodiversity loss, disruption of food chains</td><td colspan="2">Protected forest areas; only purchasing FSC-certified timber; reducing demand for tropical hardwoods</td></tr>
+        <tr><td class="tn">Transportation</td><td>Most UK timber is imported — often from Alpine regions, sometimes from tropical forests. Transport burns fossil fuels.</td><td>Increased carbon footprint of the timber product</td><td colspan="2">Source timber locally where possible; use sea freight over air; specify nearby-grown species (pine over mahogany)</td></tr>
+        <tr><td class="tn">Pollution from Timber</td><td>Processing (sawing, routing MDF) creates toxic wood dust. MDF dust contains formaldehyde resin — a respiratory hazard.</td><td>Health risk to workers; HSE Woodworking Information Sheet No. 30 covers safe practice</td><td colspan="2">Use dust extraction, PPE (masks, gloves), good ventilation; water-suppress dust when machining</td></tr>
+        <tr><td class="tn">Logging on Communities</td><td>In Amazon and West Africa, large companies log in areas where indigenous people live — displacing communities.</td><td>Loss of traditional way of life, food sources, cultural heritage</td><td colspan="2">FSC certification requires that indigenous communities' rights are respected; Fair trade timber certification</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SELECTION FACTORS (7.3) -->
+  <div class="topic-panel" id="tp-sel">
+    <div class="tp-header tph-sel"><h3>⚖️ Selection of Timber — 7.3 All Factors</h3><p>Spec ref: 7.3.1–7.3.6 | When asked why a particular timber is chosen for a product, you must consider multiple factors. Exam questions often ask you to justify a timber choice using two or more selection criteria.</p></div>
+    <div class="tp-body">
+      <div class="insight-box" style="margin-bottom:18px;">💡 <strong>Exam technique:</strong> Selection questions often give you a product context (e.g. "a children's outdoor bench") and ask you to choose and justify a timber. Always: (1) name the timber, (2) state the relevant property, (3) explain WHY that property is needed for that specific product. Never just say "it is strong" — say "it is durable and resistant to rot, which means it can be left outdoors without maintenance."</div>
+
+      <div class="factor-grid">
+        <div class="factor-card">
+          <div class="factor-head fh-aes">🎨 Aesthetic Factors</div>
+          <div class="factor-body"><ul>
+            <li>Form — the overall shape and visual structure. Timber's natural organic form is attractive for many products</li>
+            <li>Colour — ranges from pale pine to rich dark mahogany. Can be stained to change colour</li>
+            <li>Texture — grain patterns vary widely; some are valued for their visual appeal (oak, walnut)</li>
+          </ul></div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-head fh-env">🌿 Environmental Factors</div>
+          <div class="factor-body"><ul>
+            <li>Sustainability — use FSC-certified timber; prefer softwoods (faster growing)</li>
+            <li>Genetic engineering — allows faster-growing or disease-resistant trees (controversial)</li>
+            <li>Seasoning — must be correctly dried or it will warp in use</li>
+            <li>Upcycling — using old timber gives it a new purpose; more sustainable than new material</li>
+          </ul></div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-head fh-avl">📦 Availability Factors</div>
+          <div class="factor-body"><ul>
+            <li>Stock sizes — designing to standard stock sizes saves waste and cost (e.g. 2440 × 1220 mm sheets)</li>
+            <li>Specialist materials — marine plywood, fire-retardant treated timber, tanalised (pressure-treated) timber</li>
+            <li>Hurricanes, storms, disease — can reduce availability and increase price suddenly (ash dieback disease)</li>
+          </ul></div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-head fh-cost">💷 Cost Factors</div>
+          <div class="factor-body"><ul>
+            <li>Quality grades — constructional carcassing (hidden, for structure) is cheaper; joinery grade (visible, for appearance) is more expensive</li>
+            <li>Manufacturing scale — mass production uses standard stock sizes and cuts per-unit cost significantly</li>
+            <li>Treatments — fire-proofing and tanalising (Tanalith E) add cost but extend product life outdoors</li>
+          </ul></div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-head fh-soc">👥 Social Factors</div>
+          <div class="factor-body"><ul>
+            <li>Social groups — bespoke hardwood furniture appeals to a wealthier market; chipboard flatpack appeals to the mass market</li>
+            <li>Trends and fashion — currently sustainable timber and reclaimed wood are fashionable for home interiors</li>
+            <li>Popularity — softwood from sustainable sources is increasingly used as concerns about tropical hardwoods grow</li>
+          </ul></div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-head fh-eth">🤝 Cultural &amp; Ethical Factors</div>
+          <div class="factor-body"><ul>
+            <li>Avoiding offence — symbols, colours or patterns carved into timber may have different meanings in different cultures</li>
+            <li>Consumer society — chipboard furniture designed to be replaced within a few years rather than lasting a lifetime</li>
+            <li>Mass production effects — automated sawmills reduce low-skilled jobs</li>
+            <li>Built-in obsolescence — using cheap chipboard instead of solid hardwood means products fail sooner</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- IMAGE SLOTS 10-11 -->
+      <div class="img-row" style="margin-top:20px;">
+        <div class="img-slot">
+          <img src="" alt="Tanalised pressure treated timber for outdoor use" class="slot-img">
+          <div class="slot-ph">
+            <div class="slot-icon">📸</div>
+            <div class="slot-badge">Image Slot 10</div>
+            <div class="slot-title">Tanalised / pressure-treated timber</div>
+            <div class="slot-desc">Green-tinted tanalised timber (Tanalith E pressure treatment) — showing how it looks different to untreated timber and is used for fence posts, decking, and outdoor structures</div>
+            <div class="slot-search">🔍 Search: "tanalised timber pressure treated green" or "Tanalith E treated fence post"</div>
+          </div>
+        </div>
+        <div class="img-slot">
+          <img src="" alt="Kiln drying timber seasoning process" class="slot-img">
+          <div class="slot-ph">
+            <div class="slot-icon">📸</div>
+            <div class="slot-badge">Image Slot 11</div>
+            <div class="slot-title">Kiln drying / seasoning timber</div>
+            <div class="slot-desc">Timber stacked in a kiln drying chamber, or stacked with spacers for air seasoning — showing the process of reducing moisture content before use</div>
+            <div class="slot-search">🔍 Search: "kiln drying timber lumber seasoning" or "air seasoning timber stacked planks"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 4. ACTIVITIES ══════════ -->
+<div id="sec-activities" class="section">
+  <div class="sec-head"><h2>Revision Activities</h2><p>Three activities specifically designed for the Timbers specialist content. Word banks are shuffled — NOT in answer order.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Productive Failure:</strong> Attempt all questions without notes first. Wrong answers are valuable — when you find out what the correct answer is after getting it wrong, your brain encodes it much more strongly than if you had just read the correct answer. Do not look things up until after you have attempted the activity.</div>
+
+  <!-- ACTIVITY 1: GAP FILL -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 1 — Gap Fill: Timber Vocabulary</h3><div class="act-badge">Fill in the blanks</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a word from the Word Bank to select it, then click the blank where it belongs. The word bank is NOT in answer order. Press Check Answers when done.</div>
+      <div class="word-bank" id="wb1">
+        <span class="wchip" data-word="balsa">balsa</span>
+        <span class="wchip" data-word="seasoning">seasoning</span>
+        <span class="wchip" data-word="grain">grain</span>
+        <span class="wchip" data-word="MDF">MDF</span>
+        <span class="wchip" data-word="deforestation">deforestation</span>
+        <span class="wchip" data-word="tensile">tensile</span>
+        <span class="wchip" data-word="FSC">FSC</span>
+        <span class="wchip" data-word="larch">larch</span>
+        <span class="wchip" data-word="chipboard">chipboard</span>
+        <span class="wchip" data-word="hardwood">hardwood</span>
+      </div>
+      <div id="gf1">
+        <div class="gap-sent">1. Oak is a <input type="text" class="gf" data-answer="hardwood"> — it comes from a deciduous, broad-leaved tree. Despite being classified this way, it is also extremely hard and dense.</div>
+        <div class="gap-sent">2. The lightest commercial timber is <input type="text" class="gf" data-answer="balsa"> — it is so light that it is only used for model making and prototypes, not for structural applications.</div>
+        <div class="gap-sent">3. <input type="text" class="gf" data-answer="larch"> is the only common softwood that can be used outdoors without chemical treatment — it is naturally tough, durable and resistant to water.</div>
+        <div class="gap-sent">4. The <input type="text" class="gf" data-answer="grain"> of timber consists of fibres that run the length of the tree trunk — timber is significantly stronger along the grain than across it.</div>
+        <div class="gap-sent">5. <input type="text" class="gf" data-answer="seasoning"> is the process of drying timber to reduce its moisture content from around 85% down to 10–18%, preventing the wood from warping or cracking in use.</div>
+        <div class="gap-sent">6. <input type="text" class="gf" data-answer="MDF"> has a smooth, uniform surface with no grain direction, making it ideal for painted furniture — but it is heavy and absorbs moisture, causing it to swell.</div>
+        <div class="gap-sent">7. <input type="text" class="gf" data-answer="chipboard"> is made from wood chips and glue compressed into sheets. It is cheap but has poor structural strength, especially in damp conditions.</div>
+        <div class="gap-sent">8. The <input type="text" class="gf" data-answer="tensile"> strength of timber is 3–4 times greater than its compressive strength, which is why timber beams are very effective at spanning distances where bending creates pulling forces.</div>
+        <div class="gap-sent">9. The <input type="text" class="gf" data-answer="FSC"> (Forest Stewardship Council) logo certifies that timber comes from a sustainably managed forest where trees are replanted to replace those that are cut down.</div>
+        <div class="gap-sent">10. <input type="text" class="gf" data-answer="deforestation"> — the large-scale removal of trees — destroys habitats, causes soil erosion, and releases stored CO₂ into the atmosphere, contributing to climate change.</div>
+      </div>
+      <div><button class="check-btn" onclick="checkGF('gf1','sc1')">✓ Check Answers</button><button class="reset-btn" onclick="resetGF('gf1','sc1','wb1')">↺ Reset</button><div class="score-box" id="sc1"></div></div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 2: MATCHING -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 2 — Matching: Timber to Its Key Property &amp; Use</h3><div class="act-badge">Click to match</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Click a timber on the LEFT, then its correct description on the RIGHT. Green = correct, Red = wrong. Definitions are NOT in the same order as timber names.</div>
+      <div class="match-grid">
+        <div class="match-col">
+          <div class="match-col-lbl">🌳 Timber</div>
+          <div class="mi mw" data-id="1" onclick="sm(this,'w')">Ash</div>
+          <div class="mi mw" data-id="2" onclick="sm(this,'w')">Larch</div>
+          <div class="mi mw" data-id="3" onclick="sm(this,'w')">Chipboard</div>
+          <div class="mi mw" data-id="4" onclick="sm(this,'w')">MDF</div>
+          <div class="mi mw" data-id="5" onclick="sm(this,'w')">Jelutong</div>
+          <div class="mi mw" data-id="6" onclick="sm(this,'w')">Balsa</div>
+          <div class="mi mw" data-id="7" onclick="sm(this,'w')">Beech</div>
+          <div class="mi mw" data-id="8" onclick="sm(this,'w')">Mahogany</div>
+        </div>
+        <div class="match-col">
+          <div class="match-col-lbl">📋 Key Property &amp; Use</div>
+          <div class="mi" data-id="6" onclick="sm(this,'d')">The lightest commercial timber — used for model aircraft and prototypes, not for structural use</div>
+          <div class="mi" data-id="4" onclick="sm(this,'d')">Smooth uniform surface with no grain direction — ideal for painted furniture, but swells when damp</div>
+          <div class="mi" data-id="2" onclick="sm(this,'d')">The only common softwood that can be used untreated outdoors — weathers to a natural silvery grey</div>
+          <div class="mi" data-id="8" onclick="sm(this,'d')">Reddish-brown tropical hardwood, fine straight grain, easy to finish — but always specify FSC-certified</div>
+          <div class="mi" data-id="7" onclick="sm(this,'d')">Hard, close-grained, pale pinkish-brown European hardwood — used for chairs, workbenches and tool handles</div>
+          <div class="mi" data-id="3" onclick="sm(this,'d')">Made from wood chips and glue — cheap but very weak when damp; used for flat-pack furniture</div>
+          <div class="mi" data-id="5" onclick="sm(this,'d')">Soft tropical hardwood with even, close grain — used for model making, moulds and vacuum forming formers</div>
+          <div class="mi" data-id="1" onclick="sm(this,'d')">Strong, tough and flexible European hardwood — absorbs shock, used for cricket bats and tool handles</div>
+        </div>
+      </div>
+      <button class="reset-btn" style="margin-top:14px;" onclick="resetMatch()">↺ Reset</button>
+      <div id="mDone" style="display:none;margin-top:12px;font-size:14px;font-weight:600;color:var(--green);background:var(--green-l);padding:10px 16px;border-radius:8px;">🎉 All 8 matched correctly — excellent knowledge of timber properties!</div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 3: TRUE/FALSE -->
+  <div class="act-block">
+    <div class="act-head"><h3>Activity 3 — True or False?</h3><div class="act-badge">Test understanding</div></div>
+    <div class="act-body">
+      <div class="act-instr">📝 Read each statement carefully. Several test common misconceptions that frequently appear in exam answers. Read the explanation after each question carefully.</div>
+      <div class="tf-item">
+        <div class="tf-stmt">1. Balsa is not a hardwood — it is classified as a softwood because it is very soft and easy to cut.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,1)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,1)">False</button></div>
+        <div class="tf-fb" id="tf1">❌ <strong>False — this is one of the most common exam mistakes!</strong> Balsa IS a hardwood. The classification "hardwood" refers to the TYPE of tree it comes from (a deciduous, broad-leaved tree), NOT the hardness of the wood. Balsa comes from a broad-leaved tropical tree and is therefore classified as a hardwood — despite being the softest commercial timber available.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">2. Larch is the only common softwood that can be used outdoors without chemical treatment because it is naturally tough, durable and water-resistant.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,true,2)">True</button><button class="tf-btn fb" onclick="chkTF(this,true,2)">False</button></div>
+        <div class="tf-fb" id="tf2">✅ <strong>True.</strong> Larch is unusual among softwoods — most softwoods like pine will rot if left outdoors untreated, but larch has a high natural oil content that makes it resistant to water and decay. It is used for exterior cladding on buildings and small boats. It also naturally weathers to an attractive silvery grey colour when left untreated outdoors — this is normal and not a sign of deterioration.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">3. Plywood is stronger when cut to an even number of layers (e.g. 4 or 6 layers) because an even number creates perfect balance between the two surfaces.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,3)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,3)">False</button></div>
+        <div class="tf-fb" id="tf3">❌ <strong>False.</strong> Plywood is always made with an ODD number of veneer layers (3, 5, 7...). An odd number ensures that the top and bottom surfaces always have their grain running in the SAME direction, which balances the internal stresses and prevents the board from warping. An even number would create unbalanced stresses between the two surfaces, causing the board to bow.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">4. FSC certification guarantees that a timber product was made from tropical hardwood forests that are being responsibly replanted and managed.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,4)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,4)">False</button></div>
+        <div class="tf-fb" id="tf4">❌ <strong>False — but only because of the word "tropical".</strong> FSC certification applies to ALL types of forests — not just tropical ones. It guarantees that the timber (whether softwood, European hardwood, or tropical hardwood) comes from a forest where trees are replanted as they are cut, biodiversity is protected, and the rights of local communities are respected. The certification is about sustainable management of any forest, not specifically tropical forests.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">5. Seasoned timber is weaker than freshly cut "green" timber because drying removes the moisture that gives the wood its flexibility.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,5)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,5)">False</button></div>
+        <div class="tf-fb" id="tf5">❌ <strong>False — this is the opposite of the truth!</strong> Seasoned (dried) timber is STRONGER, more stable, and easier to work than freshly cut green timber. Freshly cut timber contains up to 85% water. As this moisture evaporates after cutting, unseasoned timber shrinks, warps, twists, and cracks — making it unsuitable for furniture or joinery. Properly seasoned timber (10–18% moisture) is more dimensionally stable, stronger, and will not continue to move after the product is made.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">6. MDF is preferable to chipboard for outdoor garden furniture because its smooth, uniform surface accepts paint and varnish better.</div>
+        <div class="tf-btns"><button class="tf-btn tb" onclick="chkTF(this,false,6)">True</button><button class="tf-btn fb" onclick="chkTF(this,false,6)">False</button></div>
+        <div class="tf-fb" id="tf6">❌ <strong>False.</strong> Neither MDF nor chipboard is suitable for outdoor furniture. Both are manufactured boards that absorb moisture readily and will swell, delaminate, and lose their structural integrity when exposed to weather. MDF is particularly bad outdoors — it absorbs water rapidly at its edges and swells badly. For outdoor furniture, natural timbers with good durability (larch, oak, cedar) or treated softwood (tanalised pine) should be specified instead.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 5. EXAM LANGUAGE ══════════ -->
+<div id="sec-exam" class="section">
+  <div class="sec-head"><h2>Exam Language &amp; Practice</h2><p>The Timbers Section B exam requires you to select and justify timber choices for given products. These frames and model answers show exactly how to structure your responses.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Model Then Modify:</strong> Read the model answer, then close it. Choose a DIFFERENT product and write your own answer applying the same sentence structure but with a different timber. For example, if the model answer is about a dining table and oak, rewrite it for a children's toy and beech. This forces active language use.</div>
+
+  <div class="cmd-grid">
+    <div class="cmd-card"><div class="cmd-word">State / Give</div><div class="cmd-means">One word or phrase. No explanation. One mark per correct item.</div><span class="cmd-marks">1 mark each</span></div>
+    <div class="cmd-card"><div class="cmd-word">Describe</div><div class="cmd-means">Say what something is or what it looks like. Give specific features — not just "strong" but "hard, close-grained, pale pinkish-brown."</div><span class="cmd-marks">1–2 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Explain</div><div class="cmd-means">State a property AND explain WHY it makes the timber suitable for that specific product. Use: <em>"because... this means that..."</em></div><span class="cmd-marks">2–4 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Justify</div><div class="cmd-means">Give reasons WHY a specific timber is the most appropriate choice for the product context given. Link properties to product requirements.</div><span class="cmd-marks">3–4 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Evaluate</div><div class="cmd-means">Compare two timbers — give advantages AND disadvantages of each choice in context. Reach a conclusion about which is more appropriate and why.</div><span class="cmd-marks">6–9 marks</span></div>
+    <div class="cmd-card"><div class="cmd-word">Give properties</div><div class="cmd-means">List specific physical or working properties. Each accurate named property earns 1 mark. Vague answers ("it is good") earn no marks.</div><span class="cmd-marks">1 mark each</span></div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:14px;padding-bottom:9px;border-bottom:2px solid var(--border);">✍️ Sentence Frames for Timber Selection Questions</h3>
+
+  <div class="frame-card">
+    <div class="frame-type">Justifying a timber choice (2–3 marks)</div>
+    <div class="frame-body">
+      <div class="frame-tpl"><span class="blank">[Timber name]</span> would be the most suitable choice because it has <span class="blank">[specific property]</span>. This is important for this product because <span class="blank">[why that property is needed for this product]</span>. Furthermore, <span class="blank">[second property/reason]</span>.</div>
+      <div class="frame-ex">"<strong>Oak</strong> would be the most suitable choice because it has <strong>excellent hardness and natural durability</strong>. This is important for a kitchen worktop because <strong>it will be subject to daily cutting, scratching, and exposure to moisture — properties that oak can withstand without deteriorating</strong>. Furthermore, <strong>oak has an attractive grain pattern that enhances the visual appeal of a kitchen</strong>."</div>
+    </div>
+  </div>
+
+  <div class="frame-card">
+    <div class="frame-type">Explaining an environmental consideration (2 marks)</div>
+    <div class="frame-body">
+      <div class="frame-tpl">When selecting <span class="blank">[timber]</span> for this product, an important environmental consideration is <span class="blank">[issue]</span>. To minimise this impact, the designer should <span class="blank">[action]</span>.</div>
+      <div class="frame-ex">"When selecting <strong>mahogany</strong> for this product, an important environmental consideration is <strong>deforestation — mahogany is a tropical hardwood and unsustainable logging has destroyed large areas of rainforest</strong>. To minimise this impact, the designer should <strong>specify FSC-certified mahogany from a sustainably managed source, or consider using an alternative European hardwood such as oak instead</strong>."</div>
+    </div>
+  </div>
+
+  <div class="frame-card">
+    <div class="frame-type">Comparing manufactured board vs solid timber (4 marks)</div>
+    <div class="frame-body">
+      <div class="frame-tpl">While <span class="blank">[solid timber]</span> would provide <span class="blank">[advantage]</span>, using <span class="blank">[manufactured board]</span> would be more appropriate for this product because <span class="blank">[reason]</span>. However, a disadvantage of <span class="blank">[manufactured board]</span> is that <span class="blank">[disadvantage]</span>.</div>
+      <div class="frame-ex">"While <strong>solid pine</strong> would provide <strong>a natural aesthetic and good strength</strong>, using <strong>MDF</strong> would be more appropriate for this painted speaker cabinet because <strong>it has no grain direction, allowing it to be machined to precise dimensions, and its smooth surface accepts paint without needing a grain filler</strong>. However, a disadvantage of <strong>MDF</strong> is that <strong>it is heavy and will swell badly if exposed to moisture at its edges, making it unsuitable if the product will ever be used in damp environments</strong>."</div>
+    </div>
+  </div>
+
+  <div style="margin-top:28px;margin-bottom:14px;"><h2 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);">📝 Practice Exam Questions</h2></div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Q1 · Timber Properties · 1 mark</span><span class="eq-marks">1 mark</span></div>
+    <div class="eq-body">
+      <div class="eq-text">Give one type of timber you would use to make a table top for a children's nursery.</div>
+      <div class="eq-hint">💡 Think about what a nursery table needs: hard wearing for scratches, safe (no toxic finishes), attractive, affordable. One named timber is enough — 1 mark.</div>
+      <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans"><div class="mp"><div class="mpn">1</div><div><strong>Beech.</strong> (Also acceptable: pine — with treatment; MDF — with non-toxic painted surface)</div></div><div style="margin-top:7px;font-size:13px;color:#555;">✏️ For 1 mark, just the timber name is enough. But if this were 2 marks, you would also need: "because it is hard, smooth-grained and takes a clean painted or varnished surface that is resistant to the scratching and knocks that a children's nursery table receives."</div></div>
+    </div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Q2 · Ecological Footprint · 4 marks</span><span class="eq-marks">4 marks</span></div>
+    <div class="eq-body">
+      <div class="eq-text">Explain two negative impacts of deforestation on the environment.</div>
+      <div class="eq-hint">💡 <strong>Language hint:</strong> Two marks = two separate, developed points. Each point needs: what happens + why it is harmful. Use: <em>"When forests are cleared... this causes... because..."</em></div>
+      <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans">
+        <div class="mp"><div class="mpn">1</div><div><strong>Habitat destruction:</strong> When large areas of forest are cleared, the animals that live there lose their homes and food sources. Animals such as tigers, gorillas, and orangutans are forced into smaller areas, reducing biodiversity and putting many species at risk of extinction.</div></div>
+        <div class="mp"><div class="mpn">2</div><div><strong>Increased atmospheric CO₂:</strong> Living trees absorb carbon dioxide from the atmosphere. When forests are cut down and burned, the stored carbon is released as CO₂, contributing to the greenhouse effect and accelerating climate change. Global deforestation releases approximately 4.8 billion tonnes of CO₂ per year.</div></div>
+        <div style="margin-top:7px;font-size:13px;color:#555;">✏️ Also acceptable for a third point: soil erosion (tree roots hold soil together; without them, topsoil washes away, causing landslides and reducing land fertility for communities).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-head"><span>Q3 · Timber Selection · 6 marks</span><span class="eq-marks">6 marks</span></div>
+    <div class="eq-body">
+      <div class="eq-text">Evaluate the use of <strong>chipboard</strong> compared to <strong>solid oak</strong> for making a kitchen cabinet. Consider cost, durability, environmental impact, and aesthetics in your answer.</div>
+      <div class="eq-hint">💡 <strong>Language hint:</strong> For 6 marks, give at least one advantage AND one disadvantage for each material, covering at least 3 of the 4 criteria listed. End with an overall recommendation. Use: <em>"However... Furthermore... Overall..."</em></div>
+      <button class="show-ans-btn" onclick="togAns(this)">👁 Show Model Answer</button>
+      <div class="model-ans">
+        <div class="mp"><div class="mpn">1</div><div><strong>Cost:</strong> Chipboard is significantly cheaper than solid oak because it uses waste timber chips and can be mass-produced efficiently. This makes it the dominant material for budget kitchen cabinets and flat-pack furniture. However, solid oak cabinets represent a long-term investment — they will last for decades, while chipboard cabinets may need replacing within 5–10 years, particularly if exposed to steam or moisture in a kitchen.</div></div>
+        <div class="mp"><div class="mpn">2</div><div><strong>Durability:</strong> This is chipboard's major weakness in a kitchen environment. The edges of chipboard absorb moisture rapidly, causing swelling and delamination — particularly around dishwashers, sinks, and steam. Solid oak is naturally moisture-resistant (when properly finished) and will withstand the humid kitchen environment for many years without structural failure.</div></div>
+        <div class="mp"><div class="mpn">3</div><div><strong>Environmental impact:</strong> Paradoxically, chipboard can be more environmentally responsible — it uses waste wood chips that would otherwise be discarded. Solid oak requires the harvesting of slow-growing trees. However, chipboard cabinets fail sooner and go to landfill more quickly, while a well-maintained oak kitchen could last a lifetime.</div></div>
+        <div class="mp"><div class="mpn">4</div><div><strong>Aesthetics:</strong> Solid oak has a beautiful natural grain that cannot be replicated by chipboard. However, chipboard with a realistic wood veneer or laminate surface is visually acceptable for most consumers and allows a wider range of colours and finishes. Solid oak is considered a premium aesthetic choice associated with quality craftsmanship.</div></div>
+        <div style="margin-top:10px;padding:9px 13px;background:#f0fef9;border-radius:8px;font-size:13.5px;"><strong>Overall:</strong> For a budget kitchen, chipboard with a moisture-resistant laminate (melamine-faced chipboard) is a practical choice if properly sealed. For a premium kitchen designed to last 20+ years, solid oak is a more appropriate choice despite the higher initial cost — the long lifespan and natural beauty justify the investment, and the lower environmental impact over a longer product life makes it the more sustainable long-term option.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 6. ESL TOOLKIT ══════════ -->
+<div id="sec-toolkit" class="section">
+  <div class="sec-head"><h2>ESL Language Toolkit</h2><p>Word roots, simplified synonyms, topic-specific phrases, and common exam mistakes — specific to the Timbers topic.</p></div>
+  <div class="esl-tip"><strong>📌 ESL Strategy — Word Families:</strong> For every timber property word you learn, find the noun, verb, adjective, and adverb forms. For example: <em>durable (adj) → durability (noun) → to last / to withstand (verb) → durably (adv)</em>. Knowing the whole word family means you can write more varied and accurate exam answers.</div>
+  <div class="tk-grid">
+    <div class="tk-card">
+      <div class="tk-head tkh-navy">🔤 Key Word Roots for Timbers</div>
+      <div class="tk-body">
+        <table class="pre-tbl">
+          <tr><th>Root</th><th>Meaning</th><th>Timber Examples</th></tr>
+          <tr><td class="pfx">decid-</td><td>to fall (leaves)</td><td>deciduous, deciduous tree</td></tr>
+          <tr><td class="pfx">conifer-</td><td>cone-bearing</td><td>coniferous, conifer tree</td></tr>
+          <tr><td class="pfx">dur-</td><td>to last / hard</td><td>durable, durability, endure</td></tr>
+          <tr><td class="pfx">de-</td><td>removal/undoing</td><td>deforestation, decompose</td></tr>
+          <tr><td class="pfx">forest-</td><td>woodland</td><td>deforestation, forestry, afforestation</td></tr>
+          <tr><td class="pfx">season-</td><td>time of year → to age</td><td>seasoning, seasoned timber</td></tr>
+          <tr><td class="pfx">grain</td><td>texture, fibres</td><td>grain direction, close-grained, open-grained</td></tr>
+          <tr><td class="pfx">veneer</td><td>thin layer (French)</td><td>veneered surface, veneering process</td></tr>
+          <tr><td class="pfx">obsolesc-</td><td>to become old/outdated</td><td>obsolescence, obsolete</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="tk-card">
+      <div class="tk-head tkh-brown">🔄 Technical Term → Plain English</div>
+      <div class="tk-body">
+        <div class="syn-p"><span class="syn-c">Deciduous</span><span class="syn-a">→</span><span class="syn-s">A tree that loses its leaves in winter (broad leaves)</span></div>
+        <div class="syn-p"><span class="syn-c">Coniferous</span><span class="syn-a">→</span><span class="syn-s">A tree with needles and cones (evergreen)</span></div>
+        <div class="syn-p"><span class="syn-c">Seasoning</span><span class="syn-a">→</span><span class="syn-s">Drying timber to reduce its water content</span></div>
+        <div class="syn-p"><span class="syn-c">Open-grained</span><span class="syn-a">→</span><span class="syn-s">Timber with large, visible fibres on the surface (coarse)</span></div>
+        <div class="syn-p"><span class="syn-c">Close-grained</span><span class="syn-a">→</span><span class="syn-s">Timber with tight, small fibres — smooth surface</span></div>
+        <div class="syn-p"><span class="syn-c">Tanalised</span><span class="syn-a">→</span><span class="syn-s">Timber chemically treated under pressure to resist rot outdoors</span></div>
+        <div class="syn-p"><span class="syn-c">FSC certification</span><span class="syn-a">→</span><span class="syn-s">A label proving timber comes from sustainable, replanted forests</span></div>
+        <div class="syn-p"><span class="syn-c">Built-in obsolescence</span><span class="syn-a">→</span><span class="syn-s">Designing products to fail after a short time so consumers buy new ones</span></div>
+        <div class="syn-p"><span class="syn-c">Ecological footprint</span><span class="syn-a">→</span><span class="syn-s">The total environmental impact of producing, using, and disposing of a product</span></div>
+      </div>
+    </div>
+    <div class="tk-card">
+      <div class="tk-head tkh-green">🔗 Useful Phrases for Timber Questions</div>
+      <div class="tk-body">
+        <ul class="con-list">
+          <li><span class="con-chip">[Timber] is suitable because...</span> core justification opener</li>
+          <li><span class="con-chip">Its [property] means that...</span> links a property to a practical consequence</li>
+          <li><span class="con-chip">Unlike solid timber, [board]...</span> introduces manufactured board comparison</li>
+          <li><span class="con-chip">To minimise environmental impact,...</span> introduces a sustainability solution</li>
+          <li><span class="con-chip">FSC-certified [timber] should be specified to...</span> environmental exam language</li>
+          <li><span class="con-chip">A disadvantage is that [timber] has...</span> introduces a weakness</li>
+          <li><span class="con-chip">Despite being classified as a hardwood,...</span> for balsa/jelutong questions</li>
+          <li><span class="con-chip">The grain structure of [timber] means...</span> links grain to machining/finishing</li>
+          <li><span class="con-chip">For exterior use, [timber] would be more appropriate because...</span> durability comparison</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tk-card" style="grid-column:1/-1;">
+      <div class="tk-head tkh-teal">🚨 Common ESL Mistakes — Timbers Topic</div>
+      <div class="tk-body">
+        <table class="pre-tbl">
+          <tr><th style="width:32%">❌ Avoid writing this</th><th style="width:38%">✅ Write this instead</th><th>Why?</th></tr>
+          <tr><td>"Balsa is a softwood because it is soft"</td><td>"Balsa is a <strong>hardwood</strong> because it comes from a broad-leaved deciduous tree. However, it is the <strong>lightest and softest</strong> commercial timber available."</td><td>Hardwood/softwood classification is about the TYPE of tree, not the hardness</td></tr>
+          <tr><td>"You should use sustainable wood"</td><td>"The designer should specify <strong>FSC-certified timber from sustainably managed forests</strong> to ensure that for every tree cut, another is planted"</td><td>Vague advice earns no marks — be specific about FSC certification and what it means</td></tr>
+          <tr><td>"MDF is good for outdoor furniture"</td><td>"MDF is <strong>not suitable for outdoor use</strong> as it absorbs moisture rapidly, causing the edges to swell and the board to <strong>lose structural integrity</strong>"</td><td>MDF and chipboard are BOTH unsuitable outdoors — a very common mistake</td></tr>
+          <tr><td>"Oak is expensive and heavy"</td><td>"Oak is <strong>durable, hard, and has an attractive open grain</strong>. Its high cost is justified for products where longevity and aesthetics are a priority, such as fine furniture."</td><td>Disadvantages must be balanced with relevant advantages for context</td></tr>
+          <tr><td>"Deforestation is bad for animals"</td><td>"Deforestation destroys the habitat of animals including tigers and gorillas, causing <strong>biodiversity loss and threatening species with extinction</strong>. It also releases stored CO₂, <strong>accelerating climate change</strong>."</td><td>Name specific consequences — vague statements earn few or no marks</td></tr>
+          <tr><td>"Seasoning makes timber stronger"</td><td>"Seasoning reduces timber's moisture content to 10–18%, <strong>preventing it from warping, shrinking, or cracking</strong> after it has been used in a product — making it <strong>dimensionally stable and stronger</strong> in use."</td><td>Explain the mechanism — HOW and WHY does drying make timber more suitable?</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 7. IMAGE GUIDE ══════════ -->
+<div id="sec-imgguide" class="section">
+  <div class="sec-head"><h2>🖼️ Image Guide — Where to Add Your Photos</h2><p>14 image slots across this pack. The most important are Slots 1 (world map), 5 (plywood cross-section), 8 (deforestation), and 9 (FSC logo) — all of which appear directly in exam-style questions.</p></div>
+  <div class="esl-tip"><strong>📌 How to add images:</strong> Open the HTML in Notepad. Find <code>&lt;img src="" alt="..."&gt;</code> inside the relevant slot. Replace <code>src=""</code> with your image file path (e.g. <code>src="images/oak_grain.jpg"</code>). Save and refresh. Alternatively, upload images here and I will embed them as Base64 for a fully self-contained file.</div>
+  <table class="ig-tbl">
+    <tr><th>#</th><th>Section</th><th>What to add</th><th>Search / Source</th></tr>
+    <tr><td><span class="islot islot-star">Slot 1 ⭐</span></td><td>Hardwoods panel (top)</td><td>World map of timber origins — textbook p.279 Figure 7.2.1 showing cold/Alpine (blue), temperate European (green), and tropical Amazonian (yellow/orange) forest regions colour-coded</td><td>Photograph or scan textbook p.279</td></tr>
+    <tr><td><span class="islot">Slot 2</span></td><td>Hardwoods panel (left)</td><td>Oak grain close-up — the distinctive open grain and visible vessels that make oak aesthetically distinctive</td><td>Search: "oak timber grain close up texture"</td></tr>
+    <tr><td><span class="islot">Slot 3</span></td><td>Hardwoods panel (right)</td><td>Balsa in use — being cut or shaped for a model aircraft, prototype, or architectural model</td><td>Search: "balsa wood model making lightweight aircraft"</td></tr>
+    <tr><td><span class="islot">Slot 4</span></td><td>Softwoods panel</td><td>Larch exterior cladding — modern building showing natural silvery-grey weathering of untreated larch boards</td><td>Search: "larch timber cladding exterior building weathered"</td></tr>
+    <tr><td><span class="islot islot-star">Slot 5 ⭐</span></td><td>Manufactured Boards panel (left)</td><td>Plywood cross-section — clearly showing alternating veneer layers with grain directions at 90° to each other</td><td>Search: "plywood cross section veneer layers grain" or photograph a plywood sheet edge in the workshop</td></tr>
+    <tr><td><span class="islot">Slot 6</span></td><td>Manufactured Boards panel (right)</td><td>MDF vs chipboard edge comparison — showing the smooth fine fibres of MDF edge vs the rough visible chips of chipboard edge</td><td>Search: "MDF chipboard edge comparison" or photograph workshop samples</td></tr>
+    <tr><td><span class="islot">Slot 7</span></td><td>Properties panel</td><td>Knots in timber — pine board showing grain swirling around a knot point. Textbook p.280 has this exact image.</td><td>Photograph or scan textbook p.280, OR photograph a pine board in the workshop</td></tr>
+    <tr><td><span class="islot islot-star">Slot 8 ⭐</span></td><td>Origins &amp; Footprint panel (left)</td><td>Deforestation aerial photo — cleared area next to intact forest showing scale of the problem. Textbook p.282 has this image.</td><td>Photograph or scan textbook p.282</td></tr>
+    <tr><td><span class="islot">Slot 9</span></td><td>Origins &amp; Footprint panel (right)</td><td>FSC Forest Stewardship Council logo — on a timber product or packaging. Textbook p.281 shows the FSC logo.</td><td>Photograph or scan textbook p.281 FSC logo image</td></tr>
+    <tr><td><span class="islot">Slot 10</span></td><td>Selection panel (left)</td><td>Tanalised/pressure-treated timber — green-tinted timber used for fence posts or decking, showing its distinctive colour</td><td>Search: "tanalised pressure treated timber green fence post"</td></tr>
+    <tr><td><span class="islot">Slot 11</span></td><td>Selection panel (right)</td><td>Kiln drying / air seasoning — timber stacked in a kiln chamber or stacked outdoors with spacers for air drying</td><td>Search: "kiln drying timber lumber" or "air seasoning timber stacked planks"</td></tr>
+  </table>
+  <div style="margin-top:20px;background:var(--brown-l);border-left:4px solid var(--brown);padding:13px 18px;border-radius:0 10px 10px 0;font-size:13.5px;color:#5c2a00;">
+    <strong>📌 Workshop photography tip:</strong> You have direct access to excellent timber images in your own workshop. Photograph: cross-sections of different timber types side by side, plywood edges showing the veneer layers, MDF and chipboard edge samples, knots in pine boards, and any FSC-labelled timber products or packaging. These workshop photographs are always more relevant to students than stock images, and you own the copyright.
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<footer>
+  <strong>Edexcel GCSE Design &amp; Technology</strong> · Topics 7.2 &amp; 7.3 · Sources, Properties &amp; Selection of Timbers · Specialist Content<br>
+  Cross-referenced with Pearson Edexcel Specification (Issue 4, Nov 2022) and Timbers Textbook (pp. 277–287) · Section B · For educational use only
+</footer>
+
+<script>
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('sec-'+id).classList.add('active');event.currentTarget.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function fv(t,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.vc').forEach(c=>{c.style.display=(t==='all'||c.dataset.topic===t)?'block':'none';});}
+function showTopic(id,btn){document.querySelectorAll('.topic-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tp-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tp-'+id).classList.add('active');btn.classList.add('active');}
+let selChip=null;
+document.querySelectorAll('.wchip').forEach(c=>{c.addEventListener('click',function(){document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));selChip=this.dataset.word;this.classList.add('sel');});});
+document.querySelectorAll('.gf').forEach(inp=>{inp.addEventListener('click',function(){if(selChip){this.value=selChip;selChip=null;document.querySelectorAll('.wchip').forEach(x=>x.classList.remove('sel'));}});inp.addEventListener('input',function(){this.classList.remove('correct','incorrect');});});
+function checkGF(cid,sid){const ins=document.getElementById(cid).querySelectorAll('.gf');let ok=0;ins.forEach(i=>{const pass=i.value.toLowerCase().trim()===i.dataset.answer.toLowerCase().trim();i.classList.toggle('correct',pass);i.classList.toggle('incorrect',!pass);if(pass)ok++;});const s=document.getElementById(sid);const p=ok/ins.length;s.className='score-box show '+(p>=.85?'good':p>=.5?'ok':'low');s.style.display='inline-flex';s.innerHTML=(p>=.85?'🎉':p>=.5?'👍':'📚')+` Score: ${ok}/${ins.length}`+(p>=.85?' — Excellent!':p>=.5?' — Good effort!':" — Keep revising!");}
+function resetGF(cid,sid,wid){document.getElementById(cid).querySelectorAll('.gf').forEach(i=>{i.value='';i.classList.remove('correct','incorrect');});const s=document.getElementById(sid);s.className='score-box';s.style.display='none';if(wid)document.getElementById(wid).querySelectorAll('.wchip').forEach(c=>c.classList.remove('sel'));selChip=null;}
+let mSel={w:null,d:null},mCnt=0;
+function sm(el,t){if(el.classList.contains('matched'))return;if(mSel[t])mSel[t].classList.remove('sel');mSel[t]=el;el.classList.add('sel');if(mSel.w&&mSel.d){if(mSel.w.dataset.id===mSel.d.dataset.id){[mSel.w,mSel.d].forEach(e=>{e.classList.add('matched');e.classList.remove('sel');});mCnt++;if(mCnt===8)document.getElementById('mDone').style.display='block';}else{[mSel.w,mSel.d].forEach(e=>{e.classList.add('wrong');setTimeout(()=>{e.classList.remove('wrong','sel');},600);});setTimeout(()=>{mSel={w:null,d:null};},600);return;}mSel={w:null,d:null};}}
+function resetMatch(){document.querySelectorAll('.mi').forEach(e=>e.classList.remove('matched','sel','wrong'));mSel={w:null,d:null};mCnt=0;document.getElementById('mDone').style.display='none';}
+function chkTF(btn,correct,n){const isT=btn.classList.contains('tb');const pass=(isT===correct);const parent=btn.closest('.tf-item');parent.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);btn.classList.add(pass?'ca':'wa');if(!pass){const cb=correct?parent.querySelector('.tb'):parent.querySelector('.fb');cb.classList.add('ca');}const fb=document.getElementById('tf'+n);fb.className='tf-fb show '+(pass?'ok':'no');}
+function togAns(btn){const a=btn.nextElementSibling;if(a.classList.contains('show')){a.classList.remove('show');btn.textContent='👁 Show Model Answer';}else{a.classList.add('show');btn.textContent='🙈 Hide Model Answer';}}
+</script>
+</body>
+</html>
