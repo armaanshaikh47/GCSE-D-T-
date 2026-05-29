@@ -7,32 +7,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #0d1b2a;
-  --accent: #1d4ed8;
-  --accent-light: #dbeafe;
-  --amber: #d97706;
-  --amber-light: #fef3c7;
-  --teal: #0e7490;
-  --teal-light: #cffafe;
-  --green: #166534;
-  --green-light: #dcfce7;
-  --purple: #5b21b6;
-  --purple-light: #ede9fe;
-  --bg: #f0f4f8;
-  --card: #ffffff;
-  --text: #1e293b;
-  --muted: #64748b;
-  --border: #e2e8f0;
+  --navy:   #0d1b2a;
+  --blue:   #1d4ed8; --blue-light:   #dbeafe;
+  --amber:  #d97706; --amber-light:  #fef3c7;
+  --teal:   #0e7490; --teal-light:   #cffafe;
+  --green:  #166534; --green-light:  #dcfce7;
+  --purple: #5b21b6; --purple-light: #ede9fe;
+  --indigo: #3730a3; --indigo-light: #e0e7ff;
+  --rose:   #be123c; --rose-light:   #ffe4e6;
+  --orange: #c2410c; --orange-light: #ffedd5;
+  --bg: #f0f4f8; --card: #ffffff;
+  --text: #1e293b; --muted: #64748b; --border: #e2e8f0;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-}
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-/* HERO */
+/* ── HERO ── */
 .hero {
   background: linear-gradient(135deg, var(--navy) 60%, #1e3a8a);
   color: #fff;
@@ -43,19 +33,10 @@ body {
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent, transparent 48px,
-    rgba(255,255,255,0.03) 48px, rgba(255,255,255,0.03) 49px
-  );
+  background: repeating-linear-gradient(45deg,transparent,transparent 48px,rgba(255,255,255,0.03) 48px,rgba(255,255,255,0.03) 49px);
   pointer-events: none;
 }
-.hero-inner {
-  position: relative;
-  max-width: 860px;
-  margin: 0 auto;
-  text-align: center;
-}
+.hero-inner { position: relative; max-width: 860px; margin: 0 auto; text-align: center; }
 .hero-tag {
   display: inline-block;
   background: rgba(255,255,255,0.12);
@@ -79,155 +60,134 @@ body {
   color: #94a3b8;
   font-size: 1.05rem;
   max-width: 560px;
-  margin: 0 auto 28px;
+  margin: 0 auto 32px;
   line-height: 1.65;
 }
-.hero-stats {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-.stat {
-  text-align: center;
-}
-.stat-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: #fff;
-}
-.stat-label {
-  font-size: 0.78rem;
-  color: #64748b;
-  margin-top: 2px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
+.hero-stats { display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; }
+.stat-num { font-family: 'DM Mono', monospace; font-size: 1.6rem; color: #fff; }
+.stat-label { font-size: 0.75rem; color: #64748b; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
 
-/* GRID */
-.main {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 48px 24px 64px;
-}
-.section-label {
+/* ── LAYOUT ── */
+.main { max-width: 1040px; margin: 0 auto; padding: 52px 24px 72px; }
+
+.section { margin-bottom: 48px; }
+.section-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 20px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--navy); }
+.section-count {
   font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--muted);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 20px;
 }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
+.section-rule { height: 1px; background: var(--border); margin-bottom: 20px; }
 
-/* CARDS */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(284px, 1fr)); gap: 18px; }
+
+/* ── CARDS ── */
 .card {
   background: var(--card);
-  border-radius: 16px;
-  padding: 28px 24px 24px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.07), 0 4px 20px rgba(0,0,0,0.04);
+  border-radius: 14px;
+  padding: 24px 22px 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 3px 16px rgba(0,0,0,0.04);
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  border-top: 4px solid var(--accent);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  cursor: pointer;
+  gap: 12px;
+  border-top: 4px solid var(--blue);
+  transition: transform 0.17s ease, box-shadow 0.17s ease;
 }
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 28px rgba(0,0,0,0.12);
-}
-.card.amber  { border-top-color: var(--amber); }
-.card.teal   { border-top-color: var(--teal); }
-.card.green  { border-top-color: var(--green); }
-.card.purple { border-top-color: var(--purple); }
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.11); }
+
+/* colour variants */
+.c-blue   { border-top-color: var(--blue); }
+.c-amber  { border-top-color: var(--amber); }
+.c-teal   { border-top-color: var(--teal); }
+.c-green  { border-top-color: var(--green); }
+.c-purple { border-top-color: var(--purple); }
+.c-indigo { border-top-color: var(--indigo); }
+.c-rose   { border-top-color: var(--rose); }
+.c-orange { border-top-color: var(--orange); }
 
 .card-icon {
-  width: 44px;
-  height: 44px;
+  width: 42px; height: 42px;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.35rem;
-  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
 }
-.card.accent .card-icon { background: var(--accent-light); }
-.card.amber  .card-icon { background: var(--amber-light); }
-.card.teal   .card-icon { background: var(--teal-light); }
-.card.green  .card-icon { background: var(--green-light); }
-.card.purple .card-icon { background: var(--purple-light); }
+.c-blue   .card-icon { background: var(--blue-light); }
+.c-amber  .card-icon { background: var(--amber-light); }
+.c-teal   .card-icon { background: var(--teal-light); }
+.c-green  .card-icon { background: var(--green-light); }
+.c-purple .card-icon { background: var(--purple-light); }
+.c-indigo .card-icon { background: var(--indigo-light); }
+.c-rose   .card-icon { background: var(--rose-light); }
+.c-orange .card-icon { background: var(--orange-light); }
 
 .card-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  padding: 3px 9px;
-  border-radius: 10px;
+  font-size: 0.68rem;
+  padding: 2px 8px;
+  border-radius: 8px;
   display: inline-block;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
-.card.accent .card-tag { background: var(--accent-light); color: var(--accent); }
-.card.amber  .card-tag { background: var(--amber-light);  color: var(--amber); }
-.card.teal   .card-tag { background: var(--teal-light);   color: var(--teal); }
-.card.green  .card-tag { background: var(--green-light);  color: var(--green); }
-.card.purple .card-tag { background: var(--purple-light); color: var(--purple); }
+.c-blue   .card-tag { background: var(--blue-light);   color: var(--blue); }
+.c-amber  .card-tag { background: var(--amber-light);  color: var(--amber); }
+.c-teal   .card-tag { background: var(--teal-light);   color: var(--teal); }
+.c-green  .card-tag { background: var(--green-light);  color: var(--green); }
+.c-purple .card-tag { background: var(--purple-light); color: var(--purple); }
+.c-indigo .card-tag { background: var(--indigo-light); color: var(--indigo); }
+.c-rose   .card-tag { background: var(--rose-light);   color: var(--rose); }
+.c-orange .card-tag { background: var(--orange-light); color: var(--orange); }
 
 .card h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--navy);
   line-height: 1.35;
   margin: 0;
 }
 .card p {
-  font-size: 0.875rem;
+  font-size: 0.855rem;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.62;
   flex: 1;
 }
 .card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 4px;
-  padding-top: 14px;
+  padding-top: 13px;
   border-top: 1px solid var(--border);
+  margin-top: auto;
 }
 .card-footer span {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--muted);
   font-family: 'DM Mono', monospace;
 }
-.card-arrow {
-  width: 28px;
-  height: 28px;
+.arrow {
+  width: 26px; height: 26px;
   border-radius: 50%;
   background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.82rem;
   transition: background 0.15s;
 }
-.card:hover .card-arrow { background: var(--border); }
+.card:hover .arrow { background: var(--border); }
 
-/* FOOTER */
+/* ── FOOTER ── */
 footer {
   text-align: center;
-  padding: 28px 24px 40px;
+  padding: 24px 24px 40px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   border-top: 1px solid var(--border);
 }
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
   .hero { padding: 48px 20px 40px; }
   .hero-stats { gap: 20px; }
   .grid { grid-template-columns: 1fr; }
@@ -240,85 +200,206 @@ footer {
   <div class="hero-inner">
     <div class="hero-tag">GCSE Design &amp; Technology</div>
     <h1>Your <span>Revision Hub</span></h1>
-    <p>All revision packs in one place. Click any card to open the full interactive pack.</p>
+    <p>All revision packs in one place — click any card to open the full interactive pack.</p>
     <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">4</div>
+      <div>
+        <div class="stat-num">14</div>
         <div class="stat-label">Revision Packs</div>
       </div>
-      <div class="stat">
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Sections</div>
+      </div>
+      <div>
         <div class="stat-num">AQA</div>
         <div class="stat-label">Specification</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">G10</div>
-        <div class="stat-label">Year Group</div>
       </div>
     </div>
   </div>
 </header>
 
 <main class="main">
-  <p class="section-label">All packs</p>
-  <div class="grid">
 
-    <a class="card amber" href="G10_DT_MockExam_Revision_Pack_3Lessons.html">
-      <div class="card-icon">📝</div>
-      <div>
-        <div class="card-tag">Mock Exam</div>
-        <h2>G10 Mock Exam Revision Sprint</h2>
-      </div>
-      <p>A focused 3-lesson sprint covering everything you need before your mock. Structured timings, activities, and exam technique tips.</p>
-      <div class="card-footer">
-        <span>3 lessons</span>
-        <div class="card-arrow">→</div>
-      </div>
-    </a>
+  <!-- ── EXAM PREP ── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-title">Exam Prep</span>
+      <span class="section-count">1 pack</span>
+    </div>
+    <div class="section-rule"></div>
+    <div class="grid">
 
-    <a class="card teal" href="new_emerging_technologies_revision_pack.html">
-      <div class="card-icon">🔬</div>
-      <div>
-        <div class="card-tag">Topic Pack</div>
-        <h2>New &amp; Emerging Technologies</h2>
-      </div>
-      <p>Explore how new technologies are changing the world — from smart materials to Industry 4.0, robotics, and the circular economy.</p>
-      <div class="card-footer">
-        <span>Full revision pack</span>
-        <div class="card-arrow">→</div>
-      </div>
-    </a>
+      <a class="card c-amber" href="G10_DT_MockExam_Revision_Pack_3Lessons.html">
+        <div class="card-icon">📝</div>
+        <div>
+          <div class="card-tag">Mock Exam</div>
+          <h2>G10 Mock Exam Revision Sprint</h2>
+        </div>
+        <p>A focused 3-lesson sprint covering everything you need before your mock. Structured timings, activities, and exam technique tips.</p>
+        <div class="card-footer"><span>3 lessons</span><div class="arrow">→</div></div>
+      </a>
 
-    <a class="card accent" href="topic_1_2_critical_evaluation_revision_pack.html">
-      <div class="card-icon">⚖️</div>
-      <div>
-        <div class="card-tag">Topic 1.2</div>
-        <h2>Critical Evaluation of New &amp; Emerging Technologies</h2>
-      </div>
-      <p>Learn to critically evaluate technologies — social, moral, ethical, and environmental impacts, plus structured argument frameworks.</p>
-      <div class="card-footer">
-        <span>Topic 1.2</span>
-        <div class="card-arrow">→</div>
-      </div>
-    </a>
+    </div>
+  </section>
 
-    <a class="card green" href="topic_1_3_energy_revision_pack.html">
-      <div class="card-icon">⚡</div>
-      <div>
-        <div class="card-tag">Topic 1.3</div>
-        <h2>Energy Generation, Storage &amp; Sources</h2>
-      </div>
-      <p>Covers renewable and non-renewable energy sources, energy storage technologies, and sustainability in design contexts.</p>
-      <div class="card-footer">
-        <span>Topic 1.3</span>
-        <div class="card-arrow">→</div>
-      </div>
-    </a>
+  <!-- ── CORE TECHNOLOGY & MATERIALS ── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-title">Core Technology &amp; Materials</span>
+      <span class="section-count">9 packs</span>
+    </div>
+    <div class="section-rule"></div>
+    <div class="grid">
 
-  </div>
+      <a class="card c-teal" href="new_emerging_technologies_revision_pack.html">
+        <div class="card-icon">🔬</div>
+        <div>
+          <div class="card-tag">Topic Pack</div>
+          <h2>New &amp; Emerging Technologies</h2>
+        </div>
+        <p>Smart materials, Industry 4.0, robotics, the circular economy — how new technologies are changing design and manufacture.</p>
+        <div class="card-footer"><span>Full pack</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-blue" href="topic_1_2_critical_evaluation_revision_pack.html">
+        <div class="card-icon">⚖️</div>
+        <div>
+          <div class="card-tag">Topic 1.2</div>
+          <h2>Critical Evaluation of New &amp; Emerging Technologies</h2>
+        </div>
+        <p>Social, moral, ethical, and environmental impacts of technology. Structured argument frameworks for 6-mark questions.</p>
+        <div class="card-footer"><span>Topic 1.2</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-green" href="topic_1_3_energy_revision_pack.html">
+        <div class="card-icon">⚡</div>
+        <div>
+          <div class="card-tag">Topic 1.3</div>
+          <h2>Energy Generation, Storage &amp; Sources</h2>
+        </div>
+        <p>Renewable and non-renewable energy, storage technologies, and sustainability considerations in design contexts.</p>
+        <div class="card-footer"><span>Topic 1.3</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-purple" href="topic_1_4_smart_materials_revision_pack.html">
+        <div class="card-icon">🧪</div>
+        <div>
+          <div class="card-tag">Topic 1.4</div>
+          <h2>Smart, Composite Materials &amp; Technical Textiles</h2>
+        </div>
+        <p>Properties and applications of smart materials, composites, and modern technical textiles — with worked examples.</p>
+        <div class="card-footer"><span>Topic 1.4</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-indigo" href="topic_1_5_mechanical_devices_revision_pack_1.html">
+        <div class="card-icon">⚙️</div>
+        <div>
+          <div class="card-tag">Topic 1.5</div>
+          <h2>Mechanical Devices</h2>
+        </div>
+        <p>Levers, linkages, gears, cams, and pulleys — how mechanical systems transfer and modify motion and force.</p>
+        <div class="card-footer"><span>Topic 1.5</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-teal" href="topic_1_8_to_1_11_material_categorisation.html">
+        <div class="card-icon">🗂️</div>
+        <div>
+          <div class="card-tag">Topics 1.8–1.11 · Extended</div>
+          <h2>Material Categorisation — Core Content</h2>
+        </div>
+        <p>Metals, papers &amp; boards, polymers, and fibres — full comparison tables, key properties, and ESL vocabulary scaffolding.</p>
+        <div class="card-footer"><span>Topics 1.8–1.11</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-blue" href="topics_1_8_to_1_11_materials_categorisation.html">
+        <div class="card-icon">🗂️</div>
+        <div>
+          <div class="card-tag">Topics 1.8–1.11 · Concise</div>
+          <h2>Materials Categorisation — Revision</h2>
+        </div>
+        <p>Focused revision for metals, papers &amp; boards, polymers, and textiles. Keywords, working properties, and top exam questions.</p>
+        <div class="card-footer"><span>Topics 1.8–1.11</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-rose" href="topic_1_13_1_14_design_contexts_challenges.html">
+        <div class="card-icon">🎯</div>
+        <div>
+          <div class="card-tag">Topics 1.13–1.14</div>
+          <h2>Design Contexts &amp; Challenges</h2>
+        </div>
+        <p>Understanding design contexts, user needs, stakeholders, and how to frame design challenges for structured responses.</p>
+        <div class="card-footer"><span>Topics 1.13–1.14</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-orange" href="topic_1_15_1_16_1_17_design_strategies_communication.html">
+        <div class="card-icon">✏️</div>
+        <div>
+          <div class="card-tag">Topics 1.15–1.17</div>
+          <h2>Designers, Strategies &amp; Communication</h2>
+        </div>
+        <p>Design strategies, influential designers, and how to communicate design ideas clearly through drawing and annotation.</p>
+        <div class="card-footer"><span>Topics 1.15–1.17</span><div class="arrow">→</div></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── TIMBER TECHNOLOGY ── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-title">Timber Technology — Section 7</span>
+      <span class="section-count">4 packs</span>
+    </div>
+    <div class="section-rule"></div>
+    <div class="grid">
+
+      <a class="card c-green" href="topic_7_2_7_3_sources_properties_selection_timbers.html">
+        <div class="card-icon">🌳</div>
+        <div>
+          <div class="card-tag">Topics 7.2–7.3</div>
+          <h2>Sources, Properties &amp; Selection of Timbers</h2>
+        </div>
+        <p>Hardwoods, softwoods, and manufactured boards — sources, key properties, and how to choose the right timber for a job.</p>
+        <div class="card-footer"><span>Topics 7.2–7.3</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-teal" href="topic_7_4_7_5_forces_strengthening_stock_forms.html">
+        <div class="card-icon">🔩</div>
+        <div>
+          <div class="card-tag">Topics 7.4–7.5</div>
+          <h2>Forces, Strengthening &amp; Stock Forms</h2>
+        </div>
+        <p>How forces act on timber structures, methods of strengthening, and the standard stock forms timber is supplied in.</p>
+        <div class="card-footer"><span>Topics 7.4–7.5</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-indigo" href="topic_7_6_7_7_manufacturing_tools_joints.html">
+        <div class="card-icon">🪚</div>
+        <div>
+          <div class="card-tag">Topics 7.6–7.7</div>
+          <h2>Manufacturing, Tools &amp; Joints</h2>
+        </div>
+        <p>Hand tools, machine tools, and common timber joints — how to cut, shape, and join wood for functional products.</p>
+        <div class="card-footer"><span>Topics 7.6–7.7</span><div class="arrow">→</div></div>
+      </a>
+
+      <a class="card c-amber" href="topic_7_8_surface_treatments_finishes.html">
+        <div class="card-icon">🖌️</div>
+        <div>
+          <div class="card-tag">Topic 7.8</div>
+          <h2>Surface Treatments &amp; Finishes</h2>
+        </div>
+        <p>Paints, varnishes, stains, and waxes — why finishes matter, how they protect and enhance timber, and exam application tips.</p>
+        <div class="card-footer"><span>Topic 7.8</span><div class="arrow">→</div></div>
+      </a>
+
+    </div>
+  </section>
+
 </main>
 
 <footer>
-  GCSE Design &amp; Technology · Revision Hub
+  GCSE Design &amp; Technology · Revision Hub · 14 packs
 </footer>
 
 </body>
