@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D&amp;T Keyword Game — GCSE</title>
+<style>
+:root {
+  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  --serif: Georgia,"Times New Roman","Songti SC","SimSun",serif;
+  --mono: ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --navy:   #0d1b2a;
+  --amber:  #d97706;
+  --green:  #166534;
+  --red:    #c0392b;
+  --teal:   #0e7490;
+  --purple: #5b21b6;
+  --bg:     #f0f4f8;
+  --white:  #ffffff;
+  --grey1:  #f8fafc;
+  --grey2:  #e2e8f0;
+  --grey3:  #94a3b8;
+  --text:   #1e293b;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:16px;}
+body{min-height:100vh;display:flex;flex-direction:column;}
+
+/* ---- HEADER ---- */
+header{background:var(--navy);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+header h1{font-family:var(--serif);font-size:1.3rem;font-weight:700;line-height:1.2;}
+header p{font-size:0.8rem;opacity:0.75;margin-left:auto;}
+.tier-badge{font-family:var(--mono);font-size:0.7rem;padding:3px 8px;border-radius:20px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
+.badge-1{background:#0e7490;color:#fff;}
+.badge-2{background:#d97706;color:#fff;}
+.badge-3{background:#ea580c;color:#fff;}
+.badge-4{background:#5b21b6;color:#fff;}
+
+/* ---- MAIN ---- */
+main{flex:1;padding:20px;max-width:860px;margin:0 auto;width:100%;}
+
+/* ---- SCREENS ---- */
+.screen{display:none;}
+.screen.active{display:block;}
+
+/* ---- SETUP ---- */
+.setup-card{background:var(--white);border-radius:12px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.08);margin-bottom:16px;}
+.setup-card h2{font-family:var(--serif);font-size:1.1rem;margin-bottom:14px;color:var(--navy);}
+.tier-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+@media(min-width:500px){.tier-grid{grid-template-columns:repeat(4,1fr);}}
+.tier-btn{border:2px solid var(--grey2);background:var(--white);border-radius:8px;padding:10px 8px;cursor:pointer;font-size:0.85rem;font-family:var(--sans);transition:all 0.15s;text-align:center;min-height:48px;}
+.tier-btn.selected{border-color:var(--amber);background:#fffbeb;}
+.tier-btn:hover{border-color:var(--amber);}
+.tier-btn span{display:block;font-size:0.7rem;color:var(--grey3);margin-top:2px;}
+
+.topic-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+@media(min-width:500px){.topic-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:700px){.topic-grid{grid-template-columns:repeat(5,1fr);}}
+.topic-cb{display:flex;align-items:center;gap:6px;cursor:pointer;padding:8px 10px;border-radius:8px;border:2px solid var(--grey2);background:var(--white);transition:border-color 0.15s;min-height:44px;font-size:0.82rem;}
+.topic-cb input{width:16px;height:16px;cursor:pointer;accent-color:var(--amber);}
+.topic-cb:has(input:checked){border-color:var(--amber);background:#fffbeb;}
+.topic-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+
+.mode-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+@media(min-width:600px){.mode-grid{grid-template-columns:repeat(3,1fr);}}
+.mode-btn{border:2px solid var(--grey2);background:var(--white);border-radius:8px;padding:12px 10px;cursor:pointer;font-family:var(--sans);font-size:0.85rem;transition:all 0.15s;text-align:center;min-height:60px;}
+.mode-btn.selected{border-color:var(--teal);background:#f0f9ff;}
+.mode-btn:hover:not(.locked){border-color:var(--teal);}
+.mode-btn.locked{opacity:0.45;cursor:not-allowed;background:var(--grey1);}
+.mode-btn .lock-icon{font-size:1rem;}
+.mode-btn span{display:block;font-size:0.7rem;color:var(--grey3);margin-top:2px;}
+
+.btn-primary{background:var(--amber);color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:1rem;font-family:var(--sans);font-weight:600;cursor:pointer;transition:background 0.15s;min-height:48px;}
+.btn-primary:hover:not(:disabled){background:#b45309;}
+.btn-primary:disabled{opacity:0.4;cursor:not-allowed;}
+.btn-secondary{background:var(--white);color:var(--text);border:2px solid var(--grey2);border-radius:8px;padding:12px 24px;font-size:0.9rem;font-family:var(--sans);cursor:pointer;transition:all 0.15s;min-height:48px;}
+.btn-secondary:hover{border-color:var(--grey3);}
+.btn-teal{background:var(--teal);color:#fff;border:none;border-radius:8px;padding:12px 24px;font-size:0.9rem;font-family:var(--sans);cursor:pointer;transition:background 0.15s;min-height:48px;}
+.btn-teal:hover{background:#0369a1;}
+
+/* ---- STATUS BAR ---- */
+.status-bar{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;border-radius:8px 8px 0 0;font-size:0.85rem;flex-wrap:wrap;}
+.status-bar .score{margin-left:auto;font-family:var(--mono);font-size:0.9rem;}
+.progress-wrap{background:var(--white);height:4px;border-radius:0;}
+.progress-bar{height:4px;background:var(--amber);transition:width 0.3s;}
+
+/* ---- FLASHCARDS ---- */
+.flashcard-wrap{perspective:1000px;margin:20px 0;min-height:220px;}
+.flashcard{width:100%;min-height:220px;position:relative;transform-style:preserve-3d;transition:transform 0.5s;cursor:pointer;border-radius:12px;}
+.flashcard.flipped{transform:rotateY(180deg);}
+.card-face{position:absolute;width:100%;min-height:220px;backface-visibility:hidden;border-radius:12px;padding:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+.card-front{background:var(--white);box-shadow:0 2px 8px rgba(0,0,0,0.1);border:2px solid var(--grey2);}
+.card-back{background:var(--navy);color:#fff;transform:rotateY(180deg);}
+.card-front .card-label{font-size:0.75rem;color:var(--grey3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;font-family:var(--mono);}
+.card-front .card-def{font-size:1rem;line-height:1.6;color:var(--text);}
+.card-front .card-ex{font-size:0.8rem;color:var(--grey3);margin-top:12px;font-style:italic;}
+.card-back .card-term{font-family:var(--serif);font-size:1.6rem;font-weight:700;margin-bottom:8px;}
+.card-back .card-hint{font-size:0.8rem;opacity:0.65;}
+.flip-hint{text-align:center;font-size:0.8rem;color:var(--grey3);margin-bottom:8px;}
+.fc-controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;}
+.btn-got-it{background:var(--green);color:#fff;border:none;border-radius:8px;padding:12px 24px;font-size:0.9rem;font-family:var(--sans);cursor:pointer;min-height:48px;transition:background 0.15s;}
+.btn-got-it:hover{background:#14532d;}
+.btn-learning{background:var(--red);color:#fff;border:none;border-radius:8px;padding:12px 24px;font-size:0.9rem;font-family:var(--sans);cursor:pointer;min-height:48px;transition:background 0.15s;}
+.btn-learning:hover{background:#991b1b;}
+.speak-btn{background:none;border:1px solid var(--grey2);border-radius:6px;padding:6px 10px;cursor:pointer;font-size:0.85rem;color:var(--grey3);transition:all 0.15s;min-height:36px;}
+.speak-btn:hover{border-color:var(--teal);color:var(--teal);}
+.fc-counter{text-align:center;font-size:0.85rem;color:var(--grey3);margin-top:8px;font-family:var(--mono);}
+
+/* ---- MATCH PAIRS ---- */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;}
+.match-col{display:flex;flex-direction:column;gap:8px;}
+.match-chip{background:var(--white);border:2px solid var(--grey2);border-radius:8px;padding:12px;cursor:pointer;font-size:0.82rem;transition:all 0.2s;min-height:44px;line-height:1.4;}
+.match-chip:hover:not(.matched):not(.wrong){border-color:var(--teal);background:#f0f9ff;}
+.match-chip.selected{border-color:var(--amber);background:#fffbeb;}
+.match-chip.matched{border-color:var(--green);background:#f0fdf4;color:var(--green);cursor:default;opacity:0.7;}
+.match-chip.wrong{border-color:var(--red);background:#fef2f2;animation:shake 0.3s;}
+.match-chip.keyword-chip{font-family:var(--serif);font-weight:600;font-size:0.9rem;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+
+/* ---- MULTIPLE CHOICE ---- */
+.mc-question{background:var(--white);border-radius:12px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.08);margin:12px 0;}
+.mc-def{font-size:1rem;line-height:1.6;margin-bottom:8px;}
+.mc-ex{font-size:0.8rem;color:var(--grey3);font-style:italic;margin-bottom:16px;}
+.mc-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:500px){.mc-options{grid-template-columns:1fr;}}
+.mc-opt{background:var(--white);border:2px solid var(--grey2);border-radius:8px;padding:12px 14px;cursor:pointer;font-family:var(--sans);font-size:0.9rem;text-align:left;transition:all 0.15s;min-height:48px;line-height:1.3;}
+.mc-opt:hover:not(.answered){border-color:var(--teal);}
+.mc-opt.correct{border-color:var(--green);background:#f0fdf4;color:var(--green);}
+.mc-opt.wrong{border-color:var(--red);background:#fef2f2;color:var(--red);}
+.mc-opt.reveal-correct{border-color:var(--green);background:#f0fdf4;}
+
+/* ---- TYPE THE WORD ---- */
+.type-wrap{background:var(--white);border-radius:12px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.08);margin:12px 0;}
+.type-def{font-size:1rem;line-height:1.6;margin-bottom:8px;}
+.type-ex{font-size:0.8rem;color:var(--grey3);font-style:italic;margin-bottom:16px;}
+.type-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.type-input{flex:1;min-width:200px;border:2px solid var(--grey2);border-radius:8px;padding:12px 14px;font-size:1rem;font-family:var(--sans);outline:none;transition:border-color 0.15s;}
+.type-input:focus{border-color:var(--teal);}
+.type-input.correct{border-color:var(--green);background:#f0fdf4;}
+.type-input.wrong{border-color:var(--red);background:#fef2f2;}
+.type-feedback{margin-top:10px;font-size:0.9rem;min-height:24px;}
+.type-feedback.correct{color:var(--green);}
+.type-feedback.wrong{color:var(--red);}
+
+/* ---- SPEED ROUND ---- */
+.speed-wrap{margin:12px 0;}
+.timer-bar-wrap{background:var(--grey2);height:8px;border-radius:4px;margin-bottom:12px;overflow:hidden;}
+.timer-bar{height:8px;background:var(--green);transition:width 1s linear;border-radius:4px;}
+.timer-bar.urgent{background:var(--red);}
+.timer-label{text-align:right;font-family:var(--mono);font-size:0.8rem;color:var(--grey3);margin-bottom:4px;}
+.speed-score{font-family:var(--mono);font-size:1.1rem;color:var(--navy);text-align:center;margin-bottom:12px;}
+
+/* ---- RESULTS ---- */
+.results-card{background:var(--white);border-radius:12px;padding:28px;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.results-score{font-family:var(--serif);font-size:3rem;font-weight:700;text-align:center;color:var(--navy);margin-bottom:4px;}
+.results-label{text-align:center;font-size:0.9rem;color:var(--grey3);margin-bottom:16px;}
+.results-msg{text-align:center;font-size:1rem;line-height:1.6;padding:12px 16px;border-radius:8px;background:var(--grey1);border-left:4px solid var(--amber);margin-bottom:20px;}
+.missed-list{margin-top:16px;}
+.missed-list h3{font-size:0.9rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--grey3);font-family:var(--mono);margin-bottom:10px;}
+.missed-item{background:var(--grey1);border-radius:8px;padding:12px 14px;margin-bottom:8px;border-left:3px solid var(--red);}
+.missed-term{font-family:var(--serif);font-weight:700;font-size:0.95rem;margin-bottom:4px;}
+.missed-def{font-size:0.82rem;color:#475569;line-height:1.5;}
+.results-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+.best-score-row{font-family:var(--mono);font-size:0.8rem;color:var(--grey3);text-align:center;margin-top:8px;}
+
+/* ---- GAME CONTAINER ---- */
+.game-card{background:var(--white);border-radius:0 0 12px 12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+
+/* ---- BACK BUTTON ---- */
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:var(--grey3);cursor:pointer;font-size:0.85rem;font-family:var(--sans);padding:8px 0;margin-bottom:12px;transition:color 0.15s;}
+.back-btn:hover{color:var(--navy);}
+
+/* ---- INFO / EMPTY ---- */
+.info-box{background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:14px 16px;font-size:0.85rem;color:#0369a1;line-height:1.5;margin:12px 0;}
+.warn-box{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:14px 16px;font-size:0.85rem;color:#92400e;line-height:1.5;margin:12px 0;}
+
+/* ---- TOPIC CHIPS ---- */
+.topic-chip{display:inline-block;padding:3px 8px;border-radius:12px;font-size:0.7rem;font-family:var(--mono);font-weight:600;margin-left:4px;vertical-align:middle;}
+
+/* ---- FOOTER ---- */
+footer{text-align:center;padding:16px;font-size:0.75rem;color:var(--grey3);border-top:1px solid var(--grey2);margin-top:auto;}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>🛠 D&amp;T Keyword Game</h1>
+    <p id="header-sub">Edexcel GCSE Design &amp; Technology</p>
+  </div>
+  <div id="header-badge" style="margin-left:auto;"></div>
+</header>
+
+<main>
+  <!-- SETUP SCREEN -->
+  <div id="screen-setup" class="screen active">
+    <div class="setup-card">
+      <h2>1. Select your grade level</h2>
+      <div class="tier-grid">
+        <button class="tier-btn" data-tier="1">G6–G7<span>Foundation</span></button>
+        <button class="tier-btn" data-tier="2">G8–G9<span>Core GCSE</span></button>
+        <button class="tier-btn" data-tier="3">G10–G11<span>Advanced</span></button>
+        <button class="tier-btn" data-tier="4">G12<span>Expert</span></button>
+      </div>
+    </div>
+
+    <div class="setup-card">
+      <h2>2. Choose topics to practise</h2>
+      <div style="display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+        <button class="btn-secondary" id="btn-select-all" style="padding:8px 14px;font-size:0.8rem;min-height:36px;">Select all</button>
+        <button class="btn-secondary" id="btn-clear-all" style="padding:8px 14px;font-size:0.8rem;min-height:36px;">Clear all</button>
+        <span id="kw-count" style="font-size:0.8rem;color:var(--grey3);align-self:center;font-family:var(--mono);"></span>
+      </div>
+      <div class="topic-grid" id="topic-grid"></div>
+    </div>
+
+    <div class="setup-card">
+      <h2>3. Choose a game mode</h2>
+      <div class="mode-grid" id="mode-grid"></div>
+    </div>
+
+    <div style="text-align:center;margin-top:8px;">
+      <button class="btn-primary" id="btn-start" disabled>Start Game</button>
+      <div id="start-warn" class="warn-box" style="display:none;max-width:400px;margin:12px auto 0;"></div>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="screen-game" class="screen">
+    <button class="back-btn" id="btn-back">← Back to setup</button>
+    <div class="status-bar" id="game-status">
+      <span id="status-mode"></span>
+      <span id="status-tier"></span>
+      <span class="score" id="status-score"></span>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+    </div>
+    <div class="game-card" id="game-area"></div>
+  </div>
+
+  <!-- RESULTS SCREEN -->
+  <div id="screen-results" class="screen">
+    <div class="results-card">
+      <div class="results-score" id="result-score"></div>
+      <div class="results-label" id="result-label"></div>
+      <div class="results-msg" id="result-msg"></div>
+      <div class="best-score-row" id="best-score-row"></div>
+      <div class="missed-list" id="missed-list"></div>
+      <div class="results-btns">
+        <button class="btn-primary" id="btn-play-again">Play again</button>
+        <button class="btn-secondary" id="btn-change-settings">Change settings</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>GCSE D&amp;T Keyword Game &bull; Edexcel Specification &bull; Works offline</footer>
+
+<script>
+// =====================================================================
+// KEYWORD DATA
+// =====================================================================
+const TOPICS = [
+  {id:'new-tech',  label:'New Technologies', color:'#0ea5e9'},
+  {id:'energy',    label:'Energy',            color:'#f59e0b'},
+  {id:'smart-mat', label:'Smart Materials',   color:'#8b5cf6'},
+  {id:'mechanisms',label:'Mechanisms',        color:'#ef4444'},
+  {id:'electronics',label:'Electronics',      color:'#10b981'},
+  {id:'programming',label:'Programming',      color:'#6366f1'},
+  {id:'materials', label:'Materials',         color:'#f97316'},
+  {id:'design',    label:'Design Process',    color:'#ec4899'},
+  {id:'sustainability',label:'Sustainability',color:'#22c55e'},
+  {id:'manufacturing',label:'Manufacturing',  color:'#64748b'},
+];
+
+const KEYWORDS = [
+// ---- TIER 1: Foundation (G6-G7) ----
+// new-tech
+{term:'Automation',def:'Using machines to do tasks instead of people, without human control.',ex:'A robot arm on a car assembly line does the same job all day without breaks.',topic:'new-tech',tier:1},
+{term:'Robotics',def:'The design and use of robots to perform tasks.',ex:'Robots in a factory weld metal parts together quickly and safely.',topic:'new-tech',tier:1},
+{term:'3D Printing',def:'Building a solid 3D object layer by layer from a digital design file.',ex:'A school uses a 3D printer to make a prototype of a new pencil case design.',topic:'new-tech',tier:1},
+{term:'Internet of Things',def:'Everyday objects connected to the internet so they can send and receive data.',ex:'A smart thermostat learns your routine and adjusts the heating automatically.',topic:'new-tech',tier:1},
+// energy
+{term:'Renewable Energy',def:'Energy from sources that will never run out, such as sun or wind.',ex:'Solar panels on a school roof generate free electricity every day.',topic:'energy',tier:1},
+{term:'Non-Renewable Energy',def:'Energy from sources that will eventually run out, such as coal or oil.',ex:'Coal is burned in a power station to make electricity, but it is slowly used up.',topic:'energy',tier:1},
+{term:'Solar Energy',def:'Energy from the sun captured by solar panels and converted into electricity.',ex:'Solar panels on a house roof produce electricity to power lights and appliances.',topic:'energy',tier:1},
+{term:'Wind Energy',def:'Energy from moving air (wind) used to turn turbines and generate electricity.',ex:'Wind turbines on hills spin in the wind and send electricity to the national grid.',topic:'energy',tier:1},
+// smart-mat
+{term:'Smart Material',def:'A material that changes one or more of its properties in response to a stimulus such as heat or light.',ex:'A colour-changing mug uses thermochromic ink that changes colour when hot liquid is poured in.',topic:'smart-mat',tier:1},
+{term:'Composite Material',def:'A material made by combining two or more different materials to get better properties.',ex:'Fibreglass is a composite of glass fibres and plastic resin — lighter than steel but very strong.',topic:'smart-mat',tier:1},
+{term:'Thermochromic',def:'Changes colour in response to temperature (heat).',ex:'Thermochromic ink in a baby spoon turns red if the food is too hot to eat.',topic:'smart-mat',tier:1},
+// mechanisms
+{term:'Gear',def:'A toothed wheel that meshes with another gear to transfer rotary motion and change speed or force.',ex:'Bicycle gears change how hard you need to pedal going up a hill.',topic:'mechanisms',tier:1},
+{term:'Lever',def:'A rigid bar that pivots on a fulcrum to transfer or magnify a force.',ex:'A seesaw in a playground is a simple lever.',topic:'mechanisms',tier:1},
+{term:'Pulley',def:'A wheel with a groove that a rope or belt runs over to change the direction of a force.',ex:'A pulley system is used on a building site to lift heavy loads upward.',topic:'mechanisms',tier:1},
+{term:'Motion',def:'Movement of an object from one position to another.',ex:'A rotating wheel shows rotary motion; a sliding drawer shows linear motion.',topic:'mechanisms',tier:1},
+// electronics
+{term:'Input',def:'A signal or component that provides information or energy into a system.',ex:'A light sensor is an input — it detects brightness and sends a signal to a circuit.',topic:'electronics',tier:1},
+{term:'Output',def:'The result or action produced by a system in response to an input.',ex:'A buzzer is an output — it makes a sound when triggered by a sensor.',topic:'electronics',tier:1},
+{term:'Circuit',def:'A closed loop path through which electric current can flow.',ex:'A simple circuit with a battery, switch and LED turns the light on when the switch closes.',topic:'electronics',tier:1},
+{term:'LED',def:'Light Emitting Diode — a component that produces light when electric current flows through it.',ex:'LEDs are used as indicator lights on devices because they use very little power.',topic:'electronics',tier:1},
+// programming
+{term:'Algorithm',def:'A set of step-by-step instructions to solve a problem or complete a task.',ex:'A recipe is like an algorithm: follow each step in order to get the right result.',topic:'programming',tier:1},
+{term:'Variable',def:'A named storage location in a program that holds a value which can change.',ex:'score = 0 creates a variable; the value increases each time the player answers correctly.',topic:'programming',tier:1},
+{term:'Loop',def:'A programming instruction that repeats a block of code a set number of times or while a condition is true.',ex:'A loop makes an LED flash 10 times without writing the same line 10 times.',topic:'programming',tier:1},
+// materials
+{term:'Metal',def:'A hard, shiny material that is a good conductor of heat and electricity, and can be shaped.',ex:'Steel is a metal used in building bridges because of its great strength.',topic:'materials',tier:1},
+{term:'Plastic',def:'A synthetic (man-made) material made from oil that can be moulded into many shapes.',ex:'ABS plastic is used to make LEGO bricks because it is cheap and easy to mould.',topic:'materials',tier:1},
+{term:'Wood',def:'A natural material from trees used in furniture, buildings and many products.',ex:'Oak is a strong wood used to make high-quality furniture.',topic:'materials',tier:1},
+{term:'Hardness',def:'How resistant a material is to being scratched or dented.',ex:'Diamond is the hardest known material — almost nothing can scratch it.',topic:'materials',tier:1},
+// design
+{term:'Design Brief',def:'A short written statement describing the problem a designer needs to solve.',ex:'"Design a water bottle for schoolchildren aged 8–12 that keeps drinks cold for 6 hours."',topic:'design',tier:1},
+{term:'Prototype',def:'An early physical model of a product used to test ideas before making the final version.',ex:'A cardboard model of a new phone case tests whether the size and shape feel right.',topic:'design',tier:1},
+{term:'Ergonomics',def:'Designing products to fit comfortably and safely for the people who use them.',ex:'An ergonomic chair supports the user\'s back to reduce pain during long periods of sitting.',topic:'design',tier:1},
+{term:'Aesthetics',def:'How a product looks, feels, and appeals to the senses.',ex:'The smooth curves and shiny finish of a smartphone make it look attractive and premium.',topic:'design',tier:1},
+// sustainability
+{term:'Recycle',def:'Processing used materials so they can be made into new products.',ex:'Aluminium drink cans are melted down and reformed into new cans, saving energy.',topic:'sustainability',tier:1},
+{term:'Reuse',def:'Using a product or material again without processing it into something else.',ex:'Refilling a water bottle instead of buying a new plastic bottle every day.',topic:'sustainability',tier:1},
+{term:'Reduce',def:'Using less material or energy in the first place, before disposal.',ex:'Making packaging thinner reduces the amount of plastic used per product.',topic:'sustainability',tier:1},
+{term:'Sustainability',def:'Meeting the needs of people today without stopping future generations from meeting their needs.',ex:'Using wood from managed forests is sustainable because new trees are always planted.',topic:'sustainability',tier:1},
+// manufacturing
+{term:'CAD',def:'Computer-Aided Design — using software on a computer to draw 2D or 3D designs.',ex:'A product designer uses Fusion 360 to create a 3D model of a new product before making it.',topic:'manufacturing',tier:1},
+{term:'CAM',def:'Computer-Aided Manufacture — using computer-controlled machines to make products from a digital design.',ex:'A CNC router reads a CAD file and cuts the exact shape from a sheet of wood.',topic:'manufacturing',tier:1},
+{term:'Laser Cutting',def:'Using a focused laser beam to cut or engrave precise shapes from flat materials.',ex:'A school laser cutter cuts acrylic sheets into exact shapes for a D&T project.',topic:'manufacturing',tier:1},
+
+// ---- TIER 2: Core GCSE (G8-G9) ----
+// new-tech
+{term:'Artificial Intelligence',def:'Computer systems that can learn from data and make decisions in a way that resembles human thinking.',ex:'An AI design tool analyses thousands of past designs and suggests improvements automatically.',topic:'new-tech',tier:2},
+{term:'Virtual Reality',def:'A fully computer-generated environment that the user can experience as if it were real.',ex:'A car designer uses VR to walk around a full-size virtual model of a new car before it is built.',topic:'new-tech',tier:2},
+{term:'Nanotechnology',def:'Science and engineering that works with materials at an extremely small scale — billionths of a metre.',ex:'Nanoparticles of zinc oxide in sunscreen make it invisible on skin while still blocking UV light.',topic:'new-tech',tier:2},
+{term:'Open Source',def:'Software or hardware design shared freely for anyone to use, copy, and improve.',ex:'Arduino is open-source electronics hardware — anyone can download the designs and build their own.',topic:'new-tech',tier:2},
+// energy
+{term:'Fossil Fuels',def:'Coal, oil, and natural gas — fuels formed over millions of years from ancient plants and animals.',ex:'Petrol used in car engines comes from crude oil, which is a fossil fuel.',topic:'energy',tier:2},
+{term:'Generator',def:'A machine that converts mechanical (movement) energy into electrical energy.',ex:'A wind turbine uses a generator — the spinning blades turn the generator to produce electricity.',topic:'energy',tier:2},
+{term:'Turbine',def:'A machine with blades that are spun by steam, gas, or water to drive a generator.',ex:'In a coal power station, burning coal makes steam that spins a turbine to generate electricity.',topic:'energy',tier:2},
+{term:'Photovoltaic Cell',def:'A device that converts sunlight directly into electricity using the photoelectric effect.',ex:'Individual photovoltaic cells are connected together to make a solar panel.',topic:'energy',tier:2},
+// smart-mat
+{term:'Shape Memory Alloy',def:'A metal alloy that can be deformed but returns to its original shape when heated.',ex:'Nitinol wire in medical stents is crushed to insert it into the body, then it expands to its original shape when warmed by body heat.',topic:'smart-mat',tier:2},
+{term:'Carbon Fibre',def:'A very strong, lightweight composite material made of thin carbon strands set in resin.',ex:'Carbon fibre is used in bicycle frames and racing car bodies because it is lighter than aluminium but stronger than steel.',topic:'smart-mat',tier:2},
+{term:'Photochromic',def:'Changes colour or transparency in response to light intensity.',ex:'Photochromic lenses in glasses darken automatically when you go outside into sunlight.',topic:'smart-mat',tier:2},
+{term:'Technical Textile',def:'A fabric engineered to perform a specific function rather than purely for appearance.',ex:'Gore-Tex is a technical textile used in waterproof jackets that also allows sweat to escape.',topic:'smart-mat',tier:2},
+// mechanisms
+{term:'Rotary Motion',def:'Circular movement around a fixed central point.',ex:'A spinning wheel or a gear rotating on its axle shows rotary motion.',topic:'mechanisms',tier:2},
+{term:'Linear Motion',def:'Movement in a straight line in one direction.',ex:'A train moving along a straight track is an example of linear motion.',topic:'mechanisms',tier:2},
+{term:'Cam',def:'A specially shaped rotating disc that converts rotary motion into reciprocating or oscillating motion via a follower.',ex:'Cams in a car engine push the valves open and closed as the camshaft rotates.',topic:'mechanisms',tier:2},
+{term:'Follower',def:'The component that rests on a cam and moves as the cam rotates.',ex:'The follower sits on the cam surface; as the cam turns, the follower rises and falls.',topic:'mechanisms',tier:2},
+{term:'Gear Ratio',def:'The relationship between the number of teeth on two meshing gears, showing how speed and force change.',ex:'A gear ratio of 3:1 means the small (output) gear turns 3 times for every 1 turn of the large (input) gear.',topic:'mechanisms',tier:2},
+// electronics
+{term:'Sensor',def:'A device that detects a physical condition (heat, light, sound) and converts it to an electrical signal.',ex:'A temperature sensor in a central heating system detects when the room is too cold.',topic:'electronics',tier:2},
+{term:'Resistor',def:'A component that reduces the flow of electric current in a circuit.',ex:'A resistor is placed in series with an LED to prevent too much current flowing and burning it out.',topic:'electronics',tier:2},
+{term:'Microcontroller',def:'A small, programmable computer on a single chip used to control an electronic system.',ex:'An Arduino microcontroller is programmed to control the movements of a robot.',topic:'electronics',tier:2},
+{term:'LDR',def:'Light Dependent Resistor — a component whose resistance decreases as light intensity increases.',ex:'An LDR connected to a circuit automatically turns on a street lamp when it gets dark.',topic:'electronics',tier:2},
+// programming
+{term:'Conditional',def:'A programming instruction that only runs if a certain condition is true.',ex:'IF temperature > 30 THEN turn fan ON — the fan only switches on if it is hot enough.',topic:'programming',tier:2},
+{term:'Flow Chart',def:'A diagram that shows the steps of an algorithm using standard shapes and arrows.',ex:'A flow chart plans the logic of a burglar alarm: detect motion → trigger alarm → wait for reset.',topic:'programming',tier:2},
+{term:'Pseudo-code',def:'A way of writing the steps of a program in plain English, before writing real code.',ex:'START → READ sensor → IF value > 50 → turn LED ON → ELSE turn LED OFF → END',topic:'programming',tier:2},
+{term:'Debugging',def:'The process of finding and fixing errors (bugs) in a program.',ex:'After writing code for a robot, the programmer runs it and fixes the error that makes it drive in circles.',topic:'programming',tier:2},
+// materials
+{term:'Thermoplastic',def:'A plastic that softens when heated and can be reshaped, then hardens again when cooled. This can be repeated.',ex:'Acrylic (PMMA) is a thermoplastic used in laser cutting — it can be reheated and bent into shape.',topic:'materials',tier:2},
+{term:'Thermosetting Plastic',def:'A plastic that sets permanently when heated and cannot be reshaped once cured.',ex:'Melamine (used in kitchen worktops) is a thermosetting plastic — once hardened, it cannot be melted again.',topic:'materials',tier:2},
+{term:'Ferrous Metal',def:'A metal that contains iron as its main component and is usually magnetic.',ex:'Steel is a ferrous metal used in construction; a magnet will stick to it.',topic:'materials',tier:2},
+{term:'Non-Ferrous Metal',def:'A metal that does not contain iron and is not magnetic.',ex:'Aluminium is a non-ferrous metal — it is lightweight and used in drink cans and aircraft.',topic:'materials',tier:2},
+{term:'Alloy',def:'A mixture of two or more metals, or a metal and another element, to improve properties.',ex:'Stainless steel is an alloy of iron and chromium — the chromium stops it from rusting.',topic:'materials',tier:2},
+// design
+{term:'Design Specification',def:'A detailed list of measurable requirements that a final product must meet.',ex:'"The bag must hold at least 5 kg, be waterproof, and fit an A4 folder" is part of a design specification.',topic:'design',tier:2},
+{term:'Function',def:'What a product does — its purpose or intended use.',ex:'The function of a chair is to support a seated person safely and comfortably.',topic:'design',tier:2},
+{term:'Iterative Design',def:'Improving a design through repeated cycles of making, testing, and improving based on feedback.',ex:'A designer makes a prototype, tests it with users, notes the problems, and improves the next version.',topic:'design',tier:2},
+{term:'Quality Control',def:'Checking that products meet the required standards during or after manufacturing.',ex:'A worker measures each part to ensure it falls within the tolerance range before it is used.',topic:'design',tier:2},
+// sustainability
+{term:'Carbon Footprint',def:'The total amount of greenhouse gases (especially CO₂) produced by an activity, product, or person.',ex:'Flying has a much higher carbon footprint than travelling by train over the same distance.',topic:'sustainability',tier:2},
+{term:'Life Cycle Assessment',def:'An analysis of the environmental impact of a product at every stage from raw materials to disposal.',ex:'An LCA of a plastic bottle includes extracting oil, manufacturing the bottle, filling it, using it, and disposing of it.',topic:'sustainability',tier:2},
+{term:'Fair Trade',def:'A system ensuring that producers in developing countries receive fair payment and safe working conditions.',ex:'Fair Trade certified coffee guarantees the farmers who grew the beans were paid above market rate.',topic:'sustainability',tier:2},
+{term:'Upcycling',def:'Transforming waste materials into something of higher value or quality than the original.',ex:'Turning old car tyres into garden furniture is upcycling — the tyres become something useful.',topic:'sustainability',tier:2},
+// manufacturing
+{term:'CNC',def:'Computer Numerical Control — a system where machine tools are controlled precisely by a computer program.',ex:'A CNC milling machine cuts metal to an exact shape by following coordinates in a program.',topic:'manufacturing',tier:2},
+{term:'3D Printing (FDM)',def:'Building a 3D object layer by layer by depositing melted plastic according to a digital file.',ex:'A school 3D printer produces a prototype chess piece by building it up one thin layer at a time.',topic:'manufacturing',tier:2},
+{term:'Injection Moulding',def:'A process where melted plastic is forced under pressure into a metal mould to make identical products in large quantities.',ex:'Most plastic toys and phone cases are made by injection moulding because it is fast and consistent.',topic:'manufacturing',tier:2},
+{term:'Vacuum Forming',def:'A process where a plastic sheet is heated until soft, then sucked tightly over a mould using a vacuum.',ex:'Plastic food packaging trays are made quickly and cheaply using vacuum forming.',topic:'manufacturing',tier:2},
+{term:'Batch Production',def:'Making a fixed, limited quantity of identical products in one production run.',ex:'A bakery makes 50 identical loaves in one batch, then cleans the equipment and sets up for a different product.',topic:'manufacturing',tier:2},
+
+// ---- TIER 3: Advanced GCSE (G10-G11) ----
+// new-tech
+{term:'Augmented Reality',def:'A technology that overlays digital information or images onto the real world, viewed through a screen or headset.',ex:'An AR app lets a customer see how a sofa would look in their actual living room before buying it.',topic:'new-tech',tier:3},
+{term:'Biotechnology',def:'Using living organisms, cells, or biological processes to create products or solve problems.',ex:'Scientists engineer bacteria to produce a biodegradable plastic, reducing reliance on oil-based plastics.',topic:'new-tech',tier:3},
+{term:'Disruptive Technology',def:'A new technology that significantly changes or replaces established industries and ways of working.',ex:'3D printing disrupted traditional manufacturing by allowing small businesses to produce parts without factories.',topic:'new-tech',tier:3},
+{term:'Circular Economy',def:'An economic system designed to eliminate waste by keeping products and materials in use for as long as possible.',ex:'A phone designed so the battery and screen can be easily replaced extends the product\'s life and reduces waste.',topic:'new-tech',tier:3},
+// energy
+{term:'Hydroelectric Power',def:'Electricity generated by the movement of falling or flowing water turning turbines.',ex:'The Three Gorges Dam in China uses the flow of the Yangtze River to produce enormous amounts of electricity.',topic:'energy',tier:3},
+{term:'Geothermal Energy',def:'Heat energy from inside the Earth used to generate electricity or heat buildings.',ex:'Iceland heats most of its homes and generates electricity using geothermal energy from volcanic activity.',topic:'energy',tier:3},
+{term:'Carbon Footprint (product)',def:'The total greenhouse gas emissions caused throughout a product\'s entire life — from materials to disposal.',ex:'A product made from recycled materials and using renewable energy in manufacture will have a lower carbon footprint.',topic:'energy',tier:3},
+{term:'Energy Efficiency',def:'The proportion of input energy that is usefully converted to the desired output energy.',ex:'LED bulbs convert 95% of electrical energy into light; filament bulbs waste most of it as heat.',topic:'energy',tier:3},
+// smart-mat
+{term:'Kevlar',def:'A very strong, lightweight synthetic fibre used in protective equipment.',ex:'Kevlar panels inside a stab-proof vest absorb and spread the energy of an impact, protecting the wearer.',topic:'smart-mat',tier:3},
+{term:'Electroluminescent',def:'A material or device that emits light when an electric current is passed through it.',ex:'Electroluminescent wire in safety clothing makes cyclists highly visible to drivers at night.',topic:'smart-mat',tier:3},
+{term:'Piezoelectric Material',def:'A material that generates a small electrical voltage when pressure or mechanical stress is applied to it.',ex:'Piezoelectric sensors embedded in a floor tile generate electricity as people walk over them.',topic:'smart-mat',tier:3},
+{term:'Gore-Tex',def:'A waterproof yet breathable technical textile membrane used in outdoor clothing.',ex:'A Gore-Tex hiking jacket keeps rain out but allows water vapour (sweat) to escape, keeping the wearer dry.',topic:'smart-mat',tier:3},
+// mechanisms
+{term:'Oscillating Motion',def:'Movement that swings backwards and forwards in an arc around a central point.',ex:'A pendulum clock swings in oscillating motion; it does not complete a full circle.',topic:'mechanisms',tier:3},
+{term:'Reciprocating Motion',def:'Movement backwards and forwards in a straight line.',ex:'A piston in a car engine moves up and down in reciprocating motion as the crankshaft turns.',topic:'mechanisms',tier:3},
+{term:'Linkage',def:'A system of rigid bars connected at pivot points to transmit or transform motion.',ex:'A parallel linkage on a car\'s rear axle keeps both wheels upright even as they move up and down.',topic:'mechanisms',tier:3},
+{term:'Mechanical Advantage',def:'The ratio of the output force produced by a machine to the input force applied to it.',ex:'A lever with a long effort arm requires little force to lift a heavy load — it has a high mechanical advantage.',topic:'mechanisms',tier:3},
+{term:'Velocity Ratio',def:'The ratio of the distance moved by the input force to the distance moved by the output force.',ex:'In a pulley with a velocity ratio of 3, you pull the rope 3 metres to lift the load by 1 metre.',topic:'mechanisms',tier:3},
+// electronics
+{term:'Thermistor',def:'A resistor whose resistance changes significantly and predictably with temperature.',ex:'A thermistor in a central heating controller sends a signal to turn the boiler on when the room gets too cold.',topic:'electronics',tier:3},
+{term:'Potential Divider',def:'A circuit using two resistors in series to produce a fraction of the input voltage at the junction.',ex:'A potential divider with an LDR and a fixed resistor produces a voltage that changes with light level.',topic:'electronics',tier:3},
+{term:'Series Circuit',def:'A circuit where all components are connected in a single continuous loop; the current is the same at every point.',ex:'Fairy lights connected in series all go out if one bulb breaks, because the loop is broken.',topic:'electronics',tier:3},
+{term:'Parallel Circuit',def:'A circuit where components are connected in separate branches; each branch has the same voltage across it.',ex:'House lighting is wired in parallel — if one light breaks, the others stay on because each has its own path.',topic:'electronics',tier:3},
+{term:'Transistor',def:'A semiconductor component that can amplify a small signal or act as an electronically controlled switch.',ex:'A transistor is used to switch on a motor when a sensor detects an object — a tiny signal controls a large current.',topic:'electronics',tier:3},
+// programming
+{term:'Analogue Signal',def:'A signal that can take any value within a continuous range, rather than just on or off.',ex:'A microphone produces an analogue signal — the voltage rises and falls continuously with sound level.',topic:'programming',tier:3},
+{term:'Digital Signal',def:'A signal with only two states: high (1, on) or low (0, off).',ex:'A button press sends a digital signal — either pressed (1) or not pressed (0).',topic:'programming',tier:3},
+{term:'Function (programming)',def:'A named, reusable block of code that performs a specific task.',ex:'Defining a function called turn_left() means the robot code can call it whenever it needs to turn left.',topic:'programming',tier:3},
+{term:'Library (programming)',def:'A collection of pre-written code that a programmer can include in their own program.',ex:'Using a servo library in Arduino means the programmer does not have to write the complex control code themselves.',topic:'programming',tier:3},
+// materials
+{term:'Hardwood',def:'Timber from broad-leaved (deciduous) trees that shed their leaves; generally dense, durable, and slow-growing.',ex:'Oak and mahogany are hardwoods used in high-quality furniture because of their attractive grain and strength.',topic:'materials',tier:3},
+{term:'Softwood',def:'Timber from coniferous (evergreen) trees with needles; generally less dense and cheaper than hardwood.',ex:'Pine is a softwood used in flat-pack furniture and building frames because it is widely available and affordable.',topic:'materials',tier:3},
+{term:'Tensile Strength',def:'The maximum stress a material can withstand when being stretched or pulled before it breaks.',ex:'Steel cables have very high tensile strength and are used in suspension bridges to hold up the roadway.',topic:'materials',tier:3},
+{term:'Compressive Strength',def:'The maximum stress a material can withstand when being squashed or compressed before it fails.',ex:'Concrete has high compressive strength and is used in building foundations that must bear enormous loads.',topic:'materials',tier:3},
+{term:'Ductility',def:'The ability of a material to be drawn out into a thin wire without breaking.',ex:'Copper is very ductile — it can be drawn into long, thin electrical wires without snapping.',topic:'materials',tier:3},
+// design
+{term:'Anthropometrics',def:'The study of human body measurements used to inform the design of products for specific users.',ex:'A product designer uses anthropometric data on hand sizes to ensure a tool grip fits 95% of the target users.',topic:'design',tier:3},
+{term:'Primary Research',def:'Information gathered directly by the designer from users or through observation.',ex:'Carrying out a survey asking potential customers what features they want in a new product is primary research.',topic:'design',tier:3},
+{term:'Secondary Research',def:'Using information that has already been collected and published by others.',ex:'Looking up average height data from a government study to inform the design of a desk is secondary research.',topic:'design',tier:3},
+{term:'Tolerance',def:'The permissible (acceptable) range of variation in a dimension during manufacture.',ex:'A part specified as 50 mm ± 0.5 mm must measure between 49.5 mm and 50.5 mm to be accepted.',topic:'design',tier:3},
+{term:'Form',def:'The physical shape, structure, and three-dimensional appearance of a product.',ex:'The tapered, aerodynamic form of a sports car reduces air resistance and also makes it look fast.',topic:'design',tier:3},
+// sustainability
+{term:'Cradle to Grave',def:'Considering the full environmental impact of a product from extraction of raw materials to its final disposal.',ex:'A cradle-to-grave analysis of a car includes mining the metal, manufacturing it, years of use, and finally scrapping it.',topic:'sustainability',tier:3},
+{term:'Social Responsibility',def:'A company\'s ethical duty to consider the impact of its activities on society and the environment, not only profit.',ex:'A company using ethically sourced materials and paying fair wages to workers is acting with social responsibility.',topic:'sustainability',tier:3},
+{term:'Planned Obsolescence',def:'Deliberately designing a product to become outdated, fail, or seem inferior after a set period so consumers buy a replacement.',ex:'Printers designed to stop working after printing a fixed number of pages force users to buy a new one.',topic:'sustainability',tier:3},
+// manufacturing
+{term:'Mass Production',def:'Making very large quantities of identical products continuously on an assembly line.',ex:'Cars are mass-produced — the same operations are carried out on thousands of vehicles without stopping.',topic:'manufacturing',tier:3},
+{term:'Additive Manufacturing',def:'A category of manufacturing that builds objects by adding material layer by layer.',ex:'All types of 3D printing are additive manufacturing — material is deposited rather than removed.',topic:'manufacturing',tier:3},
+{term:'Subtractive Manufacturing',def:'A category of manufacturing that creates objects by removing material from a solid block.',ex:'CNC milling is subtractive — a cutter removes material until the final shape is revealed.',topic:'manufacturing',tier:3},
+{term:'Die Casting',def:'Forcing molten metal under pressure into a reusable metal mould (die) to make precise, complex parts in large quantities.',ex:'Many toy car bodies and engine components are made by die casting because the process is fast and accurate.',topic:'manufacturing',tier:3},
+{term:'User-Centred Design',def:'A design approach that keeps the needs, limitations, and preferences of the end user at the centre of every design decision.',ex:'Designing a walking stick by consulting elderly users throughout the design process is user-centred design.',topic:'design',tier:3},
+
+// ---- TIER 4: Expert (G12) ----
+// new-tech
+{term:'Planned Obsolescence (strategy)',def:'A business strategy where products are intentionally designed with a limited useful lifespan to drive repeat purchases.',ex:'Smartphones that slow down with software updates encourage users to upgrade, boosting sales.',topic:'new-tech',tier:4},
+{term:'Crowdfunding',def:'Raising money for a project or product from a large number of people, usually via an online platform.',ex:'A designer launches a new ergonomic keyboard on Kickstarter and raises funding from thousands of backers.',topic:'new-tech',tier:4},
+{term:'Technology Push',def:'When a new technology is developed first and then a market or use is found for it.',ex:'The development of Teflon (non-stick coating) was technology push — it was invented before its cooking applications.',topic:'new-tech',tier:4},
+{term:'Market Pull',def:'When consumer demand or a gap in the market drives the development of a new product or technology.',ex:'Customer demand for smaller portable music players led manufacturers to develop the iPod.',topic:'new-tech',tier:4},
+// energy
+{term:'Tidal Energy',def:'Electricity generated by harnessing the predictable movement of ocean tides.',ex:'A tidal barrage built across a river estuary captures the energy of rising and falling tides to generate electricity.',topic:'energy',tier:4},
+{term:'National Grid',def:'The network of power stations, cables, transformers, and substations that generates and distributes electricity across a country.',ex:'Electricity from an offshore wind farm travels through the national grid to reach homes and businesses.',topic:'energy',tier:4},
+{term:'Energy Density',def:'The amount of energy stored per unit volume or mass of a fuel or battery.',ex:'Petrol has a high energy density per kilogram, which is why it is practical for car fuel tanks.',topic:'energy',tier:4},
+// smart-mat
+{term:'Aerogel',def:'An extremely light, porous solid material with very low thermal conductivity, made by replacing liquid in a gel with gas.',ex:'Aerogel insulation panels in buildings are thinner than traditional insulation but equally effective.',topic:'smart-mat',tier:4},
+{term:'Graphene',def:'A single layer of carbon atoms arranged in a hexagonal lattice — exceptionally strong, light, and electrically conductive.',ex:'Adding graphene to concrete increases its strength significantly, reducing the amount of concrete needed.',topic:'smart-mat',tier:4},
+{term:'Mycelium',def:'A biological material grown from the root structure of fungi, used as a sustainable alternative to foam packaging.',ex:'Ecovative Design grows mycelium around agricultural waste to create biodegradable packaging that replaces polystyrene.',topic:'smart-mat',tier:4},
+// mechanisms
+{term:'Fulcrum',def:'The fixed pivot point around which a lever rotates.',ex:'The fulcrum of a seesaw is the central support; moving it closer to the load gives a greater mechanical advantage.',topic:'mechanisms',tier:4},
+{term:'Rack and Pinion',def:'A mechanism converting rotary motion (pinion gear) into linear motion (rack) or vice versa.',ex:'Rack and pinion steering in a car converts turning the steering wheel into the left-right movement of the wheels.',topic:'mechanisms',tier:4},
+{term:'Crank and Slider',def:'A mechanism that converts rotary motion into reciprocating linear motion, or vice versa.',ex:'In a sewing machine, a crank and slider converts the rotary motion of the motor into the up-and-down motion of the needle.',topic:'mechanisms',tier:4},
+// electronics
+{term:'Ohm\'s Law',def:'The relationship between voltage, current and resistance: V = I × R.',ex:'If a resistor is 100 Ω and the current is 0.02 A, the voltage across it is V = 0.02 × 100 = 2 V.',topic:'electronics',tier:4},
+{term:'PWM',def:'Pulse Width Modulation — controlling the average power to a device by switching a signal on and off rapidly.',ex:'PWM controls the speed of a DC motor in a robot: a wider pulse means more power and faster rotation.',topic:'electronics',tier:4},
+{term:'Capacitor',def:'A component that stores electrical charge temporarily and releases it when needed.',ex:'A capacitor smooths out fluctuations in a power supply so the voltage stays stable.',topic:'electronics',tier:4},
+// programming
+{term:'Boolean',def:'A data type that can only hold one of two values: True or False.',ex:'is_button_pressed = True stores a Boolean; the program checks this to decide what to do next.',topic:'programming',tier:4},
+{term:'Iteration (design)',def:'Repeating a design or programming cycle to refine and improve the outcome each time.',ex:'Testing a robot\'s code, identifying problems, updating the code, and testing again is iteration.',topic:'programming',tier:4},
+{term:'Micro:bit',def:'A small, programmable microcontroller board designed to teach computing and electronics.',ex:'A micro:bit is programmed to display a temperature reading on its LED grid when a thermistor gets warm.',topic:'programming',tier:4},
+// materials
+{term:'Malleability',def:'The ability of a material to be permanently deformed (hammered or pressed into shape) without cracking.',ex:'Gold is very malleable — it can be beaten into gold leaf just micrometres thick for decorative purposes.',topic:'materials',tier:4},
+{term:'Corrosion Resistance',def:'The ability of a material to withstand degradation caused by chemical reactions with its environment.',ex:'Stainless steel has excellent corrosion resistance because chromium forms a protective oxide layer on the surface.',topic:'materials',tier:4},
+// design
+{term:'Systems Thinking',def:'Analysing and designing a product by considering how all its parts interact as a whole, interconnected system.',ex:'Designing a smart home requires systems thinking — the heating, lighting, and security must all communicate.',topic:'design',tier:4},
+{term:'Intellectual Property',def:'Legal rights protecting creative work — including patents for inventions, copyright for designs, and trademarks for brands.',ex:'A designer registers a patent to prevent competitors from copying a novel product mechanism for 20 years.',topic:'design',tier:4},
+// sustainability
+{term:'Biomimicry',def:'Designing products, processes, or systems inspired by structures, forms, and processes found in nature.',ex:'Velcro was invented after studying how burdock burrs cling to clothing — tiny hooks grip loops of fabric.',topic:'sustainability',tier:4},
+{term:'Greenwashing',def:'When a company makes misleading or false claims about the environmental benefits of its products or practices.',ex:'Calling a product "eco-friendly" with no independent certification or evidence to support the claim is greenwashing.',topic:'sustainability',tier:4},
+{term:'Cradle to Cradle',def:'A design philosophy where all materials become nutrients for a new product or natural system at end of life — generating zero waste.',ex:'A product designed so every material can either be safely composted or indefinitely recycled follows the cradle-to-cradle principle.',topic:'sustainability',tier:4},
+// manufacturing
+{term:'Lean Manufacturing',def:'A production method focused on eliminating waste of time, materials, and effort at every stage of production.',ex:'Toyota\'s lean manufacturing system reduces wasted movement, waiting time, and defects on the production line.',topic:'manufacturing',tier:4},
+{term:'Quality Assurance',def:'The systems, processes, and procedures put in place throughout production to prevent defects and ensure standards are met.',ex:'Quality assurance includes regular machine maintenance, staff training, and statistical sampling to catch problems early.',topic:'manufacturing',tier:4},
+{term:'Jig',def:'A device that holds a workpiece and guides a cutting tool to ensure consistent, accurate results every time.',ex:'A jig is clamped to a piece of wood so a drill bit always enters in exactly the same position for every piece made.',topic:'manufacturing',tier:4},
+];
+
+// =====================================================================
+// TOPIC / TIER CONFIG
+// =====================================================================
+const TIER_LABELS = {1:'G6–G7 Foundation',2:'G8–G9 Core GCSE',3:'G10–G11 Advanced',4:'G12 Expert'};
+const TIER_BADGE  = {1:'badge-1',2:'badge-2',3:'badge-3',4:'badge-4'};
+const TOPIC_COLOR = {};
+TOPICS.forEach(t => { TOPIC_COLOR[t.id] = t.color; });
+
+const MODES = [
+  {id:'flashcards', label:'Flashcards', icon:'🃏', desc:'Flip & self-rate', minTier:1},
+  {id:'match',      label:'Match Pairs', icon:'🔗', desc:'Connect word & meaning', minTier:1},
+  {id:'mc',         label:'Multiple Choice', icon:'🎯', desc:'Pick the right keyword', minTier:2},
+  {id:'type',       label:'Type the Word', icon:'⌨️', desc:'Recall & spell it', minTier:3},
+  {id:'speed',      label:'Speed Round', icon:'⚡', desc:'60-sec challenge', minTier:4},
+];
+
+// =====================================================================
+// STATE
+// =====================================================================
+let state = {
+  tier: null,
+  topics: new Set(TOPICS.map(t=>t.id)),
+  mode: null,
+  pool: [],
+  current: 0,
+  score: 0,
+  total: 0,
+  missed: [],
+  // flashcard state
+  fcDeck: [],
+  fcIdx: 0,
+  fcGot: 0,
+  fcFlipped: false,
+  // match state
+  matchPool: [],
+  matchSelected: {col:null, idx:null},
+  matchMatched: 0,
+  // mc state
+  mcQuestions: [],
+  mcIdx: 0,
+  mcScore: 0,
+  mcAnswered: false,
+  // type state
+  typeQuestions: [],
+  typeIdx: 0,
+  typeScore: 0,
+  typeUsedHint: false,
+  // speed state
+  speedQuestions: [],
+  speedIdx: 0,
+  speedScore: 0,
+  speedTimer: null,
+  speedSecondsLeft: 60,
+};
+
+// =====================================================================
+// UTILITY
+// =====================================================================
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length-1; i>0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+function getPool() {
+  return KEYWORDS.filter(k => k.tier <= state.tier && state.topics.has(k.topic));
+}
+function topicColor(topicId) {
+  return TOPIC_COLOR[topicId] || '#94a3b8';
+}
+function topicLabel(topicId) {
+  const t = TOPICS.find(x=>x.id===topicId);
+  return t ? t.label : topicId;
+}
+
+// =====================================================================
+// LOCALSTORAGE
+// =====================================================================
+function saveScore(mode, tier, topics, score, total) {
+  try {
+    const key = `dt_game_best_${mode}_${tier}_${[...topics].sort().join(',')}`;
+    const pct = Math.round(score/total*100);
+    const existing = parseInt(localStorage.getItem(key) || '0');
+    if (pct > existing) localStorage.setItem(key, String(pct));
+  } catch(e){}
+}
+function getBest(mode, tier, topics) {
+  try {
+    const key = `dt_game_best_${mode}_${tier}_${[...topics].sort().join(',')}`;
+    return parseInt(localStorage.getItem(key) || '0');
+  } catch(e){ return 0; }
+}
+
+// =====================================================================
+// DOM HELPERS
+// =====================================================================
+function $(id){ return document.getElementById(id); }
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  $(id).classList.add('active');
+}
+function setProgress(done, total) {
+  const pct = total ? Math.round(done/total*100) : 0;
+  $('progress-bar').style.width = pct+'%';
+}
+function setStatusScore(s) { $('status-score').textContent = s; }
+function topicChipHTML(topicId) {
+  const color = topicColor(topicId);
+  return `<span class="topic-chip" style="background:${color}22;color:${color}">${topicLabel(topicId)}</span>`;
+}
+
+// =====================================================================
+// SETUP SCREEN
+// =====================================================================
+function renderSetup() {
+  // tier buttons
+  document.querySelectorAll('.tier-btn').forEach(btn => {
+    btn.classList.toggle('selected', parseInt(btn.dataset.tier) === state.tier);
+  });
+  // topic grid
+  const tg = $('topic-grid');
+  tg.innerHTML = '';
+  TOPICS.forEach(topic => {
+    const checked = state.topics.has(topic.id) ? 'checked' : '';
+    const lbl = document.createElement('label');
+    lbl.className = 'topic-cb';
+    lbl.innerHTML = `
+      <input type="checkbox" value="${topic.id}" ${checked}>
+      <span class="topic-dot" style="background:${topic.color}"></span>
+      <span>${topic.label}</span>
+    `;
+    lbl.querySelector('input').addEventListener('change', e => {
+      if (e.target.checked) state.topics.add(topic.id);
+      else state.topics.delete(topic.id);
+      updateSetup();
+    });
+    tg.appendChild(lbl);
+  });
+  // mode grid
+  renderModes();
+  updateSetup();
+}
+
+function renderModes() {
+  const mg = $('mode-grid');
+  mg.innerHTML = '';
+  MODES.forEach(mode => {
+    const unlocked = state.tier !== null && state.tier >= mode.minTier;
+    const btn = document.createElement('button');
+    btn.className = 'mode-btn' + (unlocked ? '' : ' locked') + (state.mode===mode.id ? ' selected' : '');
+    btn.innerHTML = `${mode.icon} ${mode.label}<span>${mode.desc}</span>`;
+    if (!unlocked) {
+      btn.innerHTML += ` <span class="lock-icon">🔒 ${TIER_LABELS[mode.minTier].split(' ')[0]}</span>`;
+    }
+    if (unlocked) {
+      btn.addEventListener('click', () => {
+        state.mode = mode.id;
+        document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('selected'));
+        btn.classList.add('selected');
+        updateSetup();
+      });
+    }
+    mg.appendChild(btn);
+  });
+}
+
+function updateSetup() {
+  const pool = getPool();
+  const count = pool.length;
+  $('kw-count').textContent = count + ' keywords available';
+  const startBtn = $('btn-start');
+  const warn = $('start-warn');
+  let canStart = true;
+  let warnMsg = '';
+  if (!state.tier) { canStart = false; warnMsg = 'Please select a grade level.'; }
+  else if (!state.mode) { canStart = false; warnMsg = 'Please select a game mode.'; }
+  else if (state.topics.size === 0) { canStart = false; warnMsg = 'Please select at least one topic.'; }
+  else if (state.mode === 'match' && count < 6) { canStart = false; warnMsg = 'Not enough keywords for Match Pairs. Select more topics.'; }
+  else if (state.mode === 'mc' && count < 4) { canStart = false; warnMsg = 'Need at least 4 keywords for Multiple Choice.'; }
+  else if (state.mode === 'type' && count < 1) { canStart = false; warnMsg = 'No keywords available for selected tier/topics.'; }
+  else if (state.mode === 'speed' && count < 4) { canStart = false; warnMsg = 'Need at least 4 keywords for Speed Round.'; }
+  startBtn.disabled = !canStart;
+  if (warnMsg && state.tier && state.mode) {
+    warn.textContent = warnMsg; warn.style.display = 'block';
+  } else {
+    warn.style.display = 'none';
+  }
+  // header badge
+  if (state.tier) {
+    $('header-badge').innerHTML = `<span class="tier-badge ${TIER_BADGE[state.tier]}">${TIER_LABELS[state.tier]}</span>`;
+  }
+}
+
+// =====================================================================
+// START GAME
+// =====================================================================
+function startGame() {
+  state.pool = shuffle(getPool());
+  showScreen('screen-game');
+  $('status-mode').textContent = MODES.find(m=>m.id===state.mode)?.label || '';
+  $('status-tier').innerHTML = `<span class="tier-badge ${TIER_BADGE[state.tier]}" style="margin-left:8px">${TIER_LABELS[state.tier]}</span>`;
+  state.score = 0;
+  state.total = 0;
+  state.missed = [];
+  if (state.mode === 'flashcards') initFlashcards();
+  else if (state.mode === 'match')  initMatch();
+  else if (state.mode === 'mc')     initMC();
+  else if (state.mode === 'type')   initType();
+  else if (state.mode === 'speed')  initSpeed();
+}
+
+// =====================================================================
+// FLASHCARDS
+// =====================================================================
+function initFlashcards() {
+  state.fcDeck = shuffle(state.pool);
+  state.fcIdx = 0;
+  state.fcGot = 0;
+  state.fcFlipped = false;
+  renderFlashcard();
+}
+
+function renderFlashcard() {
+  const area = $('game-area');
+  const kw = state.fcDeck[state.fcIdx];
+  if (!kw) { endFlashcards(); return; }
+  setProgress(state.fcIdx, state.fcDeck.length);
+  setStatusScore(`${state.fcGot} known / ${state.fcIdx} seen`);
+  area.innerHTML = `
+    <p class="flip-hint">Tap the card to reveal the keyword</p>
+    <div class="flashcard-wrap">
+      <div class="flashcard" id="fc-card">
+        <div class="card-face card-front">
+          <div class="card-label">Definition</div>
+          <div class="card-def">${kw.def}</div>
+          <div class="card-ex">${kw.ex}</div>
+          ${topicChipHTML(kw.topic)}
+        </div>
+        <div class="card-face card-back">
+          <div class="card-hint">The keyword is…</div>
+          <div class="card-term">${kw.term}</div>
+          <button class="speak-btn" id="speak-btn" title="Hear pronunciation">🔊</button>
+        </div>
+      </div>
+    </div>
+    <div class="fc-controls" id="fc-controls" style="display:none;">
+      <button class="btn-learning" id="btn-learning">Still learning</button>
+      <button class="btn-got-it" id="btn-got-it">Got it ✓</button>
+    </div>
+    <div class="fc-counter">${state.fcIdx+1} / ${state.fcDeck.length}</div>
+  `;
+  const card = $('fc-card');
+  card.addEventListener('click', () => {
+    if (!state.fcFlipped) {
+      state.fcFlipped = true;
+      card.classList.add('flipped');
+      $('fc-controls').style.display = 'flex';
+    }
+  });
+  $('speak-btn')?.addEventListener('click', e => {
+    e.stopPropagation();
+    speak(kw.term);
+  });
+  $('btn-got-it')?.addEventListener('click', () => {
+    state.fcGot++;
+    nextFlashcard();
+  });
+  $('btn-learning')?.addEventListener('click', () => {
+    state.missed.push(kw);
+    nextFlashcard();
+  });
+}
+function nextFlashcard() {
+  state.fcFlipped = false;
+  state.fcIdx++;
+  renderFlashcard();
+}
+function endFlashcards() {
+  const score = state.fcGot;
+  const total = state.fcDeck.length;
+  saveScore('flashcards', state.tier, state.topics, score, total);
+  showResults(score, total, 'flashcards');
+}
+
+// =====================================================================
+// MATCH PAIRS
+// =====================================================================
+function initMatch() {
+  state.matchSelected = {col:null, idx:null};
+  state.matchMatched = 0;
+  state.score = 0;
+  state.total = 0;
+  renderMatch();
+}
+
+function pickMatchSet() {
+  return shuffle(state.pool).slice(0, 6);
+}
+
+function renderMatch() {
+  const set = pickMatchSet();
+  const area = $('game-area');
+  const keywords = shuffle([...set]);
+  const defs = shuffle([...set]);
+  setProgress(state.matchMatched, 6);
+  setStatusScore(`${state.matchMatched}/6 matched`);
+  area.innerHTML = `
+    <div class="info-box" style="margin-bottom:12px">Click a keyword, then click its matching definition.</div>
+    <div class="match-grid">
+      <div class="match-col" id="match-left">
+        ${keywords.map((kw,i)=>`<div class="match-chip keyword-chip" data-col="left" data-idx="${i}" data-id="${kw.term}">${kw.term}</div>`).join('')}
+      </div>
+      <div class="match-col" id="match-right">
+        ${defs.map((kw,i)=>`<div class="match-chip" data-col="right" data-idx="${i}" data-id="${kw.term}">${kw.def}</div>`).join('')}
+      </div>
+    </div>
+  `;
+  // Store set for logic
+  area._matchSet = set;
+  area._matchKeywords = keywords;
+  area._matchDefs = defs;
+  area._matchState = {sel: null, matched: new Set(), wrong: 0};
+  document.querySelectorAll('.match-chip').forEach(chip => {
+    chip.addEventListener('click', handleMatchClick);
+  });
+}
+
+function handleMatchClick(e) {
+  const area = $('game-area');
+  const ms = area._matchState;
+  const chip = e.currentTarget;
+  if (chip.classList.contains('matched')) return;
+  if (chip.classList.contains('wrong')) return;
+  const col = chip.dataset.col;
+  const id = chip.dataset.id;
+  if (ms.sel === null) {
+    if (col !== 'left') return; // must start with keyword
+    ms.sel = chip;
+    chip.classList.add('selected');
+  } else {
+    if (col === 'left') {
+      ms.sel.classList.remove('selected');
+      ms.sel = chip;
+      chip.classList.add('selected');
+      return;
+    }
+    // attempt match
+    const leftId = ms.sel.dataset.id;
+    const rightId = chip.dataset.id;
+    if (leftId === rightId) {
+      ms.sel.classList.remove('selected');
+      ms.sel.classList.add('matched');
+      chip.classList.add('matched');
+      ms.matched.add(leftId);
+      state.matchMatched++;
+      state.score++;
+      ms.sel = null;
+      setStatusScore(`${state.matchMatched}/6 matched`);
+      setProgress(state.matchMatched, 6);
+      if (state.matchMatched >= 6) {
+        setTimeout(() => {
+          state.total = 6;
+          saveScore('match', state.tier, state.topics, state.score, 6);
+          showResults(state.score, 6, 'match');
+        }, 600);
+      }
+    } else {
+      ms.sel.classList.remove('selected');
+      ms.sel.classList.add('wrong');
+      chip.classList.add('wrong');
+      state.missed.push(area._matchKeywords.find(k=>k.term===leftId) || {term:leftId,def:'',topic:''});
+      const wrongSel = ms.sel;
+      const wrongChip = chip;
+      ms.sel = null;
+      ms.wrong++;
+      setTimeout(()=>{
+        wrongSel.classList.remove('wrong');
+        wrongChip.classList.remove('wrong');
+      }, 700);
+    }
+  }
+}
+
+// =====================================================================
+// MULTIPLE CHOICE
+// =====================================================================
+function initMC() {
+  const pool = shuffle(state.pool);
+  state.mcQuestions = pool.slice(0, Math.min(10, pool.length));
+  state.mcIdx = 0;
+  state.mcScore = 0;
+  state.total = state.mcQuestions.length;
+  renderMC();
+}
+
+function renderMC() {
+  const area = $('game-area');
+  const kw = state.mcQuestions[state.mcIdx];
+  if (!kw) { endMC(); return; }
+  setProgress(state.mcIdx, state.total);
+  setStatusScore(`${state.mcScore}/${state.mcIdx} correct`);
+  // Build 4 options: 1 correct + 3 distractors
+  const distractors = shuffle(KEYWORDS.filter(k=>k.term!==kw.term&&k.tier<=state.tier)).slice(0,3);
+  const options = shuffle([kw, ...distractors]);
+  state.mcAnswered = false;
+  area.innerHTML = `
+    <div class="mc-question">
+      <div class="card-label" style="font-family:var(--mono);font-size:0.72rem;color:var(--grey3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Question ${state.mcIdx+1} of ${state.total} ${topicChipHTML(kw.topic)}</div>
+      <div class="mc-def">${kw.def}</div>
+      <div class="mc-ex">${kw.ex}</div>
+      <div class="mc-options">
+        ${options.map((opt,i)=>`<button class="mc-opt" data-term="${opt.term}">${opt.term}</button>`).join('')}
+      </div>
+    </div>
+  `;
+  document.querySelectorAll('.mc-opt').forEach(btn => {
+    btn.addEventListener('click', () => handleMCAnswer(btn, kw));
+  });
+}
+
+function handleMCAnswer(btn, kw) {
+  if (state.mcAnswered) return;
+  state.mcAnswered = true;
+  const chosen = btn.dataset.term;
+  document.querySelectorAll('.mc-opt').forEach(b => { b.disabled = true; b.classList.add('answered'); });
+  if (chosen === kw.term) {
+    btn.classList.add('correct');
+    state.mcScore++;
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.mc-opt').forEach(b => {
+      if (b.dataset.term === kw.term) b.classList.add('reveal-correct');
+    });
+    state.missed.push(kw);
+  }
+  state.mcIdx++;
+  setTimeout(renderMC, 1200);
+}
+
+function endMC() {
+  saveScore('mc', state.tier, state.topics, state.mcScore, state.total);
+  showResults(state.mcScore, state.total, 'mc');
+}
+
+// =====================================================================
+// TYPE THE WORD
+// =====================================================================
+function initType() {
+  const pool = shuffle(state.pool);
+  state.typeQuestions = pool.slice(0, Math.min(10, pool.length));
+  state.typeIdx = 0;
+  state.typeScore = 0;
+  state.total = state.typeQuestions.length;
+  state.typeUsedHint = false;
+  renderType();
+}
+
+function normalise(s) {
+  return s.toLowerCase().replace(/[-\s]/g,'').trim();
+}
+
+function renderType() {
+  const area = $('game-area');
+  const kw = state.typeQuestions[state.typeIdx];
+  if (!kw) { endType(); return; }
+  setProgress(state.typeIdx, state.total);
+  setStatusScore(`${state.typeScore}/${state.typeIdx} correct`);
+  state.typeUsedHint = false;
+  area.innerHTML = `
+    <div class="type-wrap">
+      <div class="card-label" style="font-family:var(--mono);font-size:0.72rem;color:var(--grey3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Question ${state.typeIdx+1} of ${state.total} ${topicChipHTML(kw.topic)}</div>
+      <div class="type-def">${kw.def}</div>
+      <div class="type-ex">${kw.ex}</div>
+      <div class="type-row">
+        <input class="type-input" id="type-input" type="text" placeholder="Type the keyword…" autocomplete="off" autocorrect="off" spellcheck="false">
+        <button class="btn-teal" id="type-submit" style="min-height:48px;">Check</button>
+        <button class="btn-secondary" id="type-hint" style="min-height:48px;padding:12px 14px;">💡 Hint</button>
+      </div>
+      <div class="type-feedback" id="type-feedback"></div>
+    </div>
+  `;
+  const input = $('type-input');
+  input.focus();
+  $('type-submit').addEventListener('click', () => checkType(kw));
+  input.addEventListener('keydown', e => { if (e.key==='Enter') checkType(kw); });
+  $('type-hint').addEventListener('click', () => {
+    if (!state.typeUsedHint) {
+      state.typeUsedHint = true;
+      $('type-input').placeholder = `Starts with "${kw.term[0].toUpperCase()}"…`;
+      $('type-hint').textContent = '💡 Used (−1 pt)';
+      $('type-hint').disabled = true;
+    }
+  });
+}
+
+function checkType(kw) {
+  const input = $('type-input');
+  const fb = $('type-feedback');
+  const val = input.value;
+  if (!val.trim()) return;
+  const correct = normalise(val) === normalise(kw.term);
+  if (correct) {
+    input.classList.add('correct');
+    fb.textContent = '✓ Correct!';
+    fb.className = 'type-feedback correct';
+    if (!state.typeUsedHint) state.typeScore++;
+    else state.typeScore += 0; // hint used = no point
+  } else {
+    input.classList.add('wrong');
+    fb.textContent = `✗ The answer is: ${kw.term}`;
+    fb.className = 'type-feedback wrong';
+    state.missed.push(kw);
+  }
+  $('type-input').disabled = true;
+  $('type-submit').disabled = true;
+  $('type-hint').disabled = true;
+  state.typeIdx++;
+  setTimeout(renderType, 1500);
+}
+
+function endType() {
+  saveScore('type', state.tier, state.topics, state.typeScore, state.total);
+  showResults(state.typeScore, state.total, 'type');
+}
+
+// =====================================================================
+// SPEED ROUND
+// =====================================================================
+function initSpeed() {
+  const pool = shuffle(state.pool);
+  state.speedQuestions = [...pool, ...shuffle(pool), ...shuffle(pool)]; // repeat for 60s
+  state.speedIdx = 0;
+  state.speedScore = 0;
+  state.speedSecondsLeft = 60;
+  state.total = 0;
+  if (state.speedTimer) clearInterval(state.speedTimer);
+  renderSpeed();
+  state.speedTimer = setInterval(tickSpeedTimer, 1000);
+}
+
+function tickSpeedTimer() {
+  state.speedSecondsLeft--;
+  const bar = document.querySelector('.timer-bar');
+  const lbl = document.querySelector('.timer-label');
+  if (bar) {
+    bar.style.width = (state.speedSecondsLeft/60*100)+'%';
+    if (state.speedSecondsLeft <= 15) bar.classList.add('urgent');
+  }
+  if (lbl) lbl.textContent = state.speedSecondsLeft + 's';
+  if (state.speedSecondsLeft <= 0) {
+    clearInterval(state.speedTimer);
+    state.speedTimer = null;
+    saveScore('speed', state.tier, state.topics, state.speedScore, state.total || 1);
+    showResults(state.speedScore, Math.max(state.total,1), 'speed');
+  }
+}
+
+function renderSpeed() {
+  const area = $('game-area');
+  const kw = state.speedQuestions[state.speedIdx % state.speedQuestions.length];
+  const distractors = shuffle(KEYWORDS.filter(k=>k.term!==kw.term&&k.tier<=state.tier)).slice(0,3);
+  const options = shuffle([kw, ...distractors]);
+  area.innerHTML = `
+    <div class="timer-label">${state.speedSecondsLeft}s</div>
+    <div class="timer-bar-wrap"><div class="timer-bar" style="width:${state.speedSecondsLeft/60*100}%"></div></div>
+    <div class="speed-score">⚡ Score: ${state.speedScore}</div>
+    <div class="mc-question">
+      <div class="mc-def">${kw.def}</div>
+      <div class="mc-options">
+        ${options.map(opt=>`<button class="mc-opt" data-term="${opt.term}">${opt.term}</button>`).join('')}
+      </div>
+    </div>
+  `;
+  document.querySelectorAll('.mc-opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!state.speedTimer) return;
+      state.total++;
+      if (btn.dataset.term === kw.term) state.speedScore++;
+      else state.missed.push(kw);
+      state.speedIdx++;
+      renderSpeed();
+    });
+  });
+}
+
+// =====================================================================
+// RESULTS
+// =====================================================================
+const MESSAGES = [
+  [100, "Perfect score! You are absolutely ready for the exam. Outstanding work."],
+  [80,  "Excellent result! You know this topic really well. Keep it up."],
+  [60,  "Good effort! You have a solid understanding — a bit more practice will make it stick."],
+  [40,  "A good start! Use the missed words below to focus your revision."],
+  [20,  "Keep going — this is what practice is for. Every mistake shows you exactly what to study next."],
+  [0,   "No worries at all — everyone starts somewhere. The missed words below are your revision list!"],
+];
+function getMsg(pct) {
+  for (const [threshold, msg] of MESSAGES) {
+    if (pct >= threshold) return msg;
+  }
+  return MESSAGES[MESSAGES.length-1][1];
+}
+
+function showResults(score, total, mode) {
+  if (state.speedTimer) { clearInterval(state.speedTimer); state.speedTimer=null; }
+  const pct = total ? Math.round(score/total*100) : 0;
+  $('result-score').textContent = `${score}/${total}`;
+  $('result-label').textContent = `${pct}% correct`;
+  $('result-msg').textContent = getMsg(pct);
+  const best = getBest(mode, state.tier, state.topics);
+  $('best-score-row').textContent = best ? `Your best: ${best}%` : '';
+  const missedEl = $('missed-list');
+  const uniqueMissed = [...new Map(state.missed.map(k=>[k.term,k])).values()];
+  if (uniqueMissed.length > 0) {
+    missedEl.innerHTML = `<h3>Words to review (${uniqueMissed.length})</h3>` +
+      uniqueMissed.map(k=>`
+        <div class="missed-item">
+          <div class="missed-term">${k.term} ${topicChipHTML(k.topic)}</div>
+          <div class="missed-def">${k.def}</div>
+        </div>
+      `).join('');
+  } else {
+    missedEl.innerHTML = '<div class="info-box" style="margin-top:12px">🎉 No words to review — well done!</div>';
+  }
+  showScreen('screen-results');
+}
+
+// =====================================================================
+// SPEECH
+// =====================================================================
+function speak(text) {
+  try {
+    if (!window.speechSynthesis) return;
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-GB';
+    utter.rate = 0.85;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utter);
+  } catch(e) {}
+}
+
+// =====================================================================
+// EVENT LISTENERS
+// =====================================================================
+document.querySelectorAll('.tier-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.tier = parseInt(btn.dataset.tier);
+    state.mode = null; // reset mode on tier change
+    renderSetup();
+  });
+});
+
+$('btn-select-all').addEventListener('click', () => {
+  TOPICS.forEach(t => state.topics.add(t.id));
+  renderSetup();
+});
+$('btn-clear-all').addEventListener('click', () => {
+  state.topics.clear();
+  renderSetup();
+});
+
+$('btn-start').addEventListener('click', startGame);
+
+$('btn-back').addEventListener('click', () => {
+  if (state.speedTimer) { clearInterval(state.speedTimer); state.speedTimer=null; }
+  showScreen('screen-setup');
+  renderSetup();
+});
+
+$('btn-play-again').addEventListener('click', startGame);
+
+$('btn-change-settings').addEventListener('click', () => {
+  showScreen('screen-setup');
+  renderSetup();
+});
+
+// =====================================================================
+// INIT
+// =====================================================================
+renderSetup();
+</script>
+</body>
+</html>
